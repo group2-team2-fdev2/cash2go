@@ -1,19 +1,16 @@
+import { useRef, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+// import axios from "axios";
 // components
 import LeftSignUpLayout from "../../../components/LeftSignUpLayout";
 
+const EMAIL_REGEX =
+  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/;
+
 export default function PasswordAuth() {
   const navigate = useNavigate();
-  import { useRef, useState, useEffect } from "react";
-import "./form.css";
-import { useNavigate } from "react-router-dom";
-// import axios from "axios";
 
-const EMAIL_REGEX =
-  /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-const PWD_REGEX =
-  /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
-
-const PasswordAuth = () => {
   const emailRef = useRef();
   const errorRef = useRef();
 
@@ -86,14 +83,13 @@ const PasswordAuth = () => {
     toggleModal();
   };
 
-  
   return (
     <>
       <>
         <LeftSignUpLayout />
       </>
       <div className="form-wrapper">
-    {success && modal && (
+        {success && modal && (
           <section className="modal">
             <div className="overlay" onClick={toggleModal}></div>
             <div className="modal-content">
@@ -112,7 +108,8 @@ const PasswordAuth = () => {
                   <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
                 </svg>
               </button>
-              <button className="submit-button"
+              <button
+                className="submit-button"
                 onClick={() => {
                   navigate("#");
                 }}
@@ -330,7 +327,8 @@ const PasswordAuth = () => {
               icon must match the first password input field
               <br />
             </p>
-            <button className="submit-button"
+            <button
+              className="submit-button"
               disabled={!validEmail || !validPwd || !validMatch ? true : false}
             >
               Sign Up{" "}
@@ -356,7 +354,6 @@ const PasswordAuth = () => {
           </p>
         </section>
       </div>
+    </>
   );
-};
-
-export default PasswordAuth;
+}
