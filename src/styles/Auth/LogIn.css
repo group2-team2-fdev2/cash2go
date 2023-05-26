@@ -1,0 +1,105 @@
+/* form */
+
+.form-wrapper {
+  margin: 15% auto 0;
+}
+
+.title {
+  text-align: center;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 35px;
+  color: #172233;
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  color: #5f6d7e;
+  margin-bottom: 5px;
+}
+
+input {
+  display: block;
+  width: 380px;
+  height: 46px;
+  border: 1px solid #5f6d7e;
+  border-radius: 8px;
+  padding: 8px;
+}
+
+.user_email-wrapper,
+.user_password-wrapper {
+  margin-bottom: 25px;
+}
+
+/* button */
+
+.btn-wrapper {
+  width: 380px;
+  height: 46px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 0px;
+  gap: 12px;
+  background: #172233;
+  border-radius: 10px;
+}
+
+.btn-text {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  color: #f8f9fb;
+}
+
+/* links */
+
+.links-wrapper {
+  margin-top: 29px;
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+}
+
+.link {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  color: #000000;
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+/* legal */
+
+.legal-wrapper {
+  margin-top: 60px;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+}
+
+.legal {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  color: #000000;
+  text-decoration: none
+}
+
+.legal:hover {
+  text-decoration: underline;
+}
