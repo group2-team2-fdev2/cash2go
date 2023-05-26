@@ -1,4 +1,9 @@
-import { useRef, useState, useEffect } from "react";
+// components
+import LeftSignUpLayout from "../../../components/LeftSignUpLayout";
+
+export default function PasswordAuth() {
+  const navigate = useNavigate();
+  import { useRef, useState, useEffect } from "react";
 import "./form.css";
 import { useNavigate } from "react-router-dom";
 // import axios from "axios";
@@ -81,12 +86,14 @@ const PasswordAuth = () => {
     toggleModal();
   };
 
-  const navigate = useNavigate();
-
+  
   return (
     <>
-      <div className="form-layout">
-        {success && modal && (
+      <>
+        <LeftSignUpLayout />
+      </>
+      <div className="form-wrapper">
+    {success && modal && (
           <section className="modal">
             <div className="overlay" onClick={toggleModal}></div>
             <div className="modal-content">
@@ -349,7 +356,6 @@ const PasswordAuth = () => {
           </p>
         </section>
       </div>
-    </>
   );
 };
 

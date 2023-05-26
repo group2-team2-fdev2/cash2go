@@ -1,7 +1,7 @@
 // components
 import LeftSignUpLayout from "../../../components/LeftSignUpLayout";
 
-export default function OTPAuth() {
+export default function EmailAndCompanyIDAuth() {
   return (
     <>
       <>
