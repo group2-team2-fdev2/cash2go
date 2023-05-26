@@ -1,7 +1,13 @@
+// components
+import LeftSignUpLayout from "../../../components/LeftSignUpLayout";
+
 export default function PasswordAuth() {
   return (
-    <div>
-      
-    </div>
+    <>
+      <>
+        <LeftSignUpLayout />
+      </>
+      <div className="form-wrapper"></div>
+    </>
   );
 }
