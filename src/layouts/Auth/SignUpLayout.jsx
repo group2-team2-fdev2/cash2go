@@ -5,5 +5,5 @@ export default function SignUpLayout() {
     <div>
       <Outlet />
     </div>
-  )
+  );
 }
