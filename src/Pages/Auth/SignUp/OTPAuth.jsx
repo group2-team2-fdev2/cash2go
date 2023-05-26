@@ -1,6 +1,8 @@
 import React, { useState } from "react"
 import { Link, useNavigate } from "react-router-dom";
 import "../../../styles/Auth/SignUp/OTPAuth.css"
+// components
+import LeftSignUpLayout from "../../../components/LeftSignUpLayout";
 
 export default function OTPAuth() {
   const navigate = useNavigate()
@@ -20,6 +22,11 @@ export default function OTPAuth() {
     navigate ("/login")
   }
   return (
+    <>
+      <>
+        <LeftSignUpLayout />
+      </>
+      <div className="form-wrapper">
     <div className="otp-container">
       <div className="otp">
       <div className="input-container">
@@ -54,5 +61,8 @@ export default function OTPAuth() {
             </div>
       </div>
     </div>
+    </div>
+    </>
+
   );
 }
