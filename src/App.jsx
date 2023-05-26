@@ -8,10 +8,12 @@ import {
 import LogInLayout from "./layouts/Auth/LogInLayout";
 import SignUpLayout from "./layouts/Auth/SignUpLayout";
 import DashboardLayout from "./layouts/Dashboard/DashboardLayout";
+
 // pages
 import LogIn from "./Pages/Auth/LogIn/LogIn";
 import SignUp from "./Pages/Auth/SignUp/SignUp";
 import Dashboard from "./Pages/Dashboard/Dashboard";
+
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -20,6 +22,8 @@ const router = createBrowserRouter(
       <Route path="sign-up" element={<SignUpLayout />}>
         <Route index element={<SignUp />} />
       </Route>
+      
+
       <Route path="dashboard" element={<DashboardLayout />} >
         <Route index element={<Dashboard />} />
       </Route>
