@@ -27,8 +27,8 @@ const router = createBrowserRouter(
       <Route path="password-auth" element={<PasswordAuth />} />
       <Route path="security-question-auth" element={<SecurityQuestionAuth />} />
       <Route path="forgot-password" element={<EmailRequest />} />
-      <Route path="security-question-auth" element={<SecurityQuestion />} />
-      <Route path="new-password-auth" element={<NewPassword />} />
+      <Route path="security-question" element={<SecurityQuestion />} />
+      <Route path="new-password" element={<NewPassword />} />
       <Route path="dashboard" element={<Dashboard />} />
     </Route>
   )
