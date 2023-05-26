@@ -1,7 +1,7 @@
 // components
 import LeftSignUpLayout from "../../../components/LeftSignUpLayout";
 
-export default function PasswordAuth() {
+export default function EmailAndCompanyIDAuth() {
   return (
     <>
       <>

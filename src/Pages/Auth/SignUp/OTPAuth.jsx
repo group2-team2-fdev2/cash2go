@@ -1,7 +1,13 @@
+// components
+import LeftSignUpLayout from "../../../components/LeftSignUpLayout";
+
 export default function OTPAuth() {
   return (
-    <div>
-      
-    </div>
+    <>
+      <>
+        <LeftSignUpLayout />
+      </>
+      <div className="form-wrapper"></div>
+    </>
   );
 }
