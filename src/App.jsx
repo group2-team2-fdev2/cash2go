@@ -12,13 +12,15 @@ import DashboardLayout from "./layouts/Dashboard/DashboardLayout";
 import LogIn from "./Pages/Auth/LogIn/LogIn";
 import SignUp from "./Pages/Auth/SignUp/SignUp";
 import Dashboard from "./Pages/Dashboard/Dashboard";
+import OTPAuth from "./Pages/Auth/SignUp/OTPAuth";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<LogInLayout />}>
       <Route index element={<LogIn />} />
       <Route path="sign-up" element={<SignUpLayout />}>
-        <Route index element={<SignUp />} />
+        {/* <Route index element={<SignUp />} /> */}
+        <Route index element={<OTPAuth />} />
       </Route>
       <Route path="dashboard" element={<DashboardLayout />} >
         <Route index element={<Dashboard />} />
