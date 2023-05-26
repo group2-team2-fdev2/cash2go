@@ -1,5 +1,5 @@
 // styles
-import "../styles/components.css";
+import "../Login.css";
 // components
 import Laptop from "./Laptop";
 import Cash2goLogo from "./Cash2goLogo";

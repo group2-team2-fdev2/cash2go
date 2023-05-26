@@ -1,3 +1,5 @@
+// styles
+import "../Login.css";
 // components
 import Cash2goLogo from './Cash2goLogo'
 

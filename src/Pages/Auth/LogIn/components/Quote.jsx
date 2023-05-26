@@ -1,7 +1,7 @@
 // libraries
 import { ImQuotesRight } from "react-icons/im";
 // styles
-import "../styles/components.css";
+import "../Login.css";
 
 export default function Quote() {
   return (

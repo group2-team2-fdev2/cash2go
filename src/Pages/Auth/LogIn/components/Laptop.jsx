@@ -1,7 +1,7 @@
 // styles
-import "../styles/components.css";
+import "../Login.css";
 // assets
-import LaptopImage from "../assets/Laptop.png";
+import LaptopImage from "../../../../assets/laptop.png";
 
 export default function Laptop() {
   return (

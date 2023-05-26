@@ -17,5 +17,10 @@ img {
 }
 
 input {
-    font-size: inherit;
+  font-size: inherit;
+}
+
+ul,
+ol {
+  list-style-type: none;
 }

@@ -1,9 +1,10 @@
+// library
 import { Outlet } from "react-router-dom";
 
-export default function DashboardLayout() {
+export default function RootLayout() {
   return (
-    <div>
+    <>
       <Outlet />
-    </div>
-  )
+    </>
+  );
 }

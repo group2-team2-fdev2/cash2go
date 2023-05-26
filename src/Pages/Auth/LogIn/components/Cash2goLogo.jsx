@@ -1,4 +1,4 @@
-import "../styles/components.css"
+import "../Login.css"
 
 export default function Cash2goLogo() {
   return (
