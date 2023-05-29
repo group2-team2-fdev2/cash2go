@@ -7,7 +7,7 @@ import Quote from "./Quote";
 
 export default function LeftLoginLayout() {
   return (
-    <div className="layout">
+    <div className="background">
       <div className="laptop-wrapper">
         <Laptop />
       </div>

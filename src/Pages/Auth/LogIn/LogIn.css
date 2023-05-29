@@ -1,6 +1,6 @@
 .login-component {
   display: grid;
-  grid-template-columns: 50vw 50vw;
+  grid-template-columns: 50dvw 50dvw;
   height: 100%;
   position: relative;
 }
@@ -45,9 +45,21 @@ input {
   margin-bottom: 25px;
 }
 
+/* error-messages */
+
+.error-message {
+  width: 380px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  color: red;
+  padding: 2px;
+}
+
 /* button */
 
-.btn-wrapper {
+.button-wrapper {
   width: 380px;
   height: 46px;
   display: flex;
@@ -59,7 +71,7 @@ input {
   border-radius: 10px;
 }
 
-.btn-text {
+.button-text {
   font-family: "Inter";
   font-style: normal;
   font-weight: 600;
@@ -115,7 +127,7 @@ input {
 
 /* layout */
 
-.layout {
+.background {
   height: 100vh;
   background-image: url(../../../assets/side_bg.png);
   background-repeat: no-repeat;
