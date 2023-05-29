@@ -1,7 +1,7 @@
-// styles
+// style
 import "../Login.css";
-// components
-import Cash2goLogo from './Cash2goLogo'
+// component
+import Cash2goLogo from '../../LogIn/components/Cash2goLogo'
 
 export default function LeftSignUpLayout() {
   return (

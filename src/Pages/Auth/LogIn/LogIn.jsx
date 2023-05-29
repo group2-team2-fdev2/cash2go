@@ -18,19 +18,13 @@ export default function LogIn() {
 
   return (
     <>
-      <div className="login-component">
-        <>
-          <LeftLoginLayout />
-        </>
+      <div className="layout-component">
+        <LeftLoginLayout />
         <div className="form-wrapper">
           <h3 className="title">Log In</h3>
           <LoginForm submitForm={LoginToApp} />
-          <div className="links-wrapper">
-            <Links />
-          </div>
-          <div className="legal-wrapper">
-            <Legal />
-          </div>
+          <Links />
+          <Legal />
         </div>
       </div>
     </>

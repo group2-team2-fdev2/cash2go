@@ -1,6 +1,5 @@
-import React, { useState } from "react";
-import "./SecurityQuestion.css";
-
+import { useState } from "react";
+import "../ForgotPassword.css";
 // components
 import LeftLoginLayout from "../../LogIn/components/LeftLoginLayout";
 import Legal from "../../LogIn/components/Legal";
@@ -46,17 +45,15 @@ export default function SecurityQuestion() {
 
   return (
     <>
-      <div className="emailrequest-component">
-        <>
-          <LeftLoginLayout />
-        </>
+      <div className="layout-component">
+        <LeftLoginLayout />
         <div className="form-wrapper">
-          <h3 className="reset-title">Reset Password</h3>
-          <div className="user_email-wrapper">
+          <h3 className="reset title">Reset Password</h3>
+          <div className="user_question-wrapper">
             <label htmlFor="question">Security Question</label>
             <input type="text" id="question" value={question} disabled />
           </div>
-          <div className="user_email-wrapper">
+          <div className="user_question-wrapper">
             <label htmlFor="answer">Your answer</label>
             <input
               type="text"
@@ -64,26 +61,23 @@ export default function SecurityQuestion() {
               value={answer}
               onChange={handleAnswerChange}
             />
-            {errorMessage && (
-              <p className="securityanswer-error">{errorMessage}</p>
-            )}
+            {errorMessage && <p className="error-message">{errorMessage}</p>}
           </div>
 
-          <button onClick={handleResetClick} className="reset-btn">
-            <span className="btn-text">Reset</span>
+          <button onClick={handleResetClick} className="button-wrapper">
+            <span className="button-text">Reset</span>
           </button>
-          <div className="legal-wrapper">
-            <Legal />
-          </div>
+          <Legal />
 
           {resetLinkSent && (
-            <div className="overlay">
-              <div className="popup">
-                
-                <h3 className="popup-title">Reset Link</h3>
-                <p>A password reset link has been sent to </p>
+            <div className="modal-background">
+              <div className="modal-container">
+                <h3 className="modal-title">Reset Link</h3>
+                <p className="modal-instruction">
+                  A password reset link has been sent to{" "}
+                </p>
                 <p className="user-email">{userEmail}.</p>
-                <button className="continue-btn">Continue</button>
+                <button className="continue-button">Continue</button>
               </div>
             </div>
           )}

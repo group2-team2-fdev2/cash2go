@@ -1,4 +1,3 @@
-import React from 'react'
 import "../EmailAndCompanyIDAuth/EmailAndCompanyIDAuth.css";
 
 function Cash2goLogo() {

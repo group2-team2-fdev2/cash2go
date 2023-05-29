@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import { Formik, Form } from "formik";
 // component
 import LoginSchema from "./LoginValidation";
-import Button from "./Button";
-import EmailField from "./EmailField";
 import PasswordField from "./PasswordField";
+import ButtonVariant from "./ButtonVariant";
+import ConfirmPasswordField from "./ConfirmPasswordField";
 
 export default function LoginForm({ submitForm }) {
   const handleSubmit = (values) => {
@@ -20,9 +20,9 @@ export default function LoginForm({ submitForm }) {
       onSubmit={handleSubmit}
     >
       <Form>
-        <EmailField />
         <PasswordField />
-        <Button />
+        <ConfirmPasswordField />
+        <ButtonVariant />
       </Form>
     </Formik>
   );

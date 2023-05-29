@@ -40,7 +40,7 @@ export default function EmailAndCompanyIDAuth() {
             <input
               type="email"
               name="email"
-              defaultvalue={values.email}
+              // defaultvalue={values.email}
               onChange={handleChange}
               id="email"
               placeholder="myworkemail@work.com"
@@ -52,7 +52,7 @@ export default function EmailAndCompanyIDAuth() {
             <input
               type="text"
               name="company_id"
-              defaultvalue={values.company_id}
+              // defaultvalue={values.company_id}
               onChange={handleChange}
               id="company_id"
               placeholder="123ABC"

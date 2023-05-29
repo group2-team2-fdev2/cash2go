@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+// library
+import { useState } from "react";
 import axios from "axios";
-import "./EmailRequest.css";
-import SecurityQuestion from "../SecurityQuestionReset/SecurityQuestion";
-import LeftLoginLayout from "../../LogIn/components/LeftLoginLayout";
-import ArrowRight from "../../LogIn/components/ArrowRight";
-import Legal from "../../LogIn/components/Legal";
+// style
+import "../ForgotPassword.css";
+// component
+import SecurityQuestion from "../SecurityQuestionReset/SecurityQuestion"; // this should be deleted
+import LeftLoginLayout from "../components/LeftLoginLayout";
+import ArrowRight from "../components/ArrowRight";
+import Legal from "../components/Legal";
 
 export default function EmailRequest() {
   const [email, setEmail] = useState("");
@@ -56,10 +59,10 @@ export default function EmailRequest() {
 
   return (
     <>
-      <div className="emailrequest-component">
+      <div className="layout-component">
         <LeftLoginLayout />
         <div className="form-wrapper">
-          <h3 className="reset-title">Reset Password</h3>
+          <h3 className="reset title">Reset Password</h3>
           <div className="user_email-wrapper">
             <label htmlFor="email">Email</label>
             <input
@@ -69,21 +72,19 @@ export default function EmailRequest() {
               onChange={handleEmailChange}
             />
             {errorMessage && <p className="error-message">{errorMessage}</p>}
+            <p className="verification-instruction">
+              Please provide the email used for registration
+            </p>
           </div>
-          <p className="email-verification">
-            Please provide the email used for registration
-          </p>
-          <button onClick={handleClick} className="reset-btn">
-            <span className="btn-text">Next</span>
+
+          <button onClick={handleClick} className="button-wrapper">
+            <span className="button-text">Next</span>
             <ArrowRight />
           </button>
-          <div className="legal-wrapper">
-            <Legal />
-          </div>
+          <Legal />
         </div>
       </div>
       {isEmailVerified && <SecurityQuestion />}
     </>
   );
 }
-

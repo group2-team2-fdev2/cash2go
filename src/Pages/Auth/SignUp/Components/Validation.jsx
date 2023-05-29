@@ -1,18 +1,13 @@
-import React from 'react'
+export default function Validation(values) {
+  let errors = {};
 
-const Validation = (values) => {
-
-    leterrors={};
-
-    if(!values.company_id){
-        errors.company_id="Id is required"
-    }
-    if(!values.email){
-        errors.email="Email is required"
-    } else if(!/\S+@\S+\.\S+/.test(values.email)){
-        errors.email="Email is invalid"
-    }
+  if (!values.company_id) {
+    errors.company_id = "Id is required";
+  }
+  if (!values.email) {
+    errors.email = "Email is required";
+  } else if (!/\S+@\S+\.\S+/.test(values.email)) {
+    errors.email = "Email is invalid";
+  }
   return errors;
-};
-
-export default Validation;
+}
