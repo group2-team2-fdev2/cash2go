@@ -1,5 +1,5 @@
 // asset
-import LaptopImage from "../../../../assets/laptop.png";
+import LaptopImage from "../laptop.png";
 
 export default function Laptop() {
   return (
