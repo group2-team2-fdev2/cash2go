@@ -13,7 +13,7 @@ import OTPAuth from "./Pages/Auth/SignUp/OTPAuth/OTPAuth";
 import PasswordAuth from "./Pages/Auth/SignUp/PasswordAuth/PasswordAuth";
 import SecurityQuestionAuth from "./Pages/Auth/SignUp/SecurityQuestion/SecurityQuestionAuth";
 import EmailRequest from "./Pages/Auth/ForgotPassword/EmailRequest/EmailRequest";
-import SecurityQuestion from "./Pages/Auth/ForgotPassword/SecurityQuestion/SecurityQuestion";
+import SecurityQuestion from "./Pages/Auth/ForgotPassword/SecurityQuestionReset/SecurityQuestion";
 import NewPassword from "./Pages/Auth/ForgotPassword/NewPassword/NewPassword";
 // Dashboard
 import Dashboard from "./Pages/Dashboard/Dashboard";
