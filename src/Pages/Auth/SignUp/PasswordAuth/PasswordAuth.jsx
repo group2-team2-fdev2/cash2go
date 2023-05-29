@@ -7,6 +7,7 @@ import {IconWrong, ArrowRight, IconRight, LockIcon, PasswordIcon, NoticeIcon} fr
 //Libraries
 import { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+
 // import axios from "axios";
 
 
@@ -16,7 +17,7 @@ export default function PasswordAuth() {
   const EMAIL_REGEX =
     /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   const PWD_REGEX =
-    /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
+  /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
 
   const emailRef = useRef();
   const errorRef = useRef();
@@ -65,6 +66,8 @@ export default function PasswordAuth() {
     setModal(!modal);
   };
 
+  const navigate = useNavigate();
+
   const handelSubmit = async (e) => {
     e.preventDefault();
     // try {
@@ -91,7 +94,7 @@ export default function PasswordAuth() {
 
   };
 
-  const navigate = useNavigate();
+  
   return (
     <>
       <div className="signup-layout">
@@ -101,27 +104,27 @@ export default function PasswordAuth() {
         <div className="form-wrapper">
         {success && modal && (
           <section className="modal">
-            <div className="overlay" onClick={toggleModal}></div>
-            <div className="modal-content">
-              
-              <h1 className="black big"><i className="notice-icon">{<NoticeIcon/>}</i> <br/>Congratulations !!!</h1>
-              <p className="sbtn-text black">
-                Your signup for our Cash2Go app is now complete. Get ready to
-                unlock great financial posibilities and achieve your goals.
-              </p>
-              <button className="close-modal" onClick={toggleModal}>
-                {" "}
-                <i>{<IconWrong/>}</i>
-              </button>
-              <button className="modal-button"
-                onClick={() => {
-                  navigate("#");
-                }}
-              >
-                <p className="sbtn-text">Continue</p>
-                
-              </button>
-            </div>
+    <div className="overlay" onClick={toggleModal}></div>
+    <div className="modal-content">
+      
+      <h1 className="black big"><i className="notice-icon">{<NoticeIcon/>}</i> <br/>Congratulations !!!</h1>
+      <p className="sbtn-text black">
+        Your signup for our Cash2Go app is now complete. Get ready to
+        unlock great financial posibilities and achieve your goals.
+      </p>
+      <button className="close-modal" onClick={toggleModal}>
+        {" "}
+        <i>{<IconWrong/>}</i>
+      </button>
+      <button className="modal-button"
+        onClick={() => {
+          navigate("#");
+        }}
+      >
+        <p className="sbtn-text">Continue</p>
+        
+      </button>
+    </div>
           </section>
         )}
         <section>
