@@ -15,6 +15,10 @@ import SecurityQuestionAuth from "./Pages/Auth/SignUp/SecurityQuestion/SecurityQ
 import EmailRequest from "./Pages/Auth/ForgotPassword/EmailRequest/EmailRequest";
 import SecurityQuestion from "./Pages/Auth/ForgotPassword/SecurityQuestion/SecurityQuestion";
 import NewPassword from "./Pages/Auth/ForgotPassword/NewPassword/NewPassword";
+
+// Main Page
+import Main from "./Pages/Main/Main";
+
 // Dashboard
 import Dashboard from "./Pages/Dashboard/Dashboard";
 
@@ -29,7 +33,7 @@ const router = createBrowserRouter(
       <Route path="forgot-password" element={<EmailRequest />} />
       <Route path="security-question" element={<SecurityQuestion />} />
       <Route path="new-password" element={<NewPassword />} />
-      <Route path="dashboard" element={<Dashboard />} />
+      <Route path="dashboard" element={<Main />} />
     </Route>
   )
 );
