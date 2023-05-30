@@ -117,7 +117,7 @@ input {
 
 .layout {
   height: 100vh;
-  background-image: url(../../../assets/side_bg.png);
+  background-image: url(../../../assets/signup_bg.png);
   background-repeat: no-repeat;
   background-size: cover;
 }
