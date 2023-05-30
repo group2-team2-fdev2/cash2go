@@ -1,8 +1,6 @@
-import "../EmailAndCompanyIDAuth/EmailAndCompanyIDAuth.css";
-
-function Cash2goLogo() {
+export default function Cash2goLogo() {
   return (
-    <>
+    <div className="cash2go-wrapper">
       <svg
         width="37.6"
         height="43.4"
@@ -37,8 +35,6 @@ function Cash2goLogo() {
           fill="white"
         />
       </svg>
-    </>
-  )
+    </div>
+  );
 }
-
-export default Cash2goLogo

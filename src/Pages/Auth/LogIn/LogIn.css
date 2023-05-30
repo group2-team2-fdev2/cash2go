@@ -92,6 +92,10 @@ input::placeholder {
   border-radius: 10px;
 }
 
+.button-wrapper:hover {
+  cursor: pointer;
+}
+
 .button-text {
   font-family: "Inter";
   font-style: normal;

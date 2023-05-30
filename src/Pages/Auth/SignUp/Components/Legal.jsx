@@ -1,13 +1,11 @@
-
-import "../PasswordAuth.css";
+// library
 import { Link } from "react-router-dom";
-
 
 export default function Legal() {
   return (
-    <>
-      <Link className="legal">Term of use</Link>
+    <div className="legal-wrapper">
+      <Link className="legal">Terms of use</Link>
       <Link className="legal">Privacy policy</Link>
-    </>
+    </div>
   );
 }
