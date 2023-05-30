@@ -1,16 +1,12 @@
-import React from 'react'
-import { useState } from 'react';
-import '../SecurityQuestion/SecurityQuestion.css';
-import LeftLoginLayout from '../../LogIn/components/LeftLoginLayout';
-import Legal from "../../LogIn/components/Legal"
+import { useState } from "react";
+import "../SignUp.css";
+import LeftLoginLayout3 from "../Components/LeftSignUpLayout3";
+import Legal from "../../LogIn/components/Legal";
+import ArrowRight from "../Components/ArrowRight";
 
 export default function SecurityQuestion() {
-  
-  const [answer, setAnswer] = useState(""); 
-  const [popUp, setPopUp] = useState(false);
+  const [answer, setAnswer] = useState("");
   const [error, setError] = useState("");
-  
-
 
   const handleAnswer = (event) => {
     setAnswer(event.target.value);
@@ -28,66 +24,46 @@ export default function SecurityQuestion() {
     }
 
     setError("");
-
-    setPopUp(true);
   };
-
- 
-
 
   return (
     <>
-      <div className="securityauth-component">
-        <>
-          <LeftLoginLayout />
-        </>
+      <div className="layout-component">
+        <LeftLoginLayout3 />
         <div className="form-wrapper">
-          
-          <div className="user_email-wrapper">
+          <div className="user_question-wrapper">
             <label htmlFor="question">Security Question</label>
-          
-            <select className= "questions" name= "question" id ="question">
-    <option >Where did you meet your spouse? </option>
-      <option >What is the name of your favorite childhood friend? </option>
-      <option > In what city did you meet your spouse/significant other? </option>
-      <option > What is your mother's maiden name? </option>
-      <option > What is the name of your first pet? </option>
-  </select>
+
+            <select name="question" id="question">
+              <option value=""> Where did you meet your spouse? </option>
+              <option value="">
+                What is the name of your favorite childhood friend?{" "}
+              </option>
+              <option value="">
+                In what city did you meet your spouse/significant other?{" "}
+              </option>
+              <option value=""> What is your {`mother's`} maiden name? </option>
+              <option value=""> What is the name of your first pet? </option>
+            </select>
           </div>
 
-
-
-          
-          <div className="user_email-wrapper">
+          <div className="user_answer-wrapper">
             <label htmlFor="answer">Your answer</label>
-            <input type="text" id="answer" value={answer} onChange={handleAnswer} />
-
-            {error && (
-              <p className="securityanswer-error">{error}</p>
-            )}
+            <input
+              type="text"
+              id="answer"
+              value={answer}
+              onChange={handleAnswer}
+            />
+            {error && <p className="error-message">{error}</p>}
           </div>
 
-
-          <div className='form-action'>
-          <button onClick={handleSubmit} className="reset-btn">
-            <span className="btn-text">Sign up</span>
+          <button onClick={handleSubmit} className="button-wrapper">
+            <span className="button-text">Sign up</span>
+            <ArrowRight />
           </button>
-          <div className="legal-wrapper">
-            <Legal />
-          </div>
-          </div>
 
-          {popUp && (
-            <div className="overlay">
-              <div className="popup">
-                
-                <h3 className="popup-title">Congratulations!!!</h3>
-                <p>Your signup for our Cash2go app is now complete.  </p>
-                <p className="user1">Get ready to unlock great financial possibilities and achieve your goals.</p>
-                <button className="continue-btn">Continue</button>
-              </div>
-            </div>
-          )}
+          <Legal />
         </div>
       </div>
     </>

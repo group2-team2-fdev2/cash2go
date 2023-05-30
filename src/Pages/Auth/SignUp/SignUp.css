@@ -14,6 +14,16 @@
   margin-bottom: 20px;
 }
 
+.sub-title {
+  text-align: center;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 25px;
+  color: #172233;
+  margin-bottom: 10px;
+}
+
 label {
   display: block;
   font-family: "Inter";
@@ -40,7 +50,52 @@ input {
   outline: none;
 }
 
+select {
+  display: block;
+  width: 380px;
+  height: 46px;
+  border: 1px solid rgb(235, 232, 232);
+  border-radius: 8px;
+  padding: 8px;
+  background-color: rgb(236, 245, 248);
+  transition: border-color 0.3s ease;
+  outline: none;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  color: #5f6d7e;
+}
+
+option {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  color: #5f6d7e;
+}
+
+.verification-instruction {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.instruction {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  color: #5f6d7e;
+  margin-top: 10px;
+}
+
 input:focus {
+  border: 2px solid rgb(179, 179, 247);
+}
+
+select:focus {
   border: 2px solid rgb(179, 179, 247);
 }
 
@@ -50,8 +105,23 @@ input::placeholder {
 
 .user_email-wrapper,
 .user_password-wrapper,
-.user_companyID-wrapper {
+.user_companyID-wrapper,
+.user_question-wrapper,
+.user_answer-wrapper {
   margin-bottom: 25px;
+}
+
+.link {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  color: #000000;
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
 }
 
 /* error-messages */
@@ -273,9 +343,9 @@ input::placeholder {
 
 .field-icon {
   position: absolute;
-    right: 0;
-    bottom: 15%;
-    margin: 8px;
+  right: 0;
+  bottom: 15%;
+  margin: 8px;
 }
 
 .icon {
@@ -290,4 +360,39 @@ input::placeholder {
 
 .right.icon {
   fill: green;
+}
+
+.otp-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.otp-wrapper {
+  border: 1px solid #dfdede;
+  border-radius: 4px;
+  background-color: #dfdede;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  width: 350px;
+}
+
+.otp-field {
+  width: 58px;
+  height: 90px;
+  margin-left: 10px;
+  margin-right: 10px;
+  border: 1px solid #dfdede;
+  padding: auto;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 50px;
+  color: #b2adad;
+}
+
+.otp-field:focus {
+  border: 1px solid rgb(179, 179, 247);
 }

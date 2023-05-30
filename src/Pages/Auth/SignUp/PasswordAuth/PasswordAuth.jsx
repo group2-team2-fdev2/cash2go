@@ -134,7 +134,7 @@ export default function PasswordAuth() {
             >
               {errorMsg}
             </p>
-            <h1 className="title">Sign-Up</h1>
+            {/* <h1 className="title">Sign-Up</h1> */}
             <form onSubmit={handelSubmit}>
               <div className="user_email-wrapper">
                 <label htmlFor="email">
