@@ -1,48 +1,87 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./SecurityQuestion.css";
+import axios from "axios"; // Import axios for API requests
 
 // components
 import LeftLoginLayout from "../../LogIn/components/LeftLoginLayout";
 import Legal from "../../LogIn/components/Legal";
 
-export default function SecurityQuestion() {
-  const [question, setQuestion] = useState(""); // Security question selected by user
-  const [answer, setAnswer] = useState(""); // User's answer to the security question
+export default function SecurityQuestion(props) {
+  const {email} = props;
+  const [question, setQuestion] = useState("");
+  const [answer, setAnswer] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [resetLinkSent, setResetLinkSent] = useState(false);
-  const [userEmail, setUserEmail] = useState(""); // User's email for password reset
+ 
 
-  // Simulated data for the security question and answer
-  const securityQuestion = "Where did you meet your Spouse?";
-  const correctAnswer = "bahamas";
+  useEffect(() => {
+    // Fetch the security question from the database during component mount
+    fetchSecurityQuestion();
+  }, []);
+
+  const fetchSecurityQuestion = async () => {
+    try {
+      // Make an API request to fetch the security question from the database
+      const response = await axios.get(
+        "https://your-api-endpoint/security-question" // Replace with your API endpoint
+      );
+
+      // Set the fetched security question
+      setQuestion(response.data.question);
+    } catch (error) {
+      console.log(error);
+      setErrorMessage("Failed to fetch security question");
+    }
+  };
 
   const handleAnswerChange = (event) => {
     setAnswer(event.target.value);
   };
 
-  const handleResetClick = () => {
+  const handleResetClick = async () => {
     if (answer === "") {
       setErrorMessage("Answer is required");
       return;
     }
 
-    if (answer.toLowerCase() !== correctAnswer) {
-      setErrorMessage("Incorrect answer");
-      return;
-    }
+    try {
+      // Make an API request to verify the user's answer
+      const response = await axios.post(
+        "https://your-api-endpoint/verify-answer", // Replace with your API endpoint
+        { answer }
+      );
 
-    setErrorMessage("");
-    setUserEmail("user@example.com"); // Replace with the user's email fetched from the database
-    setResetLinkSent(true);
-    // Perform further actions like sending reset link to user's email
+      if (response.data.isCorrect) {
+        // If the answer is correct, send the password reset link to the user's email
+        await sendResetLink();
+      } else {
+        setErrorMessage("Incorrect answer");
+      }
+    } catch (error) {
+      console.log(error);
+      setErrorMessage("An error occurred");
+    }
   };
 
-  // Simulated: Set the selected security question from user signup
-  // Replace this with the actual logic to fetch and set the selected question
-  // during user signup or retrieve it from the user profile
-  useState(() => {
-    setQuestion(securityQuestion);
-  }, []);
+  const sendResetLink = async () => {
+    try {
+      // Make an API request to send the password reset link to the user's email
+      const response = await axios.post(
+        "https://your-api-endpoint/send-reset-link", // Replace with your API endpoint
+        { email: {email} } // Pass the user's email address
+      );
+
+      if (response.data.success) {
+        // Password reset link sent successfully
+        setResetLinkSent(true);
+      } else {
+        setErrorMessage("Failed to send reset link");
+      }
+    } catch (error) {
+      console.log(error);
+      setErrorMessage("An error occurred");
+    }
+  };
 
   return (
     <>
@@ -79,10 +118,9 @@ export default function SecurityQuestion() {
           {resetLinkSent && (
             <div className="overlay">
               <div className="popup">
-                
                 <h3 className="popup-title">Reset Link</h3>
-                <p>A password reset link has been sent to </p>
-                <p className="user-email">{userEmail}.</p>
+                <p>A password reset link has been sent to</p>
+                <p className="user-email">{email}</p>
                 <button className="continue-btn">Continue</button>
               </div>
             </div>

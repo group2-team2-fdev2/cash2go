@@ -41,6 +41,7 @@ input {
   background-color: rgb(236, 245, 248);
   transition: border-color 0.3s ease; /* Add a transition effect for smooth color change */
   outline: none; /* Remove the default focus outline */
+  
 }
 
 

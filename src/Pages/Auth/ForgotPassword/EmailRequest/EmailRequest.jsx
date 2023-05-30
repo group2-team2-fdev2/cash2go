@@ -1,15 +1,17 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import "./EmailRequest.css";
-import SecurityQuestion from "../SecurityQuestionReset/SecurityQuestion";
 import LeftLoginLayout from "../../LogIn/components/LeftLoginLayout";
 import ArrowRight from "../../LogIn/components/ArrowRight";
 import Legal from "../../LogIn/components/Legal";
+import loadingGif from "../../../../assets/LoadingGif.svg";
 
 export default function EmailRequest() {
   const [email, setEmail] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const [isEmailVerified, setIsEmailVerified] = useState(false);
+  const [isLoading, setIsLoading] = useState(false); // Loading state
+  const navigate = useNavigate();
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -29,17 +31,16 @@ export default function EmailRequest() {
     }
 
     try {
-      const response = await axios.get(
+      setIsLoading(true); // Start loading
+
+      // Make a POST request to verify the email
+      const response = await axios.post(
         "https://cash2go-backendd.onrender.com/api/v1/user/verify-email",
-        {
-          params: {
-            email: email,
-          },
-        }
+        { email }
       );
 
       if (response.data.status === "success") {
-        setIsEmailVerified(true);
+        navigate("/security-question"); // Navigate to the security question page
       } else {
         setErrorMessage("Email does not exist");
       }
@@ -51,6 +52,8 @@ export default function EmailRequest() {
         console.log(error);
         setErrorMessage("An error occurred");
       }
+    } finally {
+      setIsLoading(false); // Stop loading
     }
   };
 
@@ -63,7 +66,9 @@ export default function EmailRequest() {
           <div className="user_email-wrapper">
             <label htmlFor="email">Email</label>
             <input
+              id="email"
               type="email"
+              name="email"
               value={email}
               placeholder="myworkemail@work.com"
               onChange={handleEmailChange}
@@ -73,17 +78,25 @@ export default function EmailRequest() {
           <p className="email-verification">
             Please provide the email used for registration
           </p>
-          <button onClick={handleClick} className="reset-btn">
-            <span className="btn-text">Next</span>
-            <ArrowRight />
+          <button
+            onClick={handleClick}
+            className="reset-btn"
+            disabled={isLoading} // Disable the button while loading
+          >
+            {isLoading ? (
+              <img src={loadingGif} alt="Loading" className="loading-gif" />
+            ) : (
+              <>
+                <span className="btn-text">Next</span>
+                <ArrowRight />
+              </>
+            )}
           </button>
           <div className="legal-wrapper">
             <Legal />
           </div>
         </div>
       </div>
-      {isEmailVerified && <SecurityQuestion />}
     </>
   );
 }
-
