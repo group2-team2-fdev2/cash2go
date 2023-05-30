@@ -1,5 +1,10 @@
 /* FORM COMPONENT */
 
+.hide,
+.offscreen {
+  display: none;
+}
+
 .form-wrapper {
   margin: auto;
 }
@@ -75,6 +80,18 @@ option {
   color: #5f6d7e;
 }
 
+input:focus {
+  border: 2px solid rgb(179, 179, 247);
+}
+
+select:focus {
+  border: 2px solid rgb(179, 179, 247);
+}
+
+input::placeholder {
+  color: lightgrey;
+}
+
 .verification-instruction {
   display: flex;
   flex-direction: column;
@@ -89,18 +106,6 @@ option {
   font-size: 14px;
   color: #5f6d7e;
   margin-top: 10px;
-}
-
-input:focus {
-  border: 2px solid rgb(179, 179, 247);
-}
-
-select:focus {
-  border: 2px solid rgb(179, 179, 247);
-}
-
-input::placeholder {
-  color: lightgrey;
 }
 
 .user_email-wrapper,
@@ -311,7 +316,7 @@ input::placeholder {
   margin-bottom: 2px;
 }
 
-.modal-button {
+.continue-button {
   background-color: #ff5e00;
   color: #292828;
   margin-top: 15px;
@@ -323,7 +328,7 @@ input::placeholder {
   font-weight: 600;
 }
 
-.modal-button:hover {
+.continue-button:hover {
   background-color: #0056b3;
 }
 
@@ -336,10 +341,7 @@ input::placeholder {
   background-color: transparent;
 }
 
-.hide,
-.offscreen {
-  display: none;
-}
+/* ICON COMPONENT */
 
 .field-icon {
   position: absolute;
@@ -361,6 +363,8 @@ input::placeholder {
 .right.icon {
   fill: green;
 }
+
+/* OTP COMPONENT */
 
 .otp-container {
   display: flex;

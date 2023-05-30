@@ -116,7 +116,7 @@ export default function PasswordAuth() {
                   <i>{<WrongIcon />}</i>
                 </button>
                 <button
-                  className="modal-button"
+                  className="continue-button"
                   onClick={() => {
                     navigate("#");
                   }}
