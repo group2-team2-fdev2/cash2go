@@ -1,0 +1,152 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.main-page{
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    font-weight: 200;   
+}
+.left{
+    background-color: #172233;
+    width: 300px;
+    height: 100vh;
+    padding-left: 30px;
+    
+
+}
+.logo{
+   margin-top: -20px;
+   margin-bottom: -35px;
+}
+
+.link-des{
+    color: #ffff;
+    text-decoration: none;
+    font-size: 12px;
+}
+.left-value{
+    display: flex;
+    gap: 40px;
+    margin-top: 20px;    
+}
+.property{
+    display: flex;
+    gap: 60px;
+}
+.log{
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    margin-top: 109px;
+}
+
+.second{
+    padding-top: 15px;
+}
+.nav-des{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 60px;
+    background-color: #172233;
+    align-items: center;
+    padding-left: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-left: 2px;
+    color:#0000
+    
+}
+.nav-side{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    align-items: center;
+    justify-content: flex-end;
+}
+.nav-name{
+    color: #A2A7AD;
+    line-height: 0.5;
+    padding-right: 20px;
+}
+
+.wrap{
+    margin-left: 80px;
+}
+.top-note{
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    margin-top: 20px;
+    
+}
+
+.info{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.info-2{
+    margin-top: 7px;
+    line-height: 0.5;
+}
+.icons{
+     display: flex;
+     flex-direction: row;
+    gap: 20px;
+    padding-right: 100px;
+}
+
+.bord{
+    border-bottom: 0.2px solid #A2A7AD;
+}
+.info-3{
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    border-bottom: 2px solid black;
+    margin-top: 15px;
+}
+
+   
+
+.pair{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: self-start;
+    border-bottom: 0.2px solid #A2A7AD;
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-right: 120px;
+
+    
+}
+.middle{
+    padding-right: 100px;
+}
+  
+.container{
+    
+    background-color: #F8F9FB;
+    gap: 10px;
+    margin-top: 10px;
+    border: 0.2px solid gray;
+    max-width: 1100px;
+    margin-right: 100px; 
+    border-radius: 5px; 
+    padding-left: 0; 
+    align-items: center;
+    padding-top: 5px;
+    
+}
+
+.right{
+    width: 100%;
+}
+
