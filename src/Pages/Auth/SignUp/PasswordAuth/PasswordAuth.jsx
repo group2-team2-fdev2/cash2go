@@ -8,7 +8,6 @@ import "../SignUp.css";
 import LeftSignUpLayout4 from "../Components/LeftSignUpLayout4";
 import NoticeIcon from "../Components/NoticeIcon";
 import WrongIcon from "../Components/WrongIcon";
-import RightIcon from "../Components/RightIcon";
 // import LockIcon from "../Components/LockIcon";
 import PasswordIcon from "../Components/PasswordIcon";
 import ArrowRight from "../Components/ArrowRight";
@@ -139,12 +138,6 @@ export default function PasswordAuth() {
               <div className="user_email-wrapper">
                 <label htmlFor="email">
                   Username
-                  <span className={validEmail ? "valid" : "hide"}>
-                    <i>{<RightIcon />}</i>
-                  </span>
-                  <span className={validEmail || !email ? "hide" : "invalid"}>
-                    <i>{<WrongIcon />}</i>
-                  </span>
                 </label>
 
                 {/* <span className="icon">
@@ -179,12 +172,6 @@ export default function PasswordAuth() {
               <div className="user_password-wrapper">
                 <label htmlFor="password">
                   Password
-                  <span className={validPwd ? "valid" : "hide"}>
-                    <i>{<RightIcon />}</i>
-                  </span>
-                  <span className={validPwd || !pwd ? "hide" : "invalid"}>
-                    <i>{<WrongIcon />}</i>
-                  </span>
                 </label>
 
                 <div className="form-field">
@@ -221,14 +208,6 @@ export default function PasswordAuth() {
               <div className="user_password-wrapper">
                 <label htmlFor="confirm_pwd">
                   Re-enter Password
-                  <span className={validMatch && matchPwd ? "valid" : "hide"}>
-                    <i>{<RightIcon />}</i>
-                  </span>
-                  <span
-                    className={validMatch || !matchPwd ? "hide" : "invalid"}
-                  >
-                    <i>{<WrongIcon />}</i>
-                  </span>
                 </label>
 
                 <div className="form-field">
