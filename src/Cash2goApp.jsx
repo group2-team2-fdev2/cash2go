@@ -16,12 +16,11 @@ import EmailRequest from "./Pages/Auth/ForgotPassword/EmailRequest/EmailRequest"
 import SecurityQuestion from "./Pages/Auth/ForgotPassword/SecurityQuestionReset/SecurityQuestion";
 import NewPassword from "./Pages/Auth/ForgotPassword/NewPassword/NewPassword";
 
-// Main Page
-import Main from "./Pages/Main/Main";
+
 
  Dashboard
 import Dashboard from "./Pages/Dashboard/Dashboard";
-import Contact from "./Pages/Dashboard/Contact";
+
 
 const router = createBrowserRouter(
   createRoutesFromElements(

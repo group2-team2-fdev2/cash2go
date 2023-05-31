@@ -7,6 +7,7 @@ import Validation from "../Components/Validation";
 import LeftSignUpLayout from "../Components/LeftSignUpLayout1";
 import Button from "../Components/Button";
 import Legal from "../Components/Legal";
+import axios from "axios";
 
 export default function EmailAndCompanyIDAuth() {
   const [values, setValues] = useState({
@@ -18,13 +19,25 @@ export default function EmailAndCompanyIDAuth() {
   const handleChange = (event) => {
     setValues({
       ...values,
-      [event.target.email]: event.target.value,
+      [event.target.name]: event.target.value,
     });
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setErrors(Validation(values));
+    try {
+      if (values.email === "" || values.company_id === "")
+        setErrors(Validation(values));
+      axios
+        .patch(
+          "https://cash2go-backendd.onrender.com/api/v1/user/signup",
+          values
+        )
+        .then((res) => console.log(res.data))
+        .catch((error) => console.log(error.message));
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -39,7 +52,7 @@ export default function EmailAndCompanyIDAuth() {
             <input
               type="email"
               name="email"
-              // defaultvalue={values.email}
+              value={values.email}
               onChange={handleChange}
               id="email"
               placeholder="myworkemail@work.com"
@@ -51,7 +64,7 @@ export default function EmailAndCompanyIDAuth() {
             <input
               type="text"
               name="company_id"
-              // defaultvalue={values.company_id}
+              value={values.company_id}
               onChange={handleChange}
               id="company_id"
               placeholder="123ABC"

@@ -202,56 +202,64 @@ export default function Contact() {
             <div className="bord"></div>
             
             <div className="container">
-                <div className="pair">
-                    <h6>Info</h6>
-                    <h6>Value</h6>
-                    <h6>Remarks</h6>
-                    </div>
-                    <div className="pair">
-                    <h6>Loan Request Amount</h6>
-                    <h6 className="middle">70,000</h6>
-                    <h6> 100,000 </h6>
-                    </div>
-                    <div className="pair">
-                    <h6>Credit Score</h6>
-                    <h6 className="middle">720</h6>
-                    <h6>Excellent</h6>
-                    </div>
-                    <div className="pair">
-                    <h6>Credit Utilization</h6>
-                    <h6  className="middle">18%</h6>
-                    <h6>Good</h6>
-                    </div>
-                    <div className="pair">
-                    <h6>Annual Income</h6>
-                    <h6  className="middle">1,200,000.00</h6>
-                    <h6>Good</h6>
-                    </div>
-                    <div className="pair">
-                    <h6>Loan Duration</h6> 
-                    <h6  className="middle">6 Months</h6> 
-                    <h6>Short Term</h6>
-                    </div>
-                    <div className="pair">
-                    <h6>Previous Loan Performance</h6>
-                    <h6  className="middle">5/5</h6>
-                    <h6>Excellent</h6>
-                    </div>
-                    <div className="pair">
-                    <h6>Last loan Application</h6>
-                    <h6  className="middle">june,2018</h6>
-                    <h6>Good</h6>
-                    </div>
-                    <div className="pair">
-                    <h6>Guarantors Credit score</h6>
-                    <h6  className="middle">09023999999</h6>
-                    <h6>09023999999</h6>
-                    </div>
-                <di className="pair"v>
-                <h6>Other Info</h6>
-                <h6  className="middle">Put it here</h6>
-                <h6>Put it here</h6>
-                </di>
+                <table>
+                <tr className="pair">
+
+                    <th>Info</th>
+                    <th>Value</th>
+                    <th>Remarks</th>
+                    </tr>
+                    <tr className="pair">
+                    <td>Loan Request Amount</td>
+                    <td className="middle">70,000</td>
+                    <td> 100,000 </td>
+                    </tr>
+                    <tr className="pair">
+                    <td>Credit Score</td>
+                    <td className="middle">720</td>
+                    <td>Excellent</td>
+                    </tr>
+                    <tr className="pair">
+                    <td>Credit Utilization</td>
+                    <td  className="middle">18%</td>
+                    <td>Good</td>
+                    </tr>
+                    <tr className="pair">
+                    <td>Annual Income</td>
+                    <td  className="middle">1,200,000.00</td>
+                    <td>Good</td>
+                    </tr>
+                    <tr className="pair">
+                    <td>Loan Duration</td> 
+                    <td  className="middle">6 Months</td> 
+                    <td>Short Term</td>
+                    </tr>
+                    <tr className="pair">
+                    <td>Previous Loan Performance</td>
+                    <td  className="middle">5/5</td>
+                    <td>Excellent</td>
+                    </tr>
+                    <tr className="pair">
+                    <td>Last loan Application</td>
+                    <td  className="middle">june,2018</td>
+                    <td>Good</td>
+                    </tr>
+                    <tr className="pair">
+                    <td>Guarantors Credit score</td>
+                    <td  className="middle">09023999999</td>
+                    <td>09023999999</td>
+                    </tr>
+                <tr className="pair"v>
+                <td>Other Info</td>
+                <td  className="middle">Put it here</td>
+                <td>Put it here</td>
+                </tr>
+                <tr className="pair"v>
+                <td></td>
+                <td  className="middle"></td>
+                <td></td>
+                </tr>
+                </table>
             </div>
             </div>
         </div>
