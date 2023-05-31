@@ -9,7 +9,7 @@ import LeftSignUpLayout4 from "../Components/LeftSignUpLayout4";
 import NoticeIcon from "../Components/NoticeIcon";
 import WrongIcon from "../Components/WrongIcon";
 // import LockIcon from "../Components/LockIcon";
-import PasswordIcon from "../Components/PasswordIcon";
+import PasswordIcon, { AltPasswordIcon } from "../Components/PasswordIcon";
 import ArrowRight from "../Components/ArrowRight";
 import Legal from "../Components/Legal";
 
@@ -18,6 +18,9 @@ export default function PasswordAuth() {
     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   const PWD_REGEX =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/;
+
+  const [isVisible, setVisible] = useState(false);
+  const [isAltVisible, setAltVisible] = useState(false);
 
   const emailRef = useRef();
   const errorRef = useRef();
@@ -37,6 +40,14 @@ export default function PasswordAuth() {
   const [errorMsg, seterrorMsg] = useState("");
   const [success, setSuccess] = useState(false);
   const [modal, setModal] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setVisible(!isVisible);
+  };
+
+  const toggleAltPasswordVisibility = () => {
+    setAltVisible(!isAltVisible);
+  };
 
   useEffect(() => {
     emailRef.current.focus();
@@ -117,7 +128,7 @@ export default function PasswordAuth() {
                 <button
                   className="continue-button"
                   onClick={() => {
-                    navigate("#");
+                    navigate("/");
                   }}
                 >
                   Continue
@@ -136,9 +147,7 @@ export default function PasswordAuth() {
             {/* <h1 className="title">Sign-Up</h1> */}
             <form onSubmit={handelSubmit}>
               <div className="user_email-wrapper">
-                <label htmlFor="email">
-                  Username
-                </label>
+                <label htmlFor="email">Username</label>
 
                 {/* <span className="icon">
                   {" "}
@@ -157,7 +166,7 @@ export default function PasswordAuth() {
                   onFocus={() => setEmailFocus(true)}
                   onBlur={() => setEmailFocus(false)}
                 />
-                <p
+                <div
                   id="emailnote"
                   className={
                     emailFocus && email && !validEmail
@@ -165,18 +174,19 @@ export default function PasswordAuth() {
                       : "offscreen"
                   }
                 >
-                  - Must be a valid email address
-                </p>
+                  <span>Must be a valid email address</span>
+                </div>
               </div>
 
               <div className="user_password-wrapper">
-                <label htmlFor="password">
-                  Password
-                </label>
+                <label htmlFor="password">Password</label>
 
                 <div className="form-field">
+                  <div onClick={togglePasswordVisibility}>
+                    {isVisible ? <PasswordIcon /> : <AltPasswordIcon />}
+                  </div>
                   <input
-                    type="password"
+                    type={isVisible ? "text" : "password"}
                     id="password"
                     onChange={(e) => setPwd(e.target.value)}
                     required
@@ -185,34 +195,33 @@ export default function PasswordAuth() {
                     onFocus={() => setPwdFocus(true)}
                     onBlur={() => setPwdFocus(false)}
                   />
-                  <div>
-                    {" "}
-                    <i>{<PasswordIcon />}</i>
-                  </div>
+                  <div></div>
                 </div>
 
-                <p
+                <div
                   id="pwdnote"
                   className={
                     pwdFocus && !validPwd ? "error-message" : "offscreen"
                   }
                 >
-                  - 8 to 24 characters
-                  <br />- Must include uppercase and lowercase letters, a number{" "}
-                  <br />
-                  and a special character
-                  <br />- Allowed special characters: !,@,#$%
-                </p>
+                  <span>8 to 24 characters</span>
+                  <span>
+                    Must include uppercase and lowercase letters, a number and a
+                    special character
+                  </span>
+                  <span>Allowed special characters: !,@,#$%</span>
+                </div>
               </div>
 
               <div className="user_password-wrapper">
-                <label htmlFor="confirm_pwd">
-                  Re-enter Password
-                </label>
+                <label htmlFor="confirm_pwd">Re-enter Password</label>
 
                 <div className="form-field">
+                  <div onClick={toggleAltPasswordVisibility}>
+                    {isAltVisible ? <PasswordIcon /> : <AltPasswordIcon />}
+                  </div>
                   <input
-                    type="password"
+                    type={isAltVisible ? "text" : "password"}
                     id="confirm_pwd"
                     onChange={(e) => setMatchPwd(e.target.value)}
                     required
@@ -221,20 +230,15 @@ export default function PasswordAuth() {
                     onFocus={() => setMatchFocus(true)}
                     onBlur={() => setMatchFocus(false)}
                   />
-                  <span>
-                    {" "}
-                    <i>{<PasswordIcon />}</i>
-                  </span>
                 </div>
-                <p
+                <div
                   id="confirmnote"
                   className={
                     matchFocus && !validMatch ? "error-message" : "offscreen"
                   }
                 >
-                  Input must match the first password input field
-                  <br />
-                </p>
+                  <span>Input must match the first password input field</span>
+                </div>
               </div>
 
               <button
