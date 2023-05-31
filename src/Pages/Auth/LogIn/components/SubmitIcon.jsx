@@ -1,5 +1,5 @@
 // asset
-import submitIcon from "../assets/dual_ring_1s_200.png";
+import submitIcon from "../assets/dual_ring_1s.png";
 
 export default function SubmitIcon() {
   return (
