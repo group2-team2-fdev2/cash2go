@@ -238,7 +238,7 @@ export default function Contact() {
                     <h6>Excellent</h6>
                     </div>
                     <div className="pair">
-                    <h6>Last LOan Application</h6>
+                    <h6>Last loan Application</h6>
                     <h6  className="middle">june,2018</h6>
                     <h6>Good</h6>
                     </div>
