@@ -7,7 +7,6 @@ export default function EmailField() {
       <label htmlFor="email">Email</label>
       <Field
         type="email"
-        id="email"
         name="email"
         placeholder="myworkemail@work.com"
       />

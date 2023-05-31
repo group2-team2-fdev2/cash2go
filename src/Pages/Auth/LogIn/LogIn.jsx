@@ -11,9 +11,10 @@ import Legal from "./components/Legal";
 export default function LogIn() {
   const navigate = useNavigate();
 
-  const LoginToApp = (values) => {
-    console.log(values);
-    navigate("/dashboard");
+  const loginToApp = (isAuthenticated) => {
+    if (isAuthenticated) {
+      navigate("/dashboard");
+    }
   };
 
   return (
@@ -22,7 +23,7 @@ export default function LogIn() {
         <LeftLoginLayout />
         <div className="form-wrapper">
           <h3 className="title">Log In</h3>
-          <LoginForm submitForm={LoginToApp} />
+          <LoginForm loginToApp={loginToApp} />
           <Links />
           <Legal />
         </div>

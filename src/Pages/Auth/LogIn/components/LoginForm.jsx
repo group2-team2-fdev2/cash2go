@@ -1,33 +1,61 @@
 // library
-import PropTypes from "prop-types";
+import { useState } from "react";
+import axios from "axios";
 import { Formik, Form } from "formik";
+import PropTypes from "prop-types";
 // component
-import LoginSchema from "./LoginValidation";
+import LoginSchema from "./LoginSchema";
 import Button from "./Button";
 import EmailField from "./EmailField";
 import PasswordField from "./PasswordField";
 
-export default function LoginForm({ submitForm }) {
-  const handleSubmit = (values) => {
-    alert(JSON.stringify(values, null, 2));
-    submitForm(values);
+export default function LoginForm({ loginToApp }) {
+  const [isSubmitting, setSubmitting] = useState(false);
+  const [isVisible, setVisible] = useState(false);
+  const [status, setStatus] = useState("");
+
+  const handleSubmit = async (values) => {
+    setSubmitting(true);
+    try {
+      const response = await axios.post(
+        "https://cash2go-backendd.onrender.com/api/v1/user/login",
+        values
+      );
+      const isAuthenticated = response.data;
+      if (isAuthenticated) {
+        loginToApp(isAuthenticated);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      if (error.response) {
+        setStatus("Invalid Email or Password. Please try again.");
+      }
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
-    <Formik
-      initialValues={{ email: "", password: "" }}
-      validationSchema={LoginSchema}
-      onSubmit={handleSubmit}
-    >
-      <Form>
-        <EmailField />
-        <PasswordField />
-        <Button />
-      </Form>
-    </Formik>
+    <>
+      {status && <p className="status-message">{status}</p>}
+      <Formik
+        initialValues={{ email: "", password: "" }}
+        validationSchema={LoginSchema}
+        onSubmit={handleSubmit}
+      >
+        <Form>
+          <EmailField />
+          <PasswordField
+            isVisible={isVisible}
+            handlePasswordIcon={setVisible}
+          />
+          <Button isSubmitting={isSubmitting} />
+        </Form>
+      </Formik>
+    </>
   );
 }
 
 LoginForm.propTypes = {
-  submitForm: PropTypes.func.isRequired,
+  loginToApp: PropTypes.func.isRequired,
 };
