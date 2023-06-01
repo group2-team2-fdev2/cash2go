@@ -1,0 +1,74 @@
+/* SIDEBAR */
+
+.sidebar-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 200px;
+  background-color: #172233;
+  color: #a2a7ad;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 20px;
+}
+
+.sidebar-container hr {
+  width: 100%;
+  margin: 20px 0;
+  border: 0;
+  border-top: 1px solid #a2a7ad4d;
+  padding-left: 0;
+}
+
+.sidebar-container p {
+  margin: 0;
+  font-size: 12px;
+  margin-left: 5px;
+  font-weight: 500;
+}
+
+.sidebar-cash2go-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+  padding-left: 20px;
+}
+
+.cash2go-logo11 {
+  width: 30px;
+  height: 30px;
+}
+
+.cash2go-logo22 {
+  width: 80px;
+  height: 18px;
+}
+
+.icons {
+  width: 16px;
+  height: 16px;
+  margin-right: 5px;
+  margin-bottom: 0;
+}
+
+.sidebar-icon {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+  padding-left: 20px;
+  
+}
+
+.logout-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+  padding-left: 20px;
+  margin-top: auto; 
+  margin-bottom: 100px;
+}
