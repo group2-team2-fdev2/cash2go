@@ -15,9 +15,9 @@ export default function PasswordField({ isVisible, handlePasswordIcon }) {
     <div className="user_password-wrapper">
       <label htmlFor="password">Password</label>
       <div className="form-field">
-        <div onClick={togglePasswordVisibility}>
+        <span onClick={togglePasswordVisibility}>
           {isVisible ? <PasswordIcon /> : <AltPasswordIcon />}
-        </div>
+        </span>
         <Field type={isVisible ? "text" : "password"} name="password" className={(formik.touched.password && formik.errors.password ? "error" : "")} />
       </div>
       <ErrorMessage name="password" component="div" className="error-message" />

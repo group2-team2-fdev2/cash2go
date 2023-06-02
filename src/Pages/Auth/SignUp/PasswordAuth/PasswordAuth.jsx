@@ -129,7 +129,7 @@ export default function PasswordAuth() {
                 <button
                   className="continue-button"
                   onClick={() => {
-                    navigate("/");
+                    navigate("/login");
                   }}
                 >
                   Continue
@@ -156,31 +156,31 @@ export default function PasswordAuth() {
                 </span> */}
 
                 <div className="user_email-wrapper">
-                <input
-                  type="userid"
-                  id="userid"
-                  ref={useridRef}
-                  autoComplete="off"
-                  onChange={(e) => setUserid(e.target.value)}
-                  required
-                  aria-invalid={validUserid ? "false" : "true"}
-                  aria-describedby="useridnote"
-                  onFocus={() => setUseridFocus(true)}
-                  onBlur={() => setUseridFocus(false)}
-                />
-                <div
-                  id="useridnote"
-                  className={
-                    useridFocus && userid && !validUserid
-                      ? "error-message"
-                      : "offscreen"
-                  }
-                >
-                  <span>Must start with an alphabeth</span>
-                  <span>Must not be less than 7 chracters</span>
-                  <span>Numbers allowed</span>
+                  <input
+                    type="userid"
+                    id="userid"
+                    ref={useridRef}
+                    autoComplete="off"
+                    onChange={(e) => setUserid(e.target.value)}
+                    required
+                    aria-invalid={validUserid ? "false" : "true"}
+                    aria-describedby="useridnote"
+                    onFocus={() => setUseridFocus(true)}
+                    onBlur={() => setUseridFocus(false)}
+                  />
+                  <div
+                    id="useridnote"
+                    className={
+                      useridFocus && userid && !validUserid
+                        ? "error-message"
+                        : "offscreen"
+                    }
+                  >
+                    <span>Must start with an alphabeth</span>
+                    <span>Must not be less than 7 chracters</span>
+                    <span>Numbers allowed</span>
+                  </div>
                 </div>
-              </div>
               </div>
 
               <div className="user_password-wrapper">
@@ -200,7 +200,6 @@ export default function PasswordAuth() {
                     onFocus={() => setPwdFocus(true)}
                     onBlur={() => setPwdFocus(false)}
                   />
-                  <div></div>
                 </div>
 
                 <div
@@ -211,8 +210,7 @@ export default function PasswordAuth() {
                 >
                   <span>8 to 24 characters</span>
                   <span>
-                    Must include uppercase and lowercase letters, a number and a
-                    special character
+                    Must include uppercase and lowercase letters, a number and a special character
                   </span>
                   <span>Allowed special characters: !,@,#$%</span>
                 </div>

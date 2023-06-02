@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "../ForgotPassword.css";
 // components
 import LeftLoginLayout from "../../LogIn/components/LeftLoginLayout";
@@ -8,6 +8,7 @@ import Legal from "../../LogIn/components/Legal";
 import LoadingGif from "../components/LoadingGif";
 
 export default function SecurityQuestion() {
+  const navigate = useNavigate();
   const location = useLocation();
   const email = new URLSearchParams(location.search).get("email");
   const [securityQuestion, setSecurityQuestion] = useState(null);
@@ -80,7 +81,8 @@ export default function SecurityQuestion() {
     }
   };
   const handleContinueClick = () => {
-    setModalVisible(false); 
+    setModalVisible(false);
+    navigate("/new-password")
   };
   return (
     <>
