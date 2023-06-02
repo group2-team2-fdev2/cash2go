@@ -1,11 +1,13 @@
 // library
-import { Field, ErrorMessage } from "formik";
+import { Field, ErrorMessage, useFormikContext } from "formik";
 import PropTypes from "prop-types";
 // component
 import PasswordIcon, { AltPasswordIcon } from "./PasswordIcon";
 
 export default function PasswordField({ isVisible, handlePasswordIcon }) {
-  const togglePasswordVisibility = () => {
+  const formik = useFormikContext();
+  const togglePasswordVisibility = (event) => {
+    event.stopPropagation();
     handlePasswordIcon(!isVisible);
   };
 
@@ -16,7 +18,7 @@ export default function PasswordField({ isVisible, handlePasswordIcon }) {
         <div onClick={togglePasswordVisibility}>
           {isVisible ? <PasswordIcon /> : <AltPasswordIcon />}
         </div>
-        <Field type={isVisible ? "text" : "password"} name="password" />
+        <Field type={isVisible ? "text" : "password"} name="password" className={(formik.touched.password && formik.errors.password ? "error" : "")} />
       </div>
       <ErrorMessage name="password" component="div" className="error-message" />
     </div>

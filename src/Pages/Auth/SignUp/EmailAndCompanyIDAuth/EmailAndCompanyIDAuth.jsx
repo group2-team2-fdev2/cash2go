@@ -1,5 +1,7 @@
 // library
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 // style
 import "../SignUp.css";
 // component
@@ -9,22 +11,49 @@ import Button from "../Components/Button";
 import Legal from "../Components/Legal";
 
 export default function EmailAndCompanyIDAuth() {
+  const navigate = useNavigate();
   const [values, setValues] = useState({
     email: "",
-    company_id: "",
+    companyID: "",
   });
   const [errors, setErrors] = useState({});
+  const [isSubmitting, setSubmitting] = useState(false);
+  const [status, setStatus] = useState("");
 
   const handleChange = (event) => {
     setValues({
       ...values,
-      [event.target.email]: event.target.value,
+      [event.target.name]: event.target.value,
     });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    setErrors(Validation(values));
+    if (values.email === "" && values.companyID === "")
+      setErrors(Validation(values));
+
+    setSubmitting(true);
+    try {
+      const res = await axios.post(
+        "https://cash2go-backendd.onrender.com/api/v1/user/send-otp",
+        values
+      );
+      const isAuthenticated = res.data;
+      console.log(isAuthenticated);
+      if (isAuthenticated) {
+        navigate("/otp-auth");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      if (error.response) {
+        setStatus("Invalid Email or Company ID. Please try again.");
+        setTimeout(() => {
+          setStatus("");
+        }, "5000");
+      }
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -33,13 +62,14 @@ export default function EmailAndCompanyIDAuth() {
 
       <div className="form-wrapper">
         <h2 className="title">Sign Up</h2>
+        {status && <p className="status-message">{status}</p>}
         <form onSubmit={handleSubmit}>
           <div className="user_email-wrapper">
             <label htmlFor="email">Email</label>
             <input
               type="email"
               name="email"
-              // defaultvalue={values.email}
+              value={values.email}
               onChange={handleChange}
               id="email"
               placeholder="myworkemail@work.com"
@@ -47,20 +77,20 @@ export default function EmailAndCompanyIDAuth() {
             {errors.email && <p className="error-message">{errors.email}</p>}
           </div>
           <div className="user_companyID-wrapper">
-            <label htmlFor="company_id">Company ID</label>
+            <label htmlFor="companyID">Company ID</label>
             <input
               type="text"
-              name="company_id"
-              // defaultvalue={values.company_id}
+              name="companyID"
+              value={values.companyID}
               onChange={handleChange}
-              id="company_id"
+              id="companyID"
               placeholder="123ABC"
             />
-            {errors.company_id && (
-              <p className="error-message">{errors.company_id}</p>
+            {errors.companyID && (
+              <p className="error-message">{errors.companyID}</p>
             )}
           </div>
-          <Button />
+          <Button isSubmitting={isSubmitting} />
         </form>
         <Legal />
       </div>

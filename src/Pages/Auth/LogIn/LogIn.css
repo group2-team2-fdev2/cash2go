@@ -85,6 +85,10 @@ input::placeholder {
   padding: 2px;
 }
 
+.error {
+  border: 1px solid red;
+}
+
 /* ARROW RIGHT COMPONENT */
 
 .arrow-right {
