@@ -155,6 +155,7 @@ export default function PasswordAuth() {
                   <i>{<LockIcon />}</i>
                 </span> */}
 
+                <div className="user_email-wrapper">
                 <input
                   type="userid"
                   id="userid"
@@ -175,8 +176,11 @@ export default function PasswordAuth() {
                       : "offscreen"
                   }
                 >
-                  <span>Must be a valid userid address</span>
+                  <span>Must start with an alphabeth</span>
+                  <span>Must not be less than 7 chracters</span>
+                  <span>Numbers allowed</span>
                 </div>
+              </div>
               </div>
 
               <div className="user_password-wrapper">
