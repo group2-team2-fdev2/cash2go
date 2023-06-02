@@ -82,7 +82,7 @@ export default function PasswordAuth() {
     const data = { username: userid, password: pwd, confirmPassword: matchPwd };
     e.preventDefault();
     try {
-      const response = await axios.post(
+      const response = await axios.patch(
         "https://cash2go-backendd.onrender.com/api/v1/user/signup",
         data
       );
