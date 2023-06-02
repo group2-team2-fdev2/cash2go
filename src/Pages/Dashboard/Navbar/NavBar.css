@@ -1,0 +1,100 @@
+body{
+    font-family: "Monserrat", sans-serif;
+
+}
+*{
+    margin: 0px;
+    padding: 8px;
+    box-sizing:border-box;
+}
+
+nav{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background: #172233;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.26);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px;
+    color: #fff;
+
+}
+
+.search-nav{
+    position:relative;
+}
+
+.search-nav .search-input{
+    padding: 5px;
+    padding-left: 25px;
+    border:none;
+    outline: none;
+    border-radius: 5px;
+
+}
+.icon-search{
+    position: absolute;
+    left: 7px;
+    top: 7px;
+    top: 11px;
+    color: #000;
+    font-size: 13px;
+}
+
+.icon-arrow{
+    top: 9px;
+    position: absolute;
+    right: 10px;
+    color: #000;
+}
+
+.user-notif{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.uset-photo{
+    border-radius: 50%;
+    height: 35px;
+    width: 35px;
+    background-color: #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.user-details{
+    display: felx;
+    align-items: center;
+    gap: 20px;
+}
+
+.user-name{
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.bell{
+    position: relative;
+}
+
+.bell::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30px;
+    height: 3px;
+    border-radius: 50%;
+    background-color: red;
+    z-index: 1;
+}
+
+.bold{
+    font-weight: bold;
+}
