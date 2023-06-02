@@ -1,7 +1,7 @@
 // library
 import { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-// import axios from "axios";
+import axios from "axios";
 //Style
 import "../SignUp.css";
 // component
@@ -14,20 +14,19 @@ import ArrowRight from "../Components/ArrowRight";
 import Legal from "../Components/Legal";
 
 export default function PasswordAuth() {
-  const EMAIL_REGEX =
-    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  const userid_REGEX = /^[A-Za-z][A-Za-z0-9_]{6,29}$/;
   const PWD_REGEX =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/;
 
   const [isVisible, setVisible] = useState(false);
   const [isAltVisible, setAltVisible] = useState(false);
 
-  const emailRef = useRef();
+  const useridRef = useRef();
   const errorRef = useRef();
 
-  const [email, setEmail] = useState("");
-  const [validEmail, setValidEmail] = useState(false);
-  const [emailFocus, setEmailFocus] = useState(false);
+  const [userid, setUserid] = useState("");
+  const [validUserid, setValidUserid] = useState(false);
+  const [useridFocus, setUseridFocus] = useState(false);
 
   const [pwd, setPwd] = useState("");
   const [validPwd, setValidPwd] = useState(false);
@@ -50,15 +49,15 @@ export default function PasswordAuth() {
   };
 
   useEffect(() => {
-    emailRef.current.focus();
+    useridRef.current.focus();
   }, []);
 
   useEffect(() => {
-    const result1 = EMAIL_REGEX.test(email);
+    const result1 = userid_REGEX.test(userid);
     console.log(result1);
-    console.log(email);
-    setValidEmail(result1);
-  }, [email]);
+    console.log(userid);
+    setValidUserid(result1);
+  }, [userid]);
 
   useEffect(() => {
     const result = PWD_REGEX.test(pwd);
@@ -71,7 +70,7 @@ export default function PasswordAuth() {
 
   useEffect(() => {
     seterrorMsg("");
-  }, [email, pwd, matchPwd]);
+  }, [userid, pwd, matchPwd]);
 
   const toggleModal = () => {
     setModal(!modal);
@@ -80,28 +79,30 @@ export default function PasswordAuth() {
   const navigate = useNavigate();
 
   const handelSubmit = async (e) => {
+    const data = { username: userid, password: pwd, confirmPassword: matchPwd };
     e.preventDefault();
-    // try {
-    //     const response = await axios.post('url', JSON.stringify({email, pwd}));
-    //     console.log(response.data);
-    //     setSuccess(true);
-    //     setEmail('');
-    //     setPwd('');
-    //     setValidMatch('')
-    //     toggleModal();
+    try {
+      const response = await axios.patch(
+        "https://cash2go-backendd.onrender.com/api/v1/user/signup",
+        data
+      );
+      console.log(response.data);
+      setSuccess(true);
+      toggleModal();
+    } catch (error) {
+      if (!error?.response) {
+        seterrorMsg("No Server Response");
+      } else if (error.response?.status === 490) {
+        seterrorMsg("username taken");
+      } else {
+        seterrorMsg("Registration Failed");
+      }
+      errorRef.current.focus();
+    }
 
-    // } catch (error) {
-    //     if (!error?.response){
-    //         seterrorMsg('No Server Response');
-    //     } else {
-    //         seterrorMsg('Registration Failed')
-    //     }
-    //     errorRef.current.focus();
-    // }
-
-    console.log(email, pwd);
-    setSuccess(true);
-    toggleModal();
+    // console.log(userid, pwd);
+    // setSuccess(true);
+    // toggleModal();
   };
 
   return (
@@ -146,36 +147,40 @@ export default function PasswordAuth() {
             </p>
             {/* <h1 className="title">Sign-Up</h1> */}
             <form onSubmit={handelSubmit}>
-              <div className="user_email-wrapper">
-                <label htmlFor="email">Username</label>
+              <div className="user_userid-wrapper">
+                <label htmlFor="userid">Username</label>
 
                 {/* <span className="icon">
                   {" "}
                   <i>{<LockIcon />}</i>
                 </span> */}
 
+                <div className="user_email-wrapper">
                 <input
-                  type="email"
-                  id="email"
-                  ref={emailRef}
+                  type="userid"
+                  id="userid"
+                  ref={useridRef}
                   autoComplete="off"
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => setUserid(e.target.value)}
                   required
-                  aria-invalid={validEmail ? "false" : "true"}
-                  aria-describedby="emailnote"
-                  onFocus={() => setEmailFocus(true)}
-                  onBlur={() => setEmailFocus(false)}
+                  aria-invalid={validUserid ? "false" : "true"}
+                  aria-describedby="useridnote"
+                  onFocus={() => setUseridFocus(true)}
+                  onBlur={() => setUseridFocus(false)}
                 />
                 <div
-                  id="emailnote"
+                  id="useridnote"
                   className={
-                    emailFocus && email && !validEmail
+                    useridFocus && userid && !validUserid
                       ? "error-message"
                       : "offscreen"
                   }
                 >
-                  <span>Must be a valid email address</span>
+                  <span>Must start with an alphabeth</span>
+                  <span>Must not be less than 7 chracters</span>
+                  <span>Numbers allowed</span>
                 </div>
+              </div>
               </div>
 
               <div className="user_password-wrapper">
@@ -244,7 +249,7 @@ export default function PasswordAuth() {
               <button
                 className="button-wrapper"
                 disabled={
-                  !validEmail || !validPwd || !validMatch ? true : false
+                  !validUserid || !validPwd || !validMatch ? true : false
                 }
               >
                 <span className="button-text">Sign Up</span>
