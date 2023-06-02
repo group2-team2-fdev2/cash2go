@@ -28,7 +28,7 @@ export default function LoginForm({ loginToApp }) {
     } catch (error) {
       console.error("Error:", error);
       if (error.response) {
-        setStatus("Invalid Email or Password. Please try again.");
+        setStatus(error.response.data.message);
         setTimeout(() => {
           setStatus("");
         }, "5000");

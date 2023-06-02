@@ -46,7 +46,7 @@ export default function EmailAndCompanyIDAuth() {
     } catch (error) {
       console.error("Error:", error);
       if (error.response) {
-        setStatus("Unable to validate. Please try again.");
+        setStatus(error.response.data.message);
         setTimeout(() => {
           setStatus("");
         }, "5000");
