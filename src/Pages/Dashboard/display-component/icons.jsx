@@ -1,4 +1,4 @@
-import './dashboard.css'
+import './display.css'
 
 export function BigNoticeIcon() {
     return (

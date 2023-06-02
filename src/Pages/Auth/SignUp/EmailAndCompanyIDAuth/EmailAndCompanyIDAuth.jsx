@@ -46,7 +46,7 @@ export default function EmailAndCompanyIDAuth() {
     } catch (error) {
       console.error("Error:", error);
       if (error.response) {
-        setStatus("Invalid Email or Company ID. Please try again.");
+        setStatus("Unable to validate. Please try again.");
         setTimeout(() => {
           setStatus("");
         }, "5000");
@@ -73,6 +73,7 @@ export default function EmailAndCompanyIDAuth() {
               onChange={handleChange}
               id="email"
               placeholder="myworkemail@work.com"
+              // className={errors.email ? "error" : ""}
             />
             {errors.email && <p className="error-message">{errors.email}</p>}
           </div>
@@ -85,6 +86,7 @@ export default function EmailAndCompanyIDAuth() {
               onChange={handleChange}
               id="companyID"
               placeholder="123ABC"
+              // className={errors.companyID ? "error" : ""}
             />
             {errors.companyID && (
               <p className="error-message">{errors.companyID}</p>

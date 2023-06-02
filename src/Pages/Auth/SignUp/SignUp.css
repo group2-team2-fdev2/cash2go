@@ -93,9 +93,7 @@ input::placeholder {
 }
 
 .verification-instruction {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  text-align: center;
   margin-bottom: 25px;
 }
 
@@ -146,6 +144,10 @@ input::placeholder {
 
 .error-message span {
   display: block;
+}
+
+.error {
+  border: 1px solid red;
 }
 
 /* ARROW RIGHT COMPONENT */
@@ -396,12 +398,16 @@ input::placeholder {
   margin-left: 10px;
   margin-right: 10px;
   border: 1px solid #dfdede;
-  padding: auto;
+  text-align: center;
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
   font-size: 50px;
   color: #b2adad;
+}
+
+.error {
+  border: 1px solid red;
 }
 
 .otp-field:focus {
