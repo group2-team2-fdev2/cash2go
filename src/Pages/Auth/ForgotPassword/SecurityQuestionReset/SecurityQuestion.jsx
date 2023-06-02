@@ -80,7 +80,7 @@ export default function SecurityQuestion() {
     }
   };
   const handleContinueClick = () => {
-    setModalVisible(false); // Hide the modal
+    setModalVisible(false); 
   };
   return (
     <>

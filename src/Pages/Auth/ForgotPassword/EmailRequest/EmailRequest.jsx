@@ -13,7 +13,7 @@ import LoadingGif from "../components/LoadingGif";
 export default function EmailRequest() {
   const [email, setEmail] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const [isLoading, setIsLoading] = useState(false); // Loading state
+  const [isLoading, setIsLoading] = useState(false); 
   const navigate = useNavigate();
 
   const handleEmailChange = (event) => {
