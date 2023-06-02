@@ -1,18 +1,20 @@
 // library
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 // style
 import "../ForgotPassword.css";
 // component
-import SecurityQuestion from "../SecurityQuestionReset/SecurityQuestion"; // this should be deleted
 import LeftLoginLayout from "../components/LeftLoginLayout";
 import ArrowRight from "../components/ArrowRight";
 import Legal from "../components/Legal";
+import LoadingGif from "../components/LoadingGif";
 
 export default function EmailRequest() {
   const [email, setEmail] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const [isEmailVerified, setIsEmailVerified] = useState(false);
+  const [isLoading, setIsLoading] = useState(false); 
+  const navigate = useNavigate();
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -32,17 +34,16 @@ export default function EmailRequest() {
     }
 
     try {
-      const response = await axios.get(
+      setIsLoading(true); // Start loading
+
+      // Make a POST request to verify the email
+      const response = await axios.post(
         "https://cash2go-backendd.onrender.com/api/v1/user/verify-email",
-        {
-          params: {
-            email: email,
-          },
-        }
+        { email }
       );
 
       if (response.data.status === "success") {
-        setIsEmailVerified(true);
+        navigate(`/security-question?email=${encodeURIComponent(email)}`); // Navigate to the security question page
       } else {
         setErrorMessage("Email does not exist");
       }
@@ -54,6 +55,8 @@ export default function EmailRequest() {
         console.log(error);
         setErrorMessage("An error occurred");
       }
+    } finally {
+      setIsLoading(false); // Stop loading
     }
   };
 
@@ -66,7 +69,10 @@ export default function EmailRequest() {
           <div className="user_email-wrapper">
             <label htmlFor="email">Email</label>
             <input
+              id="email"
+              name="email"
               type="email"
+              autoComplete="on"
               value={email}
               placeholder="myworkemail@work.com"
               onChange={handleEmailChange}
@@ -77,14 +83,23 @@ export default function EmailRequest() {
             </p>
           </div>
 
-          <button onClick={handleClick} className="button-wrapper">
-            <span className="button-text">Next</span>
-            <ArrowRight />
+          <button
+            onClick={handleClick}
+            className="button-wrapper"
+            disabled={isLoading} // Disable the button while loading
+          >
+            {isLoading ? (
+              <LoadingGif />
+            ) : (
+              <>
+                <span className="button-text">Next</span>
+                <ArrowRight />
+              </>
+            )}
           </button>
           <Legal />
         </div>
       </div>
-      {isEmailVerified && <SecurityQuestion />}
     </>
   );
 }
