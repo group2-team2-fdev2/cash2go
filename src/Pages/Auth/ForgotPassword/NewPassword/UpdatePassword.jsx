@@ -17,20 +17,20 @@ export default function UpdatePassword() {
   const [isSubmitting, setSubmitting] = useState(false); // Tracks form submission state
   const [status, setStatus] = useState(""); // Stores status message
 
-  const navigate = useNavigate; // Navigation function
+  const navigate = useNavigate(); // Navigation function
   const { token } = useParams(); // Extract the token parameter from the URL using the useParams hook
 
   // Handles first password field visibilty
   const togglePasswordVisibility1 = () => {
-    setShowPassword1(!showPassword1);
+    setShowPassword1((prevShowPassword) => !prevShowPassword);
   };
 
   // Handles second password field visibilty
   const togglePasswordVisibility2 = () => {
-    setShowPassword2(!showPassword2); // Set form submission state to true
+    setShowPassword2((prevShowPassword) => !prevShowPassword); // Set form submission state to true
   };
 
-   // Handles form submission
+  // Handles form submission
   const handleSubmit = async (values) => {
     setSubmitting(true); // Set form submission state to true
     alert(JSON.stringify(values, null, 2));
@@ -50,7 +50,7 @@ export default function UpdatePassword() {
       console.log(response.data);
       const isAuthenticated = response.data; // Get authentication status from response
       if (isAuthenticated) {
-        navigate("/")
+        navigate("/");
       }
     } catch (error) {
       console.error("Error:", error);

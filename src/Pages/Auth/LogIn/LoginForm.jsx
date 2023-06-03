@@ -17,14 +17,14 @@ export default function LoginForm({ loginToApp }) {
 
   // Handles first password field visibilty
   const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
+    setShowPassword((prevShowPassword) => !prevShowPassword);
   };
 
   // Handles form submission
   const handleSubmit = async (values) => {
     setSubmitting(true); // Set form submission state to true
 
-    const email = values.email; // Get email value from form
+    const email = values.email; // Get password value from form
     const password = values.password; // Get password value from form
 
     try {
