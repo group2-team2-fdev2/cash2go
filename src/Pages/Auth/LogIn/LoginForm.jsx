@@ -24,11 +24,17 @@ export default function LoginForm({ loginToApp }) {
   const handleSubmit = async (values) => {
     setSubmitting(true); // Set form submission state to true
 
+    const email = values.email; // Get email value from form
+    const password = values.password; // Get password value from form
+
     try {
       // Send request to server to authenticate the user email and password
       const response = await axios.post(
         "https://cash2go-backendd.onrender.com/api/v1/user/login",
-        values
+        {
+          email: email,
+          password: password,
+        }
       );
       const isAuthenticated = response.data; // Get authentication status from response
       console.log(isAuthenticated);
@@ -78,6 +84,7 @@ export default function LoginForm({ loginToApp }) {
               <Field
                 name="email"
                 type="email"
+                autoComplete="off"
                 placeholder="myworkemail@work.com"
                 className={errors.email && touched.email ? "error" : ""}
               />
@@ -96,6 +103,7 @@ export default function LoginForm({ loginToApp }) {
                 <Field
                   name="password"
                   type={showPassword ? "text" : "password"}
+                  autoComplete="off"
                   className={errors.password && touched.password ? "error" : ""}
                 />
               </div>

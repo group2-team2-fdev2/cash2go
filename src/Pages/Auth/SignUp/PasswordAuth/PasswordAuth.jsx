@@ -58,7 +58,7 @@ export default function PasswordAuth() {
     const confirmPassword = values.confirmPassword; // Get confirm password value from form
 
     try {
-      // Send request to server to confirm username and password
+      // Send request to server to authenticate username and password
       const response = await axios.patch(
         `https://cash2go-backendd.onrender.com/api/v1/user/signup?email=${email}`,
         {

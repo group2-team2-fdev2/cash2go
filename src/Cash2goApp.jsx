@@ -14,7 +14,7 @@ import PasswordAuth from "./Pages/Auth/SignUp/PasswordAuth/PasswordAuth";
 import SecurityQuestionAuth from "./Pages/Auth/SignUp/SecurityQuestion/SecurityQuestionAuth";
 import EmailRequest from "./Pages/Auth/ForgotPassword/EmailRequest/EmailRequest";
 import SecurityQuestion from "./Pages/Auth/ForgotPassword/SecurityQuestionReset/SecurityQuestion";
-import NewPassword from "./Pages/Auth/ForgotPassword/NewPassword/NewPassword";
+import UpdatePassword from "./Pages/Auth/ForgotPassword/NewPassword/UpdatePassword";
 // Dashboard
 import Dashboard from "./Pages/Dashboard/Dashboard";
 
@@ -28,7 +28,7 @@ const router = createBrowserRouter(
       <Route path="security-question-auth" element={<SecurityQuestionAuth />} />
       <Route path="forgot-password" element={<EmailRequest />} />
       <Route path="security-question" element={<SecurityQuestion />} />
-      <Route path="new-password" element={<NewPassword />} />
+      <Route path="update-password/:token" element={<UpdatePassword />} />
       <Route path="dashboard" element={<Dashboard />} />
     </Route>
   )
