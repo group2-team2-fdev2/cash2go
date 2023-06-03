@@ -9,10 +9,12 @@ import Links from "./components/Links";
 import Legal from "./components/Legal";
 
 export default function LogIn() {
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // Navigation function
 
+  // Handles the next step after OTP verification
   const loginToApp = (isAuthenticated) => {
     if (isAuthenticated) {
+      // If user is authenticated, navigate to dashboard page
       navigate("/dashboard");
     }
   };

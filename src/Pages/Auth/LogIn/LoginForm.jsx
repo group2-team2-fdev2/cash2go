@@ -54,16 +54,20 @@ export default function LoginForm({ loginToApp }) {
       {status && <p className="status-message">{status}</p>}
       <Formik
         initialValues={{
-          email: " ",
-          password: " ",
+          email: "",
+          password: "",
         }}
         validationSchema={Yup.object({
           email: Yup.string()
             .email("Invalid email address")
             .required("Email is required"),
-          companyID: Yup.string()
-            .matches(/^\d{6}$/, "Company ID must be a six-digit number")
-            .required("Company ID is required"),
+          password: Yup.string()
+            .required("Password is required")
+            .min(8, "Password must be at least 8 characters")
+            .matches(
+              /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/,
+              "Password must contain at least one lowercase letter, one uppercase letter, one digit, and one special character"
+            ),
         })}
         onSubmit={handleSubmit}
       >
