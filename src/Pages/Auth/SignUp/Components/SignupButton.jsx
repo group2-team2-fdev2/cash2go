@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import ArrowRight from "./ArrowRight";
 import LoadingGif from "./LoadingGif";
 
-export default function Button({ isSubmitting }) {
+export default function SignupButton({ isSubmitting }) {
   return (
     <button type="submit" className="button-wrapper">
       {isSubmitting ? (
@@ -13,7 +13,7 @@ export default function Button({ isSubmitting }) {
         </>
       ) : (
         <>
-          <span className="button-text">Next</span>
+          <span className="button-text">Sign Up</span>
           <ArrowRight />
         </>
       )}
@@ -21,6 +21,6 @@ export default function Button({ isSubmitting }) {
   );
 }
 
-Button.propTypes = {
+SignupButton.propTypes = {
   isSubmitting: PropTypes.bool.isRequired,
 };

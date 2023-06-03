@@ -1,29 +1,32 @@
-// import { Link, useNavigate } from "react-router-dom";
-import "../SignUp.css";
-import LeftSignUpLayout2 from "../Components/LeftSignUpLayout2";
-import Legal from "../Components/Legal";
-import OTPForm from "./OTPForm";
-
+// library
 import { useNavigate } from "react-router-dom";
+// style
+import "../SignUp.css";
+// component
+import LeftSignUpLayout2 from "../Components/LeftSignUpLayout2";
+import OTPForm from "./OTPForm";
+import Legal from "../Components/Legal";
 
 export default function OTPAuth() {
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // Navigation function
 
-  const nextStep = async (isAuthenticated) => {
+  // Handles the next step after OTP verification
+  const nextStep = async (isAuthenticated, email) => {
     if (isAuthenticated) {
-      navigate("/security-question-auth");
+      // If user is authenticated, navigate to security question authentication page
+      navigate(`/security-question-auth?email=${email}`); 
     }
   };
 
   return (
-    <div>
-      <div className="layout-component">
+    <>
+      <main className="layout-component">
         <LeftSignUpLayout2 />
-        <div className="form-wrapper">
+        <section className="form-wrapper">
           <OTPForm nextStep={nextStep} />
           <Legal />
-        </div>
-      </div>
-    </div>
+        </section>
+      </main>
+    </>
   );
 }

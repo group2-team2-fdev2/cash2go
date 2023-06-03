@@ -1,3 +1,4 @@
+// component
 import StepCurrent from "./StepCurrent";
 import StepUnchecked from "./StepUnchecked";
 

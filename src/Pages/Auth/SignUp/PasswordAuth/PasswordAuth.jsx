@@ -1,263 +1,220 @@
 // library
-import { useRef, useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { Formik, Field, Form, ErrorMessage } from "formik";
+import * as Yup from "yup";
 //Style
 import "../SignUp.css";
 // component
 import LeftSignUpLayout4 from "../Components/LeftSignUpLayout4";
+import OpenPasswordIcon from "../Components/OpenPasswordIcon";
+import ClosePasswordIcon from "../Components/ClosePasswordIcon";
+import SignupButton from "../Components/SignupButton";
+import Legal from "../Components/Legal";
 import NoticeIcon from "../Components/NoticeIcon";
 import WrongIcon from "../Components/WrongIcon";
-// import LockIcon from "../Components/LockIcon";
-import PasswordIcon, { AltPasswordIcon } from "../Components/PasswordIcon";
-import ArrowRight from "../Components/ArrowRight";
-import Legal from "../Components/Legal";
 
 export default function PasswordAuth() {
-  const userid_REGEX = /^[A-Za-z][A-Za-z0-9_]{6,29}$/;
-  const PWD_REGEX =
-    /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/;
+  // State variables
+  const [showPassword1, setShowPassword1] = useState(false); // Tracks form password visibility state
+  const [showPassword2, setShowPassword2] = useState(false); // Tracks form password visibility state
+  const [isSubmitting, setSubmitting] = useState(false); // Tracks form submission state
+  const [isCompleted, setCompleted] = useState(false); // Tracks API response state
+  const [isModalOpen, setModalOpen] = useState(false); // Tracks modal visibility state
+  const [status, setStatus] = useState(""); // Stores status message
 
-  const [isVisible, setVisible] = useState(false);
-  const [isAltVisible, setAltVisible] = useState(false);
+  const navigate = useNavigate(); // Navigation function
 
-  const useridRef = useRef();
-  const errorRef = useRef();
+  // Get email from URL query parameter
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const email = queryParams.get("email");
 
-  const [userid, setUserid] = useState("");
-  const [validUserid, setValidUserid] = useState(false);
-  const [useridFocus, setUseridFocus] = useState(false);
-
-  const [pwd, setPwd] = useState("");
-  const [validPwd, setValidPwd] = useState(false);
-  const [pwdFocus, setPwdFocus] = useState(false);
-
-  const [matchPwd, setMatchPwd] = useState("");
-  const [validMatch, setValidMatch] = useState(false);
-  const [matchFocus, setMatchFocus] = useState(false);
-
-  const [errorMsg, seterrorMsg] = useState("");
-  const [success, setSuccess] = useState(false);
-  const [modal, setModal] = useState(false);
-
-  const togglePasswordVisibility = () => {
-    setVisible(!isVisible);
+  // Handles first password field visibilty
+  const togglePasswordVisibility1 = () => {
+    setShowPassword1(!showPassword1);
   };
 
-  const toggleAltPasswordVisibility = () => {
-    setAltVisible(!isAltVisible);
+  // Handles second password field visibilty
+  const togglePasswordVisibility2 = () => {
+    setShowPassword2(!showPassword2);
   };
 
-  useEffect(() => {
-    useridRef.current.focus();
-  }, []);
-
-  useEffect(() => {
-    const result1 = userid_REGEX.test(userid);
-    console.log(result1);
-    console.log(userid);
-    setValidUserid(result1);
-  }, [userid]);
-
-  useEffect(() => {
-    const result = PWD_REGEX.test(pwd);
-    console.log(result);
-    console.log(pwd);
-    setValidPwd(result);
-    const match = pwd === matchPwd;
-    setValidMatch(match);
-  }, [pwd, matchPwd]);
-
-  useEffect(() => {
-    seterrorMsg("");
-  }, [userid, pwd, matchPwd]);
-
-  const toggleModal = () => {
-    setModal(!modal);
+  // Handles modal visibilty
+  const openModal = () => {
+    setModalOpen(!isModalOpen);
   };
 
-  const navigate = useNavigate();
+  // Handles form submission
+  const handleSubmit = async (values) => {
+    setSubmitting(true); // Set form submission state to true
+    // setCompleted(true);
+    // openModal();
 
-  const handelSubmit = async (e) => {
-    const data = { username: userid, password: pwd, confirmPassword: matchPwd };
-    e.preventDefault();
+    const email = values.email; // Get email value from form
+    const username = values.username; // Get username value from form
+    const password = values.password; // Get password value from form
+    const confirmPassword = values.confirmPassword; // Get confirm password value from form
+
     try {
+      // Send request to server to confirm username and password
       const response = await axios.patch(
-        "https://cash2go-backendd.onrender.com/api/v1/user/signup",
-        data
+        `https://cash2go-backendd.onrender.com/api/v1/user/signup?email=${email}`,
+        {
+          username: username,
+          password: password,
+          confirmPassword: confirmPassword,
+        }
       );
       console.log(response.data);
-      setSuccess(true);
-      toggleModal();
-    } catch (error) {
-      if (!error?.response) {
-        seterrorMsg("No Server Response");
-      } else if (error.response?.status === 490) {
-        seterrorMsg("username taken");
-      } else {
-        seterrorMsg("Registration Failed");
+      const isAuthenticated = response.data; // Get authentication status from response
+      if (isAuthenticated) {
+        setCompleted(true); // If user is authenticated, set completed state to true
+        openModal(); // If user is authenticated, call the open modal function to open modal
       }
-      errorRef.current.focus();
+    } catch (error) {
+      console.error("Error:", error);
+      if (error.response) {
+        setStatus(error.response.data.message); // Set error message from response
+        setTimeout(() => {
+          setStatus(""); // Clear status message after 5 seconds
+        }, "5000");
+      }
+    } finally {
+      setSubmitting(false); // Set form submission state to false
     }
-
-    // console.log(userid, pwd);
-    // setSuccess(true);
-    // toggleModal();
   };
 
   return (
     <>
-      <div className="layout-component">
-        <>
-          <LeftSignUpLayout4 />
-        </>
-        <div className="form-wrapper">
-          {success && modal && (
-            <section className="modal-background">
-              <div onClick={toggleModal}></div>
-              <div className="modal-container">
-                <NoticeIcon />
-                <h1 className="modal-title">Congratulations !!!</h1>
-                <p className="modal-message">
-                  Your signup for our Cash2Go app is now complete. Get ready to
-                  unlock great financial posibilities and achieve your goals.
-                </p>
-                <button className="close-modal" onClick={toggleModal}>
-                  {" "}
-                  <i>{<WrongIcon />}</i>
-                </button>
-                <button
-                  className="continue-button"
-                  onClick={() => {
-                    navigate("/login");
-                  }}
-                >
-                  Continue
-                </button>
-              </div>
-            </section>
-          )}
-          <section>
-            <p
-              ref={errorRef}
-              className={errorMsg ? "error-message" : "offscreen"}
-              aria-live="assertive"
-            >
-              {errorMsg}
-            </p>
-            {/* <h1 className="title">Sign-Up</h1> */}
-            <form onSubmit={handelSubmit}>
-              <div className="user_userid-wrapper">
-                <label htmlFor="userid">Username</label>
-
-                {/* <span className="icon">
-                  {" "}
-                  <i>{<LockIcon />}</i>
-                </span> */}
-
-                <div className="user_email-wrapper">
-                  <input
-                    type="userid"
-                    id="userid"
-                    ref={useridRef}
+      <main className="layout-component">
+        <LeftSignUpLayout4 isCompleted={isCompleted} />
+        <section className="form-wrapper">
+          {status && <p className="status-message">{status}</p>}
+          {/* Formik setup */}
+          <Formik
+            initialValues={{
+              username: "",
+              password: "",
+              confirmPassword: "",
+              email: email || "", // Initializes the `email` field with the value of the `email` variable if it exists, otherwise it initializes it as an empty string
+            }}
+            validationSchema={Yup.object({
+              username: Yup.string().required("Username is required"),
+              password: Yup.string()
+                .required("Password is required")
+                .min(8, "Password must be at least 8 characters")
+                .matches(
+                  /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/,
+                  "Password must contain at least one lowercase letter, one uppercase letter, one digit, and one special character"
+                ),
+              confirmPassword: Yup.string()
+                .required("Confirm Password is required")
+                .oneOf([Yup.ref("password"), null], "Passwords must match"),
+            })}
+            onSubmit={handleSubmit}
+          >
+            {({ errors, touched }) => (
+              <Form>
+                <div className="form-field-wrapper">
+                  <label htmlFor="username">Username</label>
+                  <Field
+                    name="username"
+                    type="text"
                     autoComplete="off"
-                    onChange={(e) => setUserid(e.target.value)}
-                    required
-                    aria-invalid={validUserid ? "false" : "true"}
-                    aria-describedby="useridnote"
-                    onFocus={() => setUseridFocus(true)}
-                    onBlur={() => setUseridFocus(false)}
-                  />
-                  <div
-                    id="useridnote"
                     className={
-                      useridFocus && userid && !validUserid
-                        ? "error-message"
-                        : "offscreen"
+                      errors.username && touched.username ? "error" : ""
                     }
-                  >
-                    <span>Must start with an alphabeth</span>
-                    <span>Must not be less than 7 chracters</span>
-                    <span>Numbers allowed</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="user_password-wrapper">
-                <label htmlFor="password">Password</label>
-
-                <div className="form-field">
-                  <div onClick={togglePasswordVisibility}>
-                    {isVisible ? <PasswordIcon /> : <AltPasswordIcon />}
-                  </div>
-                  <input
-                    type={isVisible ? "text" : "password"}
-                    id="password"
-                    onChange={(e) => setPwd(e.target.value)}
-                    required
-                    aria-invalid={validPwd ? "false" : "true"}
-                    aria-describedby="pwdnote"
-                    onFocus={() => setPwdFocus(true)}
-                    onBlur={() => setPwdFocus(false)}
+                  />
+                  <ErrorMessage
+                    name="username"
+                    component="div"
+                    className="error-message"
                   />
                 </div>
-
-                <div
-                  id="pwdnote"
-                  className={
-                    pwdFocus && !validPwd ? "error-message" : "offscreen"
-                  }
-                >
-                  <span>8 to 24 characters</span>
-                  <span>
-                    Must include uppercase and lowercase letters, a number and a special character
-                  </span>
-                  <span>Allowed special characters: !,@,#$%</span>
-                </div>
-              </div>
-
-              <div className="user_password-wrapper">
-                <label htmlFor="confirm_pwd">Re-enter Password</label>
-
-                <div className="form-field">
-                  <div onClick={toggleAltPasswordVisibility}>
-                    {isAltVisible ? <PasswordIcon /> : <AltPasswordIcon />}
+                <div className="form-field-wrapper">
+                  <label htmlFor="password">Password</label>
+                  <div className="form-field">
+                    <div onClick={togglePasswordVisibility1}>
+                      {showPassword1 ? (
+                        <OpenPasswordIcon />
+                      ) : (
+                        <ClosePasswordIcon />
+                      )}
+                    </div>
+                    <Field
+                      name="password"
+                      type={showPassword1 ? "text" : "password"}
+                      autoComplete="off"
+                      className={
+                        errors.password && touched.password ? "error" : ""
+                      }
+                    />
                   </div>
-                  <input
-                    type={isAltVisible ? "text" : "password"}
-                    id="confirm_pwd"
-                    onChange={(e) => setMatchPwd(e.target.value)}
-                    required
-                    aria-invalid={validMatch ? "false" : "true"}
-                    aria-describedby="confirmnote"
-                    onFocus={() => setMatchFocus(true)}
-                    onBlur={() => setMatchFocus(false)}
+                  <ErrorMessage
+                    name="password"
+                    component="div"
+                    className="error-message"
                   />
                 </div>
-                <div
-                  id="confirmnote"
-                  className={
-                    matchFocus && !validMatch ? "error-message" : "offscreen"
-                  }
-                >
-                  <span>Input must match the first password input field</span>
+                <div className="form-field-wrapper">
+                  <label htmlFor="confirmPassword">Re-enter Password</label>
+                  <div className="form-field">
+                    <div onClick={togglePasswordVisibility2}>
+                      {showPassword2 ? (
+                        <OpenPasswordIcon />
+                      ) : (
+                        <ClosePasswordIcon />
+                      )}
+                    </div>
+                    <Field
+                      name="confirmPassword"
+                      type={showPassword2 ? "text" : "password"}
+                      autoComplete="off"
+                      className={
+                        errors.confirmPassword && touched.confirmPassword
+                          ? "error"
+                          : ""
+                      }
+                    />
+                  </div>
+                  <ErrorMessage
+                    name="confirmPassword"
+                    component="div"
+                    className="error-message"
+                  />
                 </div>
-              </div>
-
-              <button
-                className="button-wrapper"
-                disabled={
-                  !validUserid || !validPwd || !validMatch ? true : false
-                }
-              >
-                <span className="button-text">Sign Up</span>
-                <ArrowRight />
+                <SignupButton isSubmitting={isSubmitting} />
+              </Form>
+            )}
+          </Formik>
+          <Legal />
+        </section>
+        {isModalOpen && (
+          <section className="modal-background">
+            <div className="modal-container">
+              <NoticeIcon />
+              <h1 className="modal-title">Congratulations !!!</h1>
+              <p className="modal-message">
+                Your signup for our Cash2Go app is now complete. Get ready to
+                unlock great financial posibilities and achieve your goals.
+              </p>
+              <button className="close-modal" onClick={openModal}>
+                <WrongIcon />
               </button>
-            </form>
-            <Legal />
+              <button
+                className="continue-button"
+                onClick={() => {
+                  navigate("/"); // Navigate to the login page
+                }}
+              >
+                Continue
+              </button>
+            </div>
           </section>
-        </div>
-      </div>
+        )}
+      </main>
     </>
   );
 }

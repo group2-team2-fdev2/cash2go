@@ -1,8 +1,9 @@
+// component
 import StepChecked from "./StepChecked";
 import StepCurrent from "./StepCurrent";
 import StepUnchecked from "./StepUnchecked";
 
-export default function Step2() {
+export default function Step3() {
   return (
     <div className="step-container">
       <div className="step">

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 // component
 import LoadingGif from "./LoadingGif";
 
-export default function Button1({ isSubmitting }) {
+export default function SubmitButton({ isSubmitting }) {
   return (
     <button type="submit" className="button-wrapper" disabled={isSubmitting}>
       {isSubmitting ? (
@@ -19,6 +19,6 @@ export default function Button1({ isSubmitting }) {
   );
 }
 
-Button1.propTypes = {
-  isSubmitting: PropTypes.bool.isRequired,
+SubmitButton.propTypes = {
+  isSubmitting: PropTypes.bool,
 };

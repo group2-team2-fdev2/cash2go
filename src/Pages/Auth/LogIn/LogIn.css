@@ -58,7 +58,8 @@ input::placeholder {
 }
 
 .user_email-wrapper,
-.user_password-wrapper {
+.user_password-wrapper,
+.form-field-wrapper {
   margin-bottom: 25px;
 }
 

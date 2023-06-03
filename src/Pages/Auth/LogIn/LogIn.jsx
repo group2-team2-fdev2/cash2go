@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "./LogIn.css";
 // component
 import LeftLoginLayout from "./components/LeftLoginLayout";
-import LoginForm from "./components/LoginForm";
+import LoginForm from "./LoginForm";
 import Links from "./components/Links";
 import Legal from "./components/Legal";
 

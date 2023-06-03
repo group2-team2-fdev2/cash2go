@@ -1,7 +1,10 @@
+// library
+import PropTypes from "prop-types";
+// component
 import StepChecked from "./StepChecked";
 import StepCurrent from "./StepCurrent";
 
-export default function Step4() {
+export default function Step4({ isCompleted }) {
   return (
     <div className="step-container">
       <div className="step">
@@ -26,7 +29,7 @@ export default function Step4() {
         </div>
       </div>
       <div className="step">
-        <StepCurrent />
+        {isCompleted ? <StepChecked /> : <StepCurrent />}
         <div>
           <h6 className="step-number">FINAL STEP</h6>
           <p className="step-instruction">Create your password</p>
@@ -35,3 +38,7 @@ export default function Step4() {
     </div>
   );
 }
+
+Step4.propTypes = {
+  isCompleted: PropTypes.bool,
+};

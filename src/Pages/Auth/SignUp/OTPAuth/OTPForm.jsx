@@ -1,55 +1,107 @@
 // library
 import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import axios from "axios";
 import { useFormik } from "formik";
-import { Link } from "react-router-dom";
+import * as Yup from "yup";
 import PropTypes from "prop-types";
 // component
-import OTPSchema from "../Components/OTPSchema";
-import Button1 from "../Components/Button1";
-import axios from "axios";
+import SubmitButton from "../Components/SubmitButton";
 
 export default function OTPForm({ nextStep }) {
-  const [status, setStatus] = useState();
+  // State variables
+  const [isSubmitting, setSubmitting] = useState(); // Tracks form submission state
+  const [status, setStatus] = useState(); // Stores status message
+
+  // Get email from URL query parameter
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const email = queryParams.get("email");
+
+  // Formik setup
   const formik = useFormik({
     initialValues: {
-      otp: new Array(4).fill(""),
+      otp: new Array(4).fill(""), // Initializes the `otp` field as an array with 4 empty strings
+      email: email || "", // Initializes the `email` field with the value of the `email` variable if it exists, otherwise it initializes it as an empty string
     },
-    OTPSchema,
+    validationSchema: Yup.object({
+      otp: Yup.array()
+        .of(Yup.string().min(1, "OTP is required")) // Specifies that each element in the `otp` array should be a string with a minimum length of 1
+        .test(
+          "isComplete",
+          "OTP is required",
+          (value) => value.join("").length === 4 // Custom test function to check if the joined OTP string has a length of 4
+        ),
+    }),
     onSubmit: async (values) => {
-      const enteredOTP = values.otp.join("");
-      if (enteredOTP.length === 4) {
-        alert(JSON.stringify({ otp: enteredOTP }, null, 2));
-        submitForm(enteredOTP);
+      const otp = values.otp.join(""); // Join the OTP array values into a single string
+      // Check if the OTP length is equal to 4
+      if (otp.length === 4) {
+        submitForm(otp, values.email); // Call the submitForm function with the OTP and email values
       }
     },
   });
 
-  const handleOtpChange = (index, event) => {
-    const { value } = event.target;
+  // Handles OTP field change
+  const handleOTPChange = (index, event) => {
+    const { value } = event.target; // Extract the value from the event target
+
+    // Validate the value to allow only digits
     if (/^\d*$/.test(value)) {
-      const otp = [...formik.values.otp];
-      otp[index] = value;
-      formik.setFieldValue("otp", otp);
+      const otp = [...formik.values.otp]; // Make a copy of the otp array from formik values
+      otp[index] = value; // Update the OTP value at the specified index
+      formik.setFieldValue("otp", otp); // Update the otp field value in formik
     }
   };
 
-  const submitForm = async (enteredOTP) => {
+  // Handles form submission
+  const submitForm = async (otp, email) => {
+    setSubmitting(true); // Set form submission state to true
+
     try {
+      // Send request to server to confirm OTP
       const response = await axios.patch(
-        "https://cash2go-backendd.onrender.com/api/v1/user/verify-otp",
-        { otp: enteredOTP }
+        `https://cash2go-backendd.onrender.com/api/v1/user/verify-otp?email=${email}`,
+        { otp: otp }
       );
-      const isAuthenticated = response.data;
+      const isAuthenticated = response.data; // Get authentication status from response
       if (isAuthenticated) {
-        nextStep(isAuthenticated);
+        // If user is authenticated, pass the nextStep function as a prop to the parent component
+        nextStep(isAuthenticated, email);
       }
     } catch (error) {
       console.error("Error:", error);
       if (error.response) {
-        setStatus("Invalid OTP. Please try again.");
+        setStatus(error.response.data.message); // Set error message from response
         setTimeout(() => {
           setStatus("");
-        }, "5000");
+        }, 5000); // Clear status message after 5 seconds
+      }
+    } finally {
+      setSubmitting(false); // Set form submission state to false
+    }
+  };
+
+  // Handles resend OTP request
+  const handleResendOTP = async () => {
+    const email = formik.values.email; // Get email value from form
+
+    try {
+      // Send request to server to resend OTP
+      const response = await axios.patch(
+        `https://cash2go-backendd.onrender.com/api/v1/user/resend-otp?email=${email}`
+      );
+      if (response.data) {
+        // If user is authenticated, set status message from response
+        setStatus("New OTP has been sent. Please check your email.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      if (error.response) {
+        setStatus(error.response.data.message); // Set error message from response
+        setTimeout(() => {
+          setStatus("");
+        }, 5000); // Clear status message after 5 seconds
       }
     }
   };
@@ -60,25 +112,40 @@ export default function OTPForm({ nextStep }) {
       <form onSubmit={formik.handleSubmit}>
         <div className="otp-container">
           <div className="otp-wrapper">
-            {formik.values.otp.map((digit, index) => {
-              return (
-                <input
-                  key={index}
-                  type="text"
-                  autoComplete="off"
-                  maxLength="1"
-                  name={`otp[${index}]`}
-                  value={digit}
-                  onChange={(e) => handleOtpChange(index, e)}
-                  onBlur={formik.handleBlur}
-                  className={
-                    formik.errors.otp && formik.touched.otp
-                      ? "error"
-                      : "otp-field"
-                  }
-                />
-              );
-            })}
+            {formik.values.otp && // Checks if the `otp` field value exists
+              formik.values.otp.map((digit, index) => {
+                // Maps over each digit in the `otp` field
+                return (
+                  <input
+                    key={index} // Assigns a unique key to each input element
+                    type="text"
+                    placeholder="0"
+                    autoComplete="off"
+                    maxLength="1" // Limits the input to a maximum length of 1 character
+                    name={`otp[${index}]`} // Sets the name attribute for each input to "otp[index]"
+                    value={digit} // Sets the value of each input to the corresponding digit value
+                    onChange={(event) => handleOTPChange(index, event)} // Calls the `handleOTPChange` function when the input value changes
+                    onBlur={formik.handleBlur}
+                    className={
+                      formik.errors.otp &&
+                      formik.touched.otp &&
+                      formik.errors.otp[index] &&
+                      formik.touched.otp[index]
+                        ? "error otp-field"
+                        : "otp-field"
+                    }
+                  />
+                );
+              })}
+            {/* Render the error message for the "otp" field if it has errors, has been touched, 
+            and the form has been submitted at least once */}
+            <div className="error-message-wrapper">
+              {formik.errors.otp &&
+                formik.touched.otp &&
+                formik.submitCount > 0 && (
+                  <p className="error-message">{formik.errors.otp}</p>
+                )}
+            </div>
           </div>
         </div>
         <div className="verification-instruction">
@@ -87,10 +154,14 @@ export default function OTPForm({ nextStep }) {
             Enter the four digits OTP sent to your mail{" "}
           </p>
           <p className="instruction">
-            Click <Link className="link">HERE</Link> to resend OTP
+            Click{" "}
+            <Link onClick={handleResendOTP} className="link">
+              HERE
+            </Link>{" "}
+            to resend OTP
           </p>
         </div>
-        <Button1 />
+        <SubmitButton isSubmitting={isSubmitting} />
       </form>
     </>
   );
@@ -98,5 +169,4 @@ export default function OTPForm({ nextStep }) {
 
 OTPForm.propTypes = {
   nextStep: PropTypes.func.isRequired,
-  // isVisible: PropTypes.bool.isRequired,
 };

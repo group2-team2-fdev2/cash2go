@@ -110,7 +110,8 @@ input::placeholder {
 .user_password-wrapper,
 .user_companyID-wrapper,
 .user_question-wrapper,
-.user_answer-wrapper {
+.user_answer-wrapper,
+.form-field-wrapper {
   margin-bottom: 25px;
 }
 
@@ -125,9 +126,16 @@ input::placeholder {
 
 .link:hover {
   text-decoration: underline;
+  cursor: pointer;
 }
 
 /* error-messages */
+
+.error-message-wrapper {
+  position: absolute;
+  bottom: 10%;
+  text-align: center;
+}
 
 .error-message {
   width: 380px;
@@ -137,13 +145,6 @@ input::placeholder {
   font-size: 12px;
   color: red;
   padding: 2px;
-  display: flex;
-  flex-direction: column;
-  align-content: flex-start;
-}
-
-.error-message span {
-  display: block;
 }
 
 .error {
@@ -377,6 +378,7 @@ input::placeholder {
 
 .otp-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -390,6 +392,7 @@ input::placeholder {
   align-items: center;
   height: 200px;
   width: 350px;
+  position: relative;
 }
 
 .otp-field {

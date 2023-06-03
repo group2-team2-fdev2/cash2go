@@ -1,3 +1,4 @@
+// component
 import Cash2goLogo from "./Cash2goLogo";
 import Step2 from "./Step2";
 

@@ -2,100 +2,121 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { Formik, Field, Form, ErrorMessage } from "formik";
+import * as Yup from "yup";
 // style
 import "../SignUp.css";
 // component
-import Validation from "../Components/Validation";
-import LeftSignUpLayout from "../Components/LeftSignUpLayout1";
-import Button from "../Components/Button";
+import LeftSignUpLayout1 from "../Components/LeftSignUpLayout1";
+import NextButton from "../Components/NextButton";
 import Legal from "../Components/Legal";
 
 export default function EmailAndCompanyIDAuth() {
-  const navigate = useNavigate();
-  const [values, setValues] = useState({
-    email: "",
-    companyID: "",
-  });
-  const [errors, setErrors] = useState({});
-  const [isSubmitting, setSubmitting] = useState(false);
-  const [status, setStatus] = useState("");
+  // State variables
+  const [isSubmitting, setSubmitting] = useState(false); // Tracks form submission state
+  const [status, setStatus] = useState(""); // Stores status message
 
-  const handleChange = (event) => {
-    setValues({
-      ...values,
-      [event.target.name]: event.target.value,
-    });
-  };
+  const navigate = useNavigate(); // Navigation function
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    if (values.email === "" && values.companyID === "")
-      setErrors(Validation(values));
+  // Handles form submission
+  const handleSubmit = async (values) => {
+    setSubmitting(true); // Set form submission state to true
 
-    setSubmitting(true);
+    const email = values.email; // Get email value from form
+    const companyID = values.companyID; // Get company ID value from form
+
     try {
-      const res = await axios.post(
+      // Send request to server to send OTP
+      const response = await axios.post(
         "https://cash2go-backendd.onrender.com/api/v1/user/send-otp",
-        values
+        {
+          email: email,
+          companyID: companyID,
+        }
       );
-      const isAuthenticated = res.data;
+      const isAuthenticated = response.data; // Get authentication status from response
       console.log(isAuthenticated);
       if (isAuthenticated) {
-        navigate("/otp-auth");
+        // If user is authenticated, navigate to OTP authentication page
+        navigate(`/otp-auth?email=${email}`);
       }
     } catch (error) {
       console.error("Error:", error);
       if (error.response) {
-        setStatus(error.response.data.message);
+        setStatus(error.response.data.message); // Set error message from response
         setTimeout(() => {
           setStatus("");
-        }, "5000");
+        }, 5000); // Clear status message after 5 seconds
       }
     } finally {
-      setSubmitting(false);
+      setSubmitting(false); // Set form submission state to false
     }
   };
 
   return (
-    <div className="layout-component">
-      <LeftSignUpLayout />
-
-      <div className="form-wrapper">
-        <h2 className="title">Sign Up</h2>
-        {status && <p className="status-message">{status}</p>}
-        <form onSubmit={handleSubmit}>
-          <div className="user_email-wrapper">
-            <label htmlFor="email">Email</label>
-            <input
-              type="email"
-              name="email"
-              value={values.email}
-              onChange={handleChange}
-              id="email"
-              placeholder="myworkemail@work.com"
-              // className={errors.email ? "error" : ""}
-            />
-            {errors.email && <p className="error-message">{errors.email}</p>}
-          </div>
-          <div className="user_companyID-wrapper">
-            <label htmlFor="companyID">Company ID</label>
-            <input
-              type="text"
-              name="companyID"
-              value={values.companyID}
-              onChange={handleChange}
-              id="companyID"
-              placeholder="123ABC"
-              // className={errors.companyID ? "error" : ""}
-            />
-            {errors.companyID && (
-              <p className="error-message">{errors.companyID}</p>
+    <>
+      <main className="layout-component">
+        <LeftSignUpLayout1 />
+        <section className="form-wrapper">
+          <header className="title">Sign Up</header>
+          {status && <p className="status-message">{status}</p>}
+          {/* Formik setup */}
+          <Formik
+            initialValues={{
+              email: "",
+              companyID: "",
+            }}
+            validationSchema={Yup.object({
+              email: Yup.string()
+                .email("Invalid email address")
+                .required("Email is required"),
+              companyID: Yup.string()
+                .matches(/^\d{6}$/, "Company ID must be a six-digit number")
+                .required("Company ID is required"),
+            })}
+            onSubmit={handleSubmit}
+          >
+            {({ errors, touched }) => (
+              <Form>
+                <div className="form-field-wrapper">
+                  <label htmlFor="email">Email</label>
+                  <Field
+                    name="email"
+                    type="email"
+                    autoComplete="off"
+                    placeholder="myworkemail@work.com"
+                    className={errors.email && touched.email ? "error" : ""}
+                  />
+                  <ErrorMessage
+                    name="email"
+                    component="div"
+                    className="error-message"
+                  />
+                </div>
+                <div className="form-field-wrapper">
+                  <label htmlFor="companyID">Company ID</label>
+                  <Field
+                    name="companyID"
+                    type="companyID"
+                    autoComplete="off"
+                    placeholder="123456"
+                    className={
+                      errors.companyID && touched.companyID ? "error" : ""
+                    }
+                  />
+                  <ErrorMessage
+                    name="companyID"
+                    component="div"
+                    className="error-message"
+                  />
+                </div>
+                <NextButton isSubmitting={isSubmitting} />
+              </Form>
             )}
-          </div>
-          <Button isSubmitting={isSubmitting} />
-        </form>
-        <Legal />
-      </div>
-    </div>
+          </Formik>
+          <Legal />
+        </section>
+      </main>
+    </>
   );
 }
