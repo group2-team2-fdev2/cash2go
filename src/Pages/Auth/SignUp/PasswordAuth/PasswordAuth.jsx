@@ -33,12 +33,12 @@ export default function PasswordAuth() {
 
   // Handles first password field visibilty
   const togglePasswordVisibility1 = () => {
-    setShowPassword1(!showPassword1);
+    setShowPassword1((prevShowPassword) => !prevShowPassword);
   };
 
   // Handles second password field visibilty
   const togglePasswordVisibility2 = () => {
-    setShowPassword2(!showPassword2);
+    setShowPassword2((prevShowPassword) => !prevShowPassword);
   };
 
   // Handles modal visibilty
