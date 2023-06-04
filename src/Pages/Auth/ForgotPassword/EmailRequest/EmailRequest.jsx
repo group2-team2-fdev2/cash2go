@@ -3,17 +3,18 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 // style
-import "../ForgotPassword.css";
+import "../../Auth.css";
 // component
-import LeftLoginLayout from "../components/LeftLoginLayout";
-import ArrowRight from "../components/ArrowRight";
-import Legal from "../components/Legal";
-import LoadingGif from "../components/LoadingGif";
+import LeftLoginLayout from "../../components/LeftLoginLayout";
+import LoadingGif from "../../Components/LoadingGif";
+import ArrowRight from "../../Components/ArrowRight";
+import Legal from "../../components/Legal";
 
 export default function EmailRequest() {
   const [email, setEmail] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const [isLoading, setIsLoading] = useState(false); 
+  const [isLoading, setIsLoading] = useState(false);
+
   const navigate = useNavigate();
 
   const handleEmailChange = (event) => {
@@ -67,9 +68,12 @@ export default function EmailRequest() {
         <div className="form-wrapper">
           <h3 className="reset title">Reset Password</h3>
           <div className="user_email-wrapper">
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email" className="label">
+              Email
+            </label>
             <input
               id="email"
+              className="input"
               name="email"
               type="email"
               autoComplete="on"

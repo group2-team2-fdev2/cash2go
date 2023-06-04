@@ -5,11 +5,11 @@ import axios from "axios";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 // style
-import "../SignUp.css";
+import "../../Auth.css";
 // component
-import LeftLoginLayout3 from "../Components/LeftSignUpLayout3";
-import SubmitButton from "../Components/SubmitButton";
-import Legal from "../../LogIn/components/Legal";
+import LeftLoginLayout3 from "../../Components/LeftSignUpLayout3";
+import SubmitButton from "../../Components/SubmitButton";
+import Legal from "../../components/Legal";
 
 export default function SecurityQuestionAuth() {
   // State variables
@@ -44,7 +44,7 @@ export default function SecurityQuestionAuth() {
       const isAuthenticated = response.data; // Get authentication status from response
       if (isAuthenticated) {
         // If user is authenticated, navigate to password authentication page
-        navigate(`/password-auth?email=${email}`);
+        navigate(`/password-auth?email=${encodeURIComponent(email)}`);
       }
     } catch (error) {
       console.error("Error:", error);
@@ -61,7 +61,7 @@ export default function SecurityQuestionAuth() {
 
   return (
     <>
-      <div className="layout-component">
+      <main className="layout-component">
         <LeftLoginLayout3 />
         <section className="form-wrapper">
           {status && <p className="status-message">{status}</p>}
@@ -83,37 +83,36 @@ export default function SecurityQuestionAuth() {
             {({ errors, touched }) => (
               <Form>
                 <div className="form-field-wrapper">
-                  <label htmlFor="securityQuestion">Security Question</label>
+                  <label htmlFor="securityQuestion" className="label">Security Question</label>
                   <Field
                     name="securityQuestion"
                     as="select"
                     className={
                       errors.securityQuestion && touched.securityQuestion
-                        ? "error"
-                        : ""
+                        ? "input-error select"
+                        : "select"
                     }
-                    value="Please select a security question"
                   >
-                    <option disabled>Please select a security question</option>
-                    <option value="Where did you meet your spouse">
+                    <option className="option">Please select a security question</option>
+                    <option value="Where did you meet your spouse" className="option">
                       Where did you meet your spouse?
                     </option>
-                    <option value="What is the name of your favorite childhood friend">
+                    <option value="What is the name of your favorite childhood friend" className="option">
                       What is the name of your favorite childhood friend?
                     </option>
-                    <option value="In what city did you meet your spouse/significant other">
+                    <option value="In what city did you meet your spouse/significant other" className="option">
                       In what city did you meet your spouse/significant other?
                     </option>
-                    <option value={`What is your mother's maiden name`}>
+                    <option value={`What is your mother's maiden name`} className="option">
                       {`What is your mother's maiden name?`}
                     </option>
-                    <option value="What is the name of your first pet">
+                    <option value="What is the name of your first pet" className="option">
                       What is the name of your first pet?
                     </option>
                   </Field>
                 </div>
                 <div className="form-field-wrapper">
-                  <label htmlFor="securityQuestionAnswer">
+                  <label htmlFor="securityQuestionAnswer" className="label">
                     Security Question Answer
                   </label>
                   <Field
@@ -123,8 +122,8 @@ export default function SecurityQuestionAuth() {
                     className={
                       errors.securityQuestionAnswer &&
                       touched.securityQuestionAnswer
-                        ? "error"
-                        : ""
+                        ? "input-error input"
+                        : "input"
                     }
                   />
                   <ErrorMessage
@@ -139,7 +138,7 @@ export default function SecurityQuestionAuth() {
           </Formik>
           <Legal />
         </section>
-      </div>
+      </main>
     </>
   );
 }

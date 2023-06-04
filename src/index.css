@@ -18,6 +18,7 @@ img {
 
 input {
   font-size: inherit;
+  outline: none;
 }
 
 ul,

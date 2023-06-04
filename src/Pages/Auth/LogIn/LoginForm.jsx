@@ -5,9 +5,9 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import PropTypes from "prop-types";
 // component
-import OpenPasswordIcon from "./components/OpenPasswordIcon";
-import ClosePasswordIcon from "./components/ClosePasswordIcon";
-import LoginButton from "./components/LoginButton";
+import OpenPasswordIcon from "../components/OpenPasswordIcon";
+import ClosePasswordIcon from "../components/ClosePasswordIcon";
+import LoginButton from "../components/LoginButton";
 
 export default function LoginForm({ loginToApp }) {
   // State variables
@@ -65,7 +65,7 @@ export default function LoginForm({ loginToApp }) {
         }}
         validationSchema={Yup.object({
           email: Yup.string()
-            .email("Invalid email address")
+            .matches(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, "Invalid email address")
             .required("Email is required"),
           password: Yup.string()
             .required("Password is required")
@@ -80,13 +80,17 @@ export default function LoginForm({ loginToApp }) {
         {({ errors, touched }) => (
           <Form>
             <div className="form-field-wrapper">
-              <label htmlFor="email">Email</label>
+              <label htmlFor="email" className="label">
+                Email
+              </label>
               <Field
                 name="email"
                 type="email"
                 autoComplete="off"
                 placeholder="myworkemail@work.com"
-                className={errors.email && touched.email ? "error" : ""}
+                className={
+                  errors.email && touched.email ? "input-error input" : "input"
+                }
               />
               <ErrorMessage
                 name="email"
@@ -95,7 +99,9 @@ export default function LoginForm({ loginToApp }) {
               />
             </div>
             <div className="form-field-wrapper">
-              <label htmlFor="password">Password</label>
+              <label htmlFor="password" className="label">
+                Password
+              </label>
               <div className="form-field">
                 <div onClick={togglePasswordVisibility}>
                   {showPassword ? <OpenPasswordIcon /> : <ClosePasswordIcon />}
@@ -104,7 +110,11 @@ export default function LoginForm({ loginToApp }) {
                   name="password"
                   type={showPassword ? "text" : "password"}
                   autoComplete="off"
-                  className={errors.password && touched.password ? "error" : ""}
+                  className={
+                    errors.password && touched.password
+                      ? "input-error input"
+                      : "input"
+                  }
                 />
               </div>
               <ErrorMessage
