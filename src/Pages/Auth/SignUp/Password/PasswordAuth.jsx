@@ -10,7 +10,7 @@ import "../../Auth.css";
 import LeftSignUpLayout4 from "../../components/LeftSignUpLayout4";
 import OpenPasswordIcon from "../../components/OpenPasswordIcon";
 import ClosePasswordIcon from "../../components/ClosePasswordIcon";
-import SignupButton from "../../Components/SignupButton";
+import SignupButton from "../../components/SignupButton";
 import Legal from "../../components/Legal";
 import NoticeIcon from "../../components/NoticeIcon";
 import WrongIcon from "../../components/WrongIcon";
