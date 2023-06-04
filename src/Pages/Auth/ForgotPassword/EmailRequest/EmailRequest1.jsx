@@ -8,9 +8,8 @@ import * as Yup from "yup";
 import "../../Auth.css"
 // component
 import LeftLoginLayout from "../../components/LeftLoginLayout";
-import NextButton from "../../Components/NextButton";
+import NextButton from "../../components/NextButton";
 import Legal from "../../components/Legal";
-
 
 export default function EmailRequest1() {
   // State variables

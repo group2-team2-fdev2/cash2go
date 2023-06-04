@@ -8,7 +8,7 @@ import * as Yup from "yup";
 import "../../Auth.css";
 // component
 import LeftSignUpLayout1 from "../../components/LeftSignUpLayout1";
-import NextButton from "../../Components/NextButton";
+import NextButton from "../../components/NextButton";
 import Legal from "../../components/Legal";
 
 export default function EmailAndCompanyIDAuth() {

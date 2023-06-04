@@ -12,8 +12,8 @@ import OpenPasswordIcon from "../../components/OpenPasswordIcon";
 import ClosePasswordIcon from "../../components/ClosePasswordIcon";
 import ResetButton from "../../components/ResetButton";
 import Legal from "../../components/Legal";
-import WrongIcon from "../../Components/WrongIcon";
-import NoticeIcon from "../../Components/NoticeIcon";
+import WrongIcon from "../../components/WrongIcon";
+import NoticeIcon from "../../components/NoticeIcon";
 
 export default function UpdatePassword() {
   const [showPassword1, setShowPassword1] = useState(false); // Tracks form password visibility state

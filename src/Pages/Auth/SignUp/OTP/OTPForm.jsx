@@ -6,7 +6,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import PropTypes from "prop-types";
 // component
-import SubmitButton from "../../Components/SubmitButton";
+import SubmitButton from "../../components/SubmitButton";
 
 export default function OTPForm({ nextStep }) {
   // State variables

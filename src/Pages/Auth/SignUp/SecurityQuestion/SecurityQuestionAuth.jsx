@@ -8,7 +8,7 @@ import * as Yup from "yup";
 import "../../Auth.css";
 // component
 import LeftLoginLayout3 from "../../components/LeftSignUpLayout4";
-import SubmitButton from "../../Components/SubmitButton";
+import SubmitButton from "../../components/SubmitButton";
 import Legal from "../../components/Legal";
 
 export default function SecurityQuestionAuth() {

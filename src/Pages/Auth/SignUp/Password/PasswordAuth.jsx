@@ -12,8 +12,8 @@ import OpenPasswordIcon from "../../components/OpenPasswordIcon";
 import ClosePasswordIcon from "../../components/ClosePasswordIcon";
 import SignupButton from "../../Components/SignupButton";
 import Legal from "../../components/Legal";
-import NoticeIcon from "../../Components/NoticeIcon";
-import WrongIcon from "../../Components/WrongIcon";
+import NoticeIcon from "../../components/NoticeIcon";
+import WrongIcon from "../../components/WrongIcon";
 
 export default function PasswordAuth() {
   // State variables
