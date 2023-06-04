@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 // style
 import "../../Auth.css";
 // component
-import LeftSignUpLayout2 from "../../Components/LeftSignUpLayout2";
+import LeftSignUpLayout2 from "../../components/LeftSignUpLayout2";
 import OTPForm from "./OTPForm";
 import Legal from "../../components/Legal";
 
