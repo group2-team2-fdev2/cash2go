@@ -43,7 +43,7 @@ export default function UpdatePassword() {
   // Handles form submission
   const handleSubmit = async (values) => {
     setSubmitting(true); // Set form submission state to true
-    toggleModal();
+    // toggleModal();
 
     const password = values.password; // Get password value from form
     const confirmPassword = values.confirmPassword; // Get confirm password value from form

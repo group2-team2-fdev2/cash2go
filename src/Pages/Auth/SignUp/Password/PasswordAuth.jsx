@@ -52,8 +52,8 @@ export default function PasswordAuth() {
   // Handles form submission
   const handleSubmit = async (values) => {
     setSubmitting(true); // Set form submission state to true
-    setCompleted(true);
-    toggleModal();
+    // setCompleted(true);
+    // toggleModal();
 
     const email = values.email; // Get email value from form
     const username = values.username; // Get username value from form
