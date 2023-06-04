@@ -7,7 +7,7 @@ import * as Yup from "yup";
 // style
 import "../../Auth.css";
 // component
-import LeftLoginLayout3 from "../../Components/LeftSignUpLayout3";
+import LeftLoginLayout3 from "../../components/LeftSignUpLayout4";
 import SubmitButton from "../../Components/SubmitButton";
 import Legal from "../../components/Legal";
 

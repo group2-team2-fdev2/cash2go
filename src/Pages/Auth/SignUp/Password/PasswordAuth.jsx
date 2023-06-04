@@ -7,7 +7,7 @@ import * as Yup from "yup";
 //Style
 import "../../Auth.css";
 // component
-import LeftSignUpLayout4 from "../../Components/LeftSignUpLayout4";
+import LeftSignUpLayout4 from "../../components/LeftSignUpLayout4";
 import OpenPasswordIcon from "../../components/OpenPasswordIcon";
 import ClosePasswordIcon from "../../components/ClosePasswordIcon";
 import SignupButton from "../../Components/SignupButton";
