@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 // layout
 import RootLayout from "./layouts/RootLayout";
+import DashboardLayout from "./layouts/DashboardLayout";
 // page
 import LoginAuth from "./Pages/Auth/LogIn/LoginAuth";
 import EmailAndCompanyIDAuth from "./Pages/Auth/SignUp/EmailAndCompanyID/EmailAndCompanyIDAuth";
@@ -17,6 +18,7 @@ import SecurityQuestion1 from "./Pages/Auth/ForgotPassword/SecurityQuestion/Secu
 import UpdatePassword from "./Pages/Auth/ForgotPassword/UpdatePassword/UpdatePassword";
 // Dashboard
 import Dashboard from "./Pages/Dashboard/Dashboard";
+
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -32,7 +34,9 @@ const router = createBrowserRouter(
       <Route path="email-request" element={<EmailRequest1 />} />
       <Route path="security-question" element={<SecurityQuestion1 />} />
       <Route path="update-password/:token" element={<UpdatePassword />} />
-      <Route path="dashboard" element={<Dashboard />} />
+      <Route path="dashboard" element={<DashboardLayout />}>
+        <Route index element={<Dashboard />} />
+      </Route>
     </Route>
   )
 );
