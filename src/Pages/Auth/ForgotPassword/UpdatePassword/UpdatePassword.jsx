@@ -51,7 +51,7 @@ export default function UpdatePassword() {
     try {
       // Send request to server to authenticate new password
       const response = await axios.patch(
-        `http://cash2go-backendd.onrender.com/api/v1/user/update-password/${token}`,
+        `https://cash2go-backendd.onrender.com/api/v1/user/update-password/${token}`,
         {
           password: password,
           confirmPassword: confirmPassword,
