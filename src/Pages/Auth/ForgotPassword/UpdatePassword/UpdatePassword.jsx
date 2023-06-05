@@ -168,11 +168,12 @@ export default function UpdatePassword() {
         </section>
         {isModalOpen && (
           <section className="modal-background">
-            <div className="modal-container2">
+            <div className="modal-container1">
               <NoticeIcon />
-              <h1 className="modal-title">Congratulations !!!</h1>
+              <h1 className="modal-title">Password Changed</h1>
               <p className="modal-message">
-                Your password is updated successfully
+                Congratulations, your password has been successfully
+                changed. You may now proceed to Log in.
               </p>
               <div className="close-modal" onClick={toggleModal}>
                 <WrongIcon />

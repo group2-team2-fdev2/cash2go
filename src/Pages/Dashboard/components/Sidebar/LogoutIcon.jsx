@@ -1,23 +1,21 @@
-import React from "react";
-
 export default function LogoutIcon() {
   return (
-    <div className="logout-container">
+    <div className="sidebar-icon-wrapper">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"
-        stroke-width="1.5"
+        strokeWidth={1.5}
         stroke="currentColor"
-        class="icons"
+        className="sidebar-icon"
       >
         <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeLinecap="round"
+          strokeLinejoin="round"
           d="M5.636 5.636a9 9 0 1012.728 0M12 3v9"
         />
       </svg>
-      <p>LOG OUT</p>
+      <p className="sidebar-navigation">LOG OUT</p>
     </div>
   );
 }

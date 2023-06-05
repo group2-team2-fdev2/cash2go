@@ -20,7 +20,7 @@ export default function OTPForm({ nextStep }) {
 
   // Formik setup
   const formik = useFormik({
-    initialValues: {
+    initialValues: { 
       otp: new Array(4).fill(""), // Initializes the `otp` field as an array with 4 empty strings
       email: email || "", // Initializes the `email` field with the value of the `email` variable if it exists, otherwise it initializes it as an empty string
     },

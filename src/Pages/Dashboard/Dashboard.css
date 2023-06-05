@@ -1,74 +1,237 @@
-/* SIDEBAR */
+/* SIDEBAR COMPONENT */
 
 .sidebar-container {
   position: fixed;
   top: 0;
   left: 0;
   height: 100vh;
-  width: 200px;
+  width: 19.9%;
   background-color: #172233;
   color: #a2a7ad;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding-top: 20px;
-}
-
-.sidebar-container hr {
-  width: 100%;
-  margin: 20px 0;
-  border: 0;
-  border-top: 1px solid #a2a7ad4d;
-  padding-left: 0;
-}
-
-.sidebar-container p {
-  margin: 0;
-  font-size: 12px;
-  margin-left: 5px;
-  font-weight: 500;
 }
 
 .sidebar-cash2go-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 30px;
-  padding-left: 20px;
+  margin-bottom: 32px;
+  gap: 8px;
+  padding: 24px 24px 0;
 }
 
-.cash2go-logo11 {
+.sidebar-icon-wrapper {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 24px;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.cash2go-logo3 {
   width: 30px;
   height: 30px;
 }
 
-.cash2go-logo22 {
+.cash2go-logo4 {
   width: 80px;
   height: 18px;
 }
 
-.icons {
-  width: 16px;
-  height: 16px;
-  margin-right: 5px;
-  margin-bottom: 0;
-}
-
 .sidebar-icon {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  margin-bottom: 20px;
-  padding-left: 20px;
-  
+  width: 22px;
+  height: 22px;
 }
 
-.logout-container {
+.sidebar-navigation {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.sidebar-bottom-wrapper {
+  margin: 32px 0 80px;
+  padding-top: 24px;
+  border-top: 1px solid #a2a7ad4d;
+  width: 100%;
+}
+
+/* NAVBAR COMPONENT */
+
+.navbar-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 80%;
+  height: 70px;
+  background: #172233;
+  color: #a2a7ad;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left-navbar {
+  padding-left: 32px;
+}
+
+.searchbar-wrapper {
+  width: 240px;
+  height: 40px;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  margin-bottom: 20px;
-  padding-left: 20px;
-  margin-top: auto; 
-  margin-bottom: 100px;
+  justify-content: center;
+  gap: 4px;
+  background-color: white;
+  border-radius: 6px;
+}
+
+.searchbar-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.navbar-search {
+  width: 156px;
+  height: 20px;
+  border: none;
+  font-weight: 500;
+  font-size: 14px;
+  color: #5f6d7e;
+}
+
+.right-navbar {
+  padding-right: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.right-navbar-icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.navbar-icon1 {
+  width: 25px;
+  height: 25px;
+}
+
+.navbar-icon2 {
+  width: 30px;
+  height: 30px;
+}
+
+.user {
+  font-weight: 500;
+  font-size: 14px;
+  padding: 1px;
+}
+
+/* LANDING PAGE */
+
+.dashboard-content {
+  position: relative;
+  margin: 7% 10% 7% 25%;
+}
+
+/* DASHBOARD OVERVIEW COMPONENT */
+
+/* Parent Display */
+.parentdisplay-field {
+  
+  padding: 15px 5px;
+  background-color: #f7f7f7;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+  width: fit-content;
+  border: rgb(238, 240, 247) ridge 0.1px;
+  border-radius: 20px;
+}
+
+/* Display Fields */
+.display-field {
+  padding: 0 15px;
+  background-color: transparent;
+  border-right: #454e5c ridge 0.7px;
+  font-family: "Inter";
+  font-style: normal;
+  letter-spacing: 1px;
+}
+
+.display-field:nth-last-child(1) {
+  border-right: hidden;
+}
+
+.display-field h1 {
+  margin-top: -2px;
+  margin-bottom: -2px;
+}
+
+.arrange {
+  display: flex;
+  flex-direction: row;
+  gap: 18px;
+}
+
+.arrange-top {
+  display: flex;
+  flex-direction: row;
+  gap: 160px;
+}
+
+.status-approved {
+  text-align: center;
+  font-family: "Inter";
+  font-style: normal;
+  padding: 2px 5px;
+  background-color: #169872;
+  border-radius: 8px;
+  color: #fff;
+}
+
+.status-pending {
+  text-align: center;
+  font-family: "Inter";
+  font-style: normal;
+  padding: 2px 5px;
+  background-color: #c0f5f9;
+  border-radius: 8px;
+  color: #000;
+}
+
+.status-rejected {
+  text-align: center;
+  font-family: "Inter";
+  font-style: normal;
+  padding: 2px 5px;
+  background-color: #fd3d39;
+  border-radius: 8px;
+  color: #fff;
+}
+
+/* icons */
+.big-icon {
+  width: 30px;
+  height: 30px;
+  border: solid 1px #252d39;
+  background-color: #252d39;
+  color: #fff;
+  margin-top: 12px;
+  border-radius: 3px;
+}
+
+.small-icon {
+  width: 15px;
+  height: 15px;
+  margin-top: 3px;
+  margin-right: 3px;
 }
