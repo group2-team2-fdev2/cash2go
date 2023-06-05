@@ -10,24 +10,20 @@ export default function ApprovedLoanDashboard() {
 
   return (
     <>
-      <div className="display-field">
-        <div className="arrange-top">
-          <p>{title}</p>
-          <span>
-            {" "}
-            <i className="top-icon">
-              <BigIconRight />
-            </i>
-          </span>
+      <div className="dashboard-overview-wrapper">
+        <div className="dashboard-overview-heading">
+          <p className="dashboard-overview-title">{title}</p>
+          <BigIconRight />
         </div>
 
-        <h1>{data}</h1>
-        <div className="arrange">
-          <p>{comparism}</p>
-          <p className="status-approved">
+        <p className="dashboard-overview-count">{data}</p>
+
+        <div className="dashboard-overview-footer">
+          <p className="dashboard-overview-history">{comparism}</p>
+          <div className="dashboard-overview-status-wrapper approved">
             <SmallIconRight />
-            {status}
-          </p>
+            <p className="dashboard-overview-status">{status}</p>
+          </div>
         </div>
       </div>
     </>

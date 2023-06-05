@@ -7,7 +7,7 @@ export default function SmallNoticeIcon() {
         viewBox="0 0 24 24"
         strokeWidth="0.8"
         stroke="currentColor"
-        className="small-icon"
+        className="dashboard-overview-icon small"
       >
         <path
           strokeLinecap="round"

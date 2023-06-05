@@ -11,23 +11,19 @@ export default function PendingLoanDashboard() {
   
     return (
       <>
-        <div className="display-field">
-          <div className="arrange-top">
-            <p>{title}</p>
-            <span>
-              <i className="top-icon">
+        <div className="dashboard-overview-wrapper">
+          <div className="dashboard-overview-heading">
+            <p className="dashboard-overview-title">{title}</p>
                 <BigNoticeIcon />
-              </i>
-            </span>
           </div>
   
-          <h1>{data}</h1>
-          <div className="arrange">
-            <p>{comparism}</p>
-            <p className="status-pending">
+          <h1 className="dashboard-overview-count">{data}</h1>
+          <div className="dashboard-overview-footer">
+            <p className="dashboard-overview-history">{comparism}</p>
+            <div className="dashboard-overview-status-wrapper pending">
               <SmallNoticeIcon />
-              {status}
-            </p>
+              <p className="dashboard-overview-status">{status}</p>
+            </div>
           </div>
         </div>
       </>

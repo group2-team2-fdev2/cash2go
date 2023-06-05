@@ -7,7 +7,7 @@ export default function BigNoticeIcon() {
         viewBox="0 0 24 24"
         strokeWidth="0.8"
         stroke="currentColor"
-        className="big-icon"
+        className="dashboard-overview-icon big"
       >
         <path
           strokeLinecap="round"

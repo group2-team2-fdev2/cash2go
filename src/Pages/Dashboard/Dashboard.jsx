@@ -10,7 +10,7 @@ export default function Dashboard() {
       <Navbar />
       <SideBar />
       <div className="dashboard-content">
-        THIS IS WHERE THE DASHBOARD CONTENT WILL GO
+        <p className="test">THIS IS WHERE THE DASHBOARD CONTENT WILL GO</p>
         <DashboardOverview />
       </div>
     </div>

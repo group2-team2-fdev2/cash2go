@@ -5,13 +5,15 @@ import ApprovedLoanDashboard from "./ApprovedLoanDashboard";
 import PendingLoanDashboard from "./PendingLoanDashboard";
 import RejectedLoanDashboard from "./RejectedLoanDashboard";
 
-export default function Display() {
+export default function DashboardOverview() {
   return (
     <>
-      <div className="parentdisplay-field">
-        <ApprovedLoanDashboard />
-        <PendingLoanDashboard />
-        <RejectedLoanDashboard />
+      <div className="dashboard-overview-container">
+        <div className="dashboard-overview">
+          <ApprovedLoanDashboard />
+          <PendingLoanDashboard />
+          <RejectedLoanDashboard />
+        </div>
       </div>
     </>
   );
