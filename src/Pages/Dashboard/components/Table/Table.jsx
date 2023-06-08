@@ -1,14 +1,15 @@
 import React from 'react'
-import Approved from './Approved'
+import Downarrow from './DownArrow'
 import ApplicantImage from './ApplicantImage'
 import Applicant from './Applicant'
-import Rejected from './Rejected'
-import Pending from './Pending'
-import Downarrow from './Downarrow'
 import Download from './Download'
 import PreviousArrow from './PreviousArrow'
 import NextArrow from './NextArrow'
-import '../../components/Table.css'
+import "./Table.css"
+import Approved from './Approved'
+import Rejected from './Rejected'
+import Pending from './Pending'
+
 
 
 const Table = () => {
@@ -26,7 +27,7 @@ const Table = () => {
                     <th >
                         <div className='heading-container'>
                             <p>Date</p>
-                            <Downarrow/> 
+                            <Downarrow/>
                         </div>
                         
                     </th>
