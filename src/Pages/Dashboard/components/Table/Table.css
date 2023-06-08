@@ -1,0 +1,155 @@
+.table-container{
+    display: flex;
+    justify-content: center;
+    margin-top: 150px;
+    font-size: 10px;
+} 
+
+.table {
+    border-collapse: collapse; 
+    border-radius: 5px 5px 0 0;
+    min-width: 400px;
+    font-size: 0.9em;
+    background-color: #F7F7F7;
+    align-content: center; 
+}
+
+.table thead tr{
+    text-align: left;
+} 
+
+.table th,
+.table td{
+    padding: 4px 8px;
+}
+ 
+
+thead, tr {
+    border-bottom: 1px solid #DFDEDE;
+}
+
+
+.image{
+    height: 12px;
+}
+
+.app-image{
+    height: 20px;
+    background-color: #252d39;
+    color: white;
+    border-radius: 50%;
+}
+
+.status{
+    height: 10px;
+}
+
+.approved-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid green;
+    background-color: green;
+    color: white;
+    border-radius: 2px;
+    gap:2px;
+    width: 60px;
+    margin-left: 40px;
+}
+
+.rejected-container{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid red;
+    background-color: red;
+    color: white;
+    border-radius: 2px;
+    gap:2px;
+    width: 60px;
+    margin-left: 40px;
+}
+
+.pending-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid red;
+    background-color: red;
+    color: white;
+    border-radius: 2px;
+    gap:2px;
+    width: 60px;
+    margin-left: 40px;
+}
+
+.heading-container{
+    padding-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:5px;
+    font-size: 10px;
+    font-weight: normal;
+}
+
+.allApp-container{
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px;
+    display: flex;
+    justify-content: left;
+}
+
+/* /* .app-info{
+    display: flex;
+    justify-content: left;
+    padding: 10px;
+}  */
+
+.appInfo-container{
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    gap: 8px;
+} 
+
+.app{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    padding: 20px;
+}
+
+.pre, .next, .page-no{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.page-no{
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    
+}
+
+.page-no{
+    display: flex;
+    justify-content: center;
+}
+
+.next{
+    display: flex;
+    justify-content: end;
+}

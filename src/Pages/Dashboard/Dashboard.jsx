@@ -3,6 +3,7 @@ import "../Dashboard/Dashboard.css";
 import Navbar from "./components/Navbar/Navbar";
 import SideBar from "./components/Sidebar/SideBar";
 import DashboardOverview from "./components/DashboardOverview/DashboardOverview";
+import Table from "./components/Table/Table";
 
 export default function Dashboard() {
   return (
@@ -13,6 +14,7 @@ export default function Dashboard() {
         <p className="test">THIS IS WHERE THE DASHBOARD CONTENT WILL GO</p>
         <DashboardOverview />
       </div>
+      <Table/>
     </div>
   );
 }
