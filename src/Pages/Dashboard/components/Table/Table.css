@@ -129,31 +129,25 @@ thead, tr {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 50px;
+    gap: 100px;
     padding: 20px;
 }
 
 .pre, .next, .page-no{
     display: flex;
     align-items: center;
-    gap: 5px;
 }
 
 .page-no{
     display: flex;
     gap: 15px;
-    justify-content: center;
+    justify-content: right;
     align-items: center;
-    align-content: center;
-    
 }
 
-.page-no{
-    display: flex;
-    justify-content: center;
-}
 
-.next{
+
+div.next{
     display: flex;
-    justify-content: end;
+    justify-content: right;
 }
