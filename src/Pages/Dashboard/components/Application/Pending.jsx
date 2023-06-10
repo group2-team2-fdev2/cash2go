@@ -1,5 +1,5 @@
 import React from 'react'
-import "./Table.css"
+import "./Application.css"
 const Pending = () => {
   return (
     <div className='pending-container'>

@@ -1,17 +1,17 @@
 .table-container{
     display: flex;
-    justify-content: center;
-    margin-top: 150px;
+    justify-content: right;
+    margin-top: 27px;
     font-size: 10px;
 } 
 
-.table {
+ .table {
     border-collapse: collapse; 
-    border-radius: 5px 5px 0 0;
-    min-width: 400px;
-    font-size: 0.9em;
+    border-radius: 10px;
+    width: 72%;
+    margin-right: 5%;
+    font-size: 1.3em;
     background-color: #F7F7F7;
-    align-content: center; 
 }
 
 .table thead tr{
@@ -28,9 +28,8 @@ thead, tr {
     border-bottom: 1px solid #DFDEDE;
 }
 
-
 .image{
-    height: 12px;
+    height: 16px;
 }
 
 .app-image{
@@ -53,8 +52,7 @@ thead, tr {
     color: white;
     border-radius: 6px;
     gap:2px;
-    width: 60px;
-    margin-left: 40px;
+    width: 80px;
 }
 
 .rejected-container{
@@ -66,8 +64,7 @@ thead, tr {
     color: white;
     border-radius: 6px;
     gap:2px;
-    width: 60px;
-    margin-left: 40px;
+    width: 80px;
 }
 
 .pending-container{
@@ -79,37 +76,19 @@ thead, tr {
     color: white;
     border-radius: 6px;
     gap:2px;
-    width: 60px;
-    margin-left: 40px;
+    width: 80px;
 }
 
 .heading-container{
-    padding-top: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap:5px;
     font-size: 10px;
-    font-weight: normal;
-}
-
-.allApp-container{
-    font-size: 16px;
-    font-weight: bold;
-    padding: 10px;
-    display: flex;
-    justify-content: left;
 }
 
 .name{
     font-weight: bold;
 }
-
-/* /* .app-info{
-    display: flex;
-    justify-content: left;
-    padding: 10px;
-}  */
 
 .appInfo-container{
     display: flex;
@@ -118,18 +97,12 @@ thead, tr {
     gap: 8px;
 } 
 
-.app{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
 
 .footer{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    gap: 100px;
+    width: 244%;
     padding: 20px;
 }
 
@@ -141,7 +114,6 @@ thead, tr {
 .page-no{
     display: flex;
     gap: 15px;
-    justify-content: right;
     align-items: center;
 }
 
@@ -150,4 +122,46 @@ thead, tr {
 div.next{
     display: flex;
     justify-content: right;
+}
+
+/* Heading */
+.heading-container{
+    margin-top: 100px;
+    width: 65%;
+} 
+
+
+.top-application {
+    display: flex;
+    gap: 8px;
+    padding-bottom: 15px;
+}
+
+.viewAll-app{
+    font-size: 16px;
+}
+
+.middle-application{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width:380%;
+}
+
+button{
+    border: 1px solid Red;
+    background-color: red;
+    color: white;
+    width:150px;
+    height: 35px;
+    border-radius: 6px;
+}
+
+.last-application{
+    display: flex;
+    padding-top: 20px;
+    font-size: 14px;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: underline;
 }
