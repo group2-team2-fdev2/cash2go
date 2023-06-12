@@ -2,7 +2,7 @@
 
 .dashboard-content {
   position: relative;
-  margin: 7% 7% 7% 25%;
+  margin: 7% 7% 7% 23%;
   display: grid;
 }
 
@@ -277,7 +277,7 @@
 .dashboard-overview-status {
   font-weight: 500;
   font-size: 13px;
-  color: white;
+  
 }
 
 .dashboard-overview-status-wrapper.approved {
@@ -771,7 +771,7 @@
 
 .dashboard-button-wrapper {
   position: absolute;
-  right: -10px;
+  right: -14px;
   top: 10px;
 }
 
@@ -812,6 +812,16 @@
   padding: 10px;
   text-align: left;
   border-bottom: 1px solid #ccc;
+}
+
+td.status-cell {
+  width: 100px;
+  white-space: nowrap;
+}
+
+td.credit-score-cell,
+th.credit-score-header {
+  padding-left: 30px;
 }
 
 .section-header {

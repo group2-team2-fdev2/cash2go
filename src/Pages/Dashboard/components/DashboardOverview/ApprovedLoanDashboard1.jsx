@@ -1,6 +1,6 @@
 // component
-import BigIconRight from "./BigNoticeIcon";
-import SmallIconRight from "./SmallNoticeIcon";
+import BigIconRight from "./BigIconRight";
+import SmallIconRight from "./SmallIconRight";
 
 export default function ApprovedLoanDashboard1({
   numApproved,
@@ -8,7 +8,7 @@ export default function ApprovedLoanDashboard1({
 }) {
   const title = "Approved Loans";
   const comparism = `+ ${newApprovedDiff} from yesterday`;
-  const status = "Approved";
+  const status = "approved";
 
   return (
     <div className="dashboard-overview-wrapper">
