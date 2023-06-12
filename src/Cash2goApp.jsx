@@ -16,7 +16,7 @@ import EmailRequest1 from "./Pages/Auth/ForgotPassword/EmailRequest/EmailRequest
 import SecurityQuestion1 from "./Pages/Auth/ForgotPassword/SecurityQuestion/SecurityQuestion1";
 import UpdatePassword from "./Pages/Auth/ForgotPassword/UpdatePassword/UpdatePassword";
 // Dashboard
-import Dashboard from "./Pages/Dashboard/Dashboard1";
+import Dashboard from "./Pages/Dashboard/Dashboard";
 
 
 const router = createBrowserRouter(
@@ -28,7 +28,7 @@ const router = createBrowserRouter(
         element={<EmailAndCompanyIDAuth />}
       />
       <Route path="otp-auth" element={<OTPAuth />} />
-      <Route path="password-auth" element={<PasswordAuth />} />
+      <Route path="password-auth" element={<PasswordAuth />} />gi
       <Route path="security-question-auth" element={<SecurityQuestionAuth />} />
       <Route path="email-request" element={<EmailRequest1 />} />
       <Route path="security-question" element={<SecurityQuestion1 />} />
