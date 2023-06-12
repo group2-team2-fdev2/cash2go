@@ -19,6 +19,9 @@ export default function Dashboard() {
   const [newPendingDiff, setNewPendingDiff] = useState(0);
   const [newRejectedDiff, setNewRejectedDiff] = useState(0);
 
+
+  
+
   useEffect(() => {
     const fetchData = () => {
       // Simulated data for demonstration purposes

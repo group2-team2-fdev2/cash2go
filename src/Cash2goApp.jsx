@@ -24,6 +24,7 @@ import ApplicantInfo, {
 } from "./Pages/Dashboard/ApplicantDetails/ApplicantInfo";
 import Cashflow from "./Pages/Dashboard/ApplicantDetails/Cashflow";
 import Applications from "./Pages/Dashboard/Applications/Applications";
+import NotificationPage from "./Pages/Dashboard/components/Notifications/NotificationPage";
 // import PreviousLoans from "./Pages/Dashboard/ApplicantDetails/PreviousLoans";
 
 const router = createBrowserRouter(
@@ -59,6 +60,8 @@ const router = createBrowserRouter(
       <Route path="applications" >
         <Route index element={<Applications />} />
       </Route>
+      <Route path="notification" element={<NotificationPage />}  />
+
     </Route>
   )
 );

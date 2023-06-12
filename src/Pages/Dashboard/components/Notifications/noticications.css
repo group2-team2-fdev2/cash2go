@@ -1,7 +1,3 @@
-* {
-  font-family: "Inter", sans-serif;
-}
-
 .notification{
     padding: 10px;
     margin: 20px 0;
@@ -19,7 +15,7 @@
     font-size: 12px;
   }
 
-  .title{
+  .notification-title{
     color: #169872;
     font-weight: 600;
     padding: 8px 0;
