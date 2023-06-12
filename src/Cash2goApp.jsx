@@ -16,7 +16,7 @@ import EmailRequest1 from "./Pages/Auth/ForgotPassword/EmailRequest/EmailRequest
 import SecurityQuestion1 from "./Pages/Auth/ForgotPassword/SecurityQuestion/SecurityQuestion1";
 import UpdatePassword from "./Pages/Auth/ForgotPassword/UpdatePassword/UpdatePassword";
 // Dashboard
-import Dashboard from "./Pages/Dashboard/Dashboard";
+import Dashboard from "./Pages/Dashboard/Dashboard1";
 
 
 const router = createBrowserRouter(

@@ -1,7 +1,7 @@
 .table-container{
     display: flex;
     justify-content: right;
-    margin-top: 27px;
+    margin-top: 50px;
     font-size: 10px;
 } 
 
@@ -14,13 +14,16 @@
     background-color: #F7F7F7;
 }
 
-.table thead tr{
+.table thead{
     text-align: left;
 } 
 
-.table th,
 .table td{
-    padding: 4px 8px;
+    text-align: center;
+}
+
+.table th{
+    padding: 18px;
 }
  
 
@@ -40,7 +43,11 @@ thead, tr {
 }
 
 .status{
-    height: 10px;
+     height: 10px;
+}
+
+td .status{
+    text-align: center;
 }
 
 .approved-container{
@@ -52,7 +59,8 @@ thead, tr {
     color: white;
     border-radius: 6px;
     gap:2px;
-    width: 80px;
+    width: 50%;
+    margin: 0 auto;
 }
 
 .rejected-container{
@@ -64,7 +72,8 @@ thead, tr {
     color: white;
     border-radius: 6px;
     gap:2px;
-    width: 80px;
+    width: 50%;
+    margin: 0 auto;
 }
 
 .pending-container{
@@ -76,15 +85,17 @@ thead, tr {
     color: white;
     border-radius: 6px;
     gap:2px;
-    width: 80px;
+    width: 50%;
+    margin: 0 auto;
 }
 
-.heading-container{
+
+.tableHead-container{
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 10px;
-}
+} 
 
 .name{
     font-weight: bold;
@@ -126,6 +137,8 @@ div.next{
 
 /* Heading */
 .heading-container{
+    display: flex;
+    justify-content:center;
     margin-top: 100px;
     width: 65%;
 } 

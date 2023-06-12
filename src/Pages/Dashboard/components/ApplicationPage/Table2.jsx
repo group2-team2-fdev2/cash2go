@@ -1,4 +1,5 @@
 import { Data } from "./Data"
+import { useEffect } from "react"
 import Downarrow from "./DownArrow"
 import Download from "./Download"
 import NextArrow from "./NextArrow"
@@ -7,13 +8,13 @@ import "./Application.css"
 
 function Table2() {
 
-    // useEffect(() => {
-    //     fetch({Column})
-    //     .then(resp=>resp.json())
-    //     .then(resp=>{
-    //         console.log(resp)
-    //         setData(resp)})
-    // }, [])
+    useEffect(() => {
+        fetch(`https://cash2go-backendd.onrender.com/api/v1/applicant`)
+        .then(resp=>resp.json())
+        .then(resp=>{
+            console.log(resp)
+            setData(resp)})
+    }, [])
 
   return (
     <div className='table-container'>
@@ -28,27 +29,27 @@ function Table2() {
                         <div>Applicants info</div>
                     </th>
                     <th >
-                        <div className='heading-container'>
+                        <div className='tableHead-container'>
                             <p>Date</p>
                             <Downarrow/>
                         </div>
                         
                     </th>
                     <th >
-                        <div className='heading-container'>
+                        <div className='tableHead-container'>
                             <p>Status</p>
                             <Downarrow/> 
                         </div>
                         
                     </th>
                     <th>
-                       <div  className='heading-container'>
+                       <div  className='tableHead-container'>
                             <p>Credit Score</p>
                             <Downarrow/>
                         </div> 
                     </th>
                     <th >
-                        <div className='heading-container'>
+                        <div className='tableHead-container'>
                             <p>Amount</p>
                             <Downarrow/>
                         </div>
@@ -60,11 +61,11 @@ function Table2() {
                   {Data && Data.map((item) =>{
                           return (<tr key={item.episode_id}>
                               <td>
-                                  {item.applicantInfo}
+                                  {item.applicantInfo }
                                 </td>
                               <td>{item.date}</td>
                             <td>{item.status}</td>
-                              <td>{item.creditscore}</td>
+                              <td className="status">{item.creditscore}</td>
                               <td>{item.amount}</td>
                               <td><Download/></td>
                             </tr>)

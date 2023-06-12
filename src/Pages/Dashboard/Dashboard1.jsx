@@ -1,14 +1,14 @@
 // component
 import "../Dashboard/Dashboard.css";
-import Heading from "./components/Application/Heading";
-import Table2 from "./components/Application/Table2";
+import Heading from "./components/ApplicationPage/Heading";
+import Table2 from "./components/ApplicationPage/Table2";
 import Navbar from "./components/Navbar/Navbar";
 import SideBar from "./components/Sidebar/SideBar";
 // import DashboardOverview from "./components/DashboardOverview/DashboardOverview";
 
 
 
-export default function Dashboard() {
+export default function Dashboard1() {
   return (
     <div>
       <Navbar />
