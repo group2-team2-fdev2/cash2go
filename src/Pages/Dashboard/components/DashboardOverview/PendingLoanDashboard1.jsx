@@ -5,7 +5,7 @@ import SmallNoticeIcon from "./SmallNoticeIcon";
 export default function PendingLoanDashboard1({ numPending, newPendingDiff }) {
   const title = "Pending Loans";
   const comparism = `+ ${newPendingDiff} from yesterday`;
-  const status = "Pending";
+  const status = "pending";
 
   return (
     <div className="dashboard-overview-wrapper">

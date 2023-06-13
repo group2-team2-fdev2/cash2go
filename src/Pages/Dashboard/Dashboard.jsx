@@ -6,6 +6,9 @@ import "../Dashboard/Dashboard.css";
 import Navbar from "./components/Navbar/Navbar";
 import SideBar from "./components/Sidebar/SideBar";
 import DashboardOverview from "./components/DashboardOverview/DashboardOverview";
+import Approved from "./components/DashboardOverview/Approved";
+import Rejected from "./components/DashboardOverview/Rejected";
+import Pending from "./components/DashboardOverview/Pending";
 
 export default function Dashboard() {
   const [loanData, setLoanData] = useState([]);
@@ -19,8 +22,12 @@ export default function Dashboard() {
   const [newPendingDiff, setNewPendingDiff] = useState(0);
   const [newRejectedDiff, setNewRejectedDiff] = useState(0);
 
+  const statusComponents = {
+    approved: <Approved />,
+    rejected: <Rejected />,
+    pending: <Pending />,
+  };
 
-  
 
   useEffect(() => {
     const fetchData = () => {
@@ -31,7 +38,7 @@ export default function Dashboard() {
           id: "ID-24156351",
           applicantName: "John Doe",
           date: "2023-06-01",
-          status: "Approved",
+          status: "approved",
           creditScore: 750,
           loanAmount: "N 10000",
         },
@@ -39,7 +46,7 @@ export default function Dashboard() {
           id: "ID-24156352",
           applicantName: "Jane Smith",
           date: "2023-06-02",
-          status: "Rejected",
+          status: "rejected",
           creditScore: 250,
           loanAmount: "N 15000",
         },
@@ -47,7 +54,7 @@ export default function Dashboard() {
           id: "ID-24156353",
           applicantName: "Michael Johnson",
           date: "2023-06-03",
-          status: "Approved",
+          status: "approved",
           creditScore: 720,
           loanAmount: "N 20000",
         },
@@ -55,7 +62,7 @@ export default function Dashboard() {
           id: "ID-24156354",
           applicantName: "Emily Williams",
           date: "2023-06-04",
-          status: "Pending",
+          status: "pending",
           creditScore: 800,
           loanAmount: "N 12000",
         },
@@ -63,7 +70,7 @@ export default function Dashboard() {
           id: "ID-24156355",
           applicantName: "David Brown",
           date: "2023-06-05",
-          status: "Approved",
+          status: "approved",
           creditScore: 670,
           loanAmount: "N 18000",
         },
@@ -94,25 +101,25 @@ export default function Dashboard() {
   useEffect(() => {
     const calculateLoanCounts = () => {
       const approvedCount = loanData.filter(
-        (loan) => loan.status.toLowerCase() === "approved"
+        (loan) => loan.status === "approved"
       ).length;
       const pendingCount = loanData.filter(
-        (loan) => loan.status.toLowerCase() === "pending"
+        (loan) => loan.status === "pending"
       ).length;
       const rejectedCount = loanData.filter(
-        (loan) => loan.status.toLowerCase() === "rejected"
+        (loan) => loan.status === "rejected"
       ).length;
-  
+
       setNumApproved(approvedCount);
       setNumPending(pendingCount);
       setNumRejected(rejectedCount);
-  
+
       // Calculate the differences from yesterday based on the previous values
       setNewApprovedDiff(approvedCount - numApproved);
       setNewPendingDiff(pendingCount - numPending);
       setNewRejectedDiff(rejectedCount - numRejected);
     };
-  
+
     calculateLoanCounts();
   }, [loanData, numApproved, numPending, numRejected]);
 
@@ -174,7 +181,7 @@ export default function Dashboard() {
         <table className="loan-table">
           <thead>
             <tr>
-              <th colspan="5">
+              <th colSpan="5">
                 <div className="section-header">
                   <h3>Recent Applications</h3>
                   <p>Sorted by {getSortOptionText()}</p>
@@ -185,7 +192,12 @@ export default function Dashboard() {
               <th>Name</th>
               <th onClick={() => setSortBy("date")}>Date</th>
               <th onClick={() => setSortBy("status")}>Status</th>
-              <th onClick={() => setSortBy("creditScore")}>Credit Score</th>
+              <th
+                className="credit-score-header"
+                onClick={() => setSortBy("creditScore")}
+              >
+                Credit Score
+              </th>
               <th>Loan Amount</th>
             </tr>
           </thead>
@@ -213,8 +225,8 @@ export default function Dashboard() {
                     day: "2-digit",
                   })}
                 </td>
-                <td>{loan.status}</td>
-                <td>{loan.creditScore}</td>
+                <td className="status-cell">{statusComponents[loan.status]}</td>
+                <td className="credit-score-cell">{loan.creditScore}</td>
                 <td>{loan.loanAmount}</td>
               </tr>
             ))}

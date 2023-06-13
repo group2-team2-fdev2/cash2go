@@ -1,6 +1,6 @@
 // component
-import BigNoticeIcon from "./BigNoticeIcon";
-import SmallNoticeIcon from "./SmallNoticeIcon";
+import BigStopCircleIcon from "./BigStopCircleIcon";
+import SmallStopCircleIcon from "./SmallStopCircleIcon";
 
 export default function RejectedLoanDashboard1({
   numRejected,
@@ -8,13 +8,13 @@ export default function RejectedLoanDashboard1({
 }) {
   const title = "Rejected";
   const comparism = `+ ${newRejectedDiff} from yesterday`;
-  const status = "Rejected";
+  const status = "rejected";
 
   return (
     <div className="dashboard-overview-wrapper">
       <div className="dashboard-overview-heading">
         <p className="dashboard-overview-title">{title}</p>
-        <BigNoticeIcon />
+        <BigStopCircleIcon />
       </div>
 
       <p className="dashboard-overview-count">{numRejected}</p>
@@ -22,7 +22,7 @@ export default function RejectedLoanDashboard1({
       <div className="dashboard-overview-footer">
         <p className="dashboard-overview-history">{comparism}</p>
         <div className="dashboard-overview-status-wrapper rejected">
-          <SmallNoticeIcon />
+          <SmallStopCircleIcon />
           <p className="dashboard-overview-status">{status}</p>
         </div>
       </div>
