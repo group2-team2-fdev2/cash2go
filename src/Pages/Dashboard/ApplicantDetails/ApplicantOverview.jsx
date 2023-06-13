@@ -8,6 +8,7 @@ import PieChart from "../components/PieChart/PieChart";
 import SideBar from "../components/Sidebar/SideBar";
 
 export default function ApplicantOverview() {
+
   return (
     <>
       <Navbar />

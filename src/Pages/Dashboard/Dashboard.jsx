@@ -28,6 +28,7 @@ export default function Dashboard() {
     pending: <Pending />,
   };
 
+
   useEffect(() => {
     const fetchData = () => {
       // Simulated data for demonstration purposes
