@@ -12,7 +12,7 @@ export default function Navbar() {
       <div className="left-navbar">
         <div className="searchbar-wrapper">
           <SearchIcon />
-          <input type="text" className="navbar-search" />
+          <input type="text" className="navbar-search" placeholder="Search"/>
           <ArrowRightIcon />
         </div>
       </div>

@@ -1,0 +1,180 @@
+.table-container{
+    display: flex;
+    justify-content: right;
+    margin-top: 50px;
+    font-size: 10px;
+} 
+
+ .table {
+    border-collapse: collapse; 
+    border-radius: 10px;
+    width: 72%;
+    margin-right: 5%;
+    font-size: 1.3em;
+    background-color: #F7F7F7;
+}
+
+.table thead{
+    text-align: left;
+} 
+
+.table td{
+    text-align: center;
+}
+
+.table th{
+    padding: 18px;
+}
+ 
+
+thead, tr {
+    border-bottom: 1px solid #DFDEDE;
+}
+
+.image{
+    height: 16px;
+}
+
+.app-image{
+    height: 20px;
+    background-color: #252d39;
+    color: white;
+    border-radius: 50%;
+}
+
+.status{
+     height: 10px;
+}
+
+td .status{
+    text-align: center;
+}
+
+.approved-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #169872;
+    background-color: #169872;
+    color: white;
+    border-radius: 6px;
+    gap:2px;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.rejected-container{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid red;
+    background-color: red;
+    color: white;
+    border-radius: 6px;
+    gap:2px;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.pending-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #C0F5F9;
+    background-color: #C0F5F9;
+    color: white;
+    border-radius: 6px;
+    gap:2px;
+    width: 50%;
+    margin: 0 auto;
+}
+
+
+.tableHead-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+} 
+
+.name{
+    font-weight: bold;
+}
+
+.appInfo-container{
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    gap: 8px;
+} 
+
+
+.footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 244%;
+    padding: 20px;
+}
+
+.pre, .next, .page-no{
+    display: flex;
+    align-items: center;
+}
+
+.page-no{
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+
+
+div.next{
+    display: flex;
+    justify-content: right;
+}
+
+/* Heading */
+.heading-container{
+    display: flex;
+    justify-content:center;
+    margin-top: 100px;
+    width: 65%;
+} 
+
+
+.top-application {
+    display: flex;
+    gap: 8px;
+    padding-bottom: 15px;
+}
+
+.viewAll-app{
+    font-size: 16px;
+}
+
+.middle-application{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width:380%;
+}
+
+button{
+    border: 1px solid Red;
+    background-color: red;
+    color: white;
+    width:150px;
+    height: 35px;
+    border-radius: 6px;
+}
+
+.last-application{
+    display: flex;
+    padding-top: 20px;
+    font-size: 14px;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: underline;
+}
