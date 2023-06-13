@@ -23,7 +23,7 @@ export default function NotificationPage() {
                 <div className="notification" key={Notifications.id}>
                   <div>
                     <div className="date">{new Date().toLocaleString()}</div>
-                    <div className="title">{Notifications.title}</div>
+                    <div className="message-title">{Notifications.title}</div>
                     <div className="message">{Notifications.message}</div>
                   </div>
                   <div className="icon">

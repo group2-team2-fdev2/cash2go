@@ -43,25 +43,23 @@ const router = createBrowserRouter(
       <Route path="update-password/:token" element={<UpdatePassword />} />
       <Route path="dashboard">
         <Route index element={<Dashboard />} />
-        <Route path="applicant-overview">
-          <Route index element={<ApplicantOverview />} />
-          <Route path="applicant-review" element={<ApplicantReview />}>
-            <Route path="cashflow" element={<Cashflow />} />
-            {/* <Route path="previous-loans" element={<PreviousLoans />} /> */}
-          </Route>
-          <Route
-            path="info"
-            element={<ApplicantInfo />}
-            loader={ApplicantBioLoader}
-          />
-
-        </Route>
       </Route>
-      <Route path="applications" >
+      <Route path="applications">
         <Route index element={<Applications />} />
       </Route>
-      <Route path="notification" element={<NotificationPage />}  />
-
+      <Route path="analytics">
+        <Route index element={<ApplicantOverview />} />
+        <Route path="applicant-review" element={<ApplicantReview />}>
+          <Route path="cashflow" element={<Cashflow />} />
+          {/* <Route path="previous-loans" element={<PreviousLoans />} /> */}
+        </Route>
+        <Route
+          path="info"
+          element={<ApplicantInfo />}
+          loader={ApplicantBioLoader}
+        />
+      </Route>
+      <Route path="notification" element={<NotificationPage />} />
     </Route>
   )
 );

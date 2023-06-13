@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export default function NotificationIcon() {
   return (
     <>
-      <Link to="/notification">
+      <Link style={{"color": "currentColor"}} to="/notification">
         <div className="sidebar-icon-wrapper">
           <svg
             xmlns="http://www.w3.org/2000/svg"

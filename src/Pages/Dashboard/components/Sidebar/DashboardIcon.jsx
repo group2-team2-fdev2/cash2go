@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export default function DashboardIcon() {
   return (
     <>
-      <Link to="/dashboard">
+      <Link style={{"color": "currentColor"}} to="/dashboard">
         <div className="sidebar-icon-wrapper">
           <svg
             xmlns="http://www.w3.org/2000/svg"

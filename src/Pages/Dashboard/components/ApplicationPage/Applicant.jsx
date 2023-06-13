@@ -1,5 +1,6 @@
-import React from 'react'
 import "./Application.css"
+import PropTypes from "prop-types";
+
 const Applicant = (props) => {
   return (
        <div>
@@ -8,4 +9,8 @@ const Applicant = (props) => {
         </div>
   )
 }
+Applicant.propTypes = {
+  name: PropTypes.string,
+};
+
 export default Applicant

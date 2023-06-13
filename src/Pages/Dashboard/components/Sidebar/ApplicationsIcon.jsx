@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export default function ApplicationsIcon() {
   return (
     <>
-      <Link to="/applications">
+      <Link style={{"color": "currentColor"}} to="/applications">
         <div className="sidebar-icon-wrapper">
           <svg
             xmlns="http://www.w3.org/2000/svg"
