@@ -4,7 +4,7 @@ import BreadCrumbs from "../components/BreadCrumbs";
 import DashboardHeader from "../components/DashboardHeader/DashboardHeader";
 import Navbar from "../components/Navbar/Navbar";
 import SideBar from "../components/Sidebar/SideBar";
-import "../components/ApplicationPage/Application.css"
+import "./Applications.css"
 
 export default function Applications() {
   const isApplicationPage = true;
@@ -12,7 +12,7 @@ export default function Applications() {
     <>
       <Navbar />
       <SideBar />
-      <div className="dashboard-content">
+      <div className="Dashboard-content">
         <BreadCrumbs />
         <DashboardHeader
           title="Applications"

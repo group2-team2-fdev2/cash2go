@@ -17,7 +17,7 @@ export default function ApplicantInfo() {
     <>
       <Navbar />
       <SideBar />
-      <div className="dashboard-content">
+      <div className="Dashboard-content">
         <BreadCrumbs />
         <DashboardHeader
           title={`${firstName} ${lastName}`}

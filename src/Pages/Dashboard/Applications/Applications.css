@@ -1,11 +1,11 @@
-.table-container{
+.Application-table-container{
     display: flex;
     justify-content: right;
     margin-top: 50px;
     font-size: 10px;
 } 
 
- .table {
+ .Application-table {
     border-collapse: collapse; 
     border-radius: 10px;
     width: 72%;
@@ -14,15 +14,15 @@
     background-color: #F7F7F7;
 }
 
-.table thead{
+.Application-table thead{
     text-align: left;
 } 
 
-.table td{
+.Application-table td{
     text-align: center;
 }
 
-.table th{
+.Application-table th{
     padding: 18px;
 }
  
@@ -31,26 +31,26 @@ thead, tr {
     border-bottom: 1px solid #DFDEDE;
 }
 
-.image{
+.Application-image{
     height: 16px;
 }
 
-.app-image{
+.Application-app-image{
     height: 20px;
     background-color: #252d39;
     color: white;
     border-radius: 50%;
 }
 
-.status{
+.Application-status{
      height: 10px;
 }
 
-td .status{
+td .Application-status{
     text-align: center;
 }
 
-.approved-container{
+.Application-approved-container{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -63,7 +63,7 @@ td .status{
     margin: 0 auto;
 }
 
-.rejected-container{
+.Application-rejected-container{
     display:flex;
     justify-content: center;
     align-items: center;
@@ -76,7 +76,7 @@ td .status{
     margin: 0 auto;
 }
 
-.pending-container{
+.Application-pending-container{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -90,18 +90,18 @@ td .status{
 }
 
 
-.tableHead-container{
+.Application-tableHead-container{
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 10px;
 } 
 
-.name{
+.Application-name{
     font-weight: bold;
 }
 
-.appInfo-container{
+.Application-appInfo-container{
     display: flex;
     align-items: center;
     padding: 15px;
@@ -109,7 +109,7 @@ td .status{
 } 
 
 
-.footer{
+.Application-footer{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -117,12 +117,12 @@ td .status{
     padding: 20px;
 }
 
-.pre, .next, .page-no{
+.Application-pre, .Application-next, .Application-page-no{
     display: flex;
     align-items: center;
 }
 
-.page-no{
+.Application-page-no{
     display: flex;
     gap: 15px;
     align-items: center;
@@ -130,13 +130,13 @@ td .status{
 
 
 
-div.next{
+div.Application-next{
     display: flex;
     justify-content: right;
 }
 
 /* Heading */
-.heading-container{
+.Application-heading-container{
     display: flex;
     justify-content:center;
     margin-top: 100px;
@@ -144,17 +144,17 @@ div.next{
 } 
 
 
-.top-application {
+.Application-top-application {
     display: flex;
     gap: 8px;
     padding-bottom: 15px;
 }
 
-.viewAll-app{
+.Application-viewAll-app{
     font-size: 16px;
 }
 
-.middle-application{
+.Application-middle-application{
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -170,7 +170,7 @@ button{
     border-radius: 6px;
 }
 
-.last-application{
+.Application-last-application{
     display: flex;
     padding-top: 20px;
     font-size: 14px;

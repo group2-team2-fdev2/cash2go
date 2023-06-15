@@ -1,4 +1,4 @@
-import "./Application.css";
+
 
 function RightDirectionIcon() {
   return (
@@ -9,7 +9,7 @@ function RightDirectionIcon() {
         viewBox="0 0 24 24"
         strokeWidth="1.5"
         stroke="currentColor"
-        className="w-6 h-6 image"
+        className="w-6 h-6 Application-image"
       >
         <path
           strokeLinecap="round"

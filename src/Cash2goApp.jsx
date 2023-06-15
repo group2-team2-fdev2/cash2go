@@ -24,7 +24,7 @@ import ApplicantInfo, {
 } from "./Pages/Dashboard/ApplicantDetails/ApplicantInfo";
 import Cashflow from "./Pages/Dashboard/ApplicantDetails/Cashflow";
 import Applications from "./Pages/Dashboard/Applications/Applications";
-import NotificationPage from "./Pages/Dashboard/components/Notifications/NotificationPage";
+import Notification from "./Pages/Dashboard/Notification/Notification";
 // import PreviousLoans from "./Pages/Dashboard/ApplicantDetails/PreviousLoans";
 
 const router = createBrowserRouter(
@@ -59,7 +59,7 @@ const router = createBrowserRouter(
           loader={ApplicantBioLoader}
         />
       </Route>
-      <Route path="notification" element={<NotificationPage />} />
+      <Route path="notification" element={<Notification />} />
     </Route>
   )
 );

@@ -3,23 +3,23 @@ import RightDirectionIcon from "./RightDirectionIcon";
 
 function Heading() {
   return (
-    <div className="heading-container">
-      <div className="heading">
-        <div className="top-application">
+    <div className="Application-heading-container">
+      <div className="Application-heading">
+        <div className="Application-top-application">
           <h2>Application</h2>
           <RightDirectionIcon />
           <h2>All application </h2>
         </div>
 
-        <div className="middle-application">
+        <div className="Application-middle-application">
           <div>
             <h1>Applications</h1>
-            <p className="viewAll-app">View All Loan Application</p>
+            <p className="Application-viewAll-app">View All Loan Application</p>
           </div>
           <button>Analytic</button>
         </div>
 
-        <div className="last-application">
+        <div className="Application-last-application">
           <p>All Applications</p>
           <p>Approved</p>
           <p>Pending</p>

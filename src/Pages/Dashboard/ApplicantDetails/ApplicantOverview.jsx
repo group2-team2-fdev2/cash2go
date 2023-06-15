@@ -13,7 +13,7 @@ export default function ApplicantOverview() {
     <>
       <Navbar />
       <SideBar />
-      <div className="dashboard-content">
+      <div className="Dashboard-content">
         <BreadCrumbs />
         <DashboardHeader
           title="Ogbeni Mallam"

@@ -18,7 +18,7 @@ export default function ApplicantReview() {
     <>
       <Navbar />
       <SideBar />
-      <div className="dashboard-content">
+      <div className="Dashboard-content">
         <BreadCrumbs />
         <DashboardHeader
           title="Ogbeni Mallam"

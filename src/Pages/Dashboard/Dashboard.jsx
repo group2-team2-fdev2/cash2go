@@ -156,19 +156,19 @@ export default function Dashboard() {
     <div>
       <Navbar />
       <SideBar />
-      <div className="dashboard-content">
-        <div className="dashboard-header">
-          <div className="dashboard-text">
-            <div className="dashboard-title"><BreadCrumbs /> </div>
-            <h3 className="welcome-back">
+      <div className="Dashboard-content">
+        <div className="Dashboard-header">
+          <div className="Dashboard-text">
+            <div className="Dashboard-title"><BreadCrumbs /></div>
+            <h3 className="Dashboard-welcome-back">
               Welcome back, you have <strong>{numNewApplications}</strong> new
               applications
             </h3>
           </div>
         </div>
-        <div className="dashboard-button-wrapper">
-          <button className="grey-dashboard-button">Existing</button>
-          <button className="orange-dashboard-button">New</button>
+        <div className="Dashboard-button-wrapper">
+          <button className="Dashboard-button_grey">Existing</button>
+          <button className="Dashboard-button_orange">New</button>
         </div>
 
         <DashboardOverview
@@ -179,11 +179,11 @@ export default function Dashboard() {
           newPendingDiff={newPendingDiff}
           newRejectedDiff={newRejectedDiff}
         />
-        <table className="loan-table">
+        <table className="Dashboard-loan-table">
           <thead>
             <tr>
               <th colSpan="5">
-                <div className="section-header">
+                <div className="Dashboard-section-header">
                   <h3>Recent Applications</h3>
                   <p>Sorted by {getSortOptionText()}</p>
                 </div>
@@ -206,15 +206,15 @@ export default function Dashboard() {
             {sortedData.map((loan) => (
               <tr key={loan.id}>
                 <td>
-                  <div className="applicant">
+                  <div className="Dashboard-applicant">
                     <UserIcon />
 
                     <div>
-                      <span className="applicant-name">
+                      <span className="Dashboard-applicant-name">
                         {loan.applicantName}
                       </span>
                       <br />
-                      <span className="applicant-id">{loan.id}</span>
+                      <span className="Dashboard-applicant-id">{loan.id}</span>
                     </div>
                   </div>
                 </td>
@@ -226,8 +226,8 @@ export default function Dashboard() {
                     day: "2-digit",
                   })}
                 </td>
-                <td className="status-cell">{statusComponents[loan.status]}</td>
-                <td className="credit-score-cell">{loan.creditScore}</td>
+                <td className="Dashboard-status-cell">{statusComponents[loan.status]}</td>
+                <td className="Dashboard-credit-score-cell">{loan.creditScore}</td>
                 <td>{loan.loanAmount}</td>
               </tr>
             ))}

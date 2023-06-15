@@ -4,7 +4,6 @@ import Downarrow from "./Downarrow";
 import Download from "./Download";
 import NextArrow from "./NextArrow";
 import PreviousArrow from "./PreviousArrow";
-import "./Application.css";
 
 function Table2() {
   const [data, setData] = useState(Data);
@@ -19,37 +18,37 @@ function Table2() {
   }, []);
 
   return (
-    <div className="table-container">
-      <table className="table">
-        <thead className="table-head">
+    <div className="Application-table-container">
+      <table className="Application-table">
+        <thead className="Application-table-head">
           <tr>
-            <th className="allApp-container">All Applications</th>
+            <th className="Application-allApp-container">All Applications</th>
           </tr>
 
-          <tr className="second-tableHead">
-            <th className="app-info">
+          <tr className="Application-second-tableHead">
+            <th className="Application-app-info">
               <div>Applicants info</div>
             </th>
             <th>
-              <div className="tableHead-container">
+              <div className="Application-tableHead-container">
                 <p>Date</p>
                 <Downarrow />
               </div>
             </th>
             <th>
-              <div className="tableHead-container">
+              <div className="Application-tableHead-container">
                 <p>Status</p>
                 <Downarrow />
               </div>
             </th>
             <th>
-              <div className="tableHead-container">
+              <div className="Application-tableHead-container">
                 <p>Credit Score</p>
                 <Downarrow />
               </div>
             </th>
             <th>
-              <div className="tableHead-container">
+              <div className="Application-tableHead-container">
                 <p>Amount</p>
                 <Downarrow />
               </div>
@@ -73,15 +72,15 @@ function Table2() {
                 </tr>
               );
             })}
-          <tr className="footer">
+          <tr className="Application-footer">
             <td>
-              <div className="pre">
+              <div className="Application-pre">
                 <PreviousArrow />
                 <p>Pre</p>
               </div>
             </td>
             <td>
-              <div className="page-no">
+              <div className="Application-page-no">
                 <p>1</p>
                 <p>2</p>
                 <p>...</p>
@@ -90,7 +89,7 @@ function Table2() {
               </div>
             </td>
             <td>
-              <div className="next">
+              <div className="Application-next">
                 <p>Next</p>
                 <NextArrow />
               </div>

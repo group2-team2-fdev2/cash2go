@@ -1,0 +1,59 @@
+.Notification {
+  padding: 10px;
+  margin: 20px 0;
+  box-sizing: border-box;
+  width: 82%;
+  background-color: #f7f7f7;
+  box-shadow: 3px 5px 2px rgba(16, 24, 40, 0.05);
+  font-size: 16px;
+  display: flex;
+  flex-direction: row;
+}
+
+.Notification-date {
+  padding: 5px 0 0 0;
+  font-size: 12px;
+}
+
+.Notification-message-title {
+  color: #169872;
+  font-weight: 600;
+  padding: 8px 0;
+}
+
+.Notification-message {
+  font-weight: 500;
+}
+
+.Notification-display {
+  margin-left: 33%;
+}
+
+.Notification-notification-title {
+  margin-bottom: 30px;
+  padding: 3px;
+  box-sizing: border-box;
+  width: 82%;
+  background-color: #f7f7f7;
+  box-shadow: 3px 5px 2px rgba(16, 24, 40, 0.05);
+}
+
+.Notification-notification-title h4 {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  padding-left: 10px;
+}
+
+.Notification-notification-title p {
+  margin-top: 3px;
+  padding-top: 3px;
+  padding-left: 10px;
+}
+
+.Notification-icon {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  margin-top: 15px;
+  margin-left: 50%;
+}
