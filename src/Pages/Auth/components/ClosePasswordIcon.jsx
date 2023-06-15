@@ -7,7 +7,7 @@ export default function ClosePasswordIcon() {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="icon field-icon"
+          className="Auth-icon Auth-field-icon"
         >
           <path
             strokeLinecap="round"

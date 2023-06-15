@@ -1,13 +1,13 @@
 /* LEFT LOGIN LAYOUT COMPONENT */
 
-.layout-component {
+.Auth-layout-component {
   display: grid;
   grid-template-columns: 50% 50%;
   height: 100vh;
   position: relative;
 }
 
-.background {
+.Auth-background {
   height: 100%;
   background-image: url(../../assets/side_bg.png);
   background-repeat: no-repeat;
@@ -16,27 +16,27 @@
 
 /* STEP COMPONENT */
 
-.step-container {
+.Auth-step-container {
   position: absolute;
   left: 28%;
   bottom: 8%;
 }
 
-.step {
+.Auth-step {
   display: flex;
   align-items: center;
   gap: 15px;
   margin-bottom: 30px;
 }
 
-.step-number {
+.Auth-step-number {
   font-size: 12px;
   font-weight: 500;
   color: white;
   margin-bottom: 3px;
 }
 
-.step-instruction {
+.Auth-step-instruction {
   font-size: 10px;
   font-weight: 200;
   color: white;
@@ -44,19 +44,19 @@
 
 /* FORM COMPONENT */
 
-.form-wrapper {
+.Auth-form-wrapper {
   margin: auto;
 }
 
-.form-field-wrapper {
+.Auth-form-field-wrapper {
   margin-bottom: 25px;
 }
 
-.form-field {
+.Auth-form-field {
   position: relative;
 }
 
-.title {
+.Auth-title {
   text-align: center;
   font-weight: 600;
   font-size: 35px;
@@ -64,11 +64,11 @@
   margin-bottom: 20px;
 }
 
-.reset.title {
+.Auth-reset.Auth-title {
   text-align: left;
 }
 
-.sub-title {
+.Auth-sub-title {
   text-align: center;
   font-weight: 600;
   font-size: 25px;
@@ -76,7 +76,7 @@
   margin-bottom: 10px;
 }
 
-.label {
+.Auth-label {
   display: block;
   font-weight: 500;
   font-size: 14px;
@@ -84,7 +84,7 @@
   margin-bottom: 5px;
 }
 
-.input {
+.Auth-input {
   display: block;
   width: 380px;
   height: 46px;
@@ -99,15 +99,15 @@
   color: #5f6d7e;
 }
 
-.input:focus {
+.Auth-input:focus {
   border: 2px solid rgb(179, 179, 247);
 }
 
-.input::placeholder {
+.Auth-input::placeholder {
   color: lightgrey;
 }
 
-.select {
+.Auth-select {
   display: block;
   width: 380px;
   height: 46px;
@@ -122,25 +122,25 @@
   color: #5f6d7e;
 }
 
-.option {
+.Auth-option {
   font-weight: 500;
   font-size: 14px;
   color: #5f6d7e;
 }
 
-.verification-instruction {
+.Auth-verification-instruction {
   text-align: center;
   margin-bottom: 25px;
 }
 
-.instruction {
+.Auth-instruction {
   font-weight: 500;
   font-size: 14px;
   color: #5f6d7e;
   margin-top: 10px;
 }
 
-.otp-container {
+.Auth-otp-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -148,7 +148,7 @@
   margin-bottom: 25px;
 }
 
-.otp-wrapper {
+.Auth-otp-wrapper {
   border: 1px solid rgb(235, 232, 232);
   border-radius: 4px;
   background-color: rgb(236, 245, 248);
@@ -160,7 +160,7 @@
   position: relative;
 }
 
-.otp-field {
+.Auth-otp-field {
   width: 58px;
   height: 90px;
   margin-left: 10px;
@@ -174,20 +174,20 @@
   color: #b2adad;
 }
 
-.otp-field:focus {
+.Auth-otp-field:focus {
   border: 2px solid rgb(179, 179, 247);
 }
 
 /* icons */
 
-.field-icon {
+.Auth-field-icon {
   position: absolute;
   right: 0;
   bottom: 15%;
   margin: 8px;
 }
 
-.icon {
+.Auth-icon {
   width: 20px;
   height: 20px;
   fill: #5f6d7e;
@@ -195,11 +195,11 @@
 
 /* error-messages */
 
-.input-error {
+.Auth-input-error {
   border: 1px solid red;
 }
 
-.status-message {
+.Auth-status-message {
   text-align: center;
   width: 380px;
   font-weight: 500;
@@ -208,7 +208,7 @@
   padding: 2px;
 }
 
-.error-message {
+.Auth-error-message {
   width: 380px;
   font-weight: 500;
   font-size: 12px;
@@ -216,7 +216,7 @@
   padding: 2px;
 }
 
-.otp-error-message {
+.Auth-otp-error-message {
   position: absolute;
   bottom: 10%;
   text-align: center;
@@ -224,7 +224,7 @@
 
 /* ARROW RIGHT COMPONENT */
 
-.arrow-right {
+.Auth-arrow-right {
   width: 22px;
   height: 22px;
   color: #f8f9fb;
@@ -232,7 +232,7 @@
 
 /* BUTTON COMPONENT */
 
-.button-wrapper {
+.Auth-button-wrapper {
   width: 380px;
   height: 46px;
   display: flex;
@@ -245,11 +245,11 @@
   border-radius: 10px;
 }
 
-.button-wrapper:hover {
+.Auth-button-wrapper:hover {
   cursor: pointer;
 }
 
-.button-text {
+.Auth-button-text {
   font-weight: 600;
   font-size: 16px;
   color: #f8f9fb;
@@ -257,7 +257,7 @@
 
 /* CASH2GO COMPONENT */
 
-.cash2go-wrapper {
+.Auth-cash2go-wrapper {
   display: flex;
   align-items: center;
   gap: 12px;
@@ -266,7 +266,7 @@
   bottom: 19%;
 }
 
-.alt.cash2go-wrapper {
+.Auth-alt.Auth-cash2go-wrapper {
   display: flex;
   align-items: center;
   gap: 12px;
@@ -275,19 +275,19 @@
   bottom: 20%;
 }
 
-.cash2go-logo1 {
+.Auth-cash2go-logo1 {
   width: 38px;
   height: 38px;
 }
 
-.cash2go-logo2 {
+.Auth-cash2go-logo2 {
   width: 120px;
   height: 120px;
 }
 
 /* LAPTOP COMPONENT */
 
-.laptop-wrapper {
+.Auth-laptop-wrapper {
   position: absolute;
   left: 20.7%;
   top: 20%;
@@ -295,54 +295,62 @@
   height: 300px;
 }
 
-.laptop {
+.Auth-laptop {
   width: 100%;
   height: 100%;
 }
 
 /* LINKS COMPONENT */
 
-.links-wrapper {
+.Auth-links-wrapper {
   margin-top: 29px;
   display: flex;
   justify-content: center;
   gap: 50px;
 }
 
-.link {
+.Auth-link {
   font-weight: 500;
   font-size: 14px;
   color: #000000;
   text-decoration: none;
 }
 
-.link:hover {
+.Auth-otp-link {
+  font-weight: 500;
+  font-size: 14px;
+  color: #000000;
+  text-decoration: none;
+  margin: 0 5px;
+}
+
+.Auth-link:hover, .Auth-otp-link:hover {
   text-decoration: underline;
 }
 
 /* LEGAL COMPONENT */
 
-.legal-wrapper {
+.Auth-legal-wrapper {
   margin-top: 60px;
   display: flex;
   justify-content: center;
   gap: 25px;
 }
 
-.legal {
+.Auth-legal {
   font-weight: 500;
   font-size: 12px;
   color: #000000;
   text-decoration: none;
 }
 
-.legal:hover {
+.Auth-legal:hover {
   text-decoration: underline;
 }
 
 /* QUOTE COMPONENTS */
 
-.quote-wrapper {
+.Auth-quote-wrapper {
   position: absolute;
   left: 18%;
   bottom: 12%;
@@ -352,13 +360,13 @@
   gap: 10px;
 }
 
-.quotation-mark {
+.Auth-quotation-mark {
   color: white;
   width: 50px;
   height: 20px;
 }
 
-.quote {
+.Auth-quote {
   font-style: italic;
   font-weight: 500;
   font-size: 14px;
@@ -366,14 +374,14 @@
   text-align: center;
 }
 
-.quote:nth-of-type(1) {
+.Auth-quote:nth-of-type(1) {
   font-weight: 200;
   margin-bottom: 5px;
 }
 
 /* MODAL COMPONENT */
 
-.modal-background {
+.Auth-modal-background {
   position: fixed;
   top: 0;
   left: 0;
@@ -383,13 +391,13 @@
   z-index: 9998;
 }
 
-.modal-container1 {
+.Auth-modal-container1 {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 2px;
-  width: 735px;
+  width: 700px;
   height: 227px;
   padding: 5px;
   position: fixed;
@@ -402,7 +410,7 @@
   z-index: 9999;
 }
 
-.modal-container2 {
+.Auth-modal-container2 {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -421,30 +429,31 @@
   z-index: 9999;
 }
 
-.notice-icon {
+.Auth-notice-icon {
   width: 40px;
   height: 40px;
   color: rgb(100, 98, 98);
   margin-bottom: 10px;
 }
 
-.modal-title {
+.Auth-modal-title {
   font-size: 18px;
   margin-bottom: 10px;
 }
 
-.modal-message {
+.Auth-modal-message {
   text-align: center;
+  padding: 0 5px;
   margin-bottom: 2px;
 }
 
-.user-email {
+.Auth-user-email {
   margin-top: 2px;
   margin-bottom: 8px;
   font-weight: bold;
 }
 
-.continue-button {
+.Auth-continue-button {
   background-color: #ff5e00;
   color: #292828;
   margin-top: 15px;
@@ -456,11 +465,11 @@
   font-weight: 600;
 }
 
-.continue-button:hover {
+.Auth-continue-button:hover {
   background-color: #0056b3;
 }
 
-.close-modal {
+.Auth-close-modal {
   position: absolute;
   top: 10px;
   right: 10px;

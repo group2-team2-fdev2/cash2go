@@ -93,11 +93,11 @@ export default function SecurityQuestion1() {
 
   return (
     <>
-      <main className="layout-component">
+      <main className="Auth-layout-component">
         <LeftLoginLayout />
-        <section className="form-wrapper">
-          <header className="reset title">Reset Password</header>
-          {status && <p className="status-message">{status}</p>}
+        <section className="Auth-form-wrapper">
+          <header className="Auth-reset Auth-title">Reset Password</header>
+          {status && <p className="Auth-status-message">{status}</p>}
           {/* Formik setup */}
           <Formik
             initialValues={{
@@ -114,20 +114,20 @@ export default function SecurityQuestion1() {
           >
             {({ errors, touched }) => (
               <Form>
-                <div className="form-field-wrapper">
-                  <label htmlFor="securityQuestion" className="label">
-                    Email
+                <div className="Auth-form-field-wrapper">
+                  <label htmlFor="securityQuestion" className="Auth-label">
+                    Security Question
                   </label>
                   <Field
                     name="securityQuestion"
                     type="text"
                     value={securityQuestion || ""}
                     disabled
-                    className="input"
+                    className="Auth-input"
                   />
                 </div>
-                <div className="form-field-wrapper">
-                  <label htmlFor="securityQuestionAnswer" className="label">
+                <div className="Auth-form-field-wrapper">
+                  <label htmlFor="securityQuestionAnswer" className="Auth-label">
                     Security Question Answer
                   </label>
                   <Field
@@ -137,14 +137,14 @@ export default function SecurityQuestion1() {
                     className={
                       errors.securityQuestionAnswer &&
                       touched.securityQuestionAnswer
-                        ? "input-error input"
-                        : "input"
+                        ? "Auth-input-error Auth-input"
+                        : "Auth-input"
                     }
                   />
                   <ErrorMessage
                     name="securityQuestionAnswer"
                     component="div"
-                    className="error-message"
+                    className="Auth-error-message"
                   />
                 </div>
                 <ResetButton isSubmitting={isSubmitting} />
@@ -154,19 +154,19 @@ export default function SecurityQuestion1() {
           <Legal />
         </section>
         {isModalOpen && (
-          <section className="modal-background">
-            <div className="modal-container2">
+          <section className="Auth-modal-background">
+            <div className="Auth-modal-container2">
               <NoticeIcon />
-              <h3 className="modal-title">Reset Link</h3>
-              <p className="modal-message">
+              <h3 className="Auth-modal-title">Reset Link</h3>
+              <p className="Auth-modal-message">
                 A password reset link has been sent to
               </p>
-              <p className="user-email">{email}</p>
-              <div className="close-modal" onClick={toggleModal}>
+              <p className="Auth-user-email">{email}</p>
+              <div className="Auth-close-modal" onClick={toggleModal}>
                 <WrongIcon />
               </div>
               <button
-                className="continue-button"
+                className="Auth-continue-button"
                 onClick={() => {
                   setModalOpen(false);
                   navigate("/"); // Navigate to the login page

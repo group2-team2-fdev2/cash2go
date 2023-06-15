@@ -6,14 +6,14 @@ import LoadingGif from "./LoadingGif";
 
 export default function LoginButton({ isSubmitting }) {
   return (
-    <button type="submit" className="button-wrapper" disabled={isSubmitting}>
+    <button type="submit" className="Auth-button-wrapper" disabled={isSubmitting}>
       {isSubmitting ? (
         <>
           <LoadingGif />
         </>
       ) : (
         <>
-          <span className="button-text">Log in</span>
+          <span className="Auth-button-text">Log in</span>
           <ArrowRight />
         </>
       )}

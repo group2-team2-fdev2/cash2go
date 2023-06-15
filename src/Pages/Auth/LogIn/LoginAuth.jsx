@@ -21,10 +21,10 @@ export default function LoginAuth() {
 
   return (
     <>
-      <main className="layout-component">
+      <main className="Auth-layout-component">
         <LeftLoginLayout />
-        <section className="form-wrapper">
-          <header className="title">Log In</header>
+        <section className="Auth-form-wrapper">
+          <header className="Auth-title">Log In</header>
           <LoginForm loginToApp={loginToApp} />
           <Links />
           <Legal />

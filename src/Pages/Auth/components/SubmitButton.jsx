@@ -5,14 +5,14 @@ import LoadingGif from "./LoadingGif";
 
 export default function SubmitButton({ isSubmitting }) {
   return (
-    <button type="submit" className="button-wrapper" disabled={isSubmitting}>
+    <button type="submit" className="Auth-button-wrapper" disabled={isSubmitting}>
       {isSubmitting ? (
         <>
           <LoadingGif />
         </>
       ) : (
         <>
-          <span className="button-text">Submit</span>
+          <span className="Auth-button-text">Submit</span>
         </>
       )}
     </button>

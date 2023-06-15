@@ -4,7 +4,7 @@ import Step1 from "./Step1";
 
 export default function LeftSignUpLayout1() {
   return (
-    <div className="background">
+    <div className="Auth-background">
       <Cash2goLogo2 />
       <Step1 />
     </div>

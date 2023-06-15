@@ -91,10 +91,10 @@ export default function PasswordAuth() {
 
   return (
     <>
-      <main className="layout-component">
+      <main className="Auth-layout-component">
         <LeftSignUpLayout4 isCompleted={isCompleted} />
-        <section className="form-wrapper">
-          {status && <p className="status-message">{status}</p>}
+        <section className="Auth-form-wrapper">
+          {status && <p className="Auth-status-message">{status}</p>}
           {/* Formik setup */}
           <Formik
             initialValues={{
@@ -120,25 +120,25 @@ export default function PasswordAuth() {
           >
             {({ errors, touched }) => (
               <Form>
-                <div className="form-field-wrapper">
-                  <label htmlFor="username" className="label">Username</label>
+                <div className="Auth-form-field-wrapper">
+                  <label htmlFor="username" className="Auth-label">Username</label>
                   <Field
                     name="username"
                     type="text"
                     autoComplete="off"
                     className={
-                      errors.username && touched.username ? "input-error input" : "input"
+                      errors.username && touched.username ? "Auth-input-error Auth-input" : "Auth-input"
                     }
                   />
                   <ErrorMessage
                     name="username"
                     component="div"
-                    className="error-message"
+                    className="Auth-error-message"
                   />
                 </div>
-                <div className="form-field-wrapper">
-                  <label htmlFor="password" className="label">Password</label>
-                  <div className="form-field">
+                <div className="Auth-form-field-wrapper">
+                  <label htmlFor="password" className="Auth-label">Password</label>
+                  <div className="Auth-form-field">
                     <div onClick={togglePasswordVisibility1}>
                       {showPassword1 ? (
                         <OpenPasswordIcon />
@@ -151,19 +151,19 @@ export default function PasswordAuth() {
                       type={showPassword1 ? "text" : "password"}
                       autoComplete="off"
                       className={
-                        errors.password && touched.password ? "input-error input" : "input"
+                        errors.password && touched.password ? "Auth-input-error Auth-input" : "Auth-input"
                       }
                     />
                   </div>
                   <ErrorMessage
                     name="password"
                     component="div"
-                    className="error-message"
+                    className="Auth-error-message"
                   />
                 </div>
-                <div className="form-field-wrapper">
-                  <label htmlFor="confirmPassword" className="label">Re-enter Password</label>
-                  <div className="form-field">
+                <div className="Auth-form-field-wrapper">
+                  <label htmlFor="confirmPassword" className="Auth-label">Re-enter Password</label>
+                  <div className="Auth-form-field">
                     <div onClick={togglePasswordVisibility2}>
                       {showPassword2 ? (
                         <OpenPasswordIcon />
@@ -177,15 +177,15 @@ export default function PasswordAuth() {
                       autoComplete="off"
                       className={
                         errors.confirmPassword && touched.confirmPassword
-                          ? "input-error input"
-                          : "input"
+                          ? "Auth-input-error Auth-input"
+                          : "Auth-input"
                       }
                     />
                   </div>
                   <ErrorMessage
                     name="confirmPassword"
                     component="div"
-                    className="error-message"
+                    className="Auth-error-message"
                   />
                 </div>
                 <SignupButton isSubmitting={isSubmitting} />
@@ -195,19 +195,19 @@ export default function PasswordAuth() {
           <Legal />
         </section>
         {isModalOpen && (
-          <section className="modal-background">
-            <div className="modal-container1">
+          <section className="Auth-modal-background">
+            <div className="Auth-modal-container1">
               <NoticeIcon />
-              <h1 className="modal-title">Congratulations !!!</h1>
-              <p className="modal-message">
+              <h1 className="Auth-modal-title">Congratulations !!!</h1>
+              <p className="Auth-modal-message">
                 Your signup for our Cash2Go app is now complete. Get ready to
                 unlock great financial posibilities and achieve your goals.
               </p>
-              <div className="close-modal" onClick={toggleModal}>
+              <div className="Auth-close-modal" onClick={toggleModal}>
                 <WrongIcon />
               </div>
               <button
-                className="continue-button"
+                className="Auth-continue-button"
                 onClick={() => {
                   navigate("/"); // Navigate to the login page
                 }}

@@ -7,7 +7,7 @@ export default function ArrowRight() {
         viewBox="0 0 24 24"
         strokeWidth={1}
         stroke="currentColor"
-        className="arrow-right"
+        className="Auth-arrow-right"
       >
         <path
           strokeLinecap="round"

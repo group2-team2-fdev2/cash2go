@@ -108,10 +108,10 @@ export default function OTPForm({ nextStep }) {
 
   return (
     <>
-      {status && <p className="status-message">{status}</p>}
+      {status && <p className="Auth-status-message">{status}</p>}
       <form onSubmit={formik.handleSubmit}>
-        <div className="otp-container">
-          <div className="otp-wrapper">
+        <div className="Auth-otp-container">
+          <div className="Auth-otp-wrapper">
             {formik.values.otp && // Checks if the `otp` field value exists
               formik.values.otp.map((digit, index) => {
                 // Maps over each digit in the `otp` field
@@ -131,33 +131,33 @@ export default function OTPForm({ nextStep }) {
                       formik.touched.otp &&
                       formik.errors.otp[index] &&
                       formik.touched.otp[index]
-                        ? "input-error otp-field"
-                        : "otp-field"
+                        ? "Auth-input-error Auth-otp-field"
+                        : "Auth-otp-field"
                     }
                   />
                 );
               })}
             {/* Render the error message for the "otp" field if it has errors, has been touched, 
             and the form has been submitted at least once */}
-            <div className="otp-error-message">
+            <div className="Auth-otp-error-message">
               {formik.errors.otp &&
                 formik.touched.otp &&
                 formik.submitCount > 0 && (
-                  <p className="error-message">{formik.errors.otp}</p>
+                  <p className="Auth-error-message">{formik.errors.otp}</p>
                 )}
             </div>
           </div>
         </div>
-        <div className="verification-instruction">
-          <p className="sub-title"> Enter OTP</p>
-          <p className="instruction">
-            Enter the four digits OTP sent to your mail{" "}
+        <div className="Auth-verification-instruction">
+          <p className="Auth-sub-title"> Enter OTP</p>
+          <p className="Auth-instruction">
+            Enter the four digits OTP sent to your mail
           </p>
-          <p className="instruction">
-            Click{" "}
-            <Link onClick={handleResendOTP} className="link">
+          <p className="Auth-instruction">
+            Click
+            <Link onClick={handleResendOTP} className="Auth-otp-link">
               HERE
-            </Link>{" "}
+            </Link>
             to resend OTP
           </p>
         </div>

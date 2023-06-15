@@ -20,9 +20,9 @@ export default function OTPAuth() {
 
   return (
     <>
-      <main className="layout-component">
+      <main className="Auth-layout-component">
         <LeftSignUpLayout2 />
-        <section className="form-wrapper">
+        <section className="Auth-form-wrapper">
           <OTPForm nextStep={nextStep} />
           <Legal />
         </section>

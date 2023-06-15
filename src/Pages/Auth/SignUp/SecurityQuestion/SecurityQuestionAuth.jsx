@@ -61,10 +61,10 @@ export default function SecurityQuestionAuth() {
 
   return (
     <>
-      <main className="layout-component">
+      <main className="Auth-layout-component">
         <LeftLoginLayout3 />
-        <section className="form-wrapper">
-          {status && <p className="status-message">{status}</p>}
+        <section className="Auth-form-wrapper">
+          {status && <p className="Auth-status-message">{status}</p>}
           {/* Formik setup */}
           <Formik
             initialValues={{
@@ -82,37 +82,59 @@ export default function SecurityQuestionAuth() {
           >
             {({ errors, touched }) => (
               <Form>
-                <div className="form-field-wrapper">
-                  <label htmlFor="securityQuestion" className="label">Security Question</label>
+                <div className="Auth-form-field-wrapper">
+                  <label htmlFor="securityQuestion" className="Auth-label">
+                    Security Question
+                  </label>
                   <Field
                     name="securityQuestion"
                     as="select"
                     className={
                       errors.securityQuestion && touched.securityQuestion
-                        ? "input-error select"
-                        : "select"
+                        ? "Auth-input-error Auth-select"
+                        : "Auth-select"
                     }
                   >
-                    <option className="option">Please select a security question</option>
-                    <option value="Where did you meet your spouse" className="option">
+                    <option className="option">
+                      Please select a security question
+                    </option>
+                    <option
+                      value="Where did you meet your spouse"
+                      className="Auth-option"
+                    >
                       Where did you meet your spouse?
                     </option>
-                    <option value="What is the name of your favorite childhood friend" className="option">
+                    <option
+                      value="What is the name of your favorite childhood friend"
+                      className="Auth-option"
+                    >
                       What is the name of your favorite childhood friend?
                     </option>
-                    <option value="In what city did you meet your spouse/significant other" className="option">
+                    <option
+                      value="In what city did you meet your spouse/significant other"
+                      className="Auth-option"
+                    >
                       In what city did you meet your spouse/significant other?
                     </option>
-                    <option value={`What is your mother's maiden name`} className="option">
+                    <option
+                      value={`What is your mother's maiden name`}
+                      className="Auth-option"
+                    >
                       {`What is your mother's maiden name?`}
                     </option>
-                    <option value="What is the name of your first pet" className="option">
+                    <option
+                      value="What is the name of your first pet"
+                      className="Auth-option"
+                    >
                       What is the name of your first pet?
                     </option>
                   </Field>
                 </div>
-                <div className="form-field-wrapper">
-                  <label htmlFor="securityQuestionAnswer" className="label">
+                <div className="Auth-form-field-wrapper">
+                  <label
+                    htmlFor="securityQuestionAnswer"
+                    className="Auth-label"
+                  >
                     Security Question Answer
                   </label>
                   <Field
@@ -122,14 +144,14 @@ export default function SecurityQuestionAuth() {
                     className={
                       errors.securityQuestionAnswer &&
                       touched.securityQuestionAnswer
-                        ? "input-error input"
-                        : "input"
+                        ? "Auth-input-error Auth-input"
+                        : "Auth-input"
                     }
                   />
                   <ErrorMessage
                     name="securityQuestionAnswer"
                     component="div"
-                    className="error-message"
+                    className="Auth-error-message"
                   />
                 </div>
                 <SubmitButton isSubmitting={isSubmitting} />

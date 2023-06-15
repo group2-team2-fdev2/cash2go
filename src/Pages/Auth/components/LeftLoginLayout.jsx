@@ -5,7 +5,7 @@ import Quote from "./Quote";
 
 export default function LeftLoginLayout() {
   return (
-    <div className="background">
+    <div className="Auth-background">
       <Laptop />
       <Cash2goLogo1 />
       <Quote />

@@ -7,7 +7,7 @@ export default function NoticeIcon() {
         viewBox="0 0 24 24"
         strokeWidth="0.8"
         stroke="currentColor"
-        className="notice-icon"
+        className="Auth-notice-icon"
       >
         <path
           strokeLinecap="round"

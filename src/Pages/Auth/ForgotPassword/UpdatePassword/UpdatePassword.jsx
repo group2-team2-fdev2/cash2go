@@ -43,7 +43,7 @@ export default function UpdatePassword() {
   // Handles form submission
   const handleSubmit = async (values) => {
     setSubmitting(true); // Set form submission state to true
-    // toggleModal();
+    toggleModal();
 
     const password = values.password; // Get password value from form
     const confirmPassword = values.confirmPassword; // Get confirm password value from form
@@ -76,11 +76,11 @@ export default function UpdatePassword() {
   };
   return (
     <>
-      <main className="layout-component">
+      <main className="Auth-layout-component">
         <LeftLoginLayout />
-        <section className="form-wrapper">
-          <header className="reset title">Reset Password</header>
-          {status && <p className="status-message">{status}</p>}
+        <section className="Auth-form-wrapper">
+          <header className="Auth-reset Auth-title">Reset Password</header>
+          {status && <p className="Auth-status-message">{status}</p>}
           <Formik
             initialValues={{
               password: "",
@@ -102,11 +102,11 @@ export default function UpdatePassword() {
           >
             {({ errors, touched }) => (
               <Form>
-                <div className="form-field-wrapper">
-                  <label htmlFor="password" className="label">
+                <div className="Auth-form-field-wrapper">
+                  <label htmlFor="password" className="Auth-label">
                     Password
                   </label>
-                  <div className="form-field">
+                  <div className="Auth-form-field">
                     <div onClick={togglePasswordVisibility1}>
                       {showPassword1 ? (
                         <OpenPasswordIcon />
@@ -120,22 +120,22 @@ export default function UpdatePassword() {
                       autoComplete="off"
                       className={
                         errors.password && touched.password
-                          ? "input-error input"
-                          : "input"
+                          ? "Auth-input-error Auth-input"
+                          : "Auth-input"
                       }
                     />
                   </div>
                   <ErrorMessage
                     name="password"
                     component="div"
-                    className="error-message"
+                    className="Auth-error-message"
                   />
                 </div>
-                <div className="form-field-wrapper">
-                  <label htmlFor="confirmPassword" className="label">
+                <div className="Auth-form-field-wrapper">
+                  <label htmlFor="confirmPassword" className="Auth-label">
                     Re-enter Password
                   </label>
-                  <div className="form-field">
+                  <div className="Auth-form-field">
                     <div onClick={togglePasswordVisibility2}>
                       {showPassword2 ? (
                         <OpenPasswordIcon />
@@ -149,15 +149,15 @@ export default function UpdatePassword() {
                       autoComplete="off"
                       className={
                         errors.confirmPassword && touched.confirmPassword
-                          ? "input-error input"
-                          : "input"
+                          ? "Auth-input-error Auth-input"
+                          : "Auth-input"
                       }
                     />
                   </div>
                   <ErrorMessage
                     name="confirmPassword"
                     component="div"
-                    className="error-message"
+                    className="Auth-error-message"
                   />
                 </div>
                 <ResetButton isSubmitting={isSubmitting} />
@@ -167,19 +167,19 @@ export default function UpdatePassword() {
           <Legal />
         </section>
         {isModalOpen && (
-          <section className="modal-background">
-            <div className="modal-container1">
+          <section className="Auth-modal-background">
+            <div className="Auth-modal-container1">
               <NoticeIcon />
-              <h1 className="modal-title">Password Changed</h1>
-              <p className="modal-message">
+              <h1 className="Auth-modal-title">Password Changed</h1>
+              <p className="Auth-modal-message">
                 Congratulations, your password has been successfully
                 changed. You may now proceed to Log in.
               </p>
-              <div className="close-modal" onClick={toggleModal}>
+              <div className="Auth-close-modal" onClick={toggleModal}>
                 <WrongIcon />
               </div>
               <button
-                className="continue-button"
+                className="Auth-continue-button"
                 onClick={() => {
                   navigate("/"); // Navigate to the login page
                 }}

@@ -57,7 +57,7 @@ export default function LoginForm({ loginToApp }) {
 
   return (
     <>
-      {status && <p className="status-message">{status}</p>}
+      {status && <p className="Auth-status-message">{status}</p>}
       <Formik
         initialValues={{
           email: "",
@@ -79,8 +79,8 @@ export default function LoginForm({ loginToApp }) {
       >
         {({ errors, touched }) => (
           <Form>
-            <div className="form-field-wrapper">
-              <label htmlFor="email" className="label">
+            <div className="Auth-form-field-wrapper">
+              <label htmlFor="email" className="Auth-label">
                 Email
               </label>
               <Field
@@ -89,20 +89,20 @@ export default function LoginForm({ loginToApp }) {
                 autoComplete="off"
                 placeholder="myworkemail@work.com"
                 className={
-                  errors.email && touched.email ? "input-error input" : "input"
+                  errors.email && touched.email ? "Auth-input-error Auth-input" : "Auth-input"
                 }
               />
               <ErrorMessage
                 name="email"
                 component="div"
-                className="error-message"
+                className="Auth-error-message"
               />
             </div>
-            <div className="form-field-wrapper">
-              <label htmlFor="password" className="label">
+            <div className="Auth-form-field-wrapper">
+              <label htmlFor="password" className="Auth-label">
                 Password
               </label>
-              <div className="form-field">
+              <div className="Auth-form-field">
                 <div onClick={togglePasswordVisibility}>
                   {showPassword ? <OpenPasswordIcon /> : <ClosePasswordIcon />}
                 </div>
@@ -112,15 +112,15 @@ export default function LoginForm({ loginToApp }) {
                   autoComplete="off"
                   className={
                     errors.password && touched.password
-                      ? "input-error input"
-                      : "input"
+                      ? "Auth-input-error Auth-input"
+                      : "Auth-input"
                   }
                 />
               </div>
               <ErrorMessage
                 name="password"
                 component="div"
-                className="error-message"
+                className="Auth-error-message"
               />
             </div>
             <LoginButton isSubmitting={isSubmitting} />

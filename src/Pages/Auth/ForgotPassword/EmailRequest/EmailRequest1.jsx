@@ -52,11 +52,11 @@ export default function EmailRequest1() {
   };
   return (
     <>
-      <main className="layout-component">
+      <main className="Auth-layout-component">
         <LeftLoginLayout />
-        <section className="form-wrapper">
-          <header className="reset title">Reset Password</header>
-          {status && <p className="status-message">{status}</p>}
+        <section className="Auth-form-wrapper">
+          <header className="Auth-reset Auth-title">Reset Password</header>
+          {status && <p className="Auth-status-message">{status}</p>}
           {/* Formik setup */}
           <Formik
             initialValues={{
@@ -71,21 +71,21 @@ export default function EmailRequest1() {
           >
             {({ errors, touched }) => (
               <Form>
-                <div className="form-field-wrapper">
-                  <label htmlFor="email" className="label">Email</label>
+                <div className="Auth-form-field-wrapper">
+                  <label htmlFor="email" className="Auth-label">Email</label>
                   <Field
                     name="email"
                     type="email"
                     autoComplete="off"
                     placeholder="myworkemail@work.com"
-                    className={errors.email && touched.email ? "input-error input" : "input"}
+                    className={errors.email && touched.email ? "Auth-input-error Auth-input" : "Auth-input"}
                   />
                   <ErrorMessage
                     name="email"
                     component="div"
-                    className="error-message"
+                    className="Auth-error-message"
                   />
-                  <p className="instruction">
+                  <p className="Auth-instruction">
                     Please provide the email used for registration
                   </p>
                 </div>

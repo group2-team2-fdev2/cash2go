@@ -9,6 +9,7 @@ import DashboardOverview from "./components/DashboardOverview/DashboardOverview"
 import Approved from "./components/DashboardOverview/Approved";
 import Rejected from "./components/DashboardOverview/Rejected";
 import Pending from "./components/DashboardOverview/Pending";
+import BreadCrumbs from "./components/BreadCrumbs"
 
 export default function Dashboard() {
   const [loanData, setLoanData] = useState([]);
@@ -158,7 +159,7 @@ export default function Dashboard() {
       <div className="dashboard-content">
         <div className="dashboard-header">
           <div className="dashboard-text">
-            <p className="dashboard-title">Dashboard</p>
+            <div className="dashboard-title"><BreadCrumbs /> </div>
             <h3 className="welcome-back">
               Welcome back, you have <strong>{numNewApplications}</strong> new
               applications

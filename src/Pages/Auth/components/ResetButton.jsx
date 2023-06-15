@@ -5,14 +5,14 @@ import LoadingGif from "./LoadingGif";
 
 export default function ResetButton( { isSubmitting } ) {
   return (
-    <button type="submit" className="button-wrapper">
+    <button type="submit" className="Auth-button-wrapper">
       {isSubmitting ? (
         <>
           <LoadingGif />
         </>
       ) : (
         <>
-          <span className="button-text">Reset</span>
+          <span className="Auth-button-text">Reset</span>
         </>
       )}
     </button>

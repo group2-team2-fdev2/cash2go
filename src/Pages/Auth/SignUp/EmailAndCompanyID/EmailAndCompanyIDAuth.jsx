@@ -55,11 +55,11 @@ export default function EmailAndCompanyIDAuth() {
 
   return (
     <>
-      <main className="layout-component">
+      <main className="Auth-layout-component">
         <LeftSignUpLayout1 />
-        <section className="form-wrapper">
-          <header className="title">Sign Up</header>
-          {status && <p className="status-message">{status}</p>}
+        <section className="Auth-form-wrapper">
+          <header className="Auth-title">Sign Up</header>
+          {status && <p className="Auth-status-message">{status}</p>}
           {/* Formik setup */}
           <Formik
             initialValues={{
@@ -78,8 +78,8 @@ export default function EmailAndCompanyIDAuth() {
           >
             {({ errors, touched }) => (
               <Form>
-                <div className="form-field-wrapper">
-                  <label htmlFor="email" className="label">
+                <div className="Auth-form-field-wrapper">
+                  <label htmlFor="email" className="Auth-label">
                     Email
                   </label>
                   <Field
@@ -89,18 +89,18 @@ export default function EmailAndCompanyIDAuth() {
                     placeholder="myworkemail@work.com"
                     className={
                       errors.email && touched.email
-                        ? "input-error input"
-                        : "input"
+                        ? "Auth-input-error Auth-input"
+                        : "Auth-input"
                     }
                   />
                   <ErrorMessage
                     name="email"
                     component="div"
-                    className="error-message"
+                    className="Auth-error-message"
                   />
                 </div>
-                <div className="form-field-wrapper">
-                  <label htmlFor="companyID" className="label">
+                <div className="Auth-form-field-wrapper">
+                  <label htmlFor="companyID" className="Auth-label">
                     Company ID
                   </label>
                   <Field
@@ -110,14 +110,14 @@ export default function EmailAndCompanyIDAuth() {
                     placeholder="123456"
                     className={
                       errors.companyID && touched.companyID
-                        ? "input-error input"
-                        : "input"
+                        ? "Auth-input-error Auth-input"
+                        : "Auth-input"
                     }
                   />
                   <ErrorMessage
                     name="companyID"
                     component="div"
-                    className="error-message"
+                    className="Auth-error-message"
                   />
                 </div>
                 <NextButton isSubmitting={isSubmitting} />
