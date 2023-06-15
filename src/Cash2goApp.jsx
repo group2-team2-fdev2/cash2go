@@ -25,6 +25,8 @@ import ApplicantInfo, {
 import Cashflow from "./Pages/Dashboard/ApplicantDetails/Cashflow";
 import Applications from "./Pages/Dashboard/Applications/Applications";
 import Notification from "./Pages/Dashboard/Notification/Notification";
+import Messages from "./Pages/Dashboard/Messages/Messages";
+import Settings from "./Pages/Dashboard/Settings/Settings";
 // import PreviousLoans from "./Pages/Dashboard/ApplicantDetails/PreviousLoans";
 
 const router = createBrowserRouter(
@@ -60,6 +62,8 @@ const router = createBrowserRouter(
         />
       </Route>
       <Route path="notification" element={<Notification />} />
+      <Route path="messages" element={<Messages />} />
+      <Route path="settings" element={<Settings />} />
     </Route>
   )
 );
