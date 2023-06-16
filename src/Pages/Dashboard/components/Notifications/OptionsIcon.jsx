@@ -7,7 +7,7 @@ export default function OptionsIcon() {
           viewBox="0 0 24 24"
           strokeWidth="1.5"
           stroke="currentColor"
-          className="Notification-icon"
+          className="Notification-notifications-OptionsIcon"
         >
           <path
             strokeLinecap="round"
