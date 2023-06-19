@@ -7,7 +7,7 @@ export default function UserIcon() {
         viewBox="0 0 24 24"
         strokeWidth="1.0"
         stroke="white"
-        className="user-icon"
+        className="Dashboard-user-icon"
       >
         <path
           strokeLinecap="round"

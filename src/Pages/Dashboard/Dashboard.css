@@ -277,7 +277,6 @@
 .dashboard-overview-status {
   font-weight: 500;
   font-size: 13px;
-  
 }
 
 .dashboard-overview-status-wrapper.approved {
@@ -762,7 +761,7 @@
   margin-top: 10px;
 }
 
-.Dashboard-welcome-back {
+.Dashboard-welcome-back-text {
   margin-top: 10px;
   color: #242425;
   font-weight: normal;
@@ -771,22 +770,29 @@
 
 .Dashboard-button-wrapper {
   position: absolute;
-  right: -14px;
-  top: 10px;
+  right: -17px;
+  top: 30px;
+  
 }
 
-.Dashboard-button_grey,
+.Dashboard-button-wrapper button {
+  margin-right: 10px; 
+}
+/* .Dashboard-button_grey,
 .Dashboard-button_orange {
   width: 97.5px;
   height: 40px;
   margin-right: 10px;
+  font-weight: 600;
+  cursor: pointer;
 }
 
 .Dashboard-button_grey {
   background: #e6e9ec;
   border: 1px solid #d1d9e2;
   border-radius: 6px;
-}
+  color: #000;
+} */
 
 .Dashboard-button_orange {
   background: #ff6f5a;
@@ -814,36 +820,39 @@
   border-bottom: 1px solid #ccc;
 }
 
-td.Dashboard-status-cell {
+.Dashboard-loan-table .Dashboard-status-cell {
   width: 100px;
   white-space: nowrap;
 }
 
 td.Dashboard-credit-score-cell,
 th.Dashboard-credit-score-header {
-  padding-left: 30px;
+  padding-left: 50px;
 }
 
 .Dashboard-section-header {
   margin: 15px 0;
 }
 
-.Dashboard-section-header p {
+.Dashboard-sort-option {
   color: #888;
   font-size: 12px;
 }
 
-hr {
+/* hr {
   border: none;
   border-top: 1px solid #ccc;
   width: 100%;
-}
+} */
 
 .Dashboard-loan-table tbody tr:last-child td {
   border-bottom: none;
 }
 
-.Dashboard-loan-table th {
+.Dashboard-loan-amount-header,
+.Dashboard-credit-score-header,
+.Dashboard-status-header,
+.Dashboard-date-header {
   cursor: pointer;
 }
 

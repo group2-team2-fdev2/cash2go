@@ -8,7 +8,7 @@ export default function ApprovedLoanDashboard1({
 }) {
   const title = "Approved Loans";
   const comparism = `+ ${newApprovedDiff} from yesterday`;
-  const status = "approved";
+  const status = "Approved";
 
   return (
     <div className="dashboard-overview-wrapper">
