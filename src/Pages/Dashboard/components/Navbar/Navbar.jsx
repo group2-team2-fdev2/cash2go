@@ -4,7 +4,7 @@ import "../../Dashboard.css";
 import ArrowRightIcon from "./ArrowRightIcon";
 import SearchIcon from "./SearchIcon";
 import NotificationIcon from "./NotificationIcon";
-import UserIcon from "../DashboardOverview/UserIcon";
+import AvatarIcon from "./AvatarIcon";
 
 export default function Navbar() {
   return (
@@ -20,7 +20,7 @@ export default function Navbar() {
       <div className="right-navbar">
         <div className="right-navbar-icons">
           <NotificationIcon />
-          <UserIcon />
+          <AvatarIcon />
         </div>
         <div className="user-profile">
           {/* The p elements below will take in a dynamic data */}

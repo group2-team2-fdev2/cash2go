@@ -1,6 +1,6 @@
 export default function UserIcon() {
   return (
-    <div className="user-icon-wrapper">
+    <div className="Dashboard-user-icon-wrapper">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="#5F6D7E"
