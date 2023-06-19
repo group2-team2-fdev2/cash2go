@@ -1,17 +1,27 @@
-import { NavLink, Outlet } from "react-router-dom";
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import BreadCrumbs from "../components/BreadCrumbs";
 import DashboardHeader from "../components/DashboardHeader/DashboardHeader";
 import Navbar from "../components/Navbar/Navbar";
 import SideBar from "../components/Sidebar/SideBar";
+import LineChart from "../components/LineChart/LineChart";
 
 export default function ApplicantReview() {
-  const navigate = useNavigate();
+  const [cashflowPage, setCashflowPage] = useState(false);
+  const [previousLoansPage, setpreviousLoansPage] = useState(false);
 
   useEffect(() => {
-    navigate("cashflow");
-  }, [navigate]);
+    setCashflowPage(true);
+  }, []);
+
+  const handleCashflowClick = () => {
+    setpreviousLoansPage(false);
+    setCashflowPage(true);
+  }
+
+  const handlePreviousLoanClick = () => {
+    setCashflowPage(false);
+    setpreviousLoansPage(true);
+  };
 
   const isTrue = true;
   return (
@@ -30,15 +40,22 @@ export default function ApplicantReview() {
           paddingBottom="20px"
         />
         <nav className="metric-navigationWrapper">
-          <NavLink to="cashflow" className="metric-navigation">
+          {/* <NavLink to="cashflow" className="metric-navigation">
             Cashflow
-          </NavLink>
-          {/* <NavLink to="" className="metric-navigation">
-            
           </NavLink> */}
+          {/* <NavLink to="" className="metric-navigation">
+          </NavLink> */}
+          <div onClick={handleCashflowClick} className="metric-navigation">Cashflow</div>
+          <div onClick={handlePreviousLoanClick} className="metric-navigation">
+            Previous Loans
+          </div>
         </nav>
         <div className="metric-wrapper">
-          <Outlet />
+          {cashflowPage ? (
+            <LineChart />
+          ) : previousLoansPage ? (
+            ""
+          ) : null}
         </div>
       </div>
     </>

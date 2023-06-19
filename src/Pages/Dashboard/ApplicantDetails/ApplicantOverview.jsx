@@ -22,7 +22,7 @@ export default function ApplicantOverview() {
           secondLink="applicant-review"
           firstButtonTitle="Info"
           secondButtonTitle="Review"
-        />
+        />    
         <ApplicationsOverview />
         <div className="chart-wrapper">
           <PieChart />

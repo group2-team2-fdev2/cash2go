@@ -17,17 +17,16 @@ import SecurityQuestion1 from "./Pages/Auth/ForgotPassword/SecurityQuestion/Secu
 import UpdatePassword from "./Pages/Auth/ForgotPassword/UpdatePassword/UpdatePassword";
 // Dashboard
 import Dashboard from "./Pages/Dashboard/Dashboard";
-import ApplicantOverview from "./Pages/Dashboard/ApplicantDetails/ApplicantOverview";
-import ApplicantReview from "./Pages/Dashboard/ApplicantDetails/ApplicantReview";
-import ApplicantInfo, {
-  ApplicantBioLoader,
-} from "./Pages/Dashboard/ApplicantDetails/ApplicantInfo";
-import Cashflow from "./Pages/Dashboard/ApplicantDetails/Cashflow";
+// import ApplicantOverview from "./Pages/Dashboard/ApplicantDetails/ApplicantOverview";
+// import ApplicantReview from "./Pages/Dashboard/ApplicantDetails/ApplicantReview";
+// import ApplicantInfo, {
+//   ApplicantBioLoader,
+// } from "./Pages/Dashboard/ApplicantDetails/ApplicantInfo";
 import Applications from "./Pages/Dashboard/Applications/Applications";
 import Notification from "./Pages/Dashboard/Notification/Notification";
 import Messages from "./Pages/Dashboard/Messages/Messages";
 import Settings from "./Pages/Dashboard/Settings/Settings";
-// import PreviousLoans from "./Pages/Dashboard/ApplicantDetails/PreviousLoans";
+import Analytics from "./Pages/Dashboard/Analytics/Analytics";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -50,16 +49,14 @@ const router = createBrowserRouter(
         <Route index element={<Applications />} />
       </Route>
       <Route path="analytics">
-        <Route index element={<ApplicantOverview />} />
-        <Route path="applicant-review" element={<ApplicantReview />}>
-          <Route path="cashflow" element={<Cashflow />} />
-          {/* <Route path="previous-loans" element={<PreviousLoans />} /> */}
-        </Route>
+        <Route index element={<Analytics />} />
+        {/* <Route index element={<ApplicantOverview />} />
+        <Route path="applicant-review" element={<ApplicantReview />} />
         <Route
           path="info"
           element={<ApplicantInfo />}
           loader={ApplicantBioLoader}
-        />
+        /> */}
       </Route>
       <Route path="notification" element={<Notification />} />
       <Route path="messages" element={<Messages />} />
