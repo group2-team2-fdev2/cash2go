@@ -11,7 +11,7 @@ export default function DashboardHeader({
   secondLink,
   link,
   isTrue,
-  isApplicationPage,
+  oneButton,
   firstButtonTitle,
   secondButtonTitle,
   ButtonTitle,
@@ -29,7 +29,7 @@ export default function DashboardHeader({
         <p className="dashboardHeader-title">{title}</p>
         <p className="dashboardHeader-subTitle">{subTitle}</p>
       </div>
-      {isTrue ? null : isApplicationPage ? (
+      {isTrue ? null : oneButton ? (
         <div className="right-dashboardHeader">
           <Link to={link}>
             <Button
@@ -54,6 +54,7 @@ export default function DashboardHeader({
               title={secondButtonTitle}
               backgroundColor="#FF6F5A"
               color="#F8F9FB"
+              notificationWidth="144px"
             />
           </Link>
         </div>
@@ -68,7 +69,7 @@ DashboardHeader.propTypes = {
   firstLink: PropTypes.string,
   secondLink: PropTypes.string,
   isTrue: PropTypes.bool,
-  isApplicationPage: PropTypes.bool,
+  oneButton: PropTypes.bool,
   firstButtonTitle: PropTypes.string,
   secondButtonTitle: PropTypes.string,
   ButtonTitle: PropTypes.string,

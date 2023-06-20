@@ -2,7 +2,7 @@
 
 .Dashboard-content {
   position: relative;
-  margin: 7% 7% 7% 23%;
+  margin: 7% 7% 7% 26%;
   display: grid;
 }
 
@@ -27,6 +27,7 @@
 .metric-navigation {
   padding-bottom: 15px;
   border-bottom: 2px solid #5f6d7e;
+  cursor: pointer;
 }
 
 .metric-navigation:active {

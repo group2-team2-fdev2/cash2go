@@ -8,7 +8,7 @@ import SideBar from "../components/Sidebar/SideBar";
 import "./Applications.css"
 
 export default function Applications() {
-  const isApplicationPage = true;
+  const isOneButton = true;
   return (
     <>
       <Navbar />
@@ -19,10 +19,13 @@ export default function Applications() {
           title="Applications"
           subTitle="View All Loan application"
           link="/Analytics"
-          ButtonTitle="Analytics"
-          isApplicationPage={isApplicationPage}
+           oneButton={isOneButton}
+          ButtonTitle="Analytics"  
         /> 
         <ApplicationLoans />
+        <AllApplicantHeading />
+        <Table2 />
+
       </div>
     </>
   );
