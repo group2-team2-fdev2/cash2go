@@ -2,7 +2,7 @@
 
 .Dashboard-content {
   position: relative;
-  margin: 7% 7% 7% 26%;
+  margin: 7% 7% 7% 23%;
   display: grid;
 }
 
@@ -55,6 +55,7 @@
 }
 
 .breadCrumbs .crumb a {
+  font-size: 14px;
   color: #5f6d7e;
 }
 

@@ -1,4 +1,3 @@
-import React from "react";
 import data from "./message.json";
 import MessageCheckbox from "./MessageCheckbox";
 import MessageMark from "./MessageMark";
@@ -9,6 +8,7 @@ import Ellipse3 from "../Messages/Images/Ellipse3.png"
 import Ellipse4 from "../Messages/Images/Ellipse4.png"
 
 const { inbox } = data;
+console.log(inbox)
 
 function Inbox() {
   return (

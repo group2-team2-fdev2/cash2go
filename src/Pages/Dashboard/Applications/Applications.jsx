@@ -1,11 +1,11 @@
-import AllApplicationLoan from "../components/ApplicationPage/AllApplicationLoan";
+// import AllApplicationLoan from "../components/ApplicationPage/AllApplicationLoan";
 import ApplicationLoans from "../components/ApplicationPage/ApplicationLoans";
-import ApprovedLoans from "../components/ApplicationPage/ApprovedLoans";
- import BreadCrumbs from "../components/BreadCrumbs";
- import DashboardHeader from "../components/DashboardHeader/DashboardHeader";
+// import ApprovedLoans from "../components/ApplicationPage/ApprovedLoans";
+import BreadCrumbs from "../components/BreadCrumbs";
+import DashboardHeader from "../components/DashboardHeader/DashboardHeader";
 import Navbar from "../components/Navbar/Navbar";
 import SideBar from "../components/Sidebar/SideBar";
-import "./Applications.css"
+import "./Applications.css";
 
 export default function Applications() {
   const isOneButton = true;
@@ -19,13 +19,12 @@ export default function Applications() {
           title="Applications"
           subTitle="View All Loan application"
           link="/Analytics"
-           oneButton={isOneButton}
-          ButtonTitle="Analytics"  
-        /> 
+          oneButton={isOneButton}
+          ButtonTitle="Analytics"
+        />
         <ApplicationLoans />
-        <AllApplicantHeading />
-        <Table2 />
-
+        {/* <AllApplicantHeading />
+        <Table2 /> */}
       </div>
     </>
   );

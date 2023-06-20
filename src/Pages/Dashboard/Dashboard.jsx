@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import UserIcon from "./components/DashboardOverview/UserIcon";
 
-
 // component
 import "../Dashboard/Dashboard.css";
 import Navbar from "./components/Navbar/Navbar";
@@ -12,6 +11,7 @@ import Rejected from "./components/DashboardOverview/Rejected";
 import Pending from "./components/DashboardOverview/Pending";
 import BreadCrumbs from "./components/BreadCrumbs";
 import Button from "./components/DashboardHeader/Button";
+import DashboardHeader from "./components/DashboardHeader/DashboardHeader";
 
 export default function Dashboard({ title, ButtonTitle, firstButtonTitle }) {
   const [loanData, setLoanData] = useState([]);
@@ -164,6 +164,7 @@ export default function Dashboard({ title, ButtonTitle, firstButtonTitle }) {
       <Navbar />
       <SideBar />
       <div className="Dashboard-content">
+        {/* <BreadCrumbs /> */}
         <div className="Dashboard-header">
           <div className="Dashboard-text">
             <div className="Dashboard-title">
@@ -181,6 +182,14 @@ export default function Dashboard({ title, ButtonTitle, firstButtonTitle }) {
           <Button title="Existing" backgroundColor="#E6E9EC" color="#5f6d7e" />
           <Button title="New" backgroundColor="#FF6F5A" color="#F8F9FB" />
         </div>
+
+        {/* <DashboardHeader
+          subTitle={`Welcome back you have ${numNewApplications} new applications`}
+          firstLink="/applications"
+          secondLink="/new-application"
+          firstButtonTitle="Existing"
+          secondButtonTitle="New"
+        /> */}
 
         <DashboardOverview
           numApproved={numApproved}

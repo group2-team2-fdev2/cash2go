@@ -32,8 +32,8 @@ export default function NotificationPage() {
       <Navbar />
       <SideBar />
       <div className="Dashboard-content">
+        <BreadCrumbs />
         <div className="NotificationPage-display">
-          <BreadCrumbs />
           <DashboardHeader
             title="Notifications"
             firstLink="/settings"
@@ -60,7 +60,6 @@ export default function NotificationPage() {
                     </div>
                     <div className="Notification-notifications-date">
                       {new Date().toLocaleString()}
-                      
                     </div>
 
                     <div className="Notification-messages-title">
@@ -112,7 +111,7 @@ export default function NotificationPage() {
               disabled={indexOfLastItem >= Notifications.length}
               onClick={() => paginate(currentPage + 1)}
             >
-             <span> {<NextArrow />}</span>
+              <span> {<NextArrow />}</span>
             </button>
           </div>
         </div>
