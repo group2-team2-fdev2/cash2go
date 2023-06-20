@@ -29,6 +29,7 @@ import Messages from "./Pages/Dashboard/Messages/Messages";
 import Settings from "./Pages/Dashboard/Settings/Settings";
 // import PreviousLoans from "./Pages/Dashboard/ApplicantDetails/PreviousLoans";
 
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
@@ -62,7 +63,7 @@ const router = createBrowserRouter(
         />
       </Route>
       <Route path="notification" element={<Notification />} />
-      <Route path="messages" element={<Messages />} />
+      <Route path="messages/*" element={<Messages />} />
       <Route path="settings" element={<Settings />} />
     </Route>
   )
