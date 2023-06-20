@@ -10,7 +10,7 @@ export default function DashboardHeader({
   firstLink,
   secondLink,
   link,
-  isTrue,
+  isNoButton,
   oneButton,
   firstButtonTitle,
   secondButtonTitle,
@@ -29,7 +29,7 @@ export default function DashboardHeader({
         <p className="dashboardHeader-title">{title}</p>
         <p className="dashboardHeader-subTitle">{subTitle}</p>
       </div>
-      {isTrue ? null : oneButton ? (
+      {isNoButton ? null : oneButton ? (
         <div className="right-dashboardHeader">
           <Link to={link}>
             <Button
@@ -66,7 +66,7 @@ DashboardHeader.propTypes = {
   subTitle: PropTypes.string,
   firstLink: PropTypes.string,
   secondLink: PropTypes.string,
-  isTrue: PropTypes.bool,
+  isNoButton: PropTypes.bool,
   oneButton: PropTypes.bool,
   firstButtonTitle: PropTypes.string,
   secondButtonTitle: PropTypes.string,

@@ -23,7 +23,7 @@ export default function ApplicantReview() {
     setpreviousLoansPage(true);
   };
 
-  const isTrue = true;
+  const isNoButton = true;
   return (
     <>
       <Navbar />
@@ -33,7 +33,7 @@ export default function ApplicantReview() {
         <DashboardHeader
           title="Ogbeni Mallam"
           subTitle="ID 20239076"
-          isTrue={isTrue}
+          isNoButton={isNoButton}
           firstButtonTitle="Contact"
           secondButtonTitle="Message"
           borderBottom="1px solid #D1D9E2"

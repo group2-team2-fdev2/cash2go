@@ -12,7 +12,7 @@ export default function ApplicantInfo() {
 
     const { firstName, lastName, _id } = contacts
 
-  const isTrue = true;
+  const isNoButton = true;
   return (
     <>
       <Navbar />
@@ -22,7 +22,7 @@ export default function ApplicantInfo() {
         <DashboardHeader
           title={`${firstName} ${lastName}`}
           subTitle={`ID ${_id}`}
-          isTrue={isTrue}
+          isNoButton={isNoButton}
           borderBottom="1px solid #D1D9E2"
           paddingBottom="20px"
         />
