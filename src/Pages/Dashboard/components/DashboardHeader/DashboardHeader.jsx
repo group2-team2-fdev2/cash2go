@@ -36,6 +36,7 @@ export default function DashboardHeader({
               title={ButtonTitle}
               backgroundColor="#FF6F5A"
               color="#F8F9FB"
+              width="207px"
             />
           </Link>
         </div>
@@ -53,6 +54,7 @@ export default function DashboardHeader({
               title={secondButtonTitle}
               backgroundColor="#FF6F5A"
               color="#F8F9FB"
+              notificationWidth="144px"
             />
           </Link>
         </div>
