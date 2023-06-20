@@ -1,7 +1,8 @@
-import AllApplicantHeading from "../components/ApplicationPage/AllApplicantHeading";
-import Table2 from "../components/ApplicationPage/Table2";
-import BreadCrumbs from "../components/BreadCrumbs";
-import DashboardHeader from "../components/DashboardHeader/DashboardHeader";
+import AllApplicationLoan from "../components/ApplicationPage/AllApplicationLoan";
+import ApplicationLoans from "../components/ApplicationPage/ApplicationLoans";
+import ApprovedLoans from "../components/ApplicationPage/ApprovedLoans";
+ import BreadCrumbs from "../components/BreadCrumbs";
+ import DashboardHeader from "../components/DashboardHeader/DashboardHeader";
 import Navbar from "../components/Navbar/Navbar";
 import SideBar from "../components/Sidebar/SideBar";
 import "./Applications.css"
@@ -12,7 +13,7 @@ export default function Applications() {
     <>
       <Navbar />
       <SideBar />
-      <div className="Dashboard-content">
+      <div className="Application-dashboard-content">
         <BreadCrumbs />
         <DashboardHeader
           title="Applications"
@@ -20,9 +21,8 @@ export default function Applications() {
           link="/Analytics"
           ButtonTitle="Analytics"
           isApplicationPage={isApplicationPage}
-        />
-        <AllApplicantHeading />
-        <Table2 />
+        /> 
+        <ApplicationLoans />
       </div>
     </>
   );
