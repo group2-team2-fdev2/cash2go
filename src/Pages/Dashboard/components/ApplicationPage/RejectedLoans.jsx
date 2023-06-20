@@ -4,8 +4,9 @@ import Downarrow from "./Downarrow";
 import Download from "./Download";
 import NextArrow from "./NextArrow";
 import PreviousArrow from "./PreviousArrow";
+import Rejected from "./Rejected";
 
-function Table2() {
+function RejectedLoans() {
   const [data, setData] = useState(Data);
 
   useEffect(() => {
@@ -18,17 +19,14 @@ function Table2() {
   }, []);
 
   return (
-    <div className="Application-table-container">
+    <div>
       <table className="Application-table">
-        <thead className="Application-table-head">
+        <thead >
           <tr>
-            <th className="Application-allApp-container">All Applications</th>
+            <th colspan="6" id="Application-allApp-container">All Applications</th>
           </tr>
-
-          <tr className="Application-second-tableHead">
-            <th className="Application-app-info">
-              <div>Applicants info</div>
-            </th>
+          <tr  className="Application-second-tableHead">
+            <th colspan='2' id='Application-table-applicantinfo'>Applicants info</th>
             <th>
               <div className="Application-tableHead-container">
                 <p>Date</p>
@@ -62,10 +60,10 @@ function Table2() {
               return (
                 <tr key={item.episode_id}>
                   <td>{item.applicantInfo}</td>
-                  <td>{item.date}</td>
-                  <td>{item.status}</td>
-                  <td className="status">{item.creditscore}</td>
-                  <td>{item.amount}</td>
+                  <td >{item.date}</td>
+                  <td ><Rejected/></td>
+                  <td >{item.creditscore}</td>
+                  <td >{item.amount}</td>
                   <td>
                     <Download />
                   </td>
@@ -73,13 +71,13 @@ function Table2() {
               );
             })}
           <tr className="Application-footer">
-            <td>
+            <div>
               <div className="Application-pre">
                 <PreviousArrow />
                 <p>Pre</p>
               </div>
-            </td>
-            <td>
+            </div>
+            <div>
               <div className="Application-page-no">
                 <p>1</p>
                 <p>2</p>
@@ -87,17 +85,17 @@ function Table2() {
                 <p>5</p>
                 <p>6</p>
               </div>
-            </td>
-            <td>
+            </div>
+            <div>
               <div className="Application-next">
                 <p>Next</p>
                 <NextArrow />
               </div>
-            </td>
+            </div>
           </tr>
         </tbody>
       </table>
     </div>
   );
 }
-export default Table2;
+export default RejectedLoans;
