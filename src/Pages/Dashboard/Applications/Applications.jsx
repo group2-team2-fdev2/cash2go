@@ -19,7 +19,7 @@ export default function Applications() {
           title="Applications"
           subTitle="View All Loan application"
           link="/Analytics"
-          oneButton={isOneButton}
+          isOneButton={isOneButton}
           ButtonTitle="Analytics"
         />
         <ApplicationLoans />

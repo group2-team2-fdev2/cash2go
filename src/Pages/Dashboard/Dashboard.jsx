@@ -11,7 +11,7 @@ import Rejected from "./components/DashboardOverview/Rejected";
 import Pending from "./components/DashboardOverview/Pending";
 import BreadCrumbs from "./components/BreadCrumbs";
 import Button from "./components/DashboardHeader/Button";
-import DashboardHeader from "./components/DashboardHeader/DashboardHeader";
+// import DashboardHeader from "./components/DashboardHeader/DashboardHeader";
 
 export default function Dashboard({ title, ButtonTitle, firstButtonTitle }) {
   const [loanData, setLoanData] = useState([]);
@@ -24,6 +24,8 @@ export default function Dashboard({ title, ButtonTitle, firstButtonTitle }) {
   const [newApprovedDiff, setNewApprovedDiff] = useState(0);
   const [newPendingDiff, setNewPendingDiff] = useState(0);
   const [newRejectedDiff, setNewRejectedDiff] = useState(0);
+
+  // const isRegularButton = true;
 
   const statusComponents = {
     approved: <Approved />,
@@ -189,6 +191,7 @@ export default function Dashboard({ title, ButtonTitle, firstButtonTitle }) {
           secondLink="/new-application"
           firstButtonTitle="Existing"
           secondButtonTitle="New"
+          isRegularButton={isRegularButton}
         /> */}
 
         <DashboardOverview

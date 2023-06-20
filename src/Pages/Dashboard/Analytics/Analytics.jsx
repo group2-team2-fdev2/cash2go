@@ -40,7 +40,7 @@ export default function Analytics() {
           title="Analytics"
           subTitle="Loan Performance and Dashboard"
           link="/applications"
-          oneButton={isOneButton}
+          isOneButton={isOneButton}
           ButtonTitle="Applicants"
           paddingBottom="20px"
         />

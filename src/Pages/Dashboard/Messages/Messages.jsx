@@ -19,7 +19,7 @@ export default function Messages() {
             title="Messages"
             firstLink="/Messages"
             secondLink="/Create messages"
-            firstButtonTitle="mark"
+            firstButtonTitle="Mark"
             secondButtonTitle="Delete marked"
           />
         </div>
