@@ -10,10 +10,10 @@ import Approved from "./components/DashboardOverview/Approved";
 import Rejected from "./components/DashboardOverview/Rejected";
 import Pending from "./components/DashboardOverview/Pending";
 import BreadCrumbs from "./components/BreadCrumbs";
-import Button from "./components/DashboardHeader/Button";
-// import DashboardHeader from "./components/DashboardHeader/DashboardHeader";
+// import Button from "./components/DashboardHeader/Button";
+import DashboardHeader from "./components/DashboardHeader/DashboardHeader";
 
-export default function Dashboard({ title, ButtonTitle, firstButtonTitle }) {
+export default function Dashboard() {
   const [loanData, setLoanData] = useState([]);
   const [sortedData, setSortedData] = useState([]);
   const [sortBy, setSortBy] = useState("date");
@@ -25,7 +25,7 @@ export default function Dashboard({ title, ButtonTitle, firstButtonTitle }) {
   const [newPendingDiff, setNewPendingDiff] = useState(0);
   const [newRejectedDiff, setNewRejectedDiff] = useState(0);
 
-  // const isRegularButton = true;
+  const isRegularButton = true;
 
   const statusComponents = {
     approved: <Approved />,
@@ -166,33 +166,21 @@ export default function Dashboard({ title, ButtonTitle, firstButtonTitle }) {
       <Navbar />
       <SideBar />
       <div className="Dashboard-content">
-        {/* <BreadCrumbs /> */}
+        <BreadCrumbs />
         <div className="Dashboard-header">
           <div className="Dashboard-text">
-            <div className="Dashboard-title">
-              <BreadCrumbs />
-            </div>
-            <h3 className="Dashboard-welcome-back-text">
-              Welcome back, you have <strong>{numNewApplications}</strong> new
-              applications
-            </h3>
+            <div className="Dashboard-title"></div>
+            <DashboardHeader
+              title="Hello Gbenga,"
+              subTitle={`Welcome back you have ${numNewApplications} new applications`}
+              firstLink="/applications"
+              secondLink="/new-application"
+              firstButtonTitle="Existing"
+              secondButtonTitle="New"
+              isRegularButton={isRegularButton}
+            />
           </div>
         </div>
-        <div className="Dashboard-button-wrapper">
-          {/* <button className="Dashboard-button_grey">Existing</button>
-          <button className="Dashboard-button_orange">New</button> */}
-          <Button title="Existing" backgroundColor="#E6E9EC" color="#5f6d7e" />
-          <Button title="New" backgroundColor="#FF6F5A" color="#F8F9FB" />
-        </div>
-
-        {/* <DashboardHeader
-          subTitle={`Welcome back you have ${numNewApplications} new applications`}
-          firstLink="/applications"
-          secondLink="/new-application"
-          firstButtonTitle="Existing"
-          secondButtonTitle="New"
-          isRegularButton={isRegularButton}
-        /> */}
 
         <DashboardOverview
           numApproved={numApproved}
@@ -215,7 +203,7 @@ export default function Dashboard({ title, ButtonTitle, firstButtonTitle }) {
               </th>
             </tr>
             <tr>
-              <th>Name</th>
+              <th className="Dashboard-name-header">Name</th>
               <th
                 className="Dashboard-date-header"
                 onClick={() => setSortBy("date")}
@@ -238,7 +226,7 @@ export default function Dashboard({ title, ButtonTitle, firstButtonTitle }) {
                 className="Dashboard-loan-amount-header"
                 onClick={() => setSortBy("loanAmount")}
               >
-                Loan Amount &darr;
+                Amount &darr;
               </th>
             </tr>
           </thead>

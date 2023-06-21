@@ -1,4 +1,3 @@
-import React from "react";
 import SmallIconRight from "./SmallIconRight";
 
 export default function Approved() {

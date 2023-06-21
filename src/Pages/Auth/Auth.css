@@ -432,9 +432,10 @@
 .Auth-notice-icon {
   width: 40px;
   height: 40px;
-  color: rgb(100, 98, 98);
+  color: rgb(8, 139, 25);
   margin-bottom: 10px;
 }
+
 
 .Auth-modal-title {
   font-size: 18px;
@@ -477,3 +478,4 @@
   fill: #fd3d39;
   background-color: transparent;
 }
+
