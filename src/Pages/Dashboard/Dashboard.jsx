@@ -9,9 +9,11 @@ import DashboardOverview from "./components/DashboardOverview/DashboardOverview"
 import Approved from "./components/DashboardOverview/Approved";
 import Rejected from "./components/DashboardOverview/Rejected";
 import Pending from "./components/DashboardOverview/Pending";
-import BreadCrumbs from "./components/BreadCrumbs"
+import BreadCrumbs from "./components/BreadCrumbs";
+import Button from "./components/DashboardHeader/Button";
+// import DashboardHeader from "./components/DashboardHeader/DashboardHeader";
 
-export default function Dashboard() {
+export default function Dashboard({ title, ButtonTitle, firstButtonTitle }) {
   const [loanData, setLoanData] = useState([]);
   const [sortedData, setSortedData] = useState([]);
   const [sortBy, setSortBy] = useState("date");
@@ -23,12 +25,13 @@ export default function Dashboard() {
   const [newPendingDiff, setNewPendingDiff] = useState(0);
   const [newRejectedDiff, setNewRejectedDiff] = useState(0);
 
+  // const isRegularButton = true;
+
   const statusComponents = {
     approved: <Approved />,
     rejected: <Rejected />,
     pending: <Pending />,
   };
-
 
   useEffect(() => {
     const fetchData = () => {
@@ -91,11 +94,15 @@ export default function Dashboard() {
           return a.status.localeCompare(b.status);
         } else if (sortBy === "creditScore") {
           return a.creditScore - b.creditScore;
+        } else if (sortBy === "loanAmount") {
+          return (
+            parseInt(a.loanAmount.substring(2)) -
+            parseInt(b.loanAmount.substring(2))
+          );
         }
       });
       setSortedData(sorted);
     };
-
     sortLoanData();
   }, [loanData, sortBy]);
 
@@ -148,6 +155,8 @@ export default function Dashboard() {
       sortOptionText = "Status";
     } else if (sortBy === "creditScore") {
       sortOptionText = "Credit Score";
+    } else if (sortBy === "loanAmount") {
+      sortOptionText = "Loan Amount";
     }
     return sortOptionText;
   };
@@ -157,19 +166,33 @@ export default function Dashboard() {
       <Navbar />
       <SideBar />
       <div className="Dashboard-content">
+        {/* <BreadCrumbs /> */}
         <div className="Dashboard-header">
           <div className="Dashboard-text">
-            <div className="Dashboard-title"><BreadCrumbs /></div>
-            <h3 className="Dashboard-welcome-back">
+            <div className="Dashboard-title">
+              <BreadCrumbs />
+            </div>
+            <h3 className="Dashboard-welcome-back-text">
               Welcome back, you have <strong>{numNewApplications}</strong> new
               applications
             </h3>
           </div>
         </div>
         <div className="Dashboard-button-wrapper">
-          <button className="Dashboard-button_grey">Existing</button>
-          <button className="Dashboard-button_orange">New</button>
+          {/* <button className="Dashboard-button_grey">Existing</button>
+          <button className="Dashboard-button_orange">New</button> */}
+          <Button title="Existing" backgroundColor="#E6E9EC" color="#5f6d7e" />
+          <Button title="New" backgroundColor="#FF6F5A" color="#F8F9FB" />
         </div>
+
+        {/* <DashboardHeader
+          subTitle={`Welcome back you have ${numNewApplications} new applications`}
+          firstLink="/applications"
+          secondLink="/new-application"
+          firstButtonTitle="Existing"
+          secondButtonTitle="New"
+          isRegularButton={isRegularButton}
+        /> */}
 
         <DashboardOverview
           numApproved={numApproved}
@@ -185,21 +208,38 @@ export default function Dashboard() {
               <th colSpan="5">
                 <div className="Dashboard-section-header">
                   <h3>Recent Applications</h3>
-                  <p>Sorted by {getSortOptionText()}</p>
+                  <p className="Dashboard-sort-option">
+                    Sorted by {getSortOptionText()}
+                  </p>
                 </div>
               </th>
             </tr>
             <tr>
               <th>Name</th>
-              <th onClick={() => setSortBy("date")}>Date</th>
-              <th onClick={() => setSortBy("status")}>Status</th>
               <th
-                className="credit-score-header"
+                className="Dashboard-date-header"
+                onClick={() => setSortBy("date")}
+              >
+                Date &darr;
+              </th>
+              <th
+                className="Dashboard-status-header"
+                onClick={() => setSortBy("status")}
+              >
+                Status &darr;
+              </th>
+              <th
+                className="Dashboard-credit-score-header"
                 onClick={() => setSortBy("creditScore")}
               >
-                Credit Score
+                Credit Score &darr;
               </th>
-              <th>Loan Amount</th>
+              <th
+                className="Dashboard-loan-amount-header"
+                onClick={() => setSortBy("loanAmount")}
+              >
+                Loan Amount &darr;
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -226,8 +266,12 @@ export default function Dashboard() {
                     day: "2-digit",
                   })}
                 </td>
-                <td className="Dashboard-status-cell">{statusComponents[loan.status]}</td>
-                <td className="Dashboard-credit-score-cell">{loan.creditScore}</td>
+                <td className="Dashboard-status-cell">
+                  {statusComponents[loan.status]}
+                </td>
+                <td className="Dashboard-credit-score-cell">
+                  {loan.creditScore}
+                </td>
                 <td>{loan.loanAmount}</td>
               </tr>
             ))}

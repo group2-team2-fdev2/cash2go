@@ -1,0 +1,80 @@
+.Settings-Navigation {
+  width: 902px;
+  height: 64px;
+  margin-top: 32px;
+  margin-bottom: 32px;
+}
+
+.Settings-Navigation_flex-container {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.Settings-Navigation_flex-item {
+  font-size: 15px;
+  line-height: 22px;
+  color: #5f6d7e;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #5f6d7e;
+  cursor: pointer;
+}
+
+.Settings-Navigation_flex-item.active {
+  border-bottom: 2px solid #5f6d7e;
+}
+
+.NotificationSettings,
+.SecurityAndPrivacySettings {
+  width: 902px;
+}
+
+.NotificationSettings-TableHead,
+.SecurityAndPrivacySettings-TableHead {
+  height: 44px;
+  background: #f8f9fb;
+}
+
+.NotificationSettings-TableHead_header,
+.SecurityAndPrivacySettings-TableHead_header {
+  padding: 16px 24px;
+  text-align: start;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 18px;
+  color: #5f6d7e;
+}
+
+.NotificationSettings-TableBody_data,
+.SecurityAndPrivacySettings-TableBody_data {
+  border-bottom: 1px solid #d1d9e2;
+  padding: 16px 24px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: #2e3646;
+}
+
+.NotificationSettings-TableBody_icon,
+.SecurityAndPrivacySettings-TableBody_icon {
+  border-bottom: 1px solid #d1d9e2;
+  padding: 16px 24px;
+}
+
+.ToggleOff-icon {
+  fill: #5f6d7e;
+  width: 44px;
+  height: 30px;
+}
+
+.ToggleOn-icon {
+  fill: #ff6f5a;
+  width: 44px;
+  height: 30px;
+}
+
+.Edit-icon {
+  color: #5f6d7e;
+  width: 34px;
+  height: 20px;
+}

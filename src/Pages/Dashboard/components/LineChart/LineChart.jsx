@@ -16,22 +16,23 @@ ChartJS.register(
   Tooltip,
   Legend
 );
+import PropTypes from "prop-types";
 
-export default function LineChart() {
-  const data = {
-    labels: ["January", "February", "March"],
-    datasets: [
-      {
-        label: "Cashflow",
-        data: [50, 25, 75],
-        backgroundColor: "#169872",
-        borderColor: "#169872",
-        borderWidth: 2,
-        pointBorderColor: "#169872",
-        tension: 0.3,
-      },
-    ],
-  };
+export default function LineChart({ title, duration, data }) {
+  // const data = {
+  //   labels: ["January", "February", "March", "April", "May", "June"],
+  //   datasets: [
+  //     {
+  //       label: "Cashflow",
+  //       data: [50, 25, 75, 90, 25, 75],
+  //       backgroundColor: "#169872",
+  //       borderColor: "#169872",
+  //       borderWidth: 2,
+  //       pointBorderColor: "#169872",
+  //       tension: 0.3,
+  //     },
+  //   ],
+  // };
 
   const options = {
     plugins: {
@@ -49,13 +50,14 @@ export default function LineChart() {
         min: 0,
         max: 100,
         ticks: {
-          stepSize: 20,
+          stepSize: 25,
         },
         grid: {
           display: false,
         },
       },
       x: {
+        beginAtZero: true,
         grid: {
           display: false,
         },
@@ -66,8 +68,8 @@ export default function LineChart() {
   return (
     <section className="LineChart-wrapper">
       <header className="LineChart-heading">
-        <div className="LineChart-title">Cashflow</div>
-        <div className="LineChart-subTitle">Jan - Mar 2023</div>
+        <div className="LineChart-title">{title}</div>
+        <div className="LineChart-subTitle">{duration}</div>
       </header>
       <main className="LineChart-dataWrapper">
         <div
@@ -90,3 +92,12 @@ export default function LineChart() {
     </section>
   );
 }
+
+LineChart.propTypes = {
+  title: PropTypes.string,
+  duration: PropTypes.string,
+  data: PropTypes.shape({
+    labels: PropTypes.array,
+    datasets: PropTypes.array,
+  }),
+};

@@ -8,7 +8,7 @@ export default function RejectedLoanDashboard1({
 }) {
   const title = "Rejected";
   const comparism = `+ ${newRejectedDiff} from yesterday`;
-  const status = "rejected";
+  const status = "Rejected";
 
   return (
     <div className="dashboard-overview-wrapper">

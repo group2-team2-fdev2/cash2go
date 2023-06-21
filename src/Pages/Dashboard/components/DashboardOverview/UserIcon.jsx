@@ -1,13 +1,13 @@
 export default function UserIcon() {
   return (
-    <div className="user-icon-wrapper">
+    <div className="Dashboard-user-icon-wrapper">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="#5F6D7E"
         viewBox="0 0 24 24"
         strokeWidth="1.0"
         stroke="white"
-        className="user-icon"
+        className="Dashboard-user-icon"
       >
         <path
           strokeLinecap="round"

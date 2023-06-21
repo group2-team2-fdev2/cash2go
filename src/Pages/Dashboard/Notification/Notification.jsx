@@ -32,8 +32,8 @@ export default function NotificationPage() {
       <Navbar />
       <SideBar />
       <div className="Dashboard-content">
+        <BreadCrumbs />
         <div className="NotificationPage-display">
-          <BreadCrumbs />
           <DashboardHeader
             title="Notifications"
             firstLink="/settings"

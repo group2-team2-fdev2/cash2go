@@ -1,5 +1,5 @@
-
 import ApplicantImage from './ApplicantImage'
+import '../../Dashboard.css'
 
 
 function User(prop) {

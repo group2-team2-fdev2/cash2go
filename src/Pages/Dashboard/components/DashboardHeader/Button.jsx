@@ -1,11 +1,12 @@
 // library
 import PropTypes from "prop-types";
 
-export default function Button({ title, backgroundColor, color, notificationWidth }) {
+
+export default function Button({ title, backgroundColor, color, width }) {
   const buttonStyle = {
     backgroundColor: backgroundColor,
     color: color,
-    width: notificationWidth,
+    width: width,
   };
   return (
     <>
@@ -20,5 +21,6 @@ Button.propTypes = {
   title: PropTypes.string,
   backgroundColor: PropTypes.string,
   color: PropTypes.string,
-  notificationWidth: PropTypes.string
-};
+  width: PropTypes.string,
+}
+

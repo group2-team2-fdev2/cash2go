@@ -10,8 +10,9 @@ export default function DashboardHeader({
   firstLink,
   secondLink,
   link,
-  isTrue,
-  isApplicationPage,
+  isNoButton,
+  isOneButton,
+  isRegularButton,
   firstButtonTitle,
   secondButtonTitle,
   ButtonTitle,
@@ -29,11 +30,29 @@ export default function DashboardHeader({
         <p className="dashboardHeader-title">{title}</p>
         <p className="dashboardHeader-subTitle">{subTitle}</p>
       </div>
-      {isTrue ? null : isApplicationPage ? (
+      {isNoButton ? null : isOneButton ? (
         <div className="right-dashboardHeader">
           <Link to={link}>
             <Button
               title={ButtonTitle}
+              backgroundColor="#FF6F5A"
+              color="#F8F9FB"
+              width="144px"
+            />
+          </Link>
+        </div>
+      ) : isRegularButton ? (
+        <div className="right-dashboardHeader">
+          <Link to={firstLink}>
+            <Button
+              title={firstButtonTitle}
+              backgroundColor="#E6E9EC"
+              color="#5f6d7e"
+            />
+          </Link>
+          <Link to={secondLink}>
+            <Button
+              title={secondButtonTitle}
               backgroundColor="#FF6F5A"
               color="#F8F9FB"
             />
@@ -53,7 +72,7 @@ export default function DashboardHeader({
               title={secondButtonTitle}
               backgroundColor="#FF6F5A"
               color="#F8F9FB"
-              notificationWidth="144px"
+              width="144px"
             />
           </Link>
         </div>
@@ -67,8 +86,9 @@ DashboardHeader.propTypes = {
   subTitle: PropTypes.string,
   firstLink: PropTypes.string,
   secondLink: PropTypes.string,
-  isTrue: PropTypes.bool,
-  isApplicationPage: PropTypes.bool,
+  isNoButton: PropTypes.bool,
+  isOneButton: PropTypes.bool,
+  isRegularButton: PropTypes.bool,
   firstButtonTitle: PropTypes.string,
   secondButtonTitle: PropTypes.string,
   ButtonTitle: PropTypes.string,
