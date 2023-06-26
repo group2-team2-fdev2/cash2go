@@ -172,7 +172,16 @@ export default function Dashboard() {
             <div className="Dashboard-title"></div>
             <DashboardHeader
               title="Hello Gbenga,"
-              subTitle={`Welcome back you have ${numNewApplications} new applications`}
+              // subTitle={`Welcome back you have ${numNewApplications} new applications`}
+              subTitle={
+                <>
+                  Welcome back you have{" "}
+                  <span className="dashboardHeader-subTitle-variable">
+                    {numNewApplications}
+                  </span>{" "}
+                  new applications
+                </>
+              }
               firstLink="/applications"
               secondLink="/new-application"
               firstButtonTitle="Existing"
