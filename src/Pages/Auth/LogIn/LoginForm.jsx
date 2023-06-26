@@ -83,15 +83,21 @@ export default function LoginForm({ loginToApp }) {
               <label htmlFor="email" className="Auth-label">
                 Email
               </label>
-              <Field
-                name="email"
-                type="email"
-                autoComplete="off"
-                placeholder="myworkemail@work.com"
+              <div
                 className={
-                  errors.email && touched.email ? "Auth-input-error Auth-input" : "Auth-input"
+                  errors.email && touched.email
+                    ? "Auth-input-error Auth-form-field"
+                    : "Auth-form-field"
                 }
-              />
+              >
+                <Field
+                  name="email"
+                  type="email"
+                  autoComplete="off"
+                  placeholder="myworkemail@work.com"
+                  className="Auth-input"
+                />
+              </div>
               <ErrorMessage
                 name="email"
                 component="div"
@@ -102,20 +108,22 @@ export default function LoginForm({ loginToApp }) {
               <label htmlFor="password" className="Auth-label">
                 Password
               </label>
-              <div className="Auth-form-field">
-                <div onClick={togglePasswordVisibility}>
-                  {showPassword ? <OpenPasswordIcon /> : <ClosePasswordIcon />}
-                </div>
+              <div
+                className={
+                  errors.password && touched.password
+                    ? "Auth-input-error Auth-form-field"
+                    : "Auth-form-field"
+                }
+              >
                 <Field
                   name="password"
                   type={showPassword ? "text" : "password"}
                   autoComplete="off"
-                  className={
-                    errors.password && touched.password
-                      ? "Auth-input-error Auth-input"
-                      : "Auth-input"
-                  }
+                  className="Auth-input"
                 />
+                <div onClick={togglePasswordVisibility}>
+                  {showPassword ? <OpenPasswordIcon /> : <ClosePasswordIcon />}
+                </div>
               </div>
               <ErrorMessage
                 name="password"
