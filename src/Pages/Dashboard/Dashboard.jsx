@@ -24,7 +24,7 @@ export default function Dashboard() {
   const [newApprovedDiff, setNewApprovedDiff] = useState(0);
   const [newPendingDiff, setNewPendingDiff] = useState(0);
   const [newRejectedDiff, setNewRejectedDiff] = useState(0);
-
+  
   const isRegularButton = true;
 
   const statusComponents = {

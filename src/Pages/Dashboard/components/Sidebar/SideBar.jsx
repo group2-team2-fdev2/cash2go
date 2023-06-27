@@ -1,5 +1,5 @@
 // style
-import "../../Dashboard.css"
+import "../../Dashboard.css";
 // component
 import Cash2goLogo from "./Cash2goLogo";
 import DashboardIcon from "./DashboardIcon";
@@ -13,7 +13,6 @@ import SettingsIcon from "./SettingsIcon";
 // import HelpcenterIcon from "./HelpcenterIcon";
 import LogoutIcon from "./LogoutIcon";
 
-
 export default function SideBar() {
   return (
     <div className="sidebar-container">
@@ -25,7 +24,7 @@ export default function SideBar() {
         <NotificationIcon />
         {/* <RecoveryIcon /> */}
         <MessageIcon />
-      </div>    
+      </div>
       <div className="sidebar-bottom-wrapper">
         {/* <ResourcesIcon /> */}
         <SettingsIcon />

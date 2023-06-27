@@ -44,16 +44,15 @@ const router = createBrowserRouter(
       <Route path="update-password/:token" element={<UpdatePassword />} />
       <Route path="dashboard">
         <Route index element={<Dashboard />} />
-
-        <Route path="applicant-overview" >
-          <Route index element={<ApplicantOverview />}  />
+        <Route path="applicant-overview">
+          <Route index element={<ApplicantOverview />} />
           <Route path="applicant-review/*" element={<ApplicantReview />} />
+          <Route
+            path="info"
+            element={<ApplicantInfo />}
+            loader={ApplicantBioLoader}
+          />
         </Route>
-        <Route
-          path="info"
-          element={<ApplicantInfo />}
-          loader={ApplicantBioLoader}
-        />
       </Route>
       <Route path="applications">
         <Route index element={<Applications />} />
