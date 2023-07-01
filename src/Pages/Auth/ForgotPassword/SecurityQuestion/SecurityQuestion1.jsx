@@ -127,7 +127,10 @@ export default function SecurityQuestion1() {
                   />
                 </div>
                 <div className="Auth-form-field-wrapper">
-                  <label htmlFor="securityQuestionAnswer" className="Auth-label">
+                  <label
+                    htmlFor="securityQuestionAnswer"
+                    className="Auth-label"
+                  >
                     Security Question Answer
                   </label>
                   <Field

@@ -5,7 +5,7 @@ import axios from "axios";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 // style
-import "../../Auth.css"
+import "../../Auth.css";
 // component
 import LeftLoginLayout from "../../components/LeftLoginLayout";
 import NextButton from "../../components/NextButton";
@@ -72,13 +72,19 @@ export default function EmailRequest1() {
             {({ errors, touched }) => (
               <Form>
                 <div className="Auth-form-field-wrapper">
-                  <label htmlFor="email" className="Auth-label">Email</label>
+                  <label htmlFor="email" className="Auth-label">
+                    Email
+                  </label>
                   <Field
                     name="email"
                     type="email"
                     autoComplete="off"
                     placeholder="myworkemail@work.com"
-                    className={errors.email && touched.email ? "Auth-input-error Auth-input" : "Auth-input"}
+                    className={
+                      errors.email && touched.email
+                        ? "Auth-input-error Auth-input"
+                        : "Auth-input"
+                    }
                   />
                   <ErrorMessage
                     name="email"

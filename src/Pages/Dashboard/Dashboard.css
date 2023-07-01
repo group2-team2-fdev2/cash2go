@@ -863,6 +863,12 @@ th.Dashboard-name-header {
 .Dashboard-status-header,
 .Dashboard-date-header {
   cursor: pointer;
+  color: #1d1e1f;
+}
+
+.Dashboard-name-header,
+.Dashboard-section-header-title{
+  color: #1d1e1f;
 }
 
 .Dashboard-user-icon {
@@ -881,6 +887,7 @@ th.Dashboard-name-header {
   font-weight: bold;
   margin-right: 5px;
   display: inline-block;
+  color: #1d1e1f;
 }
 
 .Dashboard-applicant-id {
