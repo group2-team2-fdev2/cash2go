@@ -40,7 +40,7 @@ export default function LoginForm({ loginToApp }) {
       console.log(isAuthenticated);
       if (isAuthenticated) {
         // If user is authenticated, pass the loginToApp function as a prop to the parent component
-        loginToApp(isAuthenticated);
+        loginToApp(isAuthenticated, email);
       }
     } catch (error) {
       console.error("Error:", error);

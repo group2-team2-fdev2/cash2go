@@ -95,4 +95,5 @@ DashboardHeader.propTypes = {
   link: PropTypes.string,
   borderBottom: PropTypes.string,
   paddingBottom: PropTypes.string,
+ 
 };
