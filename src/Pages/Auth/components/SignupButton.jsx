@@ -1,7 +1,7 @@
 // library
 import PropTypes from "prop-types";
 // component
-import ArrowRight from "./ArrowRight";
+// import ArrowRight from "./ArrowRight";
 import LoadingGif from "./LoadingGif";
 
 export default function SignupButton({ isSubmitting }) {
@@ -14,7 +14,7 @@ export default function SignupButton({ isSubmitting }) {
       ) : (
         <>
           <span className="Auth-button-text">Sign Up</span>
-          <ArrowRight />
+          {/* <ArrowRight /> */}
         </>
       )}
     </button>

@@ -75,17 +75,21 @@ export default function EmailRequest1() {
                   <label htmlFor="email" className="Auth-label">
                     Email
                   </label>
-                  <Field
-                    name="email"
-                    type="email"
-                    autoComplete="off"
-                    placeholder="myworkemail@work.com"
+                  <div
                     className={
                       errors.email && touched.email
-                        ? "Auth-input-error Auth-input"
-                        : "Auth-input"
+                        ? "Auth-input-error Auth-form-field"
+                        : "Auth-form-field"
                     }
-                  />
+                  >
+                    <Field
+                      name="email"
+                      type="email"
+                      autoComplete="off"
+                      placeholder="myworkemail@work.com"
+                      className="Auth-input"
+                    />
+                  </div>
                   <ErrorMessage
                     name="email"
                     component="div"

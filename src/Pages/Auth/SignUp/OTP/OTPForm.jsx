@@ -6,7 +6,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import PropTypes from "prop-types";
 // component
-import SubmitButton from "../../components/SubmitButton";
+import NextButton from "../../components/NextButton";
 
 export default function OTPForm({ nextStep }) {
   // State variables
@@ -161,7 +161,7 @@ export default function OTPForm({ nextStep }) {
             to resend OTP
           </p>
         </div>
-        <SubmitButton isSubmitting={isSubmitting} />
+        <NextButton isSubmitting={isSubmitting} />
       </form>
     </>
   );

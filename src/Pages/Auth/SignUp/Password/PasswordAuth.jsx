@@ -56,7 +56,8 @@ export default function PasswordAuth() {
     // toggleModal();
 
     const email = values.email; // Get email value from form
-    const username = values.username; // Get username value from form
+    const firstName = values.firstName; // Get username value from form
+    const lastName = values.lastName; // Get username value from form
     const password = values.password; // Get password value from form
     const confirmPassword = values.confirmPassword; // Get confirm password value from form
 
@@ -65,7 +66,8 @@ export default function PasswordAuth() {
       const response = await axios.patch(
         `https://cash2go-backendd.onrender.com/api/v1/user/signup?email=${email}`,
         {
-          username: username,
+          firstName: firstName,
+          lastName: lastName,
           password: password,
           confirmPassword: confirmPassword,
         }
@@ -98,13 +100,15 @@ export default function PasswordAuth() {
           {/* Formik setup */}
           <Formik
             initialValues={{
-              username: "",
+              firstName: "",
+              lastName: "",
               password: "",
               confirmPassword: "",
               email: email || "", // Initializes the `email` field with the value of the `email` variable if it exists, otherwise it initializes it as an empty string
             }}
             validationSchema={Yup.object({
-              username: Yup.string().required("Username is required"),
+              firstName: Yup.string().required("First name is required"),
+              lastName: Yup.string().required("Last name is required"),
               password: Yup.string()
                 .required("Password is required")
                 .min(8, "Password must be at least 8 characters")
@@ -121,24 +125,70 @@ export default function PasswordAuth() {
             {({ errors, touched }) => (
               <Form>
                 <div className="Auth-form-field-wrapper">
-                  <label htmlFor="username" className="Auth-label">Username</label>
-                  <Field
-                    name="username"
-                    type="text"
-                    autoComplete="off"
+                  <label htmlFor="firstName" className="Auth-label">
+                    First Name
+                  </label>
+                  <div
                     className={
-                      errors.username && touched.username ? "Auth-input-error Auth-input" : "Auth-input"
+                      errors.firstName && touched.firstName
+                        ? "Auth-input-error Auth-form-field"
+                        : "Auth-form-field"
                     }
-                  />
+                  >
+                    <Field
+                      name="firstName"
+                      type="text"
+                      autoComplete="off"
+                      className="Auth-input"
+                    />
+                  </div>
                   <ErrorMessage
-                    name="username"
+                    name="firstName"
                     component="div"
                     className="Auth-error-message"
                   />
                 </div>
                 <div className="Auth-form-field-wrapper">
-                  <label htmlFor="password" className="Auth-label">Password</label>
-                  <div className="Auth-form-field">
+                  <label htmlFor="lastName" className="Auth-label">
+                    Last Name
+                  </label>
+                  <div
+                    className={
+                      errors.lastName && touched.lastName
+                        ? "Auth-input-error Auth-form-field"
+                        : "Auth-form-field"
+                    }
+                  >
+                    <Field
+                      name="lastName"
+                      type="text"
+                      autoComplete="off"
+                      className="Auth-input"
+                    />
+                  </div>
+                  <ErrorMessage
+                    name="lastName"
+                    component="div"
+                    className="Auth-error-message"
+                  />
+                </div>
+                <div className="Auth-form-field-wrapper">
+                  <label htmlFor="password" className="Auth-label">
+                    Password
+                  </label>
+                  <div
+                    className={
+                      errors.password && touched.password
+                        ? "Auth-input-error Auth-form-field"
+                        : "Auth-form-field"
+                    }
+                  >
+                    <Field
+                      name="password"
+                      type={showPassword1 ? "text" : "password"}
+                      autoComplete="off"
+                      className="Auth-input"
+                    />
                     <div onClick={togglePasswordVisibility1}>
                       {showPassword1 ? (
                         <OpenPasswordIcon />
@@ -146,14 +196,6 @@ export default function PasswordAuth() {
                         <ClosePasswordIcon />
                       )}
                     </div>
-                    <Field
-                      name="password"
-                      type={showPassword1 ? "text" : "password"}
-                      autoComplete="off"
-                      className={
-                        errors.password && touched.password ? "Auth-input-error Auth-input" : "Auth-input"
-                      }
-                    />
                   </div>
                   <ErrorMessage
                     name="password"
@@ -162,8 +204,22 @@ export default function PasswordAuth() {
                   />
                 </div>
                 <div className="Auth-form-field-wrapper">
-                  <label htmlFor="confirmPassword" className="Auth-label">Re-enter Password</label>
-                  <div className="Auth-form-field">
+                  <label htmlFor="confirmPassword" className="Auth-label">
+                    Re-enter Password
+                  </label>
+                  <div
+                    className={
+                      errors.confirmPassword && touched.confirmPassword
+                        ? "Auth-input-error Auth-form-field"
+                        : "Auth-form-field"
+                    }
+                  >
+                    <Field
+                      name="confirmPassword"
+                      type={showPassword2 ? "text" : "password"}
+                      autoComplete="off"
+                      className="Auth-input"
+                    />
                     <div onClick={togglePasswordVisibility2}>
                       {showPassword2 ? (
                         <OpenPasswordIcon />
@@ -171,16 +227,6 @@ export default function PasswordAuth() {
                         <ClosePasswordIcon />
                       )}
                     </div>
-                    <Field
-                      name="confirmPassword"
-                      type={showPassword2 ? "text" : "password"}
-                      autoComplete="off"
-                      className={
-                        errors.confirmPassword && touched.confirmPassword
-                          ? "Auth-input-error Auth-input"
-                          : "Auth-input"
-                      }
-                    />
                   </div>
                   <ErrorMessage
                     name="confirmPassword"

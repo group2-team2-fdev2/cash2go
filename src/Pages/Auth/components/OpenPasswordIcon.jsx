@@ -1,11 +1,11 @@
 export default function OpenPasswordIcon() {
   return (
-    <>
+    <div className="Auth-field-icon">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 20 20"
         fill="currentColor"
-        className="Auth-icon Auth-field-icon"
+        className="Auth-icon"
       >
         <path d="M10 12.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5z" />
         <path
@@ -14,7 +14,7 @@ export default function OpenPasswordIcon() {
           clipRule="evenodd"
         />
       </svg>
-    </>
+    </div>
   );
 }
 

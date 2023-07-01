@@ -83,7 +83,7 @@ export default function DashboardHeader({
 
 DashboardHeader.propTypes = {
   title: PropTypes.string,
-  subTitle: PropTypes.string,
+  subTitle: PropTypes.node,
   firstLink: PropTypes.string,
   secondLink: PropTypes.string,
   isNoButton: PropTypes.bool,

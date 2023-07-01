@@ -24,7 +24,6 @@ export default function Dashboard() {
   const [newPendingDiff, setNewPendingDiff] = useState(0);
   const [newRejectedDiff, setNewRejectedDiff] = useState(0);
   const [firstName, setFirstName] = useState("");
-  
 
   const isRegularButton = true;
   const location = useLocation();
@@ -103,7 +102,11 @@ export default function Dashboard() {
             <div className="Dashboard-title"></div>
             <DashboardHeader
               title={`Hello, ${firstName || "User"}`}
-              subTitle={`Welcome back you have ${numNewApplications} new applications`}
+              subTitle={
+                <>
+                  Welcome back you have<span className="dashboardHeader-subTitle-variable"> {numNewApplications} </span>new applications
+                </>
+              }
               firstLink="/applications"
               secondLink="/new-application"
               firstButtonTitle="Existing"

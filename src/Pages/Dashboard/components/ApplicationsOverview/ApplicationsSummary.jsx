@@ -19,7 +19,7 @@ export default function ApplicationsSummary({
     color: color,
   };
   return (
-    <div className="applicationsOverview-wrapper">
+    <div className="applicationsOverview-Contentwrapper">
       <div className="applicationsOverview-heading">
         <div className="applicationsOverview-title">{title}</div>
         <ApplicationsOverviewIcon title={title} />
@@ -52,9 +52,13 @@ export function ApplicationsOverviewIcon({ title }) {
   let iconComponent = null;
 
   if (title == "Loan Status") {
-    iconComponent = <FiThumbsUp className="applicationsOverview-icon" />;
+    iconComponent = (
+      <FiThumbsUp className="applicationsOverview-icon" />
+    );
   } else if (title == "Credit Utilization") {
-    iconComponent = <BiTrendingUp className="applicationsOverview-icon" />;
+    iconComponent = (
+      <BiTrendingUp className="applicationsOverview-icon" />
+    );
   } else if (title == "Outstanding Debt") {
     iconComponent = (
       <HiOutlineBarsArrowDown className="applicationsOverview-icon" />
