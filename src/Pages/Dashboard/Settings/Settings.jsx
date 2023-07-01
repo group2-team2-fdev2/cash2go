@@ -1,29 +1,15 @@
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
+import { NavLink, Routes, Route, Navigate } from "react-router-dom";
 import BreadCrumbs from "../components/BreadCrumbs";
 import DashboardHeader from "../components/DashboardHeader/DashboardHeader";
 import Navbar from "../components/Navbar/Navbar";
 import SideBar from "../components/Sidebar/SideBar";
 import "./Settings.css";
+import ModelSettings from "./ModelSettings";
 import NotificationSettings from "./NotificationSettings";
 import SecurityAndPrivacySettings from "./SecurityAndPrivacySettings";
 
 export default function Settings() {
-  const [Notification, setNotification] = useState(false);
-  const [securityAndPrivacy, setSecurityAndPrivacy] = useState(false);
-
-  useEffect(() => {
-    setNotification(true);
-  }, []);
-
-  const handleNotificationClick = () => {
-    setSecurityAndPrivacy(false);
-    setNotification(true);
-  };
-
-  const handleSecurityAndPrivacyClick = () => {
-    setNotification(false);
-    setSecurityAndPrivacy(true);
-  };
   const isNoButton = true;
   return (
     <>
@@ -39,35 +25,47 @@ export default function Settings() {
         />
         <nav className="Settings-Navigation">
           <ul className="Settings-Navigation_flex-container">
-            <li
-              onClick={handleNotificationClick}
-              className={
-                Notification
-                  ? "Settings-Navigation_flex-item active"
-                  : "Settings-Navigation_flex-item"
-              }
-            >
-              Notification
+            <li className="Settings-Navigation_flex-item">
+              <NavLink
+                className="Settings-Navigation_link"
+                activeclassName="active"
+                to="model-settings"
+              >
+                Model
+              </NavLink>
             </li>
-            <li
-              onClick={handleSecurityAndPrivacyClick}
-              className={
-                securityAndPrivacy
-                  ? "Settings-Navigation_flex-item active"
-                  : "Settings-Navigation_flex-item"
-              }
-            >
-              Security & Privacy
+            <li className="Settings-Navigation_flex-item">
+              <NavLink
+                className="Settings-Navigation_link"
+                activeclassName="active"
+                to="notification-settings"
+              >
+                Notification
+              </NavLink>
+            </li>
+            <li className="Settings-Navigation_flex-item">
+              <NavLink
+                className="Settings-Navigation_link"
+                activeclassName="active"
+                to="security-&-privacy-settings"
+              >
+                Security & Privacy
+              </NavLink>
             </li>
           </ul>
         </nav>
-        <section>
-          {Notification ? (
-            <NotificationSettings />
-          ) : securityAndPrivacy ? (
-            <SecurityAndPrivacySettings />
-          ) : null}
-        </section>
+        <Routes>
+          <Route path="/" element={<Navigate to="model-settings" />} />
+          <Route path="/model-settings" element={<ModelSettings />} />
+          <Route
+            path="/notification-settings"
+            element={<NotificationSettings />}
+          />
+          <Route
+            path="/security-&-privacy-settings"
+            element={<SecurityAndPrivacySettings />}
+          />
+        </Routes>
       </div>
     </>
   );

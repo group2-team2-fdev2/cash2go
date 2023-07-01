@@ -62,7 +62,7 @@ const router = createBrowserRouter(
       </Route>
       <Route path="notification" element={<Notification />} />
       <Route path="messages/*" element={<Messages />} />
-      <Route path="settings" element={<Settings />} />
+      <Route path="settings/*" element={<Settings />} />
     </Route>
   )
 );
