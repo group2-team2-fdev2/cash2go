@@ -9,7 +9,7 @@ export default function ApplicationLoans(){
 
   return (
     <>
-    <div className="Application-last-application">
+    <div className="Application-list-application">
       <button onClick={() => setStatus('AllApplication')} className='Application-loanButton'>All Applications</button>
       <button onClick={() => setStatus('Approved')} className='Application-loanButton'>Approved</button> 
       <button onClick={() => setStatus('Pending')} className='Application-loanButton'>Pending</button>

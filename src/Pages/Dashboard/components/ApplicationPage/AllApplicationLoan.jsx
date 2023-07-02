@@ -10,6 +10,8 @@ import UserIcon from "../DashboardOverview/UserIcon";
 
 function AllApplicationLoan() {
   const [applicants, setApplicants] = useState([]);
+  const [sortBy, setSortBy] = useState("date");
+
 
   useEffect(() => {
     fetch(`https://cash2go-backendd.onrender.com/api/v1/applicant/applicants`)
@@ -22,6 +24,21 @@ function AllApplicationLoan() {
         console.log(err.message);
       });
   }, []);
+
+  const getSortOptionText = () => {
+    let sortOptionText = "";
+    if (sortBy === "date") {
+      sortOptionText = "Date";
+    } else if (sortBy === "status") {
+      sortOptionText = "Status";
+    } else if (sortBy === "creditScore") {
+      sortOptionText = "Credit Score";
+    } else if (sortBy === "loanAmount") {
+      sortOptionText = "Loan Amount";
+    }
+    return sortOptionText;
+  };
+
 
   return (
     <div>
@@ -36,18 +53,22 @@ function AllApplicationLoan() {
           <tr className="Application-second-tableHead">
             <th id="Application-table-applicantinfo">Applicants info</th>
             <th>
-              <h4 className="Application-date-header">Date &darr;</h4>
+              <h4 className="Application-date-header"
+               onClick={() => setSortBy("date")}>Date &darr;</h4>
             </th>
             <th>
-              <h4 className="Application-status-header">Status &darr;</h4>
+              <h4 className="Application-status-header"
+               onClick={() => setSortBy("status")}>Status &darr;</h4>
             </th>
             <th>
-              <h4 className="Application-creditscore-header">
+              <h4 className="Application-creditscore-header"
+               onClick={() => setSortBy("creditScore")}>
                 Credit Score &darr;
               </h4>
             </th>
             <th colSpan="2">
-              <h4 className="Application-amount-header">Amount &darr;</h4>
+              <h4 className="Application-amount-header"
+               onClick={() => setSortBy("loanAmount")}>Amount &darr;</h4>
             </th>
           </tr>
         </thead>
