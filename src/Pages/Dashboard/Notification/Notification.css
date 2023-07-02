@@ -170,7 +170,7 @@
 
 .Notification-ViewNotification-content {
   position: absolute;
-  top: 20%;
+  top: 25%;
   left: 52%;
   transform: translate(-50%, -50%);
   line-height: 1.4;
@@ -182,12 +182,13 @@
   min-height: 350px;
   border-radius: 15px;
   text-align: center;
+  line-height: 25px;
 }
 
 .Notification-ViewNotification-content h1 {
   color: #169872;
   padding: 10px;
-  margin-top: 15px;
+  margin-top: 20px;
 }
 
 .Notification-ViewNotification-close {
