@@ -17,18 +17,25 @@ export default function Navbar() {
   };
 
 // eslint-disable-next-line react/prop-types
-export default function Navbar({ email }) {
+export default function Navbar({email}) {
   const [userName, setUserName] = useState("");
-
+  
   const fetchUserName = useCallback(async () => {
     try {
-      const response = await fetch(
-        `https://cash2go-backendd.onrender.com/api/v1/user/get-firstnameandlastname?email=${email}`
-      );
-      const data = await response.json();
+      const storedUserName = localStorage.getItem("userName");
+      if (storedUserName) {
+        setUserName(storedUserName);
+      } else {
+        const response = await fetch(
+          `https://cash2go-backendd.onrender.com/api/v1/user/get-firstnameandlastname?email=${email}`
+        );
+        const data = await response.json();
 
-      if (data.status === "Success") {
-        setUserName(data.data.name);
+        if (data.status === "Success") {
+          const userName = data.data.name;
+          setUserName(userName);
+          localStorage.setItem("userName", userName);
+        }
       }
     } catch (error) {
       console.log(error);
@@ -38,6 +45,7 @@ export default function Navbar({ email }) {
   useEffect(() => {
     fetchUserName();
   }, [fetchUserName]);
+
 
   return (
     <div className="navbar-container">
