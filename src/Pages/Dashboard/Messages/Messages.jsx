@@ -4,8 +4,8 @@ import SideBar from "../components/Sidebar/SideBar";
 import DashboardHeader from "../components/DashboardHeader/DashboardHeader";
 import "../Messages/Messages.css";
 import { Routes, Route, NavLink, Navigate } from "react-router-dom";
-import Inbox from "./Inbox";
 import New from "./New";
+import Sent from "./Sent";
 
 export default function Messages() {
   return (
@@ -25,16 +25,13 @@ export default function Messages() {
         </div>
 
         <div className="Message-link">
-          <NavLink to={"inbox"}>Inbox</NavLink>
           <NavLink to={"new"}>New</NavLink>
-          <NavLink to={"sent"}>Sent</NavLink>
-          <NavLink to={"thread"}>Thread</NavLink>
-          <NavLink to={"trash"}>Trash</NavLink>
+          <NavLink to={ "sent"}>Sent</NavLink>
         </div>
         <Routes>
-          <Route index element={<Navigate to={"inbox"} />} />
-          <Route path="inbox" element={<Inbox />} />
+          <Route index element={<Navigate to={"new"} />} />
           <Route path="new" element={<New />} />
+          <Route path="sent" element={<Sent />} />
         </Routes>
       </div>
     </>
