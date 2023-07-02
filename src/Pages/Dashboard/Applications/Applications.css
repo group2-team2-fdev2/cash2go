@@ -110,14 +110,18 @@
   display: flex;
  justify-content: space-between;
  align-items: center;
-  min-width: 250%;
+  min-width: 370%;
   padding: 20px;
 }
 
+.application-footer-button{
+  border: none;
+}
 .Application-pre,
 .Application-next,
 .Application-page-no {
   display: flex;
+  border: none;
 }
 
 .Application-pre{
