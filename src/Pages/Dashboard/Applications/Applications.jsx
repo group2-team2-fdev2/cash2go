@@ -24,6 +24,7 @@ export default function Applications() {
           firstButtonTitle="Analytics"
           secondButtonTitle="New"
         />
+        <hr className="headerhr"/>
         <ApplicationLoans />
         {/* <AllApplicantHeading />
         <Table2 /> */}
