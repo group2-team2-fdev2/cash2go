@@ -23,10 +23,10 @@ function ApprovedLoans() {
       <table className="Application-table">
         <thead >
           <tr>
-            <th colspan="6" id="Application-allApp-container">All Applications</th>
+            <th colSpan="6" id="Application-allApp-container">All Applications</th>
           </tr>
           <tr className="Application-second-tableHead">
-            <th colspan='2' id='Application-table-applicantinfo'>Applicants info</th>
+            <th colSpan='2' id='Application-table-applicantinfo'>Applicants info</th>
             <th>
               <div className="Application-tableHead-container">
                 <p>Date</p>

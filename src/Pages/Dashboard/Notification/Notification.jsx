@@ -14,7 +14,6 @@ import NextArrow from "../components/Notifications/NextArrow";
 import "./Notification.css";
 
 export default function NotificationPage() {
-  const isNotifcationPage = true;
 
   const [read, setRead] = useState({});
   const [message, setMessage] = useState(false);
@@ -65,7 +64,6 @@ export default function NotificationPage() {
             secondLink=""
             firstButtonTitle="Settings"
             secondButtonTitle="Mark All as Read"
-            isNotificationPage={isNotifcationPage}
           />
 
           <div className="Notification-notifications-title">

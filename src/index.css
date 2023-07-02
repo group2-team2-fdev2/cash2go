@@ -10,8 +10,14 @@
 
 body {
   font-family: "Inter", sans-serif;
-  /* overflow: scroll; */
 }
+
+::-webkit-scrollbar {
+  width: 1rem;
+}
+
+::-webkit-scrollbar-track
+
 
 img {
   display: block;

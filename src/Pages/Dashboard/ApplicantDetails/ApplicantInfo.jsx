@@ -7,10 +7,11 @@ import SideBar from "../components/Sidebar/SideBar";
 import axios from "axios";
 
 export default function ApplicantInfo() {
+  const contacts = useLoaderData();
 
-    const contacts = useLoaderData();
+  console.log(contacts)
 
-    const { firstName, lastName, _id } = contacts
+  const { firstName, lastName, _id } = contacts;
 
   const isNoButton = true;
   return (
@@ -35,7 +36,7 @@ export default function ApplicantInfo() {
 // loader function
 export const ApplicantBioLoader = async () => {
   const response = await axios.get(
-    `https://cash2go-backendd.onrender.com/api/v1/applicant/search-applicant?firstName=Mubarak`
+    `https://cash2go-backendd.onrender.com/api/v1/applicant/applicants`
   );
-  return response.data.data.contact;
+  return response.data;
 };

@@ -1,3 +1,5 @@
+import { useState, useEffect, useCallback } from "react";
+
 // style
 import "../../Dashboard.css";
 // components
@@ -7,11 +9,36 @@ import SearchIcon from "./SearchIcon";
 import AvatarIcon from "./AvatarIcon";
 import NotificationIcons from "./NotificationIcon";
 
+
 export default function Navbar() {
   const notificationCount = Notifications.length;
   const viewNotification = () => {
     Notifications.length = 0
   };
+
+// eslint-disable-next-line react/prop-types
+export default function Navbar({ email }) {
+  const [userName, setUserName] = useState("");
+
+  const fetchUserName = useCallback(async () => {
+    try {
+      const response = await fetch(
+        `https://cash2go-backendd.onrender.com/api/v1/user/get-firstnameandlastname?email=${email}`
+      );
+      const data = await response.json();
+
+      if (data.status === "Success") {
+        setUserName(data.data.name);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }, [email]);
+
+  useEffect(() => {
+    fetchUserName();
+  }, [fetchUserName]);
+
   return (
     <div className="navbar-container">
       <div className="left-navbar">
@@ -32,8 +59,7 @@ export default function Navbar() {
           <AvatarIcon />
         </div>
         <div className="user-profile">
-          {/* The p elements below will take in a dynamic data */}
-          <p className="user ">Gbenga Stutern</p>
+          <p className="user">{userName}</p>
           <p className="user">Loan Analyst</p>
         </div>
       </div>

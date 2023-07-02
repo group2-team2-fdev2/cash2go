@@ -1,6 +1,6 @@
 import { Data } from "./Data";
 import { useEffect, useState } from "react";
-import Downarrow from "./Downarrow";
+// import Downarrow from "./Downarrow";
 import Download from "./Download";
 import NextArrow from "./NextArrow";
 import PreviousArrow from "./PreviousArrow";
@@ -22,37 +22,37 @@ function AllApplicationLoan() {
       <table className="Application-table">
         <thead>
           <tr>
-            <th colspan="6" id="Application-allApp-container">
+            <th colSpan="6" id="Application-allApp-container">
               <div className="Application-all">
                 <h3>All Applications</h3>
               </div>
             </th>
           </tr>
           <tr  className="Application-second-tableHead">
-            <th colspan='2' id="Application-table-applicantinfo">Applicants info</th>
+            <th colSpan='2' id="Application-table-applicantinfo">Applicants info</th>
             <th>
-              <div className="Application-tableHead-container">
-                <p>Date</p>
-                <Downarrow />
-              </div>
+              {/* <div className="Application-tableHead-container"> */}
+                <p className="Application-date-header">Date &darr;</p>
+                {/* <Downarrow /> */}
+              {/* </div> */}
             </th>
             <th>
-              <div className="Application-tableHead-container">
-                <p>Status</p>
-                <Downarrow />
-              </div>
+              {/* <div className="Application-tableHead-container"> */}
+                <p className="Application-status-header">Status &darr;</p>
+                {/* <Downarrow /> */}
+              {/* </div> */}
             </th>
             <th>
-              <div className="Application-tableHead-container">
-                <p>Credit Score</p>
-                <Downarrow />
-              </div>
+              {/* <div className="Application-tableHead-container"> */}
+                <p className="Application-creditscore-header">Credit Score &darr;</p>
+                {/* <Downarrow /> */}
+              {/* </div> */}
             </th>
             <th>
-              <div className="Application-tableHead-container">
-                <p>Amount</p>
-                <Downarrow />
-              </div>
+              {/* <div className="Application-tableHead-container"> */}
+                <p className="Application-amount-header">Amount &darr;</p>
+                {/* <Downarrow /> */}
+              {/* </div> */}
             </th>
           </tr>
         </thead>

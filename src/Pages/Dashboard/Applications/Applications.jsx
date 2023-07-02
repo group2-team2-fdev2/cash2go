@@ -14,7 +14,7 @@ export default function Applications() {
     <>
       <Navbar />
       <SideBar />
-      <div className="Application-dashboard-content">
+      <div className ="Dashboard-content">
         <BreadCrumbs />
         <DashboardHeader
           title="Applications"

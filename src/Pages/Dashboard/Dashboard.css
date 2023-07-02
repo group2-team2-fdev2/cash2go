@@ -2,7 +2,7 @@
 
 .Dashboard-content {
   position: relative;
-  margin: 7% 7% 7% 23%;
+  margin: 7% 7% 7% 27%;
   display: grid;
 }
 
@@ -37,7 +37,7 @@
 /* BREADCRUMBS COMPONENT */
 
 .breadCrumbs {
-  margin-top: 32px;
+  margin-top: 10px;
   width: 902px;
   display: flex;
   align-items: center;
@@ -81,13 +81,14 @@
 .sidebar-cash2go-wrapper {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   margin-bottom: 32px;
   gap: 8px;
   padding: 24px 24px 0;
 }
 
 .sidebar-icon-wrapper {
+  width: 268px;
   height: 40px;
   display: flex;
   align-items: center;
@@ -95,6 +96,12 @@
   padding: 0 24px;
   gap: 10px;
   cursor: pointer;
+}
+
+.active {
+  background-color: rgba(240, 240, 240, 0.1);
+  width: 268px;
+  height: 40px;
 }
 
 .cash2go-logo3 {
@@ -127,7 +134,8 @@
 /* NAVBAR COMPONENT */
 
 .navbar-container {
-  position: absolute;
+  position: fixed;
+  z-index: 999;
   top: 0;
   right: 0;
   width: 80%;
@@ -199,6 +207,126 @@
   padding: 1px;
 }
 
+/* APPLICATION OVERVIEW COMPONENT */
+
+.applicationsOverview-container {
+  width: 902px;
+  height: 124px;
+  padding: 16px 20px;
+  background-color: #f7f7f7;
+  border: 1px solid #d1d9e2;
+  border-radius: 10px;
+  box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
+  margin-top: 30px;
+  margin-bottom: 30px;
+  overflow-clip-box: auto;
+}
+
+.applicationsOverview-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.applicationsOverview-wrapper::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.show-scroll {
+  scrollbar-width: none;
+}
+
+.applicationsOverview-Contentwrapper {
+  width: 278.5px;
+  height: 92px;
+  display: flex;
+  flex-grow: unset;
+  flex-direction: column;
+  padding: 0 20px 0 10px;
+  border-right: 1px solid #5f6d7e;
+}
+
+.applicationsOverview-Contentwrapper:last-child {
+  border-right: none;
+}
+
+.applicationsOverview-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 5px;
+}
+
+.applicationsOverview-title {
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 22px;
+  color: #5f6d7e;
+}
+
+.applicationsOverview-iconWrapper {
+  width: 30px;
+  height: 30px;
+  border: none;
+  background-color: #252d39;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.applicationsOverview-icon {
+  width: 20px;
+  height: 20px;
+  color: #ffffff;
+}
+
+.applicationsOverview-score {
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 20px;
+  color: #5f6d7e;
+}
+
+.applicationsOverview-footer {
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.applicationsOverview-description {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: #5f6d7e;
+}
+
+.applicationsOverview-status-wrapper {
+  padding: 2px 5px;
+  gap: 4px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.applicationsOverview-statusIcon {
+  width: 12px;
+  height: 12px;
+}
+
+.applicationsOverview-status {
+  font-weight: 500;
+  font-size: 13px;
+}
+
 /* DASHBOARD OVERVIEW COMPONENT */
 
 .dashboard-overview-container {
@@ -210,7 +338,7 @@
 .dashboard-overview {
   width: 902px;
   height: 124px;
-  padding: 16px 20px;
+  padding: 16px 16px;
   background-color: #f7f7f7;
   border: 1px solid #d1d9e2;
   border-radius: 10px;
@@ -249,7 +377,7 @@
 .dashboard-overview-count {
   font-weight: 600;
   font-size: 22px;
-  line-height: 30px;
+  line-height: 20px;
   color: #5f6d7e;
 }
 
@@ -309,8 +437,8 @@
 }
 
 .dashboard-overview-icon.small {
-  width: 15px;
-  height: 15px;
+  width: 12px;
+  height: 12px;
 }
 
 /* PIECHART COMPONENT */
@@ -550,108 +678,6 @@
   align-items: center;
 }
 
-/* APPLICATION OVERVIEW COMPONENT */
-
-.applicationsOverview-container {
-  width: 902px;
-  height: 124px;
-  background: #f7f7f7;
-  border: 1px solid #d1d9e2;
-  box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 32px;
-}
-
-.applicationsOverview-wrapper:nth-of-type(1),
-.applicationsOverview-wrapper:nth-of-type(2) {
-  border-right: 1px solid #5f6d7e;
-}
-
-.applicationsOverview-wrapper {
-  width: 278.5px;
-  height: 92px;
-  display: flex;
-  flex-direction: column;
-  padding-right: 8px;
-}
-
-.applicationsOverview-heading {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.applicationsOverview-title {
-  font-weight: 500;
-  font-size: 15px;
-  line-height: 22px;
-  color: #5f6d7e;
-}
-
-.applicationsOverview-iconWrapper {
-  width: 36px;
-  height: 36px;
-  background: #454e5c;
-  border-radius: 5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.applicationsOverview-icon {
-  width: 20px;
-  height: 20px;
-  color: #ffffff;
-}
-
-.applicationsOverview-score {
-  font-weight: 600;
-  font-size: 22px;
-  line-height: 30px;
-  letter-spacing: -0.01em;
-  color: #2e3646;
-}
-
-.applicationsOverview-footer {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.applicationsOverview-description {
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
-  letter-spacing: -0.001em;
-  color: #5f6d7e;
-}
-
-.applicationsOverview-status-wrapper {
-  width: 97px;
-  height: 22px;
-  padding: 2px 8px;
-  gap: 4px;
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-}
-
-.applicationsOverview-statusIcon {
-  width: 12px;
-  height: 12px;
-}
-
-.applicationsOverview-status {
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
-  letter-spacing: -0.001em;
-}
-
 /* DASHBOARD HEADER COMPONENT */
 
 .dashboardHeader-wrapper {
@@ -672,6 +698,10 @@
   font-size: 14px;
   line-height: 24px;
   color: #5f6d7e;
+}
+
+.dashboardHeader-subTitle-variable {
+  font-weight: bold;
 }
 
 .dashboardHeader-button {
@@ -755,31 +785,34 @@
   display: flex;
   align-items: flex-start;
   margin-bottom: 10px;
-  margin-left: 48px;
 }
 
-.Dashboard-title {
+.dashboard-overview {
+  margin-left: -3px;
+}
+
+/* .Dashboard-title {
   font-size: 12px;
   margin-top: 10px;
-}
+} */
 
-.Dashboard-welcome-back-text {
+/* .Dashboard-welcome-back-text {
   margin-top: 10px;
   color: #242425;
   font-weight: normal;
   font-size: medium;
-}
+} */
 
 .Dashboard-button-wrapper {
   position: absolute;
   right: -17px;
   top: 30px;
-  
 }
 
 .Dashboard-button-wrapper button {
-  margin-right: 10px; 
+  margin-right: 10px;
 }
+
 /* .Dashboard-button_grey,
 .Dashboard-button_orange {
   width: 97.5px;
@@ -809,7 +842,6 @@
   margin-top: 30px;
   background-color: #f7f7f7;
   font-size: 14px;
-  margin-left: 50px;
   border-radius: 10px;
   border: 1px solid #d1d9e2;
   box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
@@ -832,8 +864,13 @@ th.Dashboard-credit-score-header {
   padding-left: 50px;
 }
 
+th.Dashboard-name-header {
+  padding-left: 20px;
+}
+
 .Dashboard-section-header {
   margin: 15px 0;
+  padding-left: 10px;
 }
 
 .Dashboard-sort-option {
@@ -856,6 +893,12 @@ th.Dashboard-credit-score-header {
 .Dashboard-status-header,
 .Dashboard-date-header {
   cursor: pointer;
+  color: #1d1e1f;
+}
+
+.Dashboard-name-header,
+.Dashboard-section-header-title{
+  color: #1d1e1f;
 }
 
 .Dashboard-user-icon {
@@ -874,6 +917,7 @@ th.Dashboard-credit-score-header {
   font-weight: bold;
   margin-right: 5px;
   display: inline-block;
+  color: #1d1e1f;
 }
 
 .Dashboard-applicant-id {
@@ -882,7 +926,6 @@ th.Dashboard-credit-score-header {
   margin-left: 2px;
   display: inline-block;
 }
-
 
 .notificationBell{
   margin-top: -6px;
@@ -905,4 +948,5 @@ th.Dashboard-credit-score-header {
 .side-bell{
   margin-top: 0;
   margin-left: 120px;
+
 }
