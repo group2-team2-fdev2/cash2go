@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { BsArrowDown } from "react-icons/bs";
-import { ModelSettingsRow } from "./ModelSettingsRow1";
+import { ModelSettingsRow } from "./ModelSettingsRow";
 import { v4 as uuidv4 } from "uuid";
 
 export default function ModelSettings() {
