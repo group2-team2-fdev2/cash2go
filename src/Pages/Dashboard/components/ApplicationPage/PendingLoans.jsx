@@ -5,71 +5,72 @@ import Download from "./Download";
 import NextArrow from "./NextArrow";
 import PreviousArrow from "./PreviousArrow";
 import Pending from "./Pending";
+import AllApplicationLoan from "./AllApplicationLoan";
 
-function PendingLoans() {
-  const [data, setData] = useState(Data);
+function PendingLoans({filter, setFilter}) {
+    // return(
+    // <div>
+    //   <div>
+    //      <AllApplicationLoan/>
+    //   </div>
+    // </div>
+    // )
+    
+  const [applicants, setApplicants] = useState(Data);
 
   useEffect(() => {
-    fetch(`https://cash2go-backendd.onrender.com/api/v1/applicant`)
-      .then((resp) => resp.json())
-      .then((resp) => {
-        console.log(resp);
-        setData(resp);
-      });
-  }, []);
+    fetch(`https://cash2go-backendd.onrender.com/api/v1/applicant/pending-applicants`)
+    .then((resp) => resp.json())
+      .then((data) => {
+      console.log(data.data.pendingApplicants)
+        setApplicants(data.data.pendingApplicants)
+       })
+     .catch((err)=> {
+      console.log(err.message)
+      })
+   }, []);
 
   return (
     <div>
       <table className="Application-table">
         <thead >
           <tr>
-            <th colspan="6" id="Application-allApp-container">All Applications</th>
+            <th colSpan="6" id="Application-allApp-container">All Applications</th>
           </tr>
           <tr className="Application-second-tableHead">
-            <th colspan='2' id='Application-table-applicantinfo'>Applicants info</th>
+            <th  id='Application-table-applicantinfo'>Applicants info</th>
             <th>
-              <div className="Application-tableHead-container">
-                <p>Date</p>
-                <Downarrow />
-              </div>
+                <p className="Application-date-header">Date  &darr;</p>
             </th>
             <th>
-              <div className="Application-tableHead-container">
-                <p>Status</p>
-                <Downarrow />
-              </div>
+                <p className="Application-status-header">Status  &darr;</p>
             </th>
             <th>
-              <div className="Application-tableHead-container">
-                <p>Credit Score</p>
-                <Downarrow />
-              </div>
+                <p className="Application-creditscore-header">Credit Score  &darr;</p>
             </th>
-            <th>
-              <div className="Application-tableHead-container">
-                <p>Amount</p>
-                <Downarrow />
-              </div>
+            <th colSpan='2'>
+                <p className="Application-amount-header">Amount  &darr;</p>
             </th>
           </tr>
         </thead>
 
         <tbody>
-          {data &&
-            data.map((item) => {
-              return (
-                <tr key={item.episode_id}>
-                  <td>{item.applicantInfo}</td>
-                  <td >{item.date}</td>
-                  <td ><Pending/></td>
-                  <td >{item.creditscore}</td>
-                  <td >{item.amount}</td>
-                  <td>
-                    <Download />
-                  </td>
-                </tr>
-              );
-            })}
+        {applicants && applicants.map((applicant) => {
+            return (
+              <tr>
+                <div>
+                <div>
+                  <td>{applicant.contact.firstName}</td>
+                  <td>{applicant.contact.lastName}</td>
+                </div>
+                </div>
+                <td>{applicant.prediction.lastLoanApplication}</td>
+                <td>{applicant.prediction.isPending ? "Pending" : applicant.prediction.isRejected ? "Rejected" : "Approved"}</td>
+                <td>{applicant.prediction.creditScore}</td>
+                <td>{applicant.prediction.loanRequestAmount}</td>
+              </tr>
+            )
+           })} 
           <tr className="Application-footer">
             <div>
               <div className="Application-pre">

@@ -11,40 +11,42 @@
   background-color: #f7f7f7;
   box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
   border: 1px solid #d1d9e2;
-  
 }
 
-.Application-table tbody tr:nth-child(5) td {
+ /* .Application-table tbody tr:nth-child(5) td {
   border-bottom: none;
+} */
+
+ .Application-date-header, 
+ .Application-status-header, 
+ .Application-creditscore-header,
+ .Application-amount-header{
+  margin-left: 18px;
+  font-weight: normal;
 }
 
-.Application-table th,
-.Application-table td {
-  text-align: left;
+ .Application-table td, .Application-table th{
   padding: 12px;
   border-bottom: 1px solid #dfdede;
-}
+  text-align: left;
+ }
 
 .Application-status,
 .Application-arrows {
   height: 16px;
 }
 
-.Application-app-image {
-  width: 32px;
-  height: 32px;
-  color: white;
-  border-radius: 50%;
-}
-
 #Application-allApp-container {
   font-size: 18px;
   padding: 20px;
+  text-align: left;
 }
 
 #Application-table-applicantinfo {
-  padding-left: 30px;
-}
+  text-align: left;
+  padding-left:30px;
+  font-weight: normal;
+} 
 
 .Application-approved-container {
   display: flex;
@@ -58,6 +60,7 @@
   width: 90px;
   height: 20px;
 }
+
 
 .Application-rejected-container {
   display: flex;
@@ -85,36 +88,25 @@
   height: 20px;
 }
 
-.Application-tableHead-container {
-  display: flex;
-  justify-content: space-between;
-}
-
-.Application-name {
-  font-weight: bold;
-}
-
-.Application-applicant-id {
-  font-size: 12px;
-  color: #5f6d7e;
-  margin-left: 2px;
-  display: inline-block;
-}
-
 .Application-appInfo-container {
   display: flex;
   align-items: center;
-  gap: 8px;
+}
+
+.Application.userName{
+  display:flex;
+  gap:2px;
 }
 .Application-table tbody td {
   padding-left: 30px;
 }
 
+
 .Application-footer {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 330%;
+ justify-content: space-between;
+ align-items: center;
+  min-width: 250%;
   padding: 20px;
 }
 
@@ -124,16 +116,22 @@
   display: flex;
 }
 
-.Application-page-no {
-  display: flex;
-  gap: 15px;
-  align-items: center;
+.Application-pre{
+  padding-left: 15px;
+  gap: 5px;
 }
+
+ .Application-page-no {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+} 
 
 div.Application-next {
   display: flex;
   justify-content: right;
-}
+  gap: 5px;
+} 
 
 /* Heading */
 .Application-heading-container {
@@ -178,4 +176,4 @@ div.Application-next {
 .Application-loanButton:active {
   margin-top: 10px;
   font-size: 16px;
-}
+} 

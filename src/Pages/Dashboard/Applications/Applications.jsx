@@ -8,7 +8,7 @@ import SideBar from "../components/Sidebar/SideBar";
 import "./Applications.css";
 
 export default function Applications() {
-  const isOneButton = true;
+  const isRegularButton = true;
   return (
     <>
       <Navbar />
@@ -18,9 +18,11 @@ export default function Applications() {
         <DashboardHeader
           title="Applications"
           subTitle="View All Loan application"
-          link="/Analytics"
-          isOneButton={isOneButton}
-          ButtonTitle="Analytics"
+          isRegularButton={isRegularButton}
+          firstLinklink="/Analytics"
+          secondLink="/New"
+          firstButtonTitle="Analytics"
+          secondButtonTitle="New"
         />
         <ApplicationLoans />
         {/* <AllApplicantHeading />
