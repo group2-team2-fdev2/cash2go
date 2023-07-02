@@ -5,33 +5,33 @@ import PieChart from "../components/PieChart/PieChart";
 import Navbar from "../components/Navbar/Navbar";
 import SideBar from "../components/Sidebar/SideBar";
 import BarChart from "../components/BarChart/BarChart";
-import LoanStatus from "../components/ApplicationsOverview/ApplicationsSummary";
-import CreditUtilization from "../components/ApplicationsOverview/ApplicationsSummary";
-import OutstandingDebt from "../components/ApplicationsOverview/ApplicationsSummary";
+// import LoanStatus from "../components/ApplicationsOverview/ApplicationsSummary";
+// import CreditUtilization from "../components/ApplicationsOverview/ApplicationsSummary";
+// import OutstandingDebt from "../components/ApplicationsOverview/ApplicationsSummary";
 
-import { useEffect, useRef } from "react";
+// import { useEffect, useRef } from "react";
 
 export default function Analytics() {
-  const scrollableWrapperRef = useRef(null);
+  // const scrollableWrapperRef = useRef(null);
   const isOneButton = true;
 
-  useEffect(() => {
-    const scrollableWrapper = scrollableWrapperRef.current;
+  // useEffect(() => {
+  //   const scrollableWrapper = scrollableWrapperRef.current;
 
-    const handleScroll = () => {
-      if (scrollableWrapper.scrollLeft > 0) {
-        scrollableWrapper.classList.add("show-scroll");
-      } else {
-        scrollableWrapper.classList.remove("show-scroll");
-      }
-    };
+  //   const handleScroll = () => {
+  //     if (scrollableWrapper.scrollLeft > 0) {
+  //       scrollableWrapper.classList.add("show-scroll");
+  //     } else {
+  //       scrollableWrapper.classList.remove("show-scroll");
+  //     }
+  //   };
 
-    scrollableWrapper.addEventListener("scroll", handleScroll);
+  //   scrollableWrapper.addEventListener("scroll", handleScroll);
 
-    return () => {
-      scrollableWrapper.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  //   return () => {
+  //     scrollableWrapper.removeEventListener("scroll", handleScroll);
+  //   };
+  // }, []);
 
   const data = {
     labels: ["January", "February", "March", "April", "May", "June"],
@@ -69,7 +69,7 @@ export default function Analytics() {
           paddingBottom="20px"
         />
 
-        <div className="applicationsOverview-container">
+        {/* <div className="applicationsOverview-container">
           <div
             ref={scrollableWrapperRef}
             className="applicationsOverview-wrapper"
@@ -106,7 +106,7 @@ export default function Analytics() {
               color="#F8F9FB"
             />
           </div>
-        </div>
+        </div> */}
         <LineChart
           title="Total Loans: Approved vs Declined"
           duration="Jan - Mar 2023"

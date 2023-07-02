@@ -9,17 +9,15 @@ import SearchIcon from "./SearchIcon";
 import AvatarIcon from "./AvatarIcon";
 import NotificationIcons from "./NotificationIcon";
 
+// eslint-disable-next-line react/prop-types
+export default function Navbar({ email }) {
+  const [userName, setUserName] = useState("");
 
-export default function Navbar() {
   const notificationCount = Notifications.length;
   const viewNotification = () => {
-    Notifications.length = 0
+    Notifications.length = 0;
   };
 
-// eslint-disable-next-line react/prop-types
-export default function Navbar({email}) {
-  const [userName, setUserName] = useState("");
-  
   const fetchUserName = useCallback(async () => {
     try {
       const storedUserName = localStorage.getItem("userName");
@@ -46,7 +44,6 @@ export default function Navbar({email}) {
     fetchUserName();
   }, [fetchUserName]);
 
-
   return (
     <div className="navbar-container">
       <div className="left-navbar">
@@ -59,10 +56,16 @@ export default function Navbar({email}) {
 
       <div className="right-navbar">
         <div className="right-navbar-icons">
-          <p className={notificationCount > 0 ? "notificationBell" : "notificationBell-hide"} >
+          <p
+            className={
+              notificationCount > 0
+                ? "notificationBell"
+                : "notificationBell-hide"
+            }
+          >
             {notificationCount}
           </p>
-          <NotificationIcons onClick={viewNotification } />
+          <NotificationIcons onClick={viewNotification} />
 
           <AvatarIcon />
         </div>

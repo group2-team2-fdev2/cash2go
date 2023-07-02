@@ -897,7 +897,7 @@ th.Dashboard-name-header {
 }
 
 .Dashboard-name-header,
-.Dashboard-section-header-title{
+.Dashboard-section-header-title {
   color: #1d1e1f;
 }
 
@@ -927,7 +927,7 @@ th.Dashboard-name-header {
   display: inline-block;
 }
 
-.notificationBell{
+.notificationBell {
   margin-top: -6px;
   margin-right: -33px;
   color: white;
@@ -941,12 +941,11 @@ th.Dashboard-name-header {
   text-align: center;
 }
 
-.notificationBell-hide{
+.notificationBell-hide {
   display: none;
 }
 
-.side-bell{
+.side-bell {
   margin-top: 0;
-  margin-left: 120px;
-
+  margin-left: 100px;
 }
