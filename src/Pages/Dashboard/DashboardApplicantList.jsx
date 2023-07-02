@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect} from "react";
 import UserIcon from "./components/DashboardOverview/UserIcon";
 
 //components
@@ -6,14 +6,11 @@ import Approved from "./components/DashboardOverview/Approved";
 import Rejected from "./components/DashboardOverview/Rejected";
 import Pending from "./components/DashboardOverview/Pending";
 
-
 // eslint-disable-next-line react/prop-types
 export default function DashboardApplicantList({sectionTitle, sortOptionText}) {
   const [loanData, setLoanData] = useState([]);
   const [sortedData, setSortedData] = useState([]);
   const [sortBy, setSortBy] = useState("date");
-  
-
   
   const statusComponents = {
     Approved: <Approved />,
@@ -98,6 +95,8 @@ export default function DashboardApplicantList({sectionTitle, sortOptionText}) {
     return sortOptionText;
   };
 
+  
+
   return (
     <table className="Dashboard-loan-table">
       <thead>
@@ -179,7 +178,7 @@ export default function DashboardApplicantList({sectionTitle, sortOptionText}) {
             <td className="Dashboard-credit-score-cell">
               {applicant.prediction.creditScore}
             </td>
-            <td>{applicant.prediction.loanRequestAmount}</td>
+            <td>{Number(applicant.prediction.loanRequestAmount).toLocaleString()}</td>
           </tr>
         ))}
       </tbody>
