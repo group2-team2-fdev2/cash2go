@@ -48,14 +48,6 @@
   margin: auto;
 }
 
-.Auth-form-field-wrapper {
-  margin-bottom: 25px;
-}
-
-.Auth-form-field {
-  position: relative;
-}
-
 .Auth-title {
   text-align: center;
   font-weight: 600;
@@ -76,6 +68,10 @@
   margin-bottom: 10px;
 }
 
+.Auth-form-field-wrapper {
+  margin-bottom: 25px;
+}
+
 .Auth-label {
   display: block;
   font-weight: 500;
@@ -84,23 +80,36 @@
   margin-bottom: 5px;
 }
 
-.Auth-input {
-  display: block;
+.Auth-form-field {
+  display: flex;
+  align-items: center;
+  border: 1px solid rgb(235, 232, 232);
+  border-radius: 8px;
   width: 380px;
   height: 46px;
-  border: 1px solid rgb(235, 232, 232);
+  background-color: rgb(236, 245, 248);
+  transition: border-color 0.3s ease;
+}
+
+.Auth-form-field:hover {
+  border: none;
+  outline: 2px solid rgb(179, 179, 247);
+}
+
+.Auth-input {
+  display: block;
+  width: 340px;
+  height: 44px;
+  outline: none;
+  border: none;
+  overflow: hidden;
   border-radius: 8px;
   padding: 8px;
   background-color: rgb(236, 245, 248);
   transition: border-color 0.3s ease;
-  outline: none;
   font-weight: 500;
   font-size: 14px;
   color: #5f6d7e;
-}
-
-.Auth-input:focus {
-  border: 2px solid rgb(179, 179, 247);
 }
 
 .Auth-input::placeholder {
@@ -181,10 +190,10 @@
 /* icons */
 
 .Auth-field-icon {
-  position: absolute;
-  right: 0;
-  bottom: 15%;
-  margin: 8px;
+  display: flex; 
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 
 .Auth-icon {
@@ -432,9 +441,10 @@
 .Auth-notice-icon {
   width: 40px;
   height: 40px;
-  color: rgb(100, 98, 98);
+  color: rgb(8, 139, 25);
   margin-bottom: 10px;
 }
+
 
 .Auth-modal-title {
   font-size: 18px;
@@ -477,3 +487,4 @@
   fill: #fd3d39;
   background-color: transparent;
 }
+

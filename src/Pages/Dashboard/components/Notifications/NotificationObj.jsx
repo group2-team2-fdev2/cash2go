@@ -1,98 +1,10 @@
+
 import { nanoid } from 'nanoid'
-export const Notifications = [ {
-    id: nanoid(),
-    title: 'Security Alert',
-    message: "There was a login attempt into your account. Kindly change your login password if that was not you"
-},
-{
-    id: nanoid(),
-    title: 'Application Report',
-     message: "The short term loan of Ogbeni Mallam Stitern (003556Z) just got approved with a 70% prediction metric"
-}, {
-    id: nanoid(),
-    title: 'Application Download',
-     message: "You just downloaded the application of Ogbeni Mallam Stitern (003556Z)"
-}, {
-    id: nanoid(),
-    title: 'Application Report',
-     message: "The short term loan of Ogbeni Mallam Stitern (003557Z) just got rejected with a 50% prediction metric"
-}, {
-    id: nanoid(),
-    title:'System Updates',
-    message: "A new web app version 5.0 will be launched by 30th of May"
-}, {
-    id: nanoid(),
-    title: 'New Resources',
-     message: "A new tutorial has been published in the resources channel"
-}, {
-    id: nanoid(),
-    title: 'Application Download',
-     message: "You just downloaded the application of Ogbeni Mallam Stitern (003556Z)"
-}, {
-    id: nanoid(),
-    title: 'Application Report',
-     message: "The short term loan of Ogbeni Mallam Stitern (003557Z) just got rejected with a 50% prediction metric"
-}, {
-    id: nanoid(),
-    title: 'Application Report',
-     message: "The short term loan of Ogbeni Mallam Stitern (003557Z) just got rejected with a 50% prediction metric"
-}, {
-    id: nanoid(),
-    title: 'Application Report',
-     message: "The short term loan of Ogbeni Mallam Stitern (003557Z) just got rejected with a 50% prediction metric"
-}, {
-    id: nanoid(),
-    title: 'Application Report',
-     message: "The short term loan of Ogbeni Mallam Stitern (003557Z) just got rejected with a 50% prediction metric"
-},  {
-    id: nanoid(),
-    title: 'Application Report',
-     message: "The short term loan of Ogbeni Mallam Stitern (003557Z) just got rejected with a 50% prediction metric"
-}, {
-    id: nanoid(),
-    title: 'Application Report',
-     message: "The short term loan of Ogbeni Mallam Stitern (003557Z) just got rejected with a 50% prediction metric"
-}, {
-    id: nanoid(),
-    title: 'Application Report',
-     message: "The short term loan of Ogbeni Mallam Stitern (003557Z) just got rejected with a 50% prediction metric"
-}, {
-    id: nanoid(),
-    title: 'Application Report',
-     message: "The short term loan of Ogbeni Mallam Stitern (003557Z) just got rejected with a 50% prediction metric"
-}, {
-    id: nanoid(),
-    title: 'Application Report',
-     message: "The short term loan of Ogbeni Mallam Stitern (003557Z) just got rejected with a 50% prediction metric"
-}, {
-    id: nanoid(),
-    title: 'Application Report',
-     message: "The short term loan of Ogbeni Mallam Stitern (003557Z) just got rejected with a 50% prediction metric"
-},
+export const Notifications = [
      {
-        id: nanoid(),
-        title: 'Security Alert',
-        message: "There was a login attempt into your account. Kindly change your login password if that was not you"
-    },
-    {
-        id: nanoid(),
-        title: 'Application Report',
-         message: "The short term loan of Ogbeni Mallam Stitern (003556Z) just got approved with a 70% prediction metric"
-    }, {
-        id: nanoid(),
-        title: 'Application Download',
-         message: "You just downloaded the application of Ogbeni Mallam Stitern (003556Z)"
-    }, {
-        id: nanoid(),
-        title: 'Application Report',
-         message: "The short term loan of Ogbeni Mallam Stitern (003557Z) just got rejected with a 50% prediction metric"
-    }, {
-        id: nanoid(),
-        title:'System Updates',
-        message: "A new web app version 5.0 will be launched by 30th of May"
-    }, {
     id: nanoid(),
-    title: 'Application Report',
-     message: "The short term loan of Ogbeni Mallam Stitern (003557Z) just got rejected with a 50% prediction metric"
+    title: 'Welcome to Cash2go',
+    message: "Thank you for choosing our app. We're excited to have you on board and hope you have a great experience using our services. With cash2go, you can unlock a world of possibilities and enjoy a seamless experience tailored just for you.         Our mission is to provide you with the best tools and features to help you achieve your goals and make your life easier. Whether you're managing simple lending projects or tasks, cash2go has got you covered. If you have any questions or need assistance, feel free to reach out to our support team. Enjoy exploring the app!"
+
 }
 ]
