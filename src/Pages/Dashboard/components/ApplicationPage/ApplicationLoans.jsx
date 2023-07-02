@@ -10,10 +10,10 @@ export default function ApplicationLoans(){
   return (
     <>
     <div className="Application-list-application">
-      <button onClick={() => setStatus('AllApplication')} className='Application-loanButton'>All Applications</button>
-      <button onClick={() => setStatus('Approved')} className='Application-loanButton'>Approved</button> 
-      <button onClick={() => setStatus('Pending')} className='Application-loanButton'>Pending</button>
-      <button onClick={() => setStatus('Rejected')} className='Application-loanButton'>Rejected</button>
+      <button onClick={() => setStatus('AllApplication')} className='Application-loanButton'>All Applications <hr className="applicationhr"/></button>
+      <button onClick={() => setStatus('Approved')} className='Application-loanButton'>Approved <hr className="applicationhr"/></button> 
+      <button onClick={() => setStatus('Pending')} className='Application-loanButton'>Pending <hr className="applicationhr"/></button>
+      <button onClick={() => setStatus('Rejected')} className='Application-loanButton'>Rejected <hr className="applicationhr"/></button>
     </div>
     
     {status === "AllApplication" &&  <AllApplicationLoan/>}

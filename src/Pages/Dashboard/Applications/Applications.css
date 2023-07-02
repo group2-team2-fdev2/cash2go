@@ -178,7 +178,6 @@ div.Application-next {
   background: none;
   font-size: 15px;
   font-weight: 300;
-  text-decoration: underline;
   color: #5f6d7e;
 }
 
@@ -186,3 +185,7 @@ div.Application-next {
   margin-top: 10px;
   font-size: 16px;
 } 
+
+.applicationhr{
+ margin-top:15px;
+}

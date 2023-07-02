@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+// import Downarrow from "./Downarrow";
 import Download from "./Download";
 import NextArrow from "./NextArrow";
 import PreviousArrow from "./PreviousArrow";
@@ -8,48 +9,129 @@ import Approved from "./Approved";
 import UserIcon from "../DashboardOverview/UserIcon";
 
 function RejectedLoans() {
-  const [applicants, setApplicants] = useState ([]);
+  const [applicants, setApplicants] = useState([]);
+  const [sortBy, setSortBy] = useState("date");
+  const [sortedData, setSortedData] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
  
-   useEffect(() => {
-      fetch(`https://cash2go-backendd.onrender.com/api/v1/applicant/rejected-applicants`)
-      .then((resp) => resp.json())
-        .then((data) => {
-        console.log(data.data.rejectedApplicants)
-          setApplicants(data.data.rejectedApplicants)
-         })
-       .catch((err)=> {
-        console.log(err.message)
-        })
-     }, []);
+  const itemsPerPage = 7;
 
+  // Calculate the starting and ending index of the items to display
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = applicants.slice(indexOfFirstItem, indexOfLastItem);
+  const noOfPages = Math.round(applicants.length / itemsPerPage);
+
+  // Handle pagination
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  console.log(currentPage);
+
+
+
+  useEffect(() => {
+    fetch(`https://cash2go-backendd.onrender.com/api/v1/applicant/applicants`)
+      .then((resp) => resp.json())
+      .then((data) => {
+        console.log(data.data.Applicants);
+        const rejected = data.data.Applicants.filter(applicant => applicant.prediction.isRejected);
+        setApplicants(rejected);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  }, []);
+
+  const handleSortBy = (value) => {
+    setSortBy(value);
+  };
+
+  useEffect(() => {
+    const sortLoanData = () => {
+      const sorted = [...applicants].sort((a, b) => {
+        if (sortBy === "date") {
+          return new Date(a.date) - new Date(b.date);
+        } else if (sortBy === "status") {
+          const statusOrder = {
+            Pending: 1,
+            Approved: 2,
+            Rejected: 3,
+          };
+          const statusA = a.prediction.isPending
+            ? "Pending"
+            : a.prediction.isRejected
+            ? "Rejected"
+            : "Approved";
+          const statusB = b.prediction.isPending
+            ? "Pending"
+            : b.prediction.isRejected
+            ? "Rejected"
+            : "Approved";
+          return statusOrder[statusA] - statusOrder[statusB];
+        } else if (sortBy === "creditScore") {
+          return b.prediction.creditScore - a.prediction.creditScore;
+        } else if (sortBy === "loanAmount") {
+          return (
+            parseInt(a.prediction.loanRequestAmount) -
+            parseInt(b.prediction.loanRequestAmount)
+          );
+        }
+      });
+      setSortedData(sorted);
+    };
+
+    sortLoanData();
+  }, [applicants, sortBy]);
+
+  const getSortOptionText = () => {
+    let sortOptionText = "";
+    if (sortBy === "date") {
+      sortOptionText = "Date";
+    } else if (sortBy === "status") {
+      sortOptionText = "Status";
+    } else if (sortBy === "creditScore") {
+      sortOptionText = "Credit Score";
+    } else if (sortBy === "loanAmount") {
+      sortOptionText = "Amount";
+    }
+    return sortOptionText;
+  };
 
   return (
     <div>
       <table className="Application-table">
-        <thead >
+        <thead>
           <tr>
-            <th  colSpan="6" id="Application-allApp-container">All Applications</th>
+            <th colSpan="6" id="Application-allApp-container">
+              <h3>All Applications</h3>
+            </th>
           </tr>
-          <tr  className="Application-second-tableHead">
-            <th  id='Application-table-applicantinfo'>Applicants info</th>
+
+          <tr className="Application-second-tableHead">
+            <th id="Application-table-applicantinfo">Applicants info</th>
             <th>
-                <p className="Application-date-header">Date  &darr;</p>
+              <h4 className="Application-date-header"
+               onClick={() => handleSortBy("date")}>Date &darr;</h4>
             </th>
             <th>
-                <p className="Application-status-header">Status  &darr;</p>
+              <h4 className="Application-status-header"
+               onClick={() => handleSortBy("status")}>Status &darr;</h4>
             </th>
             <th>
-                <p className="Application-creditscore-header">Credit Score  &darr;</p>
+              <h4 className="Application-creditscore-header"
+               onClick={() => handleSortBy("creditScore")}>
+                Credit Score &darr;
+              </h4>
             </th>
             <th colSpan="2">
-                <p className="Application-amount-header">Amount  &darr;</p>
+              <h4 className="Application-amount-header"
+               onClick={() => handleSortBy("loanAmount")}>Amount &darr;</h4>
             </th>
           </tr>
         </thead>
 
         <tbody>
           {applicants &&
-            applicants.map((applicant) => {
+            currentItems.map((applicant) => {
               return (
                 <tr>
                   <td >
@@ -57,7 +139,7 @@ function RejectedLoans() {
                       <UserIcon />
                       <div >
                         <span className="Application-userName">
-                          {applicant.contact.firstName} {applicant.contact.lastName}
+                         <b>{applicant.contact.firstName} {applicant.contact.lastName}</b> 
                         </span>
                         <br/>
                         <span className="Dashboard-applicant-id">
@@ -89,27 +171,51 @@ function RejectedLoans() {
               );
             })}
 
-          <tr className="Application-footer">
+           <tr className="Application-footer">
             <div>
-              <div className="Application-pre">
-                <PreviousArrow />
-                <p>Prev</p>
-              </div>
+              <button
+              className="application-footer-button"
+               onClick={() => paginate(currentPage - 1)}
+               disabled={currentPage === 1}>
+                <div className="Application-pre">
+                  <span><PreviousArrow /></span>
+                  <span>Prev</span>
+                </div>
+              </button>
             </div>
-            <div>
+            
               <div className="Application-page-no">
-                <p>1</p>
-                <p>2</p>
-                <p>...</p>
-                <p>5</p>
-                <p>6</p>
+                
+                <div>
+                {[...Array(noOfPages)].map((_, index) => (
+                  <a
+                    key={index + 1}
+                    onClick={() => paginate(index + 1)}
+                    className={
+                      currentPage === index + 1
+                        ? "Application-footer-pageList active"
+                        : "Application-footer-pageList"
+                    }
+                  >
+                    <div className="Application-footer-pageList">
+                      {index + 1}
+                    </div>
+                  </a>
+                ))}
               </div>
-            </div>
+            </div> 
             <div>
+            <button
+            className="application-footer-button"
+              disabled={indexOfLastItem >= applicants.length}
+              onClick={() => paginate(currentPage + 1)}
+            >
               <div className="Application-next">
-                <p>Next</p>
-                <NextArrow />
+                 <span>Next</span>
+                 <span> {<NextArrow />}</span>
               </div>
+              
+            </button>
             </div>
           </tr>
         </tbody>
