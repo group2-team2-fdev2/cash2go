@@ -8,8 +8,12 @@ import MessageCheckbox from "./MessageCheckbox";
 import MessageMark from "./MessageMark";
 import MessageBentArrow from "./MessageBentArrow";
 import Ellipse4 from "../Messages/Images/Ellipse4.png"
+import MessageAlert from "./MessageAlert";
+import { useState} from "react";
 
 function New() {
+
+  const [openModal, setOpenModal] = useState(false);
   return (
     <div>
       <div className="message-new">
@@ -83,8 +87,10 @@ function New() {
         </div>
         <div className="message-bord"></div>
         <div className="message-button">
-          <Button title="send" />
-        </div>
+        <Button onClick={() => setOpenModal(true)} title="send" backgroundColor="#FF6F5A" color="white" />
+          {openModal && <MessageAlert closeModal={setOpenModal} />}
+         </div>
+
       </div>
     </div>
   );

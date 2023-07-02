@@ -194,3 +194,54 @@
     height: 40px;
     margin-top: 15px;
 }
+.modalBackground{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: -420px;
+    margin-top: -450px;
+    
+}
+.modalContainer{
+    width: 600px;
+    border-radius: 12px;
+    background-color: #f8f9fb;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    display: flex;
+    flex-direction: column;
+    padding: 25px;  
+}
+.MessageAlert-closebtn{
+    float: inline-end;
+    padding-top: 10px;
+}
+.MessageAlert-text{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.messageAlert-title{
+    padding-top: 10px;
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: 0.15%;
+    color: #5F6D7E; 
+    font-weight: lighter;
+}
+.messageAlert-body{
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.messageAlert-footer{
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+
+}
