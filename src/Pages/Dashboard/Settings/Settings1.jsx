@@ -1,53 +1,78 @@
-// import { useState, useEffect } from "react";
+import "./Settings.css";
+import { useState } from "react";
 import { NavLink, Routes, Route, Navigate } from "react-router-dom";
-import BreadCrumbs from "../components/BreadCrumbs";
-import DashboardHeader from "../components/DashboardHeader/DashboardHeader";
 import Navbar from "../components/Navbar/Navbar";
 import SideBar from "../components/Sidebar/SideBar";
-import "./Settings.css";
+import BreadCrumbs from "../components/BreadCrumbs";
+import DashboardHeader from "../components/DashboardHeader/DashboardHeader";
 import ModelSettings from "./ModelSettings";
 import NotificationSettings from "./NotificationSettings";
 import SecurityAndPrivacySettings from "./SecurityAndPrivacySettings";
 
 export default function Settings() {
-  const isNoButton = true;
+  const [activeSection, setActiveSection] = useState("model");
+
+  const handleSectionChange = (section) => {
+    setActiveSection(section);
+  };
+
   return (
     <>
       <Navbar />
       <SideBar />
       <div className="Dashboard-content">
         <BreadCrumbs />
-        <DashboardHeader
-          title="Settings"
-          isNoButton={isNoButton}
-          paddingBottom="32px"
-          borderBottom="1px solid #D1D9E2"
-        />
+        {activeSection !== "model" &&
+        (activeSection === "notification" ||
+          activeSection === "securityAndPrivacy") ? (
+          <DashboardHeader
+            title="Settings"
+            firstButtonTitle="Turn ALL ON"
+            secondButtonTitle="Turn ALL OFF"
+            isButtonVariant={
+              activeSection !== "model" &&
+              (activeSection === "notification" ||
+                activeSection === "securityAndPrivacy")
+            }
+          />
+        ) : (
+          <DashboardHeader
+            title="Settings"
+            firstButtonTitle="Manage"
+            secondButtonTitle="Create New Model"
+          />
+        )}
         <nav className="Settings-Navigation">
           <ul className="Settings-Navigation_flex-container">
             <li className="Settings-Navigation_flex-item">
               <NavLink
-                className="Settings-Navigation_link"
-                activeclassName="active"
+                className={`Settings-Navigation_link ${
+                  activeSection === "model" ? "active" : ""
+                }`}
                 to="model-settings"
+                onClick={() => handleSectionChange("model")}
               >
                 Model
               </NavLink>
             </li>
             <li className="Settings-Navigation_flex-item">
               <NavLink
-                className="Settings-Navigation_link"
-                activeclassName="active"
+                className={`Settings-Navigation_link ${
+                  activeSection === "notification" ? "active" : ""
+                }`}
                 to="notification-settings"
+                onClick={() => handleSectionChange("notification")}
               >
                 Notification
               </NavLink>
             </li>
             <li className="Settings-Navigation_flex-item">
               <NavLink
-                className="Settings-Navigation_link"
-                activeclassName="active"
+                className={`Settings-Navigation_link ${
+                  activeSection === "securityAndPrivacy" ? "active" : ""
+                }`}
                 to="security-&-privacy-settings"
+                onClick={() => handleSectionChange("securityAndPrivacy")}
               >
                 Security & Privacy
               </NavLink>

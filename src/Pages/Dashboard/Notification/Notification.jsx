@@ -12,7 +12,6 @@ import NextArrow from "../components/Notifications/NextArrow";
 import "./Notification.css";
 
 export default function NotificationPage() {
-  const isNotifcationPage = true;
 
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
@@ -40,7 +39,6 @@ export default function NotificationPage() {
             secondLink="/dashboard"
             firstButtonTitle="Settings"
             secondButtonTitle="Mark All as Read"
-            isNotificationPage={isNotifcationPage}
           />
 
           <div className="Notification-notifications-title">
