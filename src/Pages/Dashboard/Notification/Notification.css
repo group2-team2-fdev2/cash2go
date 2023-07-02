@@ -1,6 +1,6 @@
-/* .NotificationPage-display {
+.NotificationPage-display {
   margin-left: 112px;
-} */
+}
 
 .Notification-notifications-title {
   margin-top: 32px;
@@ -53,15 +53,24 @@
 }
 
 .Notification-messages-title {
-  color: #169872;
-  font-weight: 600;
+  color: black;
+  font-weight: 400;
   padding: 8px 0;
   letter-spacing: 0.0015em;
 }
 
+.Notification-messages-title.active {
+  font-weight: 800;
+  color: #169872;
+}
+
 .Notification-messages-body {
-  font-weight: 500;
+  font-weight: 300;
   letter-spacing: 0.0015em;
+}
+
+.Notification-messages-body.active {
+  font-weight: 700;
 }
 
 .Notification-notifications-OptionsIcon {
@@ -70,6 +79,13 @@
   position: absolute;
   margin-top: 15px;
   margin-left: 400px;
+}
+
+.Notification-ViewNotification-ticks {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  margin-left: 2px;
 }
 
 .Notification-footer-navigation {
@@ -104,7 +120,7 @@
 .Notification-footer-next {
   height: 30px;
   width: 30px;
-  margin-left: 270px;
+  margin-left: 59%;
   color: #5f6d7e;
   background-color: #f8f9fb;
   border: #f8f9fb;
@@ -123,7 +139,74 @@
 }
 
 .Notification-footer-pageList.active {
-  background-color: #172233;
+  background-color: #e6e9ec;
   border: 5px;
   border-radius: 5px;
+}
+
+.Notification-ViewNotification-overlay {
+  width: 100vw;
+  height: 100vw;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+}
+
+.Notification-ViewNotification {
+  width: 100vw;
+  height: 100vw;
+  top: 0;
+  left: 100px;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+}
+
+.Notification-ViewNotification-overlay {
+  background: rgba(49, 49, 49, 0.2);
+}
+
+.Notification-ViewNotification-content {
+  position: absolute;
+  top: 20%;
+  left: 52%;
+  transform: translate(-50%, -50%);
+  line-height: 1.4;
+  background: #f8f9fb;
+  padding: 10px 25px;
+  border-radius: 3px;
+  max-width: 600px;
+  min-width: 300px;
+  min-height: 350px;
+  border-radius: 15px;
+  text-align: center;
+}
+
+.Notification-ViewNotification-content h1 {
+  color: #169872;
+  padding: 10px;
+  margin-top: 15px;
+}
+
+.Notification-ViewNotification-close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  background-color: #ff6f5a;
+  border-radius: 3px;
+}
+
+.Notification-ViewNotification-hide {
+  display: none;
+}
+
+.Notification-noNotifications{
+  font-size: 30px;
+  color: #e4e7ea;
+  text-align: center;
 }
