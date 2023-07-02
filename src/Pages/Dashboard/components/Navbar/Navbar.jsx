@@ -3,10 +3,18 @@ import { useState, useEffect, useCallback } from "react";
 // style
 import "../../Dashboard.css";
 // components
+import { Notifications } from "../Notifications/NotificationObj";
 import ArrowRightIcon from "./ArrowRightIcon";
 import SearchIcon from "./SearchIcon";
-import NotificationIcon from "./NotificationIcon";
 import AvatarIcon from "./AvatarIcon";
+import NotificationIcons from "./NotificationIcon";
+
+
+export default function Navbar() {
+  const notificationCount = Notifications.length;
+  const viewNotification = () => {
+    Notifications.length = 0
+  };
 
 // eslint-disable-next-line react/prop-types
 export default function Navbar({ email }) {
@@ -43,7 +51,11 @@ export default function Navbar({ email }) {
 
       <div className="right-navbar">
         <div className="right-navbar-icons">
-          <NotificationIcon />
+          <p className={notificationCount > 0 ? "notificationBell" : "notificationBell-hide"} >
+            {notificationCount}
+          </p>
+          <NotificationIcons onClick={viewNotification } />
+
           <AvatarIcon />
         </div>
         <div className="user-profile">
