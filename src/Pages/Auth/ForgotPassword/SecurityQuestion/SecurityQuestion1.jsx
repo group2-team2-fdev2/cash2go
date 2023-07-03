@@ -118,29 +118,39 @@ export default function SecurityQuestion1() {
                   <label htmlFor="securityQuestion" className="Auth-label">
                     Security Question
                   </label>
-                  <Field
-                    name="securityQuestion"
-                    type="text"
-                    value={securityQuestion || ""}
-                    disabled
-                    className="Auth-input"
-                  />
+                  <div
+                    className="Auth-form-field"
+                  >
+                    <Field
+                      name="securityQuestion"
+                      type="text"
+                      value={securityQuestion || ""}
+                      disabled
+                      className="Auth-input"
+                    />
+                  </div>
                 </div>
                 <div className="Auth-form-field-wrapper">
-                  <label htmlFor="securityQuestionAnswer" className="Auth-label">
+                  <label
+                    htmlFor="securityQuestionAnswer"
+                    className="Auth-label"
+                  >
                     Security Question Answer
                   </label>
-                  <Field
-                    name="securityQuestionAnswer"
-                    type="text"
-                    autoComplete="off"
+                  <div
                     className={
-                      errors.securityQuestionAnswer &&
-                      touched.securityQuestionAnswer
-                        ? "Auth-input-error Auth-input"
-                        : "Auth-input"
+                      errors.securityQuestionAnswer && touched.securityQuestionAnswer
+                        ? "Auth-input-error Auth-form-field"
+                        : "Auth-form-field"
                     }
-                  />
+                  >
+                    <Field
+                      name="securityQuestionAnswer"
+                      type="text"
+                      autoComplete="off"
+                      className="Auth-input"
+                    />
+                  </div>
                   <ErrorMessage
                     name="securityQuestionAnswer"
                     component="div"

@@ -58,8 +58,8 @@ export default function BarChart() {
   return (
     <section className="BarChart-wrapper">
       <header className="BarChart-heading">
-        <div className="BarChart-title">Previous Loan</div>
-        <div className="BarChart-model">Subtitle</div>
+        <div className="BarChart-title">Total Average Loan Disbursed</div>
+        {/* <div className="BarChart-model">Subtitle</div> */}
       </header>
       <main className="BarChart-dataWrapper">
         <div className="BarChart-LoanWrapper">

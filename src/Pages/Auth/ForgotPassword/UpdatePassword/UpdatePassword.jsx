@@ -43,7 +43,7 @@ export default function UpdatePassword() {
   // Handles form submission
   const handleSubmit = async (values) => {
     setSubmitting(true); // Set form submission state to true
-    toggleModal();
+    // toggleModal();
 
     const password = values.password; // Get password value from form
     const confirmPassword = values.confirmPassword; // Get confirm password value from form
@@ -106,7 +106,19 @@ export default function UpdatePassword() {
                   <label htmlFor="password" className="Auth-label">
                     Password
                   </label>
-                  <div className="Auth-form-field">
+                  <div
+                    className={
+                      errors.password && touched.password
+                        ? "Auth-input-error Auth-form-field"
+                        : "Auth-form-field"
+                    }
+                  >
+                    <Field
+                      name="password"
+                      type={showPassword1 ? "text" : "password"}
+                      autoComplete="off"
+                      className="Auth-input"
+                    />
                     <div onClick={togglePasswordVisibility1}>
                       {showPassword1 ? (
                         <OpenPasswordIcon />
@@ -114,16 +126,6 @@ export default function UpdatePassword() {
                         <ClosePasswordIcon />
                       )}
                     </div>
-                    <Field
-                      name="password"
-                      type={showPassword1 ? "text" : "password"}
-                      autoComplete="off"
-                      className={
-                        errors.password && touched.password
-                          ? "Auth-input-error Auth-input"
-                          : "Auth-input"
-                      }
-                    />
                   </div>
                   <ErrorMessage
                     name="password"
@@ -135,7 +137,19 @@ export default function UpdatePassword() {
                   <label htmlFor="confirmPassword" className="Auth-label">
                     Re-enter Password
                   </label>
-                  <div className="Auth-form-field">
+                  <div
+                    className={
+                      errors.confirmPassword && touched.confirmPassword
+                        ? "Auth-input-error Auth-form-field"
+                        : "Auth-form-field"
+                    }
+                  >
+                    <Field
+                      name="confirmPassword"
+                      type={showPassword2 ? "text" : "password"}
+                      autoComplete="off"
+                      className="Auth-input"
+                    />
                     <div onClick={togglePasswordVisibility2}>
                       {showPassword2 ? (
                         <OpenPasswordIcon />
@@ -143,16 +157,6 @@ export default function UpdatePassword() {
                         <ClosePasswordIcon />
                       )}
                     </div>
-                    <Field
-                      name="confirmPassword"
-                      type={showPassword2 ? "text" : "password"}
-                      autoComplete="off"
-                      className={
-                        errors.confirmPassword && touched.confirmPassword
-                          ? "Auth-input-error Auth-input"
-                          : "Auth-input"
-                      }
-                    />
                   </div>
                   <ErrorMessage
                     name="confirmPassword"
@@ -172,8 +176,8 @@ export default function UpdatePassword() {
               <NoticeIcon />
               <h1 className="Auth-modal-title">Password Changed</h1>
               <p className="Auth-modal-message">
-                Congratulations, your password has been successfully
-                changed. You may now proceed to Log in.
+                Congratulations, your password has been successfully changed.
+                You may now proceed to Log in.
               </p>
               <div className="Auth-close-modal" onClick={toggleModal}>
                 <WrongIcon />

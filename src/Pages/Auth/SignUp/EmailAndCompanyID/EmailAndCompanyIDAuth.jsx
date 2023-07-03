@@ -82,17 +82,21 @@ export default function EmailAndCompanyIDAuth() {
                   <label htmlFor="email" className="Auth-label">
                     Email
                   </label>
-                  <Field
-                    name="email"
-                    type="email"
-                    autoComplete="off"
-                    placeholder="myworkemail@work.com"
+                  <div
                     className={
                       errors.email && touched.email
-                        ? "Auth-input-error Auth-input"
-                        : "Auth-input"
+                        ? "Auth-input-error Auth-form-field"
+                        : "Auth-form-field"
                     }
-                  />
+                  >
+                    <Field
+                      name="email"
+                      type="email"
+                      autoComplete="off"
+                      placeholder="myworkemail@work.com"
+                      className="Auth-input"
+                    />
+                  </div>
                   <ErrorMessage
                     name="email"
                     component="div"
@@ -103,17 +107,21 @@ export default function EmailAndCompanyIDAuth() {
                   <label htmlFor="companyID" className="Auth-label">
                     Company ID
                   </label>
-                  <Field
-                    name="companyID"
-                    type="companyID"
-                    autoComplete="off"
-                    placeholder="123456"
+                  <div
                     className={
                       errors.companyID && touched.companyID
-                        ? "Auth-input-error Auth-input"
-                        : "Auth-input"
+                        ? "Auth-input-error Auth-form-field"
+                        : "Auth-form-field"
                     }
-                  />
+                  >
+                    <Field
+                      name="companyID"
+                      type="companyID"
+                      autoComplete="off"
+                      placeholder="123456"
+                      className="Auth-input"
+                    />
+                  </div>
                   <ErrorMessage
                     name="companyID"
                     component="div"
