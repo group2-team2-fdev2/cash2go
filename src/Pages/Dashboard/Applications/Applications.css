@@ -1,0 +1,196 @@
+.Application-dashboard-content {
+  padding: 60px 340px;
+  margin-left: 20px;
+}
+
+.Application-table {
+  margin-top: 50px;
+  font-size: 13px;
+  border-radius: 10px;
+  width: 902px;
+  background-color: #f7f7f7;
+  box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
+  border: 1px solid #d1d9e2;
+  color: #5f6d7e;
+  cursor:pointer;
+}
+
+ /* .Application-table tbody tr:nth-child(5) td {
+  border-bottom: none;
+} */
+
+ .Application-date-header, 
+ .Application-status-header, 
+ .Application-creditscore-header,
+ .Application-amount-header{
+  margin-left: 18px;
+  font-weight: normal;
+}
+
+ .Application-table td, .Application-table th{
+  padding: 12px;
+  border-bottom: 1px solid #dfdede;
+  text-align: left;
+ }
+
+.Application-status,
+.Application-arrows {
+  height: 16px;
+}
+
+#Application-allApp-container {
+  font-size: 18px;
+  padding: 20px;
+  text-align: left;
+  color:  #2E3646;
+}
+
+
+#Application-table-applicantinfo {
+  text-align: left;
+  padding-left:30px;
+  font-weight: normal;
+} 
+
+.Application-approved-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #169872;
+  background-color: #169872;
+  color: white;
+  border-radius: 6px;
+  gap: 2px;
+  width: 90px;
+  height: 20px;
+}
+
+
+.Application-rejected-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid red;
+  background-color: red;
+  color: white;
+  border-radius: 6px;
+  gap: 2px;
+  width: 90px;
+  height: 20px;
+}
+
+.Application-pending-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #c0f5f9;
+  background-color: #c0f5f9;
+  color: Black;
+  border-radius: 6px;
+  gap: 2px;
+  width: 90px;
+  height: 20px;
+}
+
+.Application-appInfo-container {
+  display: flex;
+  align-items: center;
+}
+
+.Application.userName{
+  display:flex;
+  gap:2px;
+}
+.Application-table tbody td {
+  padding-left: 30px;
+}
+
+
+.Application-footer {
+  display: flex;
+ justify-content: space-between;
+ align-items: center;
+  min-width: 370%;
+  padding: 20px;
+}
+
+.application-footer-button{
+  border: none;
+}
+.Application-pre,
+.Application-next,
+.Application-page-no {
+  display: flex;
+  border: none;
+}
+
+.Application-pre{
+  padding-left: 15px;
+  gap: 5px;
+}
+
+ .Application-page-no {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+} 
+
+div.Application-next {
+  display: flex;
+  justify-content: right;
+  gap: 5px;
+} 
+
+/* Heading */
+.Application-heading-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+  width: 65%;
+}
+
+.Application-top-application {
+  display: flex;
+  gap: 8px;
+  padding-bottom: 15px;
+}
+
+.Application-viewAll-app {
+  font-size: 16px;
+}
+
+.Application-middle-application {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 380%;
+}
+
+.Application-list-application {
+  display: flex;
+  padding-top: 20px;
+  align-items: center;
+  gap: 16px;
+}
+
+.Application-loanButton {
+  border: none;
+  background: none;
+  font-size: 15px;
+  font-weight: 300;
+  color: #5f6d7e;
+}
+
+.Application-loanButton:active {
+  margin-top: 10px;
+  font-size: 16px;
+} 
+
+.applicationhr{
+ margin-top:15px;
+}
+
+.headerhr{
+  margin-top: 20px;
+  margin-bottom: 10px;
+}

@@ -1,0 +1,144 @@
+.Settings-Navigation {
+  width: 902px;
+  height: 64px;
+  margin-top: 32px;
+  margin-bottom: 32px;
+}
+
+.Settings-Navigation_flex-container {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.Settings-Navigation_flex-item {
+  padding-bottom: 15px;
+  border-bottom: 1px solid #5f6d7e;
+  cursor: pointer;
+}
+
+.Settings-Navigation_link {
+  font-size: 14px;
+  font-weight: 500;
+  color: #5f6d7e;
+}
+
+.Settings-Navigation_flex-item .active {
+   padding-bottom: 15px;
+  border-bottom: 2px solid #5f6d7e;
+}
+
+.Settings-table {
+  width: 902px;
+}
+
+.Settings-thead {
+  height: 44px;
+  background: #f8f9fb;
+}
+
+.Settings-th {
+  padding: 16px 24px;
+  text-align: start;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 18px;
+  color: #5f6d7e;
+}
+
+.Settings-tbody_data {
+  border-bottom: 1px solid #d1d9e2;
+  padding: 16px 24px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: #2e3646;
+}
+
+.Settings-tbody_model {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.Settings-tbody_model_title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #5f6d7e;
+}
+
+.Settings-tbody_model_subtitle {
+  font-size: 14px;
+  color: #5f6d7e;
+}
+
+.Settings-tbody_date,
+.Settings-tbody_creator {
+  font-size: 14px;
+  color: #5f6d7e;
+}
+
+.Settings-tbody_icon {
+  border-bottom: 1px solid #d1d9e2;
+  padding: 16px 24px;
+}
+
+.ToggleOff-icon {
+  fill: #5f6d7e;
+  width: 44px;
+  height: 30px;
+}
+
+.ToggleOn-icon {
+  fill: #ff6f5a;
+  width: 44px;
+  height: 30px;
+}
+
+.Edit-icon {
+  color: #5f6d7e;
+  width: 34px;
+  height: 20px;
+}
+
+.Settings-ActiveStatus {
+  width: 100px;
+  height: 25px;
+  background-color: #ff6f5a;
+  color: white;
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  align-items: center;
+  padding: 2px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.Settings-InactiveStatus {
+  width: 100px;
+  height: 25px;
+  background-color: #2e3646;
+  color: white;
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  align-items: center;
+  padding: 2px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.Settings-CircleCheck,
+.Settings-DotCircle {
+  width: 15px;
+  height: 15px;
+}
+
+.Settings-ActiveStatus_text,
+.Settings-InactiveStatus_text {
+  font-size: 14px;
+  font-weight: 300;
+}
+
+

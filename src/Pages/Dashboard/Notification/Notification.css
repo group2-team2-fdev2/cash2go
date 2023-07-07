@@ -1,0 +1,213 @@
+.NotificationPage-display {
+  margin-left: 112px;
+}
+
+.Notification-notifications-title {
+  margin-top: 32px;
+  margin-bottom: 37.5px;
+  padding: 16px 20px;
+  box-sizing: border-box;
+  width: 902px;
+  background-color: #f8f9fb;
+  border-bottom: solid 1px #d1d9e2;
+}
+
+.Notification-notifications-title h4 {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  padding-left: 10px;
+}
+
+.Notification-notifications-title p {
+  margin-top: 2px;
+  padding-top: 3px;
+  padding-left: 10px;
+  font-size: 14px;
+}
+
+.Notification-notifications-list {
+  padding: 16px 57px;
+  margin: 5px 0;
+  box-sizing: border-box;
+  width: 902px;
+  background-color: #f8f9fb;
+  border-bottom: solid 1px #d1d9e2;
+  font-size: 16px;
+  display: flex;
+  flex-direction: row;
+}
+
+.Notification-notifications-BoxIcon {
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  margin-top: 25px;
+  margin-left: -40px;
+  color: #d1d9e2;
+}
+
+.Notification-notifications-date {
+  padding: 5px 0 0 0;
+  font-size: 12px;
+  color: #6e6f6f;
+}
+
+.Notification-messages-title {
+  color: black;
+  font-weight: 400;
+  padding: 8px 0;
+  letter-spacing: 0.0015em;
+}
+
+.Notification-messages-title.active {
+  font-weight: 800;
+  color: #169872;
+}
+
+.Notification-messages-body {
+  font-weight: 300;
+  letter-spacing: 0.0015em;
+}
+
+.Notification-messages-body.active {
+  font-weight: 700;
+}
+
+.Notification-notifications-OptionsIcon {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  margin-top: 15px;
+  margin-left: 400px;
+}
+
+.Notification-ViewNotification-ticks {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  margin-left: 2px;
+}
+
+.Notification-footer-navigation {
+  margin-top: 37.5px;
+  padding: 16px 20px;
+  box-sizing: border-box;
+  width: 902px;
+  height: 64px;
+  background-color: #f8f9fb;
+  border-bottom: solid 1px #d1d9e2;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: row;
+}
+
+.Notification-footer-previous {
+  height: 30px;
+  width: 30px;
+  color: #5f6d7e;
+  background-color: #f8f9fb;
+  border: #f8f9fb;
+}
+
+.Notification-footer-previousSet {
+  display: flex;
+}
+
+.Notification-footer-previousText {
+  margin-top: 8px;
+}
+
+.Notification-footer-next {
+  height: 30px;
+  width: 30px;
+  margin-left: 59%;
+  color: #5f6d7e;
+  background-color: #f8f9fb;
+  border: #f8f9fb;
+}
+
+.Notification-footer-pageOptions {
+  margin-left: 280px;
+  margin-top: 4px;
+}
+.Notification-footer-pageList {
+  padding: 10px;
+  color: #5f6d7e;
+  cursor: pointer;
+  gap: 5px;
+  display: inline;
+}
+
+.Notification-footer-pageList.active {
+  background-color: #e6e9ec;
+  border: 5px;
+  border-radius: 5px;
+}
+
+.Notification-ViewNotification-overlay {
+  width: 100vw;
+  height: 100vw;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+}
+
+.Notification-ViewNotification {
+  width: 100vw;
+  height: 100vw;
+  top: 0;
+  left: 100px;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+}
+
+.Notification-ViewNotification-overlay {
+  background: rgba(49, 49, 49, 0.2);
+}
+
+.Notification-ViewNotification-content {
+  position: absolute;
+  top: 25%;
+  left: 52%;
+  transform: translate(-50%, -50%);
+  line-height: 1.4;
+  background: #f8f9fb;
+  padding: 10px 25px;
+  border-radius: 3px;
+  max-width: 600px;
+  min-width: 300px;
+  min-height: 350px;
+  border-radius: 15px;
+  text-align: center;
+  line-height: 25px;
+}
+
+.Notification-ViewNotification-content h1 {
+  color: #169872;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+.Notification-ViewNotification-close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  background-color: #ff6f5a;
+  border-radius: 3px;
+}
+
+.Notification-ViewNotification-hide {
+  display: none;
+}
+
+.Notification-noNotifications{
+  font-size: 30px;
+  color: #e4e7ea;
+  text-align: center;
+}
