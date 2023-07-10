@@ -1,18 +1,33 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
 import UserIcon from "./components/DashboardOverview/UserIcon";
 
 //components
 import Approved from "./components/DashboardOverview/Approved";
 import Rejected from "./components/DashboardOverview/Rejected";
 import Pending from "./components/DashboardOverview/Pending";
-
+// import ApplicantOverview from "./ApplicantDetails/ApplicantOverview";
 
 // eslint-disable-next-line react/prop-types
-export default function DashboardApplicantList({sectionTitle, sortOptionText}) {
+export default function DashboardApplicantList({
+  sectionTitle,
+  sortOptionText,
+}) {
   const [loanData, setLoanData] = useState([]);
   const [sortedData, setSortedData] = useState([]);
   const [sortBy, setSortBy] = useState("date");
-  
+
+  // const [applicantOverview, setApplicationOverview] = useState(false);
+
+  const navigate = useNavigate();
+
+  const handleSelectApplicant = (selectedApplicantId) => {
+    const selectedApplicant = loanData.find(
+      (applicant) => applicant._id === selectedApplicantId
+    );
+    navigate("applicant-overview", { state: { selectedApplicant } });
+  };
 
   const statusComponents = {
     Approved: <Approved />,
@@ -98,90 +113,109 @@ export default function DashboardApplicantList({sectionTitle, sortOptionText}) {
   };
 
   return (
-    <table className="Dashboard-loan-table">
-      <thead>
-        <tr>
-          <th colSpan="5">
-            <div className="Dashboard-section-header">
-              <h3 className="Dashboard-section-header-title">{sectionTitle}</h3>
-              {sortOptionText && (
-                <p className="Dashboard-sort-option">
-                  Sorted by {getSortOptionText()}
-                </p>
-              )}
-            </div>
-          </th>
-        </tr>
-        <tr>
-          <th className="Dashboard-name-header">Applicants Info</th>
-          <th
-            className="Dashboard-date-header"
-            onClick={() => handleSortBy("date")}
-          >
-            Date &darr;
-          </th>
-          <th
-            className="Dashboard-status-header"
-            onClick={() => handleSortBy("status")}
-          >
-            Status &darr;
-          </th>
-          <th
-            className="Dashboard-credit-score-header"
-            onClick={() => handleSortBy("creditScore")}
-          >
-            Credit Score &darr;
-          </th>
-          <th
-            className="Dashboard-loan-amount-header"
-            onClick={() => handleSortBy("loanAmount")}
-          >
-            Amount &darr;
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        {sortedData.map((applicant) => (
-          <tr key={applicant._id}>
-            <td>
-              <div className="Dashboard-applicant">
-                <UserIcon />
-                <div>
-                  <span className="Dashboard-applicant-name">
-                    {applicant.contact.firstName} {applicant.contact.lastName}
-                  </span>
-                  <br />
-                  <span className="Dashboard-applicant-id">
-                    {`ID - ${applicant.applicationID}`}
-                  </span>
-                </div>
+    <>
+      <table className="Dashboard-loan-table">
+        <thead>
+          <tr>
+            <th colSpan="5">
+              <div className="Dashboard-section-header">
+                <h3 className="Dashboard-section-header-title">
+                  {sectionTitle}
+                </h3>
+                {sortOptionText && (
+                  <p className="Dashboard-sort-option">
+                    Sorted by {getSortOptionText()}
+                  </p>
+                )}
               </div>
-            </td>
-            <td>
-              {new Date(applicant.applicationDate).toLocaleDateString("en-US", {
-                year: "2-digit",
-                month: "2-digit",
-                day: "2-digit",
-              })}
-            </td>
-            <td className="Dashboard-status-cell">
-              {
-                statusComponents[
-                  applicant.prediction.isPending
-                    ? "Pending"
-                    : applicant.prediction.isRejected
-                    ? "Rejected"
-                    : "Approved"
-                ]
-              }
-            </td>
-            <td className="Dashboard-credit-score-cell">
-              {applicant.prediction.creditScore}
-            </td>
- <td>{Number(applicant.prediction.loanRequestAmount).toLocaleString()}</td>
+            </th>
           </tr>
-        ))}
-      </tbody>
-    </table>
+          <tr>
+            <th className="Dashboard-name-header">Applicants Info</th>
+            <th
+              className="Dashboard-date-header"
+              onClick={() => handleSortBy("date")}
+            >
+              Date &darr;
+            </th>
+            <th
+              className="Dashboard-status-header"
+              onClick={() => handleSortBy("status")}
+            >
+              Status &darr;
+            </th>
+            <th
+              className="Dashboard-credit-score-header"
+              onClick={() => handleSortBy("creditScore")}
+            >
+              Credit Score &darr;
+            </th>
+            <th
+              className="Dashboard-loan-amount-header"
+              onClick={() => handleSortBy("loanAmount")}
+            >
+              Amount &darr;
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {sortedData.map((applicant) => (
+            <tr
+              key={applicant._id}
+              onClick={() => handleSelectApplicant(applicant._id)}
+            >
+              <td>
+                <div className="Dashboard-applicant">
+                  <UserIcon />
+                  <div>
+                    <span className="Dashboard-applicant-name">
+                      {applicant.contact.firstName} {applicant.contact.lastName}
+                    </span>
+                    <br />
+                    <span className="Dashboard-applicant-id">
+                      {`ID - ${applicant.applicationID}`}
+                    </span>
+                  </div>
+                </div>
+              </td>
+              <td>
+                {new Date(applicant.applicationDate).toLocaleDateString(
+                  "en-US",
+                  {
+                    year: "2-digit",
+                    month: "2-digit",
+                    day: "2-digit",
+                  }
+                )}
+              </td>
+              <td className="Dashboard-status-cell">
+                {
+                  statusComponents[
+                    applicant.prediction.isPending
+                      ? "Pending"
+                      : applicant.prediction.isRejected
+                      ? "Rejected"
+                      : "Approved"
+                  ]
+                }
+              </td>
+              <td className="Dashboard-credit-score-cell">
+                {applicant.prediction.creditScore}
+              </td>
+              <td>
+                {Number(
+                  applicant.prediction.loanRequestAmount
+                ).toLocaleString()}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </>
   );
 }
+
+DashboardApplicantList.propTypes = {
+  sectionTitle: PropTypes.string,
+  sortOptionText: PropTypes.string,
+};

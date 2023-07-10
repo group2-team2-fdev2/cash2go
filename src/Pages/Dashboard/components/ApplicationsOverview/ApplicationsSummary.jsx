@@ -85,6 +85,10 @@ export function ApplicationsOverviewStatusIcon({ status }) {
     iconComponent = (
       <BsInfoCircle className="applicationsOverview-statusIcon" />
     );
+  }  else if (status == "Rejected") {
+    iconComponent = (
+      <BsInfoCircle className="applicationsOverview-statusIcon" />
+    );
   }
 
   return <div>{iconComponent}</div>;

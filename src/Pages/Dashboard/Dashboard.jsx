@@ -26,7 +26,7 @@ export default function Dashboard() {
   const [newRejectedDiff, setNewRejectedDiff] = useState(0);
   const [firstName, setFirstName] = useState("");
 
-  const isRegularButton = true;
+  // const isRegularButton = true;
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const email = queryParams.get("email");
@@ -35,7 +35,7 @@ export default function Dashboard() {
     // Fetch user data and update the state with the user's first name
     const fetchUserData = async () => {
       try {
-  const storedFirstName = localStorage.getItem("firstName");
+        const storedFirstName = localStorage.getItem("firstName");
         if (storedFirstName) {
           setFirstName(storedFirstName);
         } else {
@@ -101,7 +101,7 @@ export default function Dashboard() {
 
   return (
     <div>
-      <Navbar email={email}/>
+      <Navbar email={email} />
       <SideBar />
       <div className="Dashboard-content">
         <BreadCrumbs />
@@ -112,7 +112,7 @@ export default function Dashboard() {
               title={`Hello, ${firstName || "User"}`}
               subTitle={
                 <>
-  Welcome back you have
+                  Welcome back you have
                   <span className="dashboardHeader-subTitle-variable">
                     {" "}
                     {numNewApplications}{" "}
@@ -124,7 +124,7 @@ export default function Dashboard() {
               secondLink="/new-application"
               firstButtonTitle="Existing"
               secondButtonTitle="New"
-              isRegularButton={isRegularButton}
+              isRegularButton={true}
             />
           </div>
         </div>
@@ -143,7 +143,6 @@ export default function Dashboard() {
           setNumNewApplications={setNumNewApplications}
           sectionTitle="Recent Applications"
           sortOptionText="Sort Option Text"
-
         />
       </div>
     </div>
