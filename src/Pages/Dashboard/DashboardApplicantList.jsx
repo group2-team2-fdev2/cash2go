@@ -14,7 +14,6 @@ export default function DashboardApplicantList({sectionTitle, sortOptionText}) {
   const [sortBy, setSortBy] = useState("date");
   
 
-  
   const statusComponents = {
     Approved: <Approved />,
     Rejected: <Rejected />,
@@ -179,7 +178,7 @@ export default function DashboardApplicantList({sectionTitle, sortOptionText}) {
             <td className="Dashboard-credit-score-cell">
               {applicant.prediction.creditScore}
             </td>
-            <td>{applicant.prediction.loanRequestAmount}</td>
+ <td>{Number(applicant.prediction.loanRequestAmount).toLocaleString()}</td>
           </tr>
         ))}
       </tbody>

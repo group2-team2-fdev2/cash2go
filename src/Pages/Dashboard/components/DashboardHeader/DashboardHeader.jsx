@@ -13,6 +13,7 @@ export default function DashboardHeader({
   isNoButton,
   isOneButton,
   isRegularButton,
+  isButtonVariant,
   firstButtonTitle,
   secondButtonTitle,
   ButtonTitle,
@@ -58,6 +59,25 @@ export default function DashboardHeader({
             />
           </Link>
         </div>
+      ) : isButtonVariant ? (
+        <div className="right-dashboardHeader">
+          <Link to={firstLink}>
+            <Button
+              title={firstButtonTitle}
+              backgroundColor="#E6E9EC"
+              color="#5f6d7e"
+              width="144px"
+            />
+          </Link>
+          <Link to={secondLink}>
+            <Button
+              title={secondButtonTitle}
+              backgroundColor="#FF6F5A"
+              color="#F8F9FB"
+              width="144px"
+            />
+          </Link>
+        </div>
       ) : (
         <div className="right-dashboardHeader">
           <Link to={firstLink}>
@@ -83,12 +103,13 @@ export default function DashboardHeader({
 
 DashboardHeader.propTypes = {
   title: PropTypes.string,
-  subTitle: PropTypes.string,
+  subTitle: PropTypes.node,
   firstLink: PropTypes.string,
   secondLink: PropTypes.string,
   isNoButton: PropTypes.bool,
   isOneButton: PropTypes.bool,
   isRegularButton: PropTypes.bool,
+  isButtonVariant: PropTypes.bool,
   firstButtonTitle: PropTypes.string,
   secondButtonTitle: PropTypes.string,
   ButtonTitle: PropTypes.string,

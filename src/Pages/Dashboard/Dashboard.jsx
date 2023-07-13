@@ -14,6 +14,7 @@ import DashboardApplicantList from "./DashboardApplicantList";
 // import Button from "./components/DashboardHeader/Button";
 import DashboardHeader from "./components/DashboardHeader/DashboardHeader";
 
+// eslint-disable-next-line react/prop-types
 export default function Dashboard() {
   const [loanData, setLoanData] = useState([]);
   const [numNewApplications, setNumNewApplications] = useState(0);
@@ -34,11 +35,18 @@ export default function Dashboard() {
     // Fetch user data and update the state with the user's first name
     const fetchUserData = async () => {
       try {
-        const response = await axios.get(
-          `https://cash2go-backendd.onrender.com/api/v1/user/get-firstname?email=${email}`
-        );
-        const userData = response.data;
-        setFirstName(userData.data.firstName);
+  const storedFirstName = localStorage.getItem("firstName");
+        if (storedFirstName) {
+          setFirstName(storedFirstName);
+        } else {
+          const response = await axios.get(
+            `https://cash2go-backendd.onrender.com/api/v1/user/get-firstname?email=${email}`
+          );
+          const userData = response.data;
+          const firstName = userData.data.firstName;
+          setFirstName(firstName);
+          localStorage.setItem("firstName", firstName);
+        }
       } catch (error) {
         console.error("Error while fetching user data:", error);
       }
@@ -104,7 +112,12 @@ export default function Dashboard() {
               title={`Hello, ${firstName || "User"}`}
               subTitle={
                 <>
-                  Welcome back you have<span className="dashboardHeader-subTitle-variable"> {numNewApplications} </span>new applications
+  Welcome back you have
+                  <span className="dashboardHeader-subTitle-variable">
+                    {" "}
+                    {numNewApplications}{" "}
+                  </span>
+                  new applications
                 </>
               }
               firstLink="/applications"
@@ -130,7 +143,7 @@ export default function Dashboard() {
           setNumNewApplications={setNumNewApplications}
           sectionTitle="Recent Applications"
           sortOptionText="Sort Option Text"
-          
+
         />
       </div>
     </div>

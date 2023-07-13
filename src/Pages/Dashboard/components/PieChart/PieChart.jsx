@@ -29,8 +29,8 @@ export default function PieChart() {
   return (
     <section className="PieChart-wrapper">
       <header className="PieChart-heading">
-        <div className="PieChart-title">Credit Score</div>
-        <div className="PieChart-model">FICO Model</div>
+        <div className="PieChart-title">Average Credit Score</div>
+        {/* <div className="PieChart-model">FICO Model</div> */}
       </header>
       <main className="PieChart-dataWrapper">
         <Doughnut

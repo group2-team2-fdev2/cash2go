@@ -8,7 +8,7 @@ import * as Yup from "yup";
 import "../../Auth.css";
 // component
 import LeftLoginLayout3 from "../../components/LeftSignUpLayout4";
-import SubmitButton from "../../components/SubmitButton";
+import NextButton from "../../components/NextButton";
 import Legal from "../../components/Legal";
 
 export default function SecurityQuestionAuth() {
@@ -137,24 +137,28 @@ export default function SecurityQuestionAuth() {
                   >
                     Security Question Answer
                   </label>
-                  <Field
-                    name="securityQuestionAnswer"
-                    type="text"
-                    autoComplete="off"
+                  <div
                     className={
                       errors.securityQuestionAnswer &&
                       touched.securityQuestionAnswer
-                        ? "Auth-input-error Auth-input"
-                        : "Auth-input"
+                        ? "Auth-input-error Auth-form-field"
+                        : "Auth-form-field"
                     }
-                  />
+                  >
+                    <Field
+                      name="securityQuestionAnswer"
+                      type="text"
+                      autoComplete="off"
+                      className="Auth-input"
+                    />
+                  </div>
                   <ErrorMessage
                     name="securityQuestionAnswer"
                     component="div"
                     className="Auth-error-message"
                   />
                 </div>
-                <SubmitButton isSubmitting={isSubmitting} />
+                <NextButton isSubmitting={isSubmitting} />
               </Form>
             )}
           </Formik>

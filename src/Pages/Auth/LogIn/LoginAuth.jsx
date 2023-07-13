@@ -12,10 +12,10 @@ export default function LoginAuth() {
   const navigate = useNavigate(); // Navigation function
 
   // Handles the next step after OTP verification
-  const loginToApp = (isAuthenticated) => {
+  const loginToApp = (isAuthenticated, email) => {
     if (isAuthenticated) {
       // If user is authenticated, navigate to dashboard page
-      navigate("/dashboard");
+      navigate(`/dashboard?email=${encodeURIComponent(email)}`);
     }
   };
 

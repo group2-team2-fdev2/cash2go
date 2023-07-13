@@ -1,4 +1,4 @@
-import data from "./message.json";
+// import data from "./message.json";
 import MessageCheckbox from "./MessageCheckbox";
 import MessageMark from "./MessageMark";
 import MessageBentArrow from "./MessageBentArrow";
@@ -7,8 +7,8 @@ import Ellipse2 from "../Messages/Images/Ellipse2.png"
 import Ellipse3 from "../Messages/Images/Ellipse3.png"
 import Ellipse4 from "../Messages/Images/Ellipse4.png"
 
-const { inbox } = data;
-console.log(inbox)
+// const { inbox } = data;
+// console.log(inbox)
 
 function Inbox() {
   return (
