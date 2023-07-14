@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 
 export default function ResourcesIcon() {
   return (
-    <>
+    <div className="Sidebar">
       <NavLink
         style={{ color: "currentColor" }}
         className="sidebar-icon-wrapper"
@@ -25,6 +25,6 @@ export default function ResourcesIcon() {
         </svg>
         <p className="sidebar-navigation">Resources</p>
       </NavLink>
-    </>
+    </div>
   );
 }

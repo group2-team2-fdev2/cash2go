@@ -50,9 +50,7 @@ const router = createBrowserRouter(
           />
         </Route>
       </Route>
-      <Route path="applications">
-        <Route index element={<Applications />} />
-      </Route>
+      <Route path="applications/*" element={<Applications />} />
       <Route path="analytics">
         <Route index element={<Analytics />} />
       </Route>

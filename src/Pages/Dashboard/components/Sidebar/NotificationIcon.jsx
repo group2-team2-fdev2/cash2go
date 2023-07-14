@@ -10,7 +10,7 @@ export default function NotificationIcon() {
   };
 
   return (
-    <>
+    <div className="Sidebar">
       <NavLink
         style={{ color: "currentColor" }}
         className="sidebar-icon-wrapper"
@@ -44,6 +44,6 @@ export default function NotificationIcon() {
           {notificationCount}
         </p>
       </NavLink>
-    </>
+    </div>
   );
 }

@@ -98,7 +98,7 @@
   cursor: pointer;
 }
 
-.active {
+.Sidebar .active {
   background-color: rgba(240, 240, 240, 0.1);
   width: 268px;
   height: 40px;

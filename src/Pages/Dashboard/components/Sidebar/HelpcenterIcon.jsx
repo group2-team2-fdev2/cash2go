@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 
 export default function HelpcenterIcon() {
   return (
-    <>
+    <div className="Sidebar">
       <NavLink
         style={{ color: "currentColor" }}
         className="sidebar-icon-wrapper"
@@ -25,6 +25,6 @@ export default function HelpcenterIcon() {
         </svg>
         <p className="sidebar-navigation">Help Center</p>
       </NavLink>
-    </>
+    </div>
   );
 }

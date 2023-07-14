@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 
 export default function MessageIcon() {
   return (
-    <>
+    <div className="Sidebar">
       <NavLink
         style={{ color: "currentColor" }}
         className="sidebar-icon-wrapper"
@@ -25,6 +25,6 @@ export default function MessageIcon() {
         </svg>
         <p className="sidebar-navigation">Messages</p>
       </NavLink>
-    </>
+    </div>
   );
 }
