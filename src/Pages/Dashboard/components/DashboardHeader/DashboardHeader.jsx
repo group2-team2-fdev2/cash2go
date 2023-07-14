@@ -19,12 +19,13 @@ export default function DashboardHeader({
   ButtonTitle,
   borderBottom,
   paddingBottom,
+  contact,
 }) {
   const containerStyle = {
     borderBottom: borderBottom,
     paddingBottom: paddingBottom,
   };
-
+// console.log(contact)
   return (
     <div style={containerStyle} className="dashboardHeader-wrapper">
       <div className="left-dashboardHeader">
@@ -44,7 +45,12 @@ export default function DashboardHeader({
         </div>
       ) : isRegularButton ? (
         <div className="right-dashboardHeader">
-          <Link to={firstLink}>
+          <Link
+            to={{
+              pathname: firstLink,
+              state: { contact },
+            }}
+          >
             <Button
               title={firstButtonTitle}
               backgroundColor="#E6E9EC"

@@ -51,7 +51,7 @@ ApplicationsSummary.propTypes = {
 export function ApplicationsOverviewIcon({ title }) {
   let iconComponent = null;
 
-  if (title == "Loan Status") {
+  if (title == "Loan Request") {
     iconComponent = (
       <FiThumbsUp className="applicationsOverview-icon" />
     );
