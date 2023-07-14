@@ -3,7 +3,7 @@ import BigNoticeIcon from "./BigNoticeIcon";
 import SmallNoticeIcon from "./SmallNoticeIcon";
 
 export default function PendingLoanDashboard1({ numPending, newPendingDiff }) {
-  const title = "Pending Loans";
+  const title = "Pending Reviews";
   const comparism = `+ ${newPendingDiff} from yesterday`;
   const status = "Pending";
 

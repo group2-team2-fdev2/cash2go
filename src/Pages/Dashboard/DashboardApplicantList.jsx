@@ -6,13 +6,22 @@ import Approved from "./components/DashboardOverview/Approved";
 import Rejected from "./components/DashboardOverview/Rejected";
 import Pending from "./components/DashboardOverview/Pending";
 
-
 // eslint-disable-next-line react/prop-types
-export default function DashboardApplicantList({sectionTitle, sortOptionText}) {
-  const [loanData, setLoanData] = useState([]);
+export default function DashboardApplicantList({
+  // eslint-disable-next-line react/prop-types
+  sectionTitle,
+  // eslint-disable-next-line react/prop-types
+  sortOptionText,
+  // eslint-disable-next-line react/prop-types
+  searchQuery,
+  // eslint-disable-next-line react/prop-types
+  loanData,
+  // eslint-disable-next-line react/prop-types
+  setLoanData,
+}) {
+  // const [loanData, setLoanData] = useState([]);
   const [sortedData, setSortedData] = useState([]);
   const [sortBy, setSortBy] = useState("date");
-  
 
   const statusComponents = {
     Approved: <Approved />,
@@ -40,7 +49,7 @@ export default function DashboardApplicantList({sectionTitle, sortOptionText}) {
     };
 
     fetchApplicants();
-  }, []);
+  }, [setLoanData]);
 
   const handleSortBy = (value) => {
     setSortBy(value);
@@ -97,6 +106,15 @@ export default function DashboardApplicantList({sectionTitle, sortOptionText}) {
     return sortOptionText;
   };
 
+  // eslint-disable-next-line react/prop-types
+  const filteredData = loanData.filter((applicant) => {
+    const fullName = `${applicant.contact.firstName} ${applicant.contact.lastName}`;
+    // eslint-disable-next-line react/prop-types
+    return fullName.toLowerCase().includes(searchQuery.toLowerCase());
+  });
+
+  const displayData = searchQuery ? filteredData : sortedData;
+
   return (
     <table className="Dashboard-loan-table">
       <thead>
@@ -141,7 +159,16 @@ export default function DashboardApplicantList({sectionTitle, sortOptionText}) {
         </tr>
       </thead>
       <tbody>
-        {sortedData.map((applicant) => (
+        {displayData.length === 0 && searchQuery && (
+          <tr>
+            <td colSpan="5" className="Dashboard-applicant-not-found-cell">
+              <div className="Dashboard-applicant-not-found">
+                Applicant not found
+              </div>
+            </td>
+          </tr>
+        )}
+        {displayData.map((applicant) => (
           <tr key={applicant._id}>
             <td>
               <div className="Dashboard-applicant">
@@ -178,7 +205,9 @@ export default function DashboardApplicantList({sectionTitle, sortOptionText}) {
             <td className="Dashboard-credit-score-cell">
               {applicant.prediction.creditScore}
             </td>
- <td>{Number(applicant.prediction.loanRequestAmount).toLocaleString()}</td>
+            <td>
+              {Number(applicant.prediction.loanRequestAmount).toLocaleString()}
+            </td>
           </tr>
         ))}
       </tbody>
