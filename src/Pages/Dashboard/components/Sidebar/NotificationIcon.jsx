@@ -14,7 +14,7 @@ export default function NotificationIcon() {
       <NavLink
         style={{ color: "currentColor" }}
         className="sidebar-icon-wrapper"
-        activeclassName="active"
+        activeclassname="active"
         to="/notification"
       >
         <svg

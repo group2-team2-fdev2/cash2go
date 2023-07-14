@@ -6,7 +6,7 @@ import { BiCheckCircle } from "react-icons/bi";
 import { BsArrowRight } from "react-icons/bs";
 import PropTypes from "prop-types";
 
-export default function PieChart() {
+export default function PieChart({creditScore}) {
   const data = {
     datasets: [
       {
@@ -43,9 +43,9 @@ export default function PieChart() {
           options={options}
         />
         <div className="PieChart-performanceWrapper">
-          <p className="PieChart-performanceRange">(720 - 850)</p>
+          <p className="PieChart-performanceRange">{creditScore}</p>
           <div style={statusStyle} className="PieChart-performanceStatusWrapper">
-            <PieChartPerformanceStatusIcon status="Excellent" />
+            <PieChartPerformanceStatusIcon status={creditScore} />
             <p className="PieChart-performanceStatus">Excellent</p>
           </div>
         </div>
@@ -61,12 +61,19 @@ export default function PieChart() {
   );
 }
 
+PieChart.propTypes = {
+  creditScore: PropTypes.number,
+};
+
 export function PieChartPerformanceStatusIcon({ status }) {
   let iconComponent = null;
 
-  if (status == "Excellent") {
+  if (status >= 720) {
     iconComponent = (
-      <BiCheckCircle className="applicationsOverview-statusIcon" />
+      <>
+        <BiCheckCircle className="applicationsOverview-statusIcon" />
+        
+      </>
     );
   }
 
@@ -74,5 +81,5 @@ export function PieChartPerformanceStatusIcon({ status }) {
 }
 
 PieChartPerformanceStatusIcon.propTypes = {
-  status: PropTypes.string,
+  status: PropTypes.number,
 };

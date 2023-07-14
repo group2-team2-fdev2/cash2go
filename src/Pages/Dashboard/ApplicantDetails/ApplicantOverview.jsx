@@ -10,10 +10,23 @@ import LoanStatus from "../components/ApplicationsOverview/ApplicationsSummary";
 import CreditUtilization from "../components/ApplicationsOverview/ApplicationsSummary";
 import OutstandingDebt from "../components/ApplicationsOverview/ApplicationsSummary";
 import { useEffect, useRef } from "react";
+import { useLocation } from "react-router-dom";
 
 export default function ApplicantOverview() {
   const scrollableWrapperRef = useRef(null);
-  const isRegularButton = true;
+
+  const location = useLocation();
+  const { selectedApplicant } = location.state || {};
+
+  console.log(selectedApplicant);
+
+  const { prediction, contact, applicationID, applicationDate } =
+    selectedApplicant;
+
+  console.log(prediction);
+  console.log(contact);
+  console.log(applicationID);
+  console.log(applicationDate);
 
   useEffect(() => {
     const scrollableWrapper = scrollableWrapperRef.current;
@@ -33,6 +46,10 @@ export default function ApplicantOverview() {
     };
   }, []);
 
+  if (!selectedApplicant) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <>
       <Navbar />
@@ -40,13 +57,13 @@ export default function ApplicantOverview() {
       <div className="Dashboard-content">
         <BreadCrumbs />
         <DashboardHeader
-          title="Ogbeni Mallam"
+          title={`${contact.firstName} ${contact.lastName}`}
           subTitle="Loan History and Performance"
           firstLink="info"
           secondLink="applicant-review"
           firstButtonTitle="Info"
           secondButtonTitle="Review"
-          isRegularButton={isRegularButton}
+          isRegularButton={true}
         />
         {/* <ApplicationsOverview /> */}
         <div className="applicationsOverview-container">
@@ -58,37 +75,102 @@ export default function ApplicantOverview() {
               title="Loan Status"
               score="N 35,000.00"
               description="Short Term Loan"
-              status="Approved"
-              backgroundColor="#169872"
-              color="#F8F9FB"
+              status={
+                prediction.isApproved
+                  ? "Approved"
+                  : prediction.isPending
+                  ? "Pending"
+                  : prediction.isRejected
+                  ? "Rejected"
+                  : null
+              }
+              backgroundColor={
+                prediction.isApproved
+                  ? "#169872"
+                  : prediction.isPending
+                  ? "#C0F5F9"
+                  : prediction.isRejected
+                  ? "#FD3D39"
+                  : null
+              }
+              color={
+                prediction.isApproved
+                  ? "#F8F9FB"
+                  : prediction.isPending
+                  ? "#000000"
+                  : prediction.isRejected
+                  ? "#F8F9FB"
+                  : null
+              }
             />
             <CreditUtilization
               title="Credit Utilization"
-              score="18%"
+              score={prediction.creditUtilization}
               description="(<30)"
-              status="Pending"
-              backgroundColor="#C0F5F9"
+              status={
+                prediction.isApproved
+                  ? "Approved"
+                  : prediction.isPending
+                  ? "Pending"
+                  : prediction.isRejected
+                  ? "Rejected"
+                  : null
+              }
+              backgroundColor={
+                prediction.isApproved
+                  ? "#169872"
+                  : prediction.isPending
+                  ? "#C0F5F9"
+                  : prediction.isRejected
+                  ? "#FD3D39"
+                  : null
+              }
+              color={
+                prediction.isApproved
+                  ? "#F8F9FB"
+                  : prediction.isPending
+                  ? "#000000"
+                  : prediction.isRejected
+                  ? "#F8F9FB"
+                  : null
+              }
             />
             <OutstandingDebt
               title="Outstanding Debt"
               score="N 0.00"
               description="(<20% Previous Debt)"
-              status="Excellent"
-              backgroundColor="#169872"
-              color="#F8F9FB"
+              status={
+                prediction.isApproved
+                  ? "Approved"
+                  : prediction.isPending
+                  ? "Pending"
+                  : prediction.isRejected
+                  ? "Rejected"
+                  : null
+              }
+              backgroundColor={
+                prediction.isApproved
+                  ? "#169872"
+                  : prediction.isPending
+                  ? "#C0F5F9"
+                  : prediction.isRejected
+                  ? "#FD3D39"
+                  : null
+              }
+              color={
+                prediction.isApproved
+                  ? "#F8F9FB"
+                  : prediction.isPending
+                  ? "#000000"
+                  : prediction.isRejected
+                  ? "#F8F9FB"
+                  : null
+              }
             />
-            {/* <OutstandingDebt
-              title="Outstanding Debt"
-              score="N 0.00"
-              description="(<20% Previous Debt)"
-              status="Excellent"
-              backgroundColor="#169872"
-              color="#F8F9FB"
-            /> */}
           </div>
         </div>
         <div className="chart-wrapper">
-          <PieChart />
+          <PieChart creditScore={prediction.creditScore} />
           <BarChart />
         </div>
       </div>

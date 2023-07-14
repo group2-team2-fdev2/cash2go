@@ -1,109 +1,111 @@
 // library
 import { useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
 // style
 import "../../Auth.css";
 // component
 import LeftLoginLayout from "../../components/LeftLoginLayout";
-import LoadingGif from "../../Components/LoadingGif";
-import ArrowRight from "../../Components/ArrowRight";
+import NextButton from "../../components/NextButton";
 import Legal from "../../components/Legal";
 
 export default function EmailRequest() {
-  const [email, setEmail] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  // State variables
+  const [isSubmitting, setSubmitting] = useState(false); // Tracks form submission state
+  const [status, setStatus] = useState(""); // Stores status message
 
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // Navigation function
 
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value);
-    setErrorMessage("");
-  };
+  // Handles form submission
+  const handleSubmit = async (values) => {
+    setSubmitting(true); // Set form submission state to true
 
-  const handleClick = async () => {
-    if (email === "") {
-      setErrorMessage("Email is required");
-      return;
-    }
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      setErrorMessage("Invalid email address");
-      return;
-    }
+    const email = values.email; // Get password value from form
 
     try {
-      setIsLoading(true); // Start loading
-
-      // Make a POST request to verify the email
+      // Send request to server to authenticate the user email and password
       const response = await axios.post(
         "https://cash2go-backendd.onrender.com/api/v1/user/verify-email",
-        { email }
+        {
+          email: email,
+        }
       );
-
-      if (response.data.status === "success") {
-        navigate(`/security-question?email=${encodeURIComponent(email)}`); // Navigate to the security question page
-      } else {
-        setErrorMessage("Email does not exist");
+      const isAuthenticated = response.data; // Get authentication status from response
+      console.log(isAuthenticated);
+      if (isAuthenticated) {
+        // If user is authenticated, navigate to security question page
+        navigate(`/security-question?email=${encodeURIComponent(email)}`);
       }
     } catch (error) {
-      if (error.response && error.response.status === 400) {
-        console.log(error.response);
-        setErrorMessage("Email does not exist");
-      } else {
-        console.log(error);
-        setErrorMessage("An error occurred");
+      console.error("Error:", error);
+      if (error.response) {
+        setStatus(error.response.data.message); // Set error message from response
+        setTimeout(() => {
+          setStatus("");
+        }, "5000"); // Clear status message after 5 seconds
       }
     } finally {
-      setIsLoading(false); // Stop loading
+      setSubmitting(false); // Set form submission state to false
     }
   };
-
   return (
     <>
-      <div className="layout-component">
+      <main className="Auth-layout-component">
         <LeftLoginLayout />
-        <div className="form-wrapper">
-          <h3 className="reset title">Reset Password</h3>
-          <div className="user_email-wrapper">
-            <label htmlFor="email" className="label">
-              Email
-            </label>
-            <input
-              id="email"
-              className="input"
-              name="email"
-              type="email"
-              autoComplete="on"
-              value={email}
-              placeholder="myworkemail@work.com"
-              onChange={handleEmailChange}
-            />
-            {errorMessage && <p className="error-message">{errorMessage}</p>}
-            <p className="verification-instruction">
-              Please provide the email used for registration
-            </p>
-          </div>
-
-          <button
-            onClick={handleClick}
-            className="button-wrapper"
-            disabled={isLoading} // Disable the button while loading
+        <section className="Auth-form-wrapper">
+          <header className="Auth-reset Auth-title">Reset Password</header>
+          {status && <p className="Auth-status-message">{status}</p>}
+          {/* Formik setup */}
+          <Formik
+            initialValues={{
+              email: "",
+            }}
+            validationSchema={Yup.object({
+              email: Yup.string()
+                .matches(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, "Invalid email address")
+                .required("Email is required"),
+            })}
+            onSubmit={handleSubmit}
           >
-            {isLoading ? (
-              <LoadingGif />
-            ) : (
-              <>
-                <span className="button-text">Next</span>
-                <ArrowRight />
-              </>
+            {({ errors, touched }) => (
+              <Form>
+                <div className="Auth-form-field-wrapper">
+                  <label htmlFor="email" className="Auth-label">
+                    Email
+                  </label>
+                  <div
+                    className={
+                      errors.email && touched.email
+                        ? "Auth-input-error Auth-form-field"
+                        : "Auth-form-field"
+                    }
+                  >
+                    <Field
+                      name="email"
+                      type="email"
+                      autoComplete="off"
+                      placeholder="myworkemail@work.com"
+                      className="Auth-input"
+                    />
+                  </div>
+                  <ErrorMessage
+                    name="email"
+                    component="div"
+                    className="Auth-error-message"
+                  />
+                  <p className="Auth-instruction">
+                    Please provide the email used for registration
+                  </p>
+                </div>
+                <NextButton isSubmitting={isSubmitting} />
+              </Form>
             )}
-          </button>
+          </Formik>
           <Legal />
-        </div>
-      </div>
+        </section>
+      </main>
     </>
   );
 }

@@ -2,20 +2,16 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
-  RouterProvider,
 } from "react-router-dom";
-// layout
-import RootLayout from "./layouts/RootLayout";
-// page
+import Auth from './Pages/Auth'
 import LoginAuth from "./Pages/Auth/LogIn/LoginAuth";
 import EmailAndCompanyIDAuth from "./Pages/Auth/SignUp/EmailAndCompanyID/EmailAndCompanyIDAuth";
 import OTPAuth from "./Pages/Auth/SignUp/OTP/OTPAuth";
 import PasswordAuth from "./Pages/Auth/SignUp/Password/PasswordAuth";
 import SecurityQuestionAuth from "./Pages/Auth/SignUp/SecurityQuestion/SecurityQuestionAuth";
-import EmailRequest1 from "./Pages/Auth/ForgotPassword/EmailRequest/EmailRequest1";
-import SecurityQuestion1 from "./Pages/Auth/ForgotPassword/SecurityQuestion/SecurityQuestion1";
+import EmailRequest from "./Pages/Auth/ForgotPassword/EmailRequest/EmailRequest";
+import SecurityQuestion from "./Pages/Auth/ForgotPassword/SecurityQuestion/SecurityQuestion";
 import UpdatePassword from "./Pages/Auth/ForgotPassword/UpdatePassword/UpdatePassword";
-// Dashboard
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import ApplicantOverview from "./Pages/Dashboard/ApplicantDetails/ApplicantOverview";
 import ApplicantReview from "./Pages/Dashboard/ApplicantDetails/ApplicantReview";
@@ -30,7 +26,7 @@ import Analytics from "./Pages/Dashboard/Analytics/Analytics";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<RootLayout />}>
+    <Route path="/" element={<Auth />}>
       <Route index element={<LoginAuth />} />
       <Route
         path="email-and-companyID-auth"
@@ -39,8 +35,8 @@ const router = createBrowserRouter(
       <Route path="otp-auth" element={<OTPAuth />} />
       <Route path="password-auth" element={<PasswordAuth />} />
       <Route path="security-question-auth" element={<SecurityQuestionAuth />} />
-      <Route path="email-request" element={<EmailRequest1 />} />
-      <Route path="security-question" element={<SecurityQuestion1 />} />
+      <Route path="email-request" element={<EmailRequest />} />
+      <Route path="security-question" element={<SecurityQuestion />} />
       <Route path="update-password/:token" element={<UpdatePassword />} />
       <Route path="dashboard">
         <Route index element={<Dashboard />} />
@@ -67,8 +63,4 @@ const router = createBrowserRouter(
   )
 );
 
-function Cash2goApp() {
-  return <RouterProvider router={router} />;
-}
-
-export default Cash2goApp;
+export default router;

@@ -1,151 +1,193 @@
+// library
 import { useState, useEffect, useCallback } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
-// import { useNavigate } from "react-router-dom";
-import { useLocation } from "react-router-dom";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
 // style
 import "../../Auth.css";
-// components
-import LeftLoginLayout from "../../LogIn/components/LeftLoginLayout";
+// component
+import LeftLoginLayout from "../../components/LeftLoginLayout";
+import ResetButton from "../../components/ResetButton";
 import Legal from "../../components/Legal";
-import LoadingGif from "../../components/LoadingGif";
+import NoticeIcon from "../../components/NoticeIcon";
+import WrongIcon from "../../components/WrongIcon";
 
 export default function SecurityQuestion() {
-  // const navigate = useNavigate();
+  // State variables
+  const [securityQuestion, setSecurityQuestion] = useState(""); // Stores security question
+  const [status, setStatus] = useState(""); // Stores status message
+  const [isSubmitting, setSubmitting] = useState(false); // Tracks form submission state
+  const [isModalOpen, setModalOpen] = useState(false); // Tracks modal visibility state
+
+  const navigate = useNavigate(); // Navigation function
+
+  // Get email from URL query parameter
   const location = useLocation();
-  const email = new URLSearchParams(location.search).get("email");
-  const [securityQuestion, setSecurityQuestion] = useState(null);
-  const [answer, setAnswer] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
-  const [resetLinkSent, setResetLinkSent] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [modalVisible, setModalVisible] = useState(false);
+  const queryParams = new URLSearchParams(location.search);
+  const email = queryParams.get("email");
 
   const fetchSecurityQuestion = useCallback(async () => {
     try {
-      // Make an API request to fetch the security question from the database
+      // Send request to server to fetch the security question from the database
       const response = await axios.get(
         `https://cash2go-backendd.onrender.com/api/v1/user/get-security-question?email=${email}`
       );
-
-      // Set the fetched security question
-      setSecurityQuestion(response.data.data.question);
+      setSecurityQuestion(response.data.data.question); // Set the fetched security question
     } catch (error) {
-      // console.log(error);
-      setErrorMessage("Unable to display security question. Please try again");
-      setSecurityQuestion("");
+      console.error("Error:", error);
+      if (error.response) {
+        setStatus(error.response.data.message); // Set error message from response
+        setTimeout(() => {
+          setStatus("");
+        }, "5000"); // Clear status message after 5 seconds
+      }
     }
   }, [email]);
 
   useEffect(() => {
-    // Fetch the security question from the database during component mount
+    // Fetch security question from the database during component mount
     fetchSecurityQuestion();
   }, [fetchSecurityQuestion]);
 
-  const handleAnswerChange = (event) => {
-    setAnswer(event.target.value);
+  // Handles modal visibilty
+  const toggleModal = () => {
+    setModalOpen((prevModalOpen) => !prevModalOpen);
   };
 
-  const handleResetClick = async () => {
-    if (answer === "") {
-      setErrorMessage("Answer is required");
-      return;
-    }
+  // Handles form submission
+  const handleSubmit = async (values) => {
+    setSubmitting(true); // Set form submission state to true
+    // toggleModal();
+
+    const email = values.email; // Get password value from form
+    const securityQuestionAnswer = values.securityQuestionAnswer; // Get security question answer value from form
 
     try {
-      setLoading(true);
-      // Make an API request to verify the user's answer and send the password reset link
+      // Send request to server to authenticate the user email and password
       const response = await axios.patch(
         `https://cash2go-backendd.onrender.com/api/v1/user/reset-password?email=${email}`,
-        { securityQuestion, securityQuestionAnswer: answer }
+        {
+          securityQuestion,
+          securityQuestionAnswer: securityQuestionAnswer,
+        }
       );
-
-      if (response.data.error === "Wrong answer to security question") {
-        setErrorMessage("Incorrect answer");
-      } else {
-        // If the answer is correct, display the password reset modal
-        setResetLinkSent(true);
-        setModalVisible(true);
+      const isAuthenticated = response.data; // Get authentication status from response
+      console.log(isAuthenticated);
+      if (isAuthenticated) {
+        // If user is authenticated, call the open modal function to open modal
+        toggleModal();
       }
     } catch (error) {
-      // console.log(error);
-      if (
-        error.response &&
-        error.response.data &&
-        error.response.data.error &&
-        error.response.data.error === "Wrong answer to security question"
-      ) {
-        setErrorMessage("Incorrect answer");
-      } else {
-        setErrorMessage("An error occurred");
+      console.error("Error:", error);
+      if (error.response) {
+        setStatus(error.response.data.message); // Set error message from response
+        setTimeout(() => {
+          setStatus("");
+        }, "5000"); // Clear status message after 5 seconds
       }
     } finally {
-      setLoading(false);
+      setSubmitting(false); // Set form submission state to false
     }
   };
-  const handleContinueClick = () => {
-    setModalVisible(false);
-    // navigate("/new-password")
-  };
+
   return (
     <>
-      <div className="layout-component">
+      <main className="Auth-layout-component">
         <LeftLoginLayout />
-        <div className="form-wrapper">
-          <h3 className="reset title">Reset Password</h3>
-          <div className="user_question-wrapper">
-            <label htmlFor="question">Security Question</label>
-            <input
-              type="text"
-              id="question"
-              className="security-question-password-reset"
-              value={securityQuestion || ""}
-              disabled
-            />
-          </div>
-          <div className="user_question-wrapper">
-            <label htmlFor="answer">Your answer</label>
-            <input
-              type="text"
-              id="answer"
-              className="security-answer-password-reset"
-              value={answer}
-              onChange={handleAnswerChange}
-            />
-            {errorMessage && <p className="error-message">{errorMessage}</p>}
-          </div>
-
-          <button
-            onClick={handleResetClick}
-            disabled={loading}
-            className="button-wrapper"
+        <section className="Auth-form-wrapper">
+          <header className="Auth-reset Auth-title">Reset Password</header>
+          {status && <p className="Auth-status-message">{status}</p>}
+          {/* Formik setup */}
+          <Formik
+            initialValues={{
+              // securityQuestion: securityQuestion || "", // Initializes the `securityQuestion` field with the value of the `securityQuestion` variable if it exists, otherwise it initializes it as an empty string
+              securityQuestionAnswer: "",
+              email: email || "", // Initializes the `email` field with the value of the `email` variable if it exists, otherwise it initializes it as an empty string
+            }}
+            validationSchema={Yup.object({
+              securityQuestionAnswer: Yup.string().required(
+                "Security Question Answer is required"
+              ),
+            })}
+            onSubmit={handleSubmit}
           >
-            {loading ? (
-              <LoadingGif />
-            ) : (
-              <span className="button-text">Reset</span>
+            {({ errors, touched }) => (
+              <Form>
+                <div className="Auth-form-field-wrapper">
+                  <label htmlFor="securityQuestion" className="Auth-label">
+                    Security Question
+                  </label>
+                  <div
+                    className="Auth-form-field"
+                  >
+                    <Field
+                      name="securityQuestion"
+                      type="text"
+                      value={securityQuestion || ""}
+                      disabled
+                      className="Auth-input"
+                    />
+                  </div>
+                </div>
+                <div className="Auth-form-field-wrapper">
+                  <label
+                    htmlFor="securityQuestionAnswer"
+                    className="Auth-label"
+                  >
+                    Security Question Answer
+                  </label>
+                  <div
+                    className={
+                      errors.securityQuestionAnswer && touched.securityQuestionAnswer
+                        ? "Auth-input-error Auth-form-field"
+                        : "Auth-form-field"
+                    }
+                  >
+                    <Field
+                      name="securityQuestionAnswer"
+                      type="text"
+                      autoComplete="off"
+                      className="Auth-input"
+                    />
+                  </div>
+                  <ErrorMessage
+                    name="securityQuestionAnswer"
+                    component="div"
+                    className="Auth-error-message"
+                  />
+                </div>
+                <ResetButton isSubmitting={isSubmitting} />
+              </Form>
             )}
-          </button>
+          </Formik>
           <Legal />
-
-          {resetLinkSent && modalVisible && (
-            <div className="modal-background">
-              <div className="modal-container">
-                <h3 className="modal-title">Reset Link</h3>
-                <p className="modal-instruction">
-                  A password reset link has been sent to
-                </p>
-                <p className="user-email">{email}</p>
-                <button
-                  className="continue-button"
-                  onClick={handleContinueClick}
-                >
-                  Continue
-                </button>
+        </section>
+        {isModalOpen && (
+          <section className="Auth-modal-background">
+            <div className="Auth-modal-container2">
+              <NoticeIcon />
+              <h3 className="Auth-modal-title">Reset Link</h3>
+              <p className="Auth-modal-message">
+                A password reset link has been sent to
+              </p>
+              <p className="Auth-user-email">{email}</p>
+              <div className="Auth-close-modal" onClick={toggleModal}>
+                <WrongIcon />
               </div>
+              <button
+                className="Auth-continue-button"
+                onClick={() => {
+                  setModalOpen(false);
+                  navigate("/"); // Navigate to the login page
+                }}
+              >
+                Continue
+              </button>
             </div>
-          )}
-        </div>
-      </div>
+          </section>
+        )}
+      </main>
     </>
   );
 }

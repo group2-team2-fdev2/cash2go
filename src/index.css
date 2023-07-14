@@ -16,8 +16,9 @@ body {
   width: thin;
 }
 
-::-webkit-scrollbar-track
-
+::-webkit-scrollbar-track {
+  width: thin;
+}
 
 img {
   display: block;

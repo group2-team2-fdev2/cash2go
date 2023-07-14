@@ -27,7 +27,7 @@ export default function Dashboard() {
   const [firstName, setFirstName] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
 
-  const isRegularButton = true;
+  // const isRegularButton = true;
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const email = queryParams.get("email");
@@ -112,12 +112,14 @@ export default function Dashboard() {
 
   return (
     <div>
+
       <Navbar
         email={email}
         handleSearchInputChange={handleSearchInputChange}
         handleClearSearch={handleClearSearch}
         searchQuery={searchQuery}
       />
+
       <SideBar />
       <div className="Dashboard-content">
         <BreadCrumbs />
@@ -140,7 +142,7 @@ export default function Dashboard() {
               secondLink="/new-application"
               firstButtonTitle="Existing"
               secondButtonTitle="New"
-              isRegularButton={isRegularButton}
+              isRegularButton={true}
             />
           </div>
         </div>
@@ -159,7 +161,9 @@ export default function Dashboard() {
           setNumNewApplications={setNumNewApplications}
           sectionTitle="Recent Applications"
           sortOptionText="Sort Option Text"
+
           searchQuery={searchQuery}
+
         />
       </div>
     </div>

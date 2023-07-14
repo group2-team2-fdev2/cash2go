@@ -6,7 +6,7 @@ export default function HelpcenterIcon() {
       <NavLink
         style={{ color: "currentColor" }}
         className="sidebar-icon-wrapper"
-        activeclassName="active"
+        activeclassname="active"
         to=""
       >
         <svg
