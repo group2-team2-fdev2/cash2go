@@ -3,7 +3,7 @@ import "../Messages/Messages.css";
 import MessageCheckbox from './MessageCheckbox';
 import Button from '../components/DashboardHeader/Button';
 
-function MessageAlert({closeModal}) {
+function MessageAlert({closeModal, onClick}) {
   return (
     <div className='modalBackground'>
       <div className='modalContainer'>
@@ -15,10 +15,10 @@ function MessageAlert({closeModal}) {
             <MessageCheckbox />
           </div>
         <div className='messageAlert-title'>
-          <h3>Delete selected item(s) ? </h3>
+          <h3>Send selected item(s) ? </h3>
         </div>
         <div className='messageAlert-body'>
-          <p>Are you sure you want to delete selected item (s).</p>
+          <p>Are you sure you want to Send this message (s).</p>
           <p>The process is irreversible</p>
         </div>
         <div className='messageAlert-footer'>
@@ -26,7 +26,7 @@ function MessageAlert({closeModal}) {
           title="No"
   
            />
-          <Button 
+          <Button onClick={onClick}
           title="Yes"
           backgroundColor="#FF6F5A" />
         </div>
