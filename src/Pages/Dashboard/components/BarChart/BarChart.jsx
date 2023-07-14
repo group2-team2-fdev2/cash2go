@@ -7,9 +7,10 @@ import {
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
 ChartJS.register(BarElement, CategoryScale, LinearScale, Legend);
-import { BsArrowRight } from "react-icons/bs";
+// import { BsArrowRight } from "react-icons/bs";
+import PropTypes from "prop-types";
 
-export default function BarChart() {
+export default function BarChart({ title, score }) {
   const data = {
     labels: ["January", "February", "March"],
     datasets: [
@@ -58,13 +59,13 @@ export default function BarChart() {
   return (
     <section className="BarChart-wrapper">
       <header className="BarChart-heading">
-        <div className="BarChart-title">Total Average Loan Disbursed</div>
+        <div className="BarChart-title">{title}</div>
         {/* <div className="BarChart-model">Subtitle</div> */}
       </header>
       <main className="BarChart-dataWrapper">
         <div className="BarChart-LoanWrapper">
-          <p className="BarChart-LoanRequest">Maximum Loan Request</p>
-          <p className="BarChart-LoanAmount">N 92,000.00</p>
+          <p className="BarChart-LoanRequest">Loan Request</p>
+          <p className="BarChart-LoanAmount">{`N ${score}`}</p>
         </div>
         <Bar
           style={{
@@ -76,13 +77,18 @@ export default function BarChart() {
           options={options}
         />
       </main>
-      <footer className="BarChart-footer">
+      {/* <footer className="BarChart-footer">
         <div className="BarChart-callToAction">Change Model</div>
         <div className="BarChart-navigationWrapper">
           <div className="BarChart-navigationLabel">More</div>
           <BsArrowRight className="BarChart-navigationIcon" />
         </div>
-      </footer>
+      </footer> */}
     </section>
   );
 }
+
+BarChart.propTypes = {
+  title: PropTypes.number,
+  score: PropTypes.string,
+};

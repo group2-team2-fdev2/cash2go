@@ -3,11 +3,11 @@ import { NavLink } from "react-router-dom";
 
 export default function DashboardIcon() {
   return (
-    <>
+    <div className="Sidebar">
       <NavLink
         style={{ color: "currentColor" }}
         className="sidebar-icon-wrapper"
-        activeclassName="active"
+        activeclassname="active"
         to="/dashboard"
       >
         <svg
@@ -26,7 +26,7 @@ export default function DashboardIcon() {
         </svg>
         <p className="sidebar-navigation">Dashboard</p>
       </NavLink>
-    </>
+    </div>
   );
 }
 

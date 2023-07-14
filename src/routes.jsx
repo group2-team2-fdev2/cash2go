@@ -16,7 +16,7 @@ import Dashboard from "./Pages/Dashboard/Dashboard";
 import ApplicantOverview from "./Pages/Dashboard/ApplicantDetails/ApplicantOverview";
 import ApplicantReview from "./Pages/Dashboard/ApplicantDetails/ApplicantReview";
 import ApplicantInfo, {
-  ApplicantBioLoader,
+  // ApplicantBioLoader,
 } from "./Pages/Dashboard/ApplicantDetails/ApplicantInfo";
 import Applications from "./Pages/Dashboard/Applications/Applications";
 import Notification from "./Pages/Dashboard/Notification/Notification";
@@ -46,13 +46,11 @@ const router = createBrowserRouter(
           <Route
             path="info"
             element={<ApplicantInfo />}
-            loader={ApplicantBioLoader}
+            // loader={ApplicantBioLoader}
           />
         </Route>
       </Route>
-      <Route path="applications">
-        <Route index element={<Applications />} />
-      </Route>
+      <Route path="applications/*" element={<Applications />} />
       <Route path="analytics">
         <Route index element={<Analytics />} />
       </Route>

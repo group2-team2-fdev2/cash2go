@@ -3,10 +3,12 @@ import BigStopCircleIcon from "./BigStopCircleIcon";
 import SmallStopCircleIcon from "./SmallStopCircleIcon";
 
 export default function RejectedLoanDashboard1({
+  // eslint-disable-next-line react/prop-types
   numRejected,
+  // eslint-disable-next-line react/prop-types
   newRejectedDiff,
 }) {
-  const title = "Rejected";
+  const title = "Rejected Loans";
   const comparism = `+ ${newRejectedDiff} from yesterday`;
   const status = "Rejected";
 

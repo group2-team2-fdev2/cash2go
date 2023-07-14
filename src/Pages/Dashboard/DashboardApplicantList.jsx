@@ -1,18 +1,26 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
 import UserIcon from "./components/DashboardOverview/UserIcon";
-
-//components
 import Approved from "./components/DashboardOverview/Approved";
 import Rejected from "./components/DashboardOverview/Rejected";
 import Pending from "./components/DashboardOverview/Pending";
 
-
-// eslint-disable-next-line react/prop-types
-export default function DashboardApplicantList({sectionTitle, sortOptionText}) {
-  const [loanData, setLoanData] = useState([]);
+export default function DashboardApplicantList({
+  sectionTitle,
+  sortOptionText,
+  searchQuery,
+  loanData,
+  setLoanData,
+}) {
   const [sortedData, setSortedData] = useState([]);
   const [sortBy, setSortBy] = useState("date");
-  
+  const navigate = useNavigate();
+
+  const handleSelectApplicant = (selectedApplicantId) => {
+    const selectedApplicant = loanData.find((applicant) => applicant._id === selectedApplicantId);
+    navigate("applicant-overview", { state: { selectedApplicant } });
+  };
 
   const statusComponents = {
     Approved: <Approved />,
@@ -23,9 +31,7 @@ export default function DashboardApplicantList({sectionTitle, sortOptionText}) {
   useEffect(() => {
     const fetchApplicants = async () => {
       try {
-        const response = await fetch(
-          "https://cash2go-backendd.onrender.com/api/v1/applicant/applicants"
-        );
+        const response = await fetch("https://cash2go-backendd.onrender.com/api/v1/applicant/applicants");
         const data = await response.json();
 
         if (response.ok && data.status === "Success") {
@@ -40,7 +46,7 @@ export default function DashboardApplicantList({sectionTitle, sortOptionText}) {
     };
 
     fetchApplicants();
-  }, []);
+  }, [setLoanData]);
 
   const handleSortBy = (value) => {
     setSortBy(value);
@@ -57,24 +63,13 @@ export default function DashboardApplicantList({sectionTitle, sortOptionText}) {
             Approved: 2,
             Rejected: 3,
           };
-          const statusA = a.prediction.isPending
-            ? "Pending"
-            : a.prediction.isRejected
-            ? "Rejected"
-            : "Approved";
-          const statusB = b.prediction.isPending
-            ? "Pending"
-            : b.prediction.isRejected
-            ? "Rejected"
-            : "Approved";
+          const statusA = a.prediction.isPending ? "Pending" : a.prediction.isRejected ? "Rejected" : "Approved";
+          const statusB = b.prediction.isPending ? "Pending" : b.prediction.isRejected ? "Rejected" : "Approved";
           return statusOrder[statusA] - statusOrder[statusB];
         } else if (sortBy === "creditScore") {
           return b.prediction.creditScore - a.prediction.creditScore;
         } else if (sortBy === "loanAmount") {
-          return (
-            parseInt(a.prediction.loanRequestAmount) -
-            parseInt(b.prediction.loanRequestAmount)
-          );
+          return parseInt(a.prediction.loanRequestAmount) - parseInt(b.prediction.loanRequestAmount);
         }
       });
       setSortedData(sorted);
@@ -96,6 +91,13 @@ export default function DashboardApplicantList({sectionTitle, sortOptionText}) {
     }
     return sortOptionText;
   };
+
+  const filteredData = loanData.filter((applicant) => {
+    const fullName = `${applicant.contact.firstName} ${applicant.contact.lastName}`;
+    return fullName.toLowerCase().includes(searchQuery.toLowerCase());
+  });
+
+  const displayData = searchQuery ? filteredData : sortedData;
 
   return (
     <table className="Dashboard-loan-table">
@@ -141,8 +143,17 @@ export default function DashboardApplicantList({sectionTitle, sortOptionText}) {
         </tr>
       </thead>
       <tbody>
-        {sortedData.map((applicant) => (
-          <tr key={applicant._id}>
+        {displayData.length === 0 && searchQuery && (
+          <tr>
+            <td colSpan="5" className="Dashboard-applicant-not-found-cell">
+              <div className="Dashboard-applicant-not-found">
+                Applicant not found
+              </div>
+            </td>
+          </tr>
+        )}
+        {displayData.map((applicant) => (
+          <tr key={applicant._id} onClick={() => handleSelectApplicant(applicant._id)}>
             <td>
               <div className="Dashboard-applicant">
                 <UserIcon />
@@ -165,23 +176,25 @@ export default function DashboardApplicantList({sectionTitle, sortOptionText}) {
               })}
             </td>
             <td className="Dashboard-status-cell">
-              {
-                statusComponents[
-                  applicant.prediction.isPending
-                    ? "Pending"
-                    : applicant.prediction.isRejected
-                    ? "Rejected"
-                    : "Approved"
-                ]
-              }
+              {statusComponents[applicant.prediction.isPending ? "Pending" : applicant.prediction.isRejected ? "Rejected" : "Approved"]}
             </td>
             <td className="Dashboard-credit-score-cell">
               {applicant.prediction.creditScore}
             </td>
- <td>{Number(applicant.prediction.loanRequestAmount).toLocaleString()}</td>
+            <td>
+              {Number(applicant.prediction.loanRequestAmount).toLocaleString()}
+            </td>
           </tr>
         ))}
       </tbody>
     </table>
   );
 }
+
+DashboardApplicantList.propTypes = {
+  sectionTitle: PropTypes.string,
+  sortOptionText: PropTypes.string,
+  searchQuery: PropTypes.string,
+  loanData: PropTypes.array,
+  setLoanData: PropTypes.func,
+};

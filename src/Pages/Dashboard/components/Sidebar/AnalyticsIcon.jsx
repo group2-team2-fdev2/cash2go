@@ -2,11 +2,11 @@ import { NavLink } from "react-router-dom";
 
 export default function AnalyticsIcon() {
   return (
-    <>
+    <div className="Sidebar">
       <NavLink
         style={{ color: "currentColor" }}
         className="sidebar-icon-wrapper"
-        activeclassName="active"
+        activeclassname="active"
         to="/analytics"
       >
         <svg
@@ -25,6 +25,6 @@ export default function AnalyticsIcon() {
         </svg>
         <p className="sidebar-navigation">Analytics</p>
       </NavLink>
-    </>
+    </div>
   );
 }

@@ -29,19 +29,19 @@ export default function ModelSettings() {
     });
   };
 
-  const addRow = () => {
-    setRows((prevRows) => [
-      ...prevRows,
-      {
-        id: uuidv4(),
-        name: "",
-        description: "",
-        date: "",
-        creator: "",
-        toggleActive: false,
-      },
-    ]);
-  };
+  // const addRow = () => {
+  //   setRows((prevRows) => [
+  //     ...prevRows,
+  //     {
+  //       id: uuidv4(),
+  //       name: "",
+  //       description: "",
+  //       date: "",
+  //       creator: "",
+  //       toggleActive: false,
+  //     },
+  //   ]);
+  // };
   return (
     <table className="Settings-table">
       <thead className="Settings-thead">
@@ -69,7 +69,7 @@ export default function ModelSettings() {
             creator={row.creator}
             toggleActive={row.toggleActive}
             handleActiveToggle={() => handleActiveToggle(row.id)}
-            addRow={addRow}
+            // addRow={addRow}
           />
         ))}
       </tbody>

@@ -34,12 +34,16 @@ export default function Settings() {
               (activeSection === "notification" ||
                 activeSection === "securityAndPrivacy")
             }
+            paddingBottom="32px"
+            borderBottom="1px solid #5f6d7e"
           />
         ) : (
           <DashboardHeader
             title="Settings"
             firstButtonTitle="Manage"
             secondButtonTitle="Create New Model"
+            paddingBottom="32px"
+            borderBottom="1px solid #5f6d7e"
           />
         )}
         <nav className="Settings-Navigation">

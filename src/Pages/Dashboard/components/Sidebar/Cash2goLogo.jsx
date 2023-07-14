@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function Cash2goLogo() {
   return (
-    <>
+    <div className="Sidebar">
       <Link className="sidebar-cash2go-wrapper" to="/dashboard">
         <svg
           width="37.6"
@@ -39,6 +39,6 @@ export default function Cash2goLogo() {
           />
         </svg>
       </Link>
-    </>
+    </div>
   );
 }
