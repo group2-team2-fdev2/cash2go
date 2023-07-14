@@ -7,11 +7,18 @@ import Button from "../components/DashboardHeader/Button";
 import MessageCheckbox from "./MessageCheckbox";
 import MessageMark from "./MessageMark";
 import MessageBentArrow from "./MessageBentArrow";
-import Ellipse4 from "../Messages/Images/Ellipse4.png"
+import Ellipse4 from "../Messages/Images/Ellipse4.png";
 import MessageAlert from "./MessageAlert";
-import { useState} from "react";
+import { useState } from "react";
+import axios from "axios";
 
 function New() {
+  const sendMessage = async () => {
+    await axios
+      .post("https://cash2go-backendd.onrender.com/api/v1/messaging", {})
+      .then((res) => console.log(res.data))
+      .catch((error) => console.log(error.message));
+  };
 
   const [openModal, setOpenModal] = useState(false);
   return (
@@ -87,10 +94,14 @@ function New() {
         </div>
         <div className="message-bord"></div>
         <div className="message-button">
-        <Button onClick={() => setOpenModal(true)} title="send" backgroundColor="#FF6F5A" color="white" />
-          {openModal && <MessageAlert closeModal={setOpenModal} />}
-         </div>
-
+          <Button
+            onClick={() => setOpenModal(true)}
+            title="send"
+            backgroundColor="#FF6F5A"
+            color="white"
+          />
+          {openModal && <MessageAlert closeModal={setOpenModal} onClick={sendMessage} />}
+        </div>
       </div>
     </div>
   );
