@@ -1,0 +1,81 @@
+/* .NewApplicantForm-section {
+  
+} */
+
+/* .NewApplicantForm-form {
+  
+} */
+
+.NewApplicantForm-main {
+  display: flex;
+  align-items: center;
+}
+
+.NewApplicantForm-label {
+  display: block;
+}
+
+.NewApplicantForm-span {
+  display: block;
+}
+
+.NewApplicantForm-input,
+.NewApplicantForm-select {
+  display: block;
+}
+
+/* .NewApplicantForm-option {
+
+} */
+
+.NewApplicantForm-button-wrapper {
+  width: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0px;
+  background: #172233;
+  transition: background-color 0.2s ease-in-out;
+  border-radius: 10px;
+}
+
+.NewApplicantForm-button-wrapper:hover {
+  cursor: pointer;
+}
+
+.NewApplicantForm-button-text {
+  font-weight: 600;
+  font-size: 16px;
+  color: #f8f9fb;
+}
+
+.NewApplicantForm-Navigation {
+  width: 902px;
+  height: 64px;
+  margin-top: 32px;
+  margin-bottom: 32px;
+}
+
+.NewApplicantForm-Navigation_flex-container {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.NewApplicantForm-Navigation_flex-item {
+  padding-bottom: 15px;
+  border-bottom: 1px solid #5f6d7e;
+  cursor: pointer;
+}
+
+.NewApplicantForm-Navigation_link {
+  font-size: 14px;
+  font-weight: 500;
+  color: #5f6d7e;
+}
+
+.NewApplicantForm-Navigation_flex-container .active {
+  padding-bottom: 15px;
+  border-bottom: 2px solid #5f6d7e;
+}
