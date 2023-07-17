@@ -13,20 +13,13 @@ function AllApplicationLoan() {
   const [sortBy, setSortBy] = useState("date");
   const [sortedData, setSortedData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
- 
-  const itemsPerPage = 7;
 
-  // Calculate the starting and ending index of the items to display
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = applicants.slice(indexOfFirstItem, indexOfLastItem);
-  const noOfPages = Math.round(applicants.length / itemsPerPage);
-
-  // Handle pagination
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
-  console.log(currentPage);
-
-
+  const recordsPerPage = 7;
+  const lastIndex = currentPage * recordsPerPage;
+  const firstIndex = lastIndex - recordsPerPage;
+  const records = applicants.slice(firstIndex, lastIndex);
+  const npage = Math.ceil(applicants.length / recordsPerPage);
+  const numbers = [...Array(npage + 1).keys()].slice(1);
 
   useEffect(() => {
     fetch(`https://cash2go-backendd.onrender.com/api/v1/applicant/applicants`)
@@ -95,6 +88,22 @@ function AllApplicationLoan() {
     return sortOptionText;
   };
 
+  function nextPage() {
+    if (currentPage !== npage) {
+      setCurrentPage(currentPage + 1);
+    }
+  }
+
+  function prePage() {
+    if (currentPage !== 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  }
+
+  function changeCurrentPage(id) {
+    setCurrentPage(id);
+  }
+
   return (
     <div>
       <table className="Application-table">
@@ -108,50 +117,72 @@ function AllApplicationLoan() {
           <tr className="Application-second-tableHead">
             <th id="Application-table-applicantinfo">Applicants info</th>
             <th>
-              <h4 className="Application-date-header"
-               onClick={() => handleSortBy("date")}>Date &darr;</h4>
+              <h4
+                className="Application-date-header"
+                onClick={() => handleSortBy("date")}
+              >
+                Date &darr;
+              </h4>
             </th>
             <th>
-              <h4 className="Application-status-header"
-               onClick={() => handleSortBy("status")}>Status &darr;</h4>
+              <h4
+                className="Application-status-header"
+                onClick={() => handleSortBy("status")}
+              >
+                Status &darr;
+              </h4>
             </th>
             <th>
-              <h4 className="Application-creditscore-header"
-               onClick={() => handleSortBy("creditScore")}>
+              <h4
+                className="Application-creditscore-header"
+                onClick={() => handleSortBy("creditScore")}
+              >
                 Credit Score &darr;
               </h4>
             </th>
             <th colSpan="2">
-              <h4 className="Application-amount-header"
-               onClick={() => handleSortBy("loanAmount")}>Amount &darr;</h4>
+              <h4
+                className="Application-amount-header"
+                onClick={() => handleSortBy("loanAmount")}
+              >
+                Amount &darr;
+              </h4>
             </th>
           </tr>
         </thead>
 
         <tbody>
           {applicants &&
-            currentItems.map((applicant) => {
+            records.map((applicant) => {
               return (
                 <tr>
-                  <td >
+                  <td>
                     <div className="Application-appInfo-container">
                       <UserIcon />
-                      <div >
+                      <div>
                         <span className="Application-userName">
-                         <b>{applicant.contact.firstName} {applicant.contact.lastName}</b> 
+                          <b>
+                            {applicant.contact.firstName}{" "}
+                            {applicant.contact.lastName}
+                          </b>
                         </span>
-                        <br/>
+                        <br />
                         <span className="Dashboard-applicant-id">
-                           {`ID - ${applicant.applicationID}`}
-                         </span>
-                         </div>
+                          {`ID - ${applicant.applicationID}`}
+                        </span>
+                      </div>
                     </div>
                   </td>
-                  <td>{new Date (applicant.applicationDate).toLocaleDateString("en-US", {
-                       year: "2-digit",
-                       month: "2-digit",
+                  <td>
+                    {new Date(applicant.applicationDate).toLocaleDateString(
+                      "en-US",
+                      {
+                        year: "2-digit",
+                        month: "2-digit",
                         day: "2-digit",
-                    })}</td>
+                      }
+                    )}
+                  </td>
                   <td>
                     {applicant.prediction.isPending ? (
                       <Pending />
@@ -163,59 +194,44 @@ function AllApplicationLoan() {
                   </td>
                   <td>{applicant.prediction.creditScore}</td>
                   <td>{applicant.prediction.loanRequestAmount}</td>
-                  <td>
-                    <Download />
-                  </td>
+                  <td>{/* <Download /> */}</td>
                 </tr>
               );
             })}
 
-           <tr className="Application-footer">
-            <div>
-              <button
-              className="application-footer-button"
-               onClick={() => paginate(currentPage - 1)}
-               disabled={currentPage === 1}>
-                <div className="Application-pre">
-                  <span><PreviousArrow /></span>
-                  <span>Prev</span>
-                </div>
-              </button>
-            </div>
-            
+          <tr className="Application-footer">
+            <ul className="Application-footer">
+              <li className="Application-pre">
+                <span>
+                  <PreviousArrow />
+                </span>{" "}
+                <a href="#" className="page-link" onClick={prePage}>
+                  {" "}
+                  Prev
+                </a>
+              </li>
+
               <div className="Application-page-no">
-                
-                <div>
-                {[...Array(noOfPages)].map((_, index) => (
-                  <a
-                    key={index + 1}
-                    onClick={() => paginate(index + 1)}
-                    className={
-                      currentPage === index + 1
-                        ? "Application-footer-pageList active"
-                        : "Application-footer-pageList"
-                    }
+                {numbers.map((n, i) => (
+                  <li
+                    className={`page-item ${currentPage === n ? "active" : ""}`}
+                    Key={i}
                   >
-                    <div className="Application-footer-pageList">
-                      {index + 1}
-                    </div>
-                  </a>
+                    <a href="#" onClick={() => changeCurrentPage(n)}>
+                      {n}
+                    </a>
+                  </li>
                 ))}
               </div>
-            </div> 
-            <div>
-            <button
-            className="application-footer-button"
-              disabled={indexOfLastItem >= applicants.length}
-              onClick={() => paginate(currentPage + 1)}
-            >
-              <div className="Application-next">
-                 <span>Next</span>
-                 <span> {<NextArrow />}</span>
-              </div>
-              
-            </button>
-            </div>
+
+              <li className="Application-next">
+                <a href="#" className="page-link" onClick={nextPage}>
+                  {" "}
+                  Next
+                </a>{" "}
+                <span> {<NextArrow />}</span>
+              </li>
+            </ul>
           </tr>
         </tbody>
       </table>

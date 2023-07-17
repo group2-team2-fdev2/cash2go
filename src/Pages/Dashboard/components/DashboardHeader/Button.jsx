@@ -2,7 +2,7 @@
 import PropTypes from "prop-types";
 
 
-export default function Button({ title, backgroundColor, color, width , onClick }) {
+export default function Button({ title, backgroundColor, color, width }) {
   const buttonStyle = {
     backgroundColor: backgroundColor,
     color: color,
@@ -11,7 +11,7 @@ export default function Button({ title, backgroundColor, color, width , onClick 
 
   return (
     <>
-      <button style={buttonStyle} className="dashboardHeader-button" onClick={() =>onClick()} >
+      <button style={buttonStyle} className="dashboardHeader-button"  >
         {title}
       </button>
     </>

@@ -3,14 +3,23 @@ import { useState, useEffect, useCallback } from "react";
 // style
 import "../../Dashboard.css";
 // components
-// import { Notifications } from "../Notifications/NotificationObj";
-import ArrowRightIcon from "./ArrowRightIcon";
+import { Notifications } from "../Notifications/NotificationObj";
 import SearchIcon from "./SearchIcon";
 import AvatarIcon from "./AvatarIcon";
 import NotificationIcons from "./NotificationIcon";
+import CancelIcon from "./CancelIcon";
 
 // eslint-disable-next-line react/prop-types
-export default function Navbar({ email }) {
+export default function Navbar({
+  // eslint-disable-next-line react/prop-types
+  email,
+  // eslint-disable-next-line react/prop-types
+  handleSearchInputChange,
+  // eslint-disable-next-line react/prop-types
+  handleClearSearch, searchQuery
+  // eslint-disable-next-line react/prop-types
+  
+}) {
   const [userName, setUserName] = useState("");
   const [notificationClick, setIsClicked] = useState(false);
 
@@ -45,13 +54,21 @@ export default function Navbar({ email }) {
     fetchUserName();
   }, [fetchUserName]);
 
+  console.log("searchQuery:", searchQuery);
+
   return (
     <div className="navbar-container">
       <div className="left-navbar">
         <div className="searchbar-wrapper">
           <SearchIcon />
-          <input type="text" className="navbar-search" placeholder="Search" />
-          <ArrowRightIcon />
+          <input
+            type="text"
+            className= "navbar-search"
+            placeholder= "Search by name"
+            value={searchQuery}
+            onChange={handleSearchInputChange}
+          />
+          <CancelIcon onClick={handleClearSearch} />
         </div>
       </div>
 

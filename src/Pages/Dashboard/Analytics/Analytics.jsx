@@ -114,7 +114,7 @@ export default function Analytics() {
         />
         <div className="chart-wrapper">
           <PieChart />
-          <BarChart />
+          <BarChart title="Average Loan Requested" score="1,750,654" />
         </div>
       </div>
     </>

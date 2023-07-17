@@ -2,11 +2,11 @@ import { NavLink } from "react-router-dom";
 
 export default function ApplicationsIcon() {
   return (
-    <>
+    <div className="Sidebar">
       <NavLink
         style={{ color: "currentColor" }}
         className="sidebar-icon-wrapper"
-        activeclassName="active"
+        activeclassname="active"
         to="/applications"
       >
         <svg
@@ -25,6 +25,6 @@ export default function ApplicationsIcon() {
         </svg>
         <p className="sidebar-navigation">Applications</p>
       </NavLink>
-    </>
+    </div>
   );
 }

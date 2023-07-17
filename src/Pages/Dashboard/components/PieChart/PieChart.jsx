@@ -3,10 +3,20 @@ import { Chart as ChartJS, ArcElement } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 ChartJS.register(ArcElement);
 import { BiCheckCircle } from "react-icons/bi";
-import { BsArrowRight } from "react-icons/bs";
+import { BsInfoCircle } from "react-icons/bs";
+// import { BsArrowRight } from "react-icons/bs";
 import PropTypes from "prop-types";
 
-export default function PieChart() {
+export default function PieChart({
+  creditScore,
+  status,
+  backgroundColor,
+  color,
+}) {
+  const statusStyle = {
+    backgroundColor: backgroundColor,
+    color: color,
+  };
   const data = {
     datasets: [
       {
@@ -19,11 +29,6 @@ export default function PieChart() {
 
   const options = {
     cutout: "65%",
-  };
-
-  const statusStyle = {
-    backgroundColor: "#169872",
-    color: "#F8F9FB",
   };
 
   return (
@@ -43,30 +48,48 @@ export default function PieChart() {
           options={options}
         />
         <div className="PieChart-performanceWrapper">
-          <p className="PieChart-performanceRange">(720 - 850)</p>
-          <div style={statusStyle} className="PieChart-performanceStatusWrapper">
-            <PieChartPerformanceStatusIcon status="Excellent" />
-            <p className="PieChart-performanceStatus">Excellent</p>
+          <p className="PieChart-performanceRange">{creditScore}</p>
+          <div
+            style={statusStyle}
+            className="PieChart-performanceStatusWrapper"
+          >
+            <PieChartPerformanceStatusIcon status={status} />
+            <p className="PieChart-performanceStatus">{status}</p>
           </div>
         </div>
       </main>
-      <footer className="PieChart-footer">
+      {/* <footer className="PieChart-footer">
         <div className="PieChart-callToAction">Change Model</div>
         <div className="PieChart-navigationWrapper">
           <div className="PieChart-navigationLabel">More</div>
           <BsArrowRight className="PieChart-navigationIcon" />
         </div>
-      </footer>
+      </footer> */}
     </section>
   );
 }
 
+PieChart.propTypes = {
+  creditScore: PropTypes.number,
+  status: PropTypes.string,
+  backgroundColor: PropTypes.string,
+  color: PropTypes.string,
+};
+
 export function PieChartPerformanceStatusIcon({ status }) {
   let iconComponent = null;
 
-  if (status == "Excellent") {
+  if (status == "Approved" || status == "Excellent") {
     iconComponent = (
       <BiCheckCircle className="applicationsOverview-statusIcon" />
+    );
+  } else if (status == "Pending") {
+    iconComponent = (
+      <BsInfoCircle className="applicationsOverview-statusIcon" />
+    );
+  } else if (status == "Rejected") {
+    iconComponent = (
+      <BsInfoCircle className="applicationsOverview-statusIcon" />
     );
   }
 
@@ -74,5 +97,5 @@ export function PieChartPerformanceStatusIcon({ status }) {
 }
 
 PieChartPerformanceStatusIcon.propTypes = {
-  status: PropTypes.string,
+  status: PropTypes.number,
 };

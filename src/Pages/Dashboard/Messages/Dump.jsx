@@ -1,7 +1,7 @@
 import data from "./message.json";
 
 const { inbox } = data;
-console.log(inbox)
+// console.log(inbox)
 
 function Dump() {
   return (

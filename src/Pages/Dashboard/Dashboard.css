@@ -98,7 +98,7 @@
   cursor: pointer;
 }
 
-.active {
+.Sidebar .active {
   background-color: rgba(240, 240, 240, 0.1);
   width: 268px;
   height: 40px;
@@ -162,9 +162,14 @@
   border-radius: 6px;
 }
 
-.searchbar-icon {
+.searchbar-icon,
+.searchbar-cancel-icon {
   width: 20px;
   height: 20px;
+}
+
+.searchbar-cancel-icon {
+  color: #1d1e1f;
 }
 
 .navbar-search {
@@ -445,7 +450,7 @@
 
 .PieChart-wrapper {
   width: 345px;
-  height: 475px;
+  height: 450px;
   background-color: #f5f3f3;
   border: 1px solid #d1d9e2;
   box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
@@ -477,6 +482,7 @@
 }
 
 .PieChart-performanceWrapper {
+  margin-top: 32px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -547,7 +553,7 @@
 
 .BarChart-wrapper {
   width: 535px;
-  height: 475px;
+  height: 450px;
   background: #f8f9fb;
   border: 1px solid #d1d9e2;
   box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
@@ -791,18 +797,6 @@
   margin-left: -3px;
 }
 
-/* .Dashboard-title {
-  font-size: 12px;
-  margin-top: 10px;
-} */
-
-/* .Dashboard-welcome-back-text {
-  margin-top: 10px;
-  color: #242425;
-  font-weight: normal;
-  font-size: medium;
-} */
-
 .Dashboard-button-wrapper {
   position: absolute;
   right: -17px;
@@ -813,22 +807,6 @@
   margin-right: 10px;
 }
 
-/* .Dashboard-button_grey,
-.Dashboard-button_orange {
-  width: 97.5px;
-  height: 40px;
-  margin-right: 10px;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.Dashboard-button_grey {
-  background: #e6e9ec;
-  border: 1px solid #d1d9e2;
-  border-radius: 6px;
-  color: #000;
-} */
-
 .Dashboard-button_orange {
   background: #ff6f5a;
   border-radius: 6px;
@@ -837,8 +815,6 @@
 }
 
 .Dashboard-loan-table {
-  width: 902px;
-  height: 440px;
   margin-top: 30px;
   background-color: #f7f7f7;
   font-size: 14px;
@@ -877,12 +853,6 @@ th.Dashboard-name-header {
   color: #888;
   font-size: 12px;
 }
-
-/* hr {
-  border: none;
-  border-top: 1px solid #ccc;
-  width: 100%;
-} */
 
 .Dashboard-loan-table tbody tr:last-child td {
   border-bottom: none;
@@ -925,6 +895,15 @@ th.Dashboard-name-header {
   color: #5f6d7e;
   margin-left: 2px;
   display: inline-block;
+}
+
+.Dashboard-applicant-not-found {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  font-weight: 500;
+  font-size: 14px;
 }
 
 .notificationBell {

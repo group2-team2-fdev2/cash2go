@@ -51,7 +51,7 @@ ApplicationsSummary.propTypes = {
 export function ApplicationsOverviewIcon({ title }) {
   let iconComponent = null;
 
-  if (title == "Loan Status") {
+  if (title == "Loan Request") {
     iconComponent = (
       <FiThumbsUp className="applicationsOverview-icon" />
     );
@@ -82,6 +82,10 @@ export function ApplicationsOverviewStatusIcon({ status }) {
       <BiCheckCircle className="applicationsOverview-statusIcon" />
     );
   } else if (status == "Pending") {
+    iconComponent = (
+      <BsInfoCircle className="applicationsOverview-statusIcon" />
+    );
+  }  else if (status == "Rejected") {
     iconComponent = (
       <BsInfoCircle className="applicationsOverview-statusIcon" />
     );

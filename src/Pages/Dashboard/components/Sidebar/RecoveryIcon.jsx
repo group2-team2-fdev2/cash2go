@@ -2,11 +2,11 @@ import { NavLink } from "react-router-dom";
 
 export default function RecoveryIcon() {
   return (
-    <>
+    <div className="Sidebar">
       <NavLink
         style={{ color: "currentColor" }}
         className="sidebar-icon-wrapper"
-        activeclassName="active"
+        activeclassname="active"
         to=""
       >
         <svg
@@ -25,6 +25,6 @@ export default function RecoveryIcon() {
         </svg>
         <p className="sidebar-navigation">Recovery</p>
       </NavLink>
-    </>
+    </div>
   );
 }

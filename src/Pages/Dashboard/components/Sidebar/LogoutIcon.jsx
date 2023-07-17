@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function LogoutIcon() {
   return (
-    <>
+    <div className="Sidebar">
       <Link style={{"color": "currentColor"}} to="/">
         <div className="sidebar-icon-wrapper">
           <svg
@@ -22,6 +22,6 @@ export default function LogoutIcon() {
           <p className="sidebar-navigation">LOG OUT</p>
         </div>
       </Link>
-    </>
+    </div>
   );
 }
