@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
+// import { nanoid } from 'nanoid'
 import BreadCrumbs from "../components/BreadCrumbs";
 import Navbar from "../components/Navbar/Navbar";
 import SideBar from "../components/Sidebar/SideBar";
 import DashboardHeader from "../components/DashboardHeader/DashboardHeader";
-import { Notifications } from "../components/Notifications/NotificationObj";
+// import { Notifications } from "../components/Notifications/NotificationObj";
 import ListItem from "../components/Notifications/truncateTextFunction";
 import ReadMark from "../components/Notifications/ReadMark";
 import BoxIcon from "../components/Notifications/checkIcons";
@@ -13,38 +14,71 @@ import NextArrow from "../components/Notifications/NextArrow";
 
 import "./Notification.css";
 
-export default function NotificationPage() {
+export default function NotificationPage( id, title, message) {
+
+  // const Notification = [{
+  //   id: nanoid(),
+  //   title:title,
+  //   message:message
+  // }]
+
   const [read, setRead] = useState({});
-  const [message, setMessage] = useState(false);
+  const [messageView, setmessageView] = useState(false);
+
+
+  useEffect(() => {
+    // Retrieve read state from local storage or backend API, if available
+    // Example using local storage:
+    const storedReadState = localStorage.getItem('notificationReadState');
+    if (storedReadState) {
+      setRead(JSON.parse(storedReadState));
+    }
+  }, []);
+
+  useEffect(() => {
+    // Save read state to local storage or backend API
+    // Example using local storage:
+    localStorage.setItem('notificationReadState', JSON.stringify(read));
+  }, [read]);
+
+  const onMarkRead = (id) => {
+    setRead(prevState => ({
+      ...prevState,
+      [id]: true
+    }));
+  };
+
+  useEffect(() => {
+    // Retrieve read state from local storage, if available
+    const storedReadState = localStorage.getItem('readState');
+    if (storedReadState) {
+      setRead(JSON.parse(storedReadState));
+    }
+  }, []);
 
   useEffect(() => {
     // Save read state to local storage
     localStorage.setItem("readState", JSON.stringify(read));
   }, [read]);
 
-  const viewMessage = () => {
-    setMessage(!message);
+  const viewmessageView = () => {
+    setmessageView(!messageView);
   };
 
-  const onMessageOpen = () => {
-    viewMessage();
+  const onmessageViewOpen = () => {
+    viewmessageView();
   };
 
-  const onMarkRead = (id) => {
-    setRead((read) => ({
-      ...read,
-      [id]: true,
-    }));
-  };
+
 
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 5;
+  // const itemsPerPage = 5;
 
   // Calculate the starting and ending index of the items to display
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = Notifications.slice(indexOfFirstItem, indexOfLastItem);
-  const noOfPages = Math.round(Notifications.length / itemsPerPage);
+  // const indexOfLastItem = currentPage * itemsPerPage;
+  // const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  // const currentItems = Notification.slice(indexOfFirstItem, indexOfLastItem);
+  // const noOfPages = Math.round(Notification.length / itemsPerPage);
 
   // Handle pagination
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
@@ -69,26 +103,26 @@ export default function NotificationPage() {
           <h4>All Notifications</h4>
           <p>Sorted by Date</p>
         </div>
-        {Notifications.length > 0 ? (
+        {Notification.length > 0 ? (
           <>
             <div>
-              {currentItems.map((Notifications) => {
+              {/* {currentItems.map((Notification) => { */}
                 return (
                   <div
                     className="Notification-notifications-list"
-                    key={Notifications.id}
-                    onClick={() => onMarkRead(Notifications.id)}
-                    onDoubleClick={onMessageOpen}
+                    key={id}
+                    onClick={() => onMarkRead(id)}
+                    onDoubleClick={onmessageViewOpen}
                   >
-                    {read[Notifications.id] && message && (
+                    {read[Notification.id] && messageView && (
                       <section className="Notification-ViewNotification">
                         <div className="Notification-ViewNotification-overlay"></div>
                         <div className="Notification-ViewNotification-content">
-                          <h1>{Notifications.title}</h1>
-                          <p>{Notifications.message}</p>
+                          <h1>{title}</h1>
+                          <p>{message}</p>
                           <button
                             className="Notification-ViewNotification-close"
-                            onClick={onMessageOpen}
+                            onClick={onmessageViewOpen}
                           >
                             {" "}
                             Back
@@ -100,7 +134,7 @@ export default function NotificationPage() {
                       <div className="Notification-notifications-BoxIcon">
                         <span
                           className={
-                            read[Notifications.id]
+                            read[id]
                               ? "Notification-ViewNotification-ticks"
                               : "Notification-ViewNotification-hide"
                           }
@@ -109,7 +143,7 @@ export default function NotificationPage() {
                         </span>
                         <span
                           className={
-                            read[Notifications.id]
+                            read[id]
                               ? "Notification-ViewNotification-hide"
                               : "none"
                           }
@@ -123,21 +157,23 @@ export default function NotificationPage() {
 
                       <div
                         className={
-                          read[Notifications.id]
-                            ? "Notification-messages-title"
-                            : "Notification-messages-title active"
+                          read[id]
+                            ? "Notification-messageViews-title"
+                            : "Notification-messageViews-title active"
                         }
                       >
-                        {Notifications.title}
+                        {title}
                       </div>
                       <div
                         className={
-                          read[Notifications.id]
-                            ? "Notification-messages-boby"
-                            : "Notification-messages-body active"
+                          read[id]
+                            ? "Notification-messageViews-body"
+                            : "Notification-messageViews-body active"
                         }
                       >
-                        <ListItem text={Notifications.message} />
+                         <ListItem text={message} />
+                       
+                        
                       </div>
                     </div>
                     <div className="Notification-notifications-OptionsIcon">
@@ -145,7 +181,7 @@ export default function NotificationPage() {
                     </div>
                   </div>
                 );
-              })}
+              {/* })} */}
             </div>
             <div className="Notification-footer-navigation">
               <button
@@ -160,7 +196,7 @@ export default function NotificationPage() {
               </button>
               <div className="Notification-footer-pageOptions">
                 <div>
-                  {[...Array(noOfPages)].map((_, index) => (
+                  {[...Array(5)].map((_, index) => (
                     <a
                       key={index + 1}
                       onClick={() => paginate(index + 1)}
@@ -179,7 +215,7 @@ export default function NotificationPage() {
               </div>
               <button
                 className="Notification-footer-next"
-                disabled={indexOfLastItem >= Notifications.length}
+                // disabled={2 >= Notification.length}
                 onClick={() => paginate(currentPage + 1)}
               >
                 <span> {<NextArrow />}</span>

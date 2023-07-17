@@ -16,5 +16,5 @@ export default function ListItem (text ) {
   
     };
   
-    return <p>{truncateText(text, 12)}</p>;
+    return <p>{truncateText(text, 11)}</p>;
   }

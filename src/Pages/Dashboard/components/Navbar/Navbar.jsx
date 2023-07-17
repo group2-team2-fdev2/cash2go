@@ -3,7 +3,7 @@ import { useState, useEffect, useCallback } from "react";
 // style
 import "../../Dashboard.css";
 // components
-import { Notifications } from "../Notifications/NotificationObj";
+// import { Notifications } from "../Notifications/NotificationObj";
 import ArrowRightIcon from "./ArrowRightIcon";
 import SearchIcon from "./SearchIcon";
 import AvatarIcon from "./AvatarIcon";
@@ -12,10 +12,11 @@ import NotificationIcons from "./NotificationIcon";
 // eslint-disable-next-line react/prop-types
 export default function Navbar({ email }) {
   const [userName, setUserName] = useState("");
+  const [notificationClick, setIsClicked] = useState(false);
 
-  const notificationCount = Notifications.length;
-  const viewNotification = () => {
-    Notifications.length = 0;
+  const notificationCount = ' ';
+  const clickNotification = () => {
+    setIsClicked(true);
   };
 
   const fetchUserName = useCallback(async () => {
@@ -56,16 +57,16 @@ export default function Navbar({ email }) {
 
       <div className="right-navbar">
         <div className="right-navbar-icons">
-          <p
-            className={
-              notificationCount > 0
-                ? "notificationBell"
-                : "notificationBell-hide"
-            }
+
+       
+                      <p
+onClick={clickNotification}
+className={ notificationClick ? "notificationBell-hide" :  "notificationBell"}
           >
             {notificationCount}
           </p>
-          <NotificationIcons onClick={viewNotification} />
+          <NotificationIcons />
+         
 
           <AvatarIcon />
         </div>
