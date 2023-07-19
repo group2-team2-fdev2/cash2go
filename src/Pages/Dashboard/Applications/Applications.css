@@ -4,7 +4,6 @@
 }
 
 .Application-table {
-  margin-top: 50px;
   font-size: 13px;
   border-radius: 10px;
   width: 902px;
@@ -13,8 +12,22 @@
   border: 1px solid #d1d9e2;
   color: #5f6d7e;
   cursor:pointer;
+  margin-top: px;
 }
 
+.Application-Navigation_flex-container {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  
+}
+
+.Application-Navigation {
+  width: 902px;
+  height: 64px;
+  margin-top: 32px;
+
+}
  /* .Application-table tbody tr:nth-child(5) td {
   border-bottom: none;
 } */
@@ -110,13 +123,11 @@
   display: flex;
  justify-content: space-between;
  align-items: center;
-  min-width: 180%;
-  padding: 20px;
+ width: 335%;
+  padding: 15px;
+  color: #5f6d7e;
 }
 
-.application-footer-button{
-  border: none;
-}
 .Application-pre,
 .Application-next,
 .Application-page-no {
@@ -125,7 +136,7 @@
 }
 
 .Application-pre{
-  padding-left: 15px;
+  padding-left: 30px;
   gap: 5px;
 }
 
@@ -133,14 +144,42 @@
   display: flex;
   gap: 20px;
   align-items: center;
+  color: #5f6d7e;
 } 
 
 div.Application-next {
   display: flex;
-  justify-content: right;
+  justify-content: flex-end;
   gap: 5px;
 } 
 
+.Approved-footer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 320%;
+  padding: 15px;
+}
+
+.Rejected-footer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 340%;
+   padding: 15px;
+}
+
+.page-link {
+  color: #5f6d7e;
+}
+
+.Pending-footer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 360%;
+   padding: 15px;
+}
 /* Heading */
 .Application-heading-container {
   display: flex;
