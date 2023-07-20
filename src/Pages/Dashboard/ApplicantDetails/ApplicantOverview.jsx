@@ -7,18 +7,22 @@ import SideBar from "../components/Sidebar/SideBar";
 import LoanStatus from "../components/ApplicationsSummary";
 import CreditUtilization from "../components/ApplicationsSummary";
 import OutstandingDebt from "../components/ApplicationsSummary";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from 'react-redux'
+import { useEffect } from "react";
 
 export default function ApplicantOverview() {
   const navigate = useNavigate();
-  const location = useLocation();
-  const { selectedApplicant } = location.state || {};
+
+  const selectedApplicant = useSelector((state) => state.applicant.selectedApplicant);
+
+  useEffect(() => {
+    if (!selectedApplicant) {
+      navigate(-1);
+    }
+  }, [selectedApplicant, navigate]);
 
   console.log(selectedApplicant);
-
-  if (!selectedApplicant) {
-    return navigate(-1);
-  }
 
   const { prediction, contact, applicationID } = selectedApplicant;
 

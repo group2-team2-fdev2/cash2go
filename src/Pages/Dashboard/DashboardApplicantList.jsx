@@ -5,6 +5,9 @@ import UserIcon from "./components/DashboardOverview/UserIcon";
 import Approved from "./components/DashboardOverview/Approved";
 import Rejected from "./components/DashboardOverview/Rejected";
 
+import { useDispatch } from "react-redux";
+import { selectApplicant } from "../../redux/applicantSlice";
+
 export default function DashboardApplicantList({
   sectionTitle,
   sortOptionText,
@@ -15,12 +18,14 @@ export default function DashboardApplicantList({
   const [sortedData, setSortedData] = useState([]);
   const [sortBy, setSortBy] = useState("date");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleSelectApplicant = (selectedApplicantId) => {
     const selectedApplicant = loanData.find(
       (applicant) => applicant._id === selectedApplicantId
     );
-    navigate("applicant-overview", { state: { selectedApplicant } });
+    dispatch(selectApplicant(selectedApplicant));
+    navigate("applicant-overview");
   };
 
   const statusComponents = {

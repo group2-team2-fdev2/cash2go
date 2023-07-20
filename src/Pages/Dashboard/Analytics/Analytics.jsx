@@ -5,36 +5,14 @@ import PieChart from "../components/PieChart/PieChart";
 import Navbar from "../components/Navbar/Navbar";
 import SideBar from "../components/Sidebar/SideBar";
 import BarChart from "../components/BarChart/BarChart";
-// import LoanStatus from "../components/ApplicationsOverview/ApplicationsSummary";
-// import CreditUtilization from "../components/ApplicationsOverview/ApplicationsSummary";
-// import OutstandingDebt from "../components/ApplicationsOverview/ApplicationsSummary";
-
-// import { useEffect, useRef } from "react";
+import { getMonthsBackwards } from "../utils/getMonthsBackwards";
 
 export default function Analytics() {
-  // const scrollableWrapperRef = useRef(null);
-  const isOneButton = true;
-
-  // useEffect(() => {
-  //   const scrollableWrapper = scrollableWrapperRef.current;
-
-  //   const handleScroll = () => {
-  //     if (scrollableWrapper.scrollLeft > 0) {
-  //       scrollableWrapper.classList.add("show-scroll");
-  //     } else {
-  //       scrollableWrapper.classList.remove("show-scroll");
-  //     }
-  //   };
-
-  //   scrollableWrapper.addEventListener("scroll", handleScroll);
-
-  //   return () => {
-  //     scrollableWrapper.removeEventListener("scroll", handleScroll);
-  //   };
-  // }, []);
+  const numMonths = 6;
+  const monthsBackwards = getMonthsBackwards(numMonths);
 
   const data = {
-    labels: ["January", "February", "March", "April", "May", "June"],
+    labels: monthsBackwards,
     datasets: [
       {
         label: "Approved",
@@ -64,7 +42,7 @@ export default function Analytics() {
           title="Analytics"
           subTitle="Loan Performance and Dashboard"
           link="/applications"
-          isOneButton={isOneButton}
+          isOneButton
           ButtonTitle="Applicants"
           paddingBottom="20px"
         />
@@ -113,7 +91,12 @@ export default function Analytics() {
           data={data}
         />
         <div className="chart-wrapper">
-          <PieChart />
+          <PieChart
+            creditScore={`650`}
+            status={`Approved`}
+            backgroundColor={`#169872`}
+            color={`#F8F9FB`}
+          />
           <BarChart title="Average Loan Requested" score="1,750,654" />
         </div>
       </div>
