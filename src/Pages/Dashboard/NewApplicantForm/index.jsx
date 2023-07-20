@@ -1,6 +1,6 @@
 import { NavLink, Routes, Route, Navigate } from "react-router-dom";
 import BreadCrumbs from "../components/BreadCrumbs";
-import DashboardHeader from "../components/DashboardHeader/DashboardHeader";
+import DashboardHeader from "../components/DashboardHeader";
 import Navbar from "../components/Navbar/Navbar";
 import SideBar from "../components/Sidebar/SideBar";
 import ContactInfo from "./ContactInfo";

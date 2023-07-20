@@ -1,63 +1,36 @@
-// import axios from "axios";
-// import ApplicationsOverview from "../components/ApplicationsOverview/ApplicationsOverview";
 import BarChart from "../components/BarChart/BarChart";
 import BreadCrumbs from "../components/BreadCrumbs";
-import DashboardHeader from "../components/DashboardHeader/DashboardHeader";
+import DashboardHeader from "../components/DashboardHeader";
 import Navbar from "../components/Navbar/Navbar";
 import PieChart from "../components/PieChart/PieChart";
 import SideBar from "../components/Sidebar/SideBar";
-import LoanStatus from "../components/ApplicationsOverview/ApplicationsSummary";
-import CreditUtilization from "../components/ApplicationsOverview/ApplicationsSummary";
-import OutstandingDebt from "../components/ApplicationsOverview/ApplicationsSummary";
-import { useEffect, useRef } from "react";
-import { useLocation } from "react-router-dom";
+import LoanStatus from "../components/ApplicationsSummary";
+import CreditUtilization from "../components/ApplicationsSummary";
+import OutstandingDebt from "../components/ApplicationsSummary";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function ApplicantOverview() {
-  const scrollableWrapperRef = useRef(null);
-
+  const navigate = useNavigate();
   const location = useLocation();
   const { selectedApplicant } = location.state || {};
 
   console.log(selectedApplicant);
 
-  const { prediction, contact } =
-    selectedApplicant;
+  if (!selectedApplicant) {
+    return navigate(-1);
+  }
 
-  // console.log(prediction);
-  // console.log(contact);
-  // console.log(applicationID);
-  // console.log(applicationDate);
+  const { prediction, contact, applicationID } = selectedApplicant;
 
   const loanDuration = (duration) => {
     const numericValue = parseInt(duration);
-    if (numericValue > 6) {
-      return "Long Term Loan";
-    } else {
+    console.log(numericValue);
+    if (numericValue < 6) {
       return "Short Term Loan";
+    } else {
+      return "Long Term Loan";
     }
   };
-
-  useEffect(() => {
-    const scrollableWrapper = scrollableWrapperRef.current;
-
-    const handleScroll = () => {
-      if (scrollableWrapper.scrollLeft > 0) {
-        scrollableWrapper.classList.add("show-scroll");
-      } else {
-        scrollableWrapper.classList.remove("show-scroll");
-      }
-    };
-
-    scrollableWrapper.addEventListener("scroll", handleScroll);
-
-    return () => {
-      scrollableWrapper.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  if (!selectedApplicant) {
-    return <div>Loading...</div>;
-  }
 
   return (
     <>
@@ -67,20 +40,17 @@ export default function ApplicantOverview() {
         <BreadCrumbs />
         <DashboardHeader
           title={`${contact.firstName} ${contact.lastName}`}
-          subTitle="Loan History and Performance"
+          subTitle={`ID ${applicationID}`}
           firstLink="info"
+          InfoLink = "/info"
           secondLink="applicant-review"
           firstButtonTitle="Info"
           secondButtonTitle="Review"
           isRegularButton
           contact={contact}
         />
-        {/* <ApplicationsOverview /> */}
         <div className="applicationsOverview-container">
-          <div
-            ref={scrollableWrapperRef}
-            className="applicationsOverview-wrapper"
-          >
+          <div className="applicationsOverview-wrapper">
             <LoanStatus
               title="Loan Request"
               score={Number(prediction.loanRequestAmount).toLocaleString()}
@@ -116,7 +86,15 @@ export default function ApplicantOverview() {
             <CreditUtilization
               title="Credit Utilization"
               score={prediction.creditUtilization}
-              description="(<30)"
+              description={
+                prediction.isApproved
+                  ? "Above Average"
+                  : prediction.isPending
+                  ? "Average"
+                  : prediction.isRejected
+                  ? "Below Average"
+                  : null
+              }
               status={
                 prediction.isApproved
                   ? "Approved"
@@ -148,7 +126,7 @@ export default function ApplicantOverview() {
             <OutstandingDebt
               title="Outstanding Debt"
               score="N 0.00"
-              description="(<20% Previous Debt)"
+              description="N/A"
               status={
                 prediction.isApproved
                   ? "Approved"
@@ -211,7 +189,7 @@ export default function ApplicantOverview() {
             }
           />
           <BarChart
-            title="Loan Requested"
+            title="Previous Loans"
             score={Number(prediction.loanRequestAmount).toLocaleString()}
           />
         </div>

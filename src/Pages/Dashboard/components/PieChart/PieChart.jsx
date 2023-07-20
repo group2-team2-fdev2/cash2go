@@ -4,6 +4,7 @@ import { Doughnut } from "react-chartjs-2";
 ChartJS.register(ArcElement);
 import { BiCheckCircle } from "react-icons/bi";
 import { BsInfoCircle } from "react-icons/bs";
+import { GiCancel } from "react-icons/gi";
 // import { BsArrowRight } from "react-icons/bs";
 import PropTypes from "prop-types";
 
@@ -13,6 +14,8 @@ export default function PieChart({
   backgroundColor,
   color,
 }) {
+  const pieChartData = creditScore / 720;
+  const pieChartDataRemainder = 1 - pieChartData;
   const statusStyle = {
     backgroundColor: backgroundColor,
     color: color,
@@ -20,9 +23,12 @@ export default function PieChart({
   const data = {
     datasets: [
       {
-        data: [0.8, 0.2],
+        data: [pieChartData, pieChartDataRemainder],
         borderWidth: 0,
-        backgroundColor: ["#169872", "#E6E9EC"],
+        backgroundColor: [
+          status === "Approved" ? "#169872" : status === "Pending" ? "#C0F5F9" : "#FD3D39",
+          "#E6E9EC",
+        ],
       },
     ],
   };
@@ -88,14 +94,12 @@ export function PieChartPerformanceStatusIcon({ status }) {
       <BsInfoCircle className="applicationsOverview-statusIcon" />
     );
   } else if (status == "Rejected") {
-    iconComponent = (
-      <BsInfoCircle className="applicationsOverview-statusIcon" />
-    );
+    iconComponent = <GiCancel className="applicationsOverview-statusIcon" />;
   }
 
   return <div>{iconComponent}</div>;
 }
 
 PieChartPerformanceStatusIcon.propTypes = {
-  status: PropTypes.number,
+  status: PropTypes.string,
 };

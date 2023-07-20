@@ -1,7 +1,10 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { BsArrowLeft } from "react-icons/bs";
+import "./BreadCrumbs.css";
 
 export default function BreadCrumbs() {
   const location = useLocation();
+  const navigate = useNavigate();
 
   let currentLink = "";
 
@@ -21,5 +24,12 @@ export default function BreadCrumbs() {
       );
     });
 
-  return <div className="breadCrumbs">{crumbs}</div>;
+  return (
+    <div className="breadCrumbs_wrapper">
+      <div className="breadCrumbs">{crumbs}</div>
+      <div className="breadCrumbs_previousLink" onClick={() => navigate(-1)}>
+        <BsArrowLeft /> <span>Back</span>
+      </div>
+    </div>
+  );
 }

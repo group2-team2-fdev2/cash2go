@@ -12,7 +12,7 @@ import DashboardOverview from "./components/DashboardOverview/DashboardOverview"
 import BreadCrumbs from "./components/BreadCrumbs";
 import DashboardApplicantList from "./DashboardApplicantList";
 // import Button from "./components/DashboardHeader/Button";
-import DashboardHeader from "./components/DashboardHeader/DashboardHeader";
+import DashboardHeader from "./components/DashboardHeader";
 
 // eslint-disable-next-line react/prop-types
 export default function Dashboard() {

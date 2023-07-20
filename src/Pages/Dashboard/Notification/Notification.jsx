@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import BreadCrumbs from "../components/BreadCrumbs";
 import Navbar from "../components/Navbar/Navbar";
 import SideBar from "../components/Sidebar/SideBar";
-import DashboardHeader from "../components/DashboardHeader/DashboardHeader";
+import DashboardHeader from "../components/DashboardHeader";
 import { Notifications } from "../components/Notifications/NotificationObj";
 import ListItem from "../components/Notifications/truncateTextFunction";
 import ReadMark from "../components/Notifications/ReadMark";

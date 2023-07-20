@@ -45,7 +45,6 @@ const router = createBrowserRouter(
           <Route
             path="info"
             element={<ApplicantInfo />}
-            // loader={ApplicantBioLoader}
           />
         </Route>
       </Route>

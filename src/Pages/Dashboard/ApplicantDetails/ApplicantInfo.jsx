@@ -2,24 +2,21 @@
 import { useLocation } from "react-router-dom";
 import ApplicantBio from "../components/ApplicantBio/ApplicantBio";
 import BreadCrumbs from "../components/BreadCrumbs";
-import DashboardHeader from "../components/DashboardHeader/DashboardHeader";
+import DashboardHeader from "../components/DashboardHeader";
 import Navbar from "../components/Navbar/Navbar";
 import SideBar from "../components/Sidebar/SideBar";
 // import axios from "axios";
 
 export default function ApplicantInfo() {
-  // const contacts = useLoaderData();
-
-  // console.log(contacts)
 
   const location = useLocation();
   console.log(location);
 
-  const contacts = location.state || {};
+  const contact = location.state || {};
 
-  console.log(contacts);
+  console.log(contact);
 
-  const { firstName, lastName } = contacts;
+  const { firstName, lastName } = contact;
 
   const isNoButton = true;
   return (
@@ -34,8 +31,9 @@ export default function ApplicantInfo() {
           isNoButton={isNoButton}
           borderBottom="1px solid #D1D9E2"
           paddingBottom="20px"
+          contact={contact}
         />
-        {contacts && <ApplicantBio contacts={contacts} />}
+        {contact && <ApplicantBio contact={contact} />}
       </div>
     </>
   );

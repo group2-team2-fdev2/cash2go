@@ -8,25 +8,29 @@ import {
 import { Bar } from "react-chartjs-2";
 ChartJS.register(BarElement, CategoryScale, LinearScale, Legend);
 // import { BsArrowRight } from "react-icons/bs";
+import { getMonthsBackwards } from "./MonthsBackwards";
 import PropTypes from "prop-types";
 
 export default function BarChart({ title, score }) {
+  const numMonths = 6;
+  const monthsBackwards = getMonthsBackwards(numMonths);
+
   const data = {
-    labels: ["January", "February", "March"],
+    labels: monthsBackwards,
     datasets: [
       {
         label: "Short Term",
-        data: [25, 50, 75],
+        data: [0, 0, 0, 0, 0, 0],
         borderWidth: 0,
         barThickness: 40,
         backgroundColor: "#E6E9EC",
       },
       {
         label: "Long Term",
-        data: [50, 25, 100],
+        data: [0, 0, 0, 0, 0, 0],
         borderWidth: 0,
         barThickness: 40,
-        backgroundColor: "#454e5c",
+        backgroundColor: "#454E5C",
       },
     ],
   };
@@ -37,7 +41,7 @@ export default function BarChart({ title, score }) {
         position: "top",
         align: "end",
         labels: {
-          boxWidth: 10,
+          boxWidth: 8,
         },
       },
     },
@@ -47,6 +51,12 @@ export default function BarChart({ title, score }) {
         grid: {
           display: false,
         },
+        ticks: {
+          values: [20, 40, 80, 100],
+        },
+        stepSize: 20,
+        max: 100,
+        min: 0,
       },
       x: {
         grid: {
@@ -89,6 +99,6 @@ export default function BarChart({ title, score }) {
 }
 
 BarChart.propTypes = {
-  title: PropTypes.number,
+  title: PropTypes.string,
   score: PropTypes.string,
 };

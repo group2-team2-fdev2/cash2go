@@ -34,35 +34,6 @@
   border-bottom: 2px solid #ff6f5a;
 }
 
-/* BREADCRUMBS COMPONENT */
-
-.breadCrumbs {
-  margin-top: 10px;
-  width: 902px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.breadCrumbs .crumb::after {
-  content: ">";
-  color: #5f6d7e;
-  margin-left: 10px;
-}
-
-.breadCrumbs .crumb:last-child:after {
-  display: none;
-}
-
-.breadCrumbs .crumb a {
-  font-size: 14px;
-  color: #5f6d7e;
-}
-
-.breadCrumbs .crumb a:hover {
-  text-decoration: underline;
-}
-
 /* SIDEBAR COMPONENT */
 
 .sidebar-container {

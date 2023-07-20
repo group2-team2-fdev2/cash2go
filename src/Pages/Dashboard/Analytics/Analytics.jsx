@@ -1,5 +1,5 @@
 import BreadCrumbs from "../components/BreadCrumbs";
-import DashboardHeader from "../components/DashboardHeader/DashboardHeader";
+import DashboardHeader from "../components/DashboardHeader";
 import LineChart from "../components/LineChart/LineChart";
 import PieChart from "../components/PieChart/PieChart";
 import Navbar from "../components/Navbar/Navbar";

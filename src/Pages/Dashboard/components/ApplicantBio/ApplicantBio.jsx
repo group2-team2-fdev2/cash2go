@@ -1,7 +1,7 @@
 // library
 import PropTypes from "prop-types";
 
-export default function ApplicantBio({ contacts }) {
+export default function ApplicantBio({ contact }) {
   const {
     DOB,
     address,
@@ -10,7 +10,7 @@ export default function ApplicantBio({ contacts }) {
     nextOfKinPhoneNumber,
     phoneNumber,
     stateOfOrigin,
-  } = contacts;
+  } = contact;
   return (
     <section className="ApplicantBio-wrapper">
       <header className="ApplicantBio-heading">
@@ -51,7 +51,7 @@ export default function ApplicantBio({ contacts }) {
 }
 
 ApplicantBio.propTypes = {
-  contacts: PropTypes.shape({
+  contact: PropTypes.shape({
     DOB: PropTypes.string,
     address: PropTypes.string,
     adressOfEmployer: PropTypes.string,
