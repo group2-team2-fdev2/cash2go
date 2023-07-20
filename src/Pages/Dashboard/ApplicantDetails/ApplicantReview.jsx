@@ -1,36 +1,53 @@
-
 import BreadCrumbs from "../components/BreadCrumbs";
 import DashboardHeader from "../components/DashboardHeader";
 import Navbar from "../components/Navbar/Navbar";
 import SideBar from "../components/Sidebar/SideBar";
 import LineChart from "../components/LineChart/LineChart";
 import { NavLink, Route, Routes, Navigate } from "react-router-dom";
+import { getMonthsBackwards } from "../utils/getMonthsBackwards";
+import { useSelector } from "react-redux";
 
 export default function ApplicantReview() {
+  const selectedApplicant = useSelector(
+    (state) => state.applicant.selectedApplicant
+  );
+  const numMonths = 6;
+  const monthsBackwards = getMonthsBackwards(numMonths);
+
+  console.log(selectedApplicant);
+
+  const { prediction, contact, applicationID } = selectedApplicant;
+
+  console.log(contact);
+
+  const { firstName, lastName } = contact;
 
   const data = {
-    labels: ["January", "February", "March", "April", "May", "June"],
+    labels: monthsBackwards,
     datasets: [
       {
-        label: "Approved",
-        data: [50, 25, 75, 90, 25, 75],
-        backgroundColor: "#169872",
-        borderColor: "#169872",
-        borderWidth: 2,
-        tension: 0.3,
-      },
-      {
-        label: "Declined",
-        data: [75, 25, 90, 75, 25, 50],
-        backgroundColor: "#FF6F5A",
-        borderColor: "#FF6F5A",
+        label: "Cashflow",
+        data: [0, 0, 0, 0, 0, 0],
+        backgroundColor: prediction.isApproved
+          ? "#169872"
+          : prediction.isPending
+          ? "#C0F5F9"
+          : prediction.isRejected
+          ? "#FD3D39"
+          : null,
+        borderColor: prediction.isApproved
+          ? "#169872"
+          : prediction.isPending
+          ? "#C0F5F9"
+          : prediction.isRejected
+          ? "#FD3D39"
+          : null,
         borderWidth: 2,
         tension: 0.3,
       },
     ],
   };
 
-  const isNoButton = true;
   return (
     <>
       <Navbar />
@@ -38,9 +55,9 @@ export default function ApplicantReview() {
       <div className="Dashboard-content">
         <BreadCrumbs />
         <DashboardHeader
-          title="Ogbeni Mallam"
-          subTitle="ID 20239076"
-          isNoButton={isNoButton}
+          title={`${firstName} ${lastName}`}
+          subTitle={`ID ${applicationID}`}
+          isNoButton
           firstButtonTitle="Contact"
           secondButtonTitle="Message"
           borderBottom="1px solid #D1D9E2"
@@ -53,9 +70,8 @@ export default function ApplicantReview() {
           <NavLink to="previous-loans" className="metric-navigation">
             Previous Loans
           </NavLink>
-          
         </nav>
-       
+
         <Routes>
           <Route path="/" element={<Navigate to="cashflow" />} />
           <Route path="/cashflow" element={<LineChart data={data} />} />

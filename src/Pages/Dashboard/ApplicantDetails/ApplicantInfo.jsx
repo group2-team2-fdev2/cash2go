@@ -1,18 +1,25 @@
 // import { useLoaderData } from "react-router-dom";
-import { useLocation } from "react-router-dom";
+// import { useLocation } from "react-router-dom";
 import ApplicantBio from "../components/ApplicantBio/ApplicantBio";
 import BreadCrumbs from "../components/BreadCrumbs";
 import DashboardHeader from "../components/DashboardHeader";
 import Navbar from "../components/Navbar/Navbar";
 import SideBar from "../components/Sidebar/SideBar";
 // import axios from "axios";
+import { useSelector } from 'react-redux'
 
 export default function ApplicantInfo() {
 
-  const location = useLocation();
-  console.log(location);
+  // const location = useLocation();
+  // console.log(location);
 
-  const contact = location.state || {};
+  // const contact = location.state || {};
+
+  const selectedApplicant = useSelector((state) => state.applicant.selectedApplicant);
+
+  console.log(selectedApplicant);
+
+  const { contact, applicationID } = selectedApplicant;
 
   console.log(contact);
 
@@ -27,7 +34,7 @@ export default function ApplicantInfo() {
         <BreadCrumbs />
         <DashboardHeader
           title={`${firstName} ${lastName}`}
-          subTitle={`ID`}
+          subTitle={`ID ${applicationID}`}
           isNoButton={isNoButton}
           borderBottom="1px solid #D1D9E2"
           paddingBottom="20px"
