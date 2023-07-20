@@ -182,8 +182,8 @@ function RejectedLoans() {
               );
             })}
 
-           <tr className="Application-footer">
-           <ul className="Application-footer">
+           <tr>
+           <ul className="Rejected-footer">
               <li className="Application-pre">
               <span><PreviousArrow /></span> <a href="#" className='page-link'
                 onClick={prePage}> Prev</a>

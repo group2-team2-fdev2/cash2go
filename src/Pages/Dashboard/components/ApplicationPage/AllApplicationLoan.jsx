@@ -184,9 +184,7 @@ function AllApplicationLoan() {
                     )}
                   </td>
                   <td>
-                    {applicant.prediction.isPending ? (
-                      <Pending />
-                    ) : applicant.prediction.isRejected ? (
+                    {applicant.prediction.isRejected ? (
                       <Rejected />
                     ) : (
                       <Approved />
@@ -199,7 +197,7 @@ function AllApplicationLoan() {
               );
             })}
 
-          <tr className="Application-footer">
+          <tr>
             <ul className="Application-footer">
               <li className="Application-pre">
                 <span>
