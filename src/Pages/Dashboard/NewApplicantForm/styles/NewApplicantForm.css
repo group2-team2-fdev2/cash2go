@@ -1,53 +1,85 @@
-/* .NewApplicantForm-section {
-  
-} */
-
-/* .NewApplicantForm-form {
-  
-} */
+.NewApplicantForm-section {
+  background-color: #f7f7f7;
+  padding-top: 40px;
+  height: 700px;
+  margin-top: -20px;
+  border-radius: 10px;
+  border: 1px solid #d1d9e2;
+  box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
+}
 
 .NewApplicantForm-main {
   display: flex;
-  align-items: center;
+  justify-content: space-between;
+  padding-left: 40px;
+  padding-right: 40px;
 }
 
-.NewApplicantForm-label {
-  display: block;
+.NewApplicantForm-header {
+  margin: -18px 0 30px 0;
+  padding-bottom: 20px;
+  color: #303131;
+  font-weight: 600;
+  padding-left: 40px;
+  border-bottom: 1px solid #ccc;
 }
+
+.NewApplicantForm-form label {
+  display: block;
+  font-size: 14px;
+  color: #27292b;
+}
+
+.NewApplicantForm-form input {
+  width: 390px;
+  height: 40px;
+  padding: 8px;
+  margin-bottom: 40px;
+  margin-top: 8px;
+  border: 1px solid #868585;
+  border-radius: 4px;
+}
+
+.NewApplicantForm-form select {
+  width: 390px;
+  height: 40px;
+  padding: 8px;
+  margin-bottom: 40px;
+  margin-top: 8px;
+  border: 1px solid #868585;
+  border-radius: 4px;
+}
+
 
 .NewApplicantForm-span {
   display: block;
 }
 
-.NewApplicantForm-input,
-.NewApplicantForm-select {
-  display: block;
-}
-
-/* .NewApplicantForm-option {
-
-} */
-
 .NewApplicantForm-button-wrapper {
-  width: 250px;
+  width: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 12px;
-  padding: 8px 0px;
+  padding: 12px 0px;
+  margin-left: 40px;
   background: #172233;
   transition: background-color 0.2s ease-in-out;
   border-radius: 10px;
-}
-
-.NewApplicantForm-button-wrapper:hover {
+  margin-bottom: -50px;
   cursor: pointer;
-}
-
-.NewApplicantForm-button-text {
   font-weight: 600;
   font-size: 16px;
   color: #f8f9fb;
+}
+
+
+.NewApplicantForm-error-message {
+  margin-top: 60px;
+  margin-left: 40px;
+  font-size: 14px;
+  color: red;
+  
 }
 
 .NewApplicantForm-Navigation {

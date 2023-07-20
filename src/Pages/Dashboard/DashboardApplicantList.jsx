@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import UserIcon from "./components/DashboardOverview/UserIcon";
 import Approved from "./components/DashboardOverview/Approved";
 import Rejected from "./components/DashboardOverview/Rejected";
-import Pending from "./components/DashboardOverview/Pending";
 
 export default function DashboardApplicantList({
   sectionTitle,
@@ -18,20 +17,23 @@ export default function DashboardApplicantList({
   const navigate = useNavigate();
 
   const handleSelectApplicant = (selectedApplicantId) => {
-    const selectedApplicant = loanData.find((applicant) => applicant._id === selectedApplicantId);
+    const selectedApplicant = loanData.find(
+      (applicant) => applicant._id === selectedApplicantId
+    );
     navigate("applicant-overview", { state: { selectedApplicant } });
   };
 
   const statusComponents = {
     Approved: <Approved />,
     Rejected: <Rejected />,
-    Pending: <Pending />,
   };
 
   useEffect(() => {
     const fetchApplicants = async () => {
       try {
-        const response = await fetch("https://cash2go-backendd.onrender.com/api/v1/applicant/applicants");
+        const response = await fetch(
+          "https://cash2go-backendd.onrender.com/api/v1/applicant/applicants"
+        );
         const data = await response.json();
 
         if (response.ok && data.status === "Success") {
@@ -59,17 +61,19 @@ export default function DashboardApplicantList({
           return new Date(a.date) - new Date(b.date);
         } else if (sortBy === "status") {
           const statusOrder = {
-            Pending: 1,
-            Approved: 2,
-            Rejected: 3,
+            Approved: 1,
+            Rejected: 2,
           };
-          const statusA = a.prediction.isPending ? "Pending" : a.prediction.isRejected ? "Rejected" : "Approved";
-          const statusB = b.prediction.isPending ? "Pending" : b.prediction.isRejected ? "Rejected" : "Approved";
+          const statusA = a.prediction.isRejected ? "Rejected" : "Approved";
+          const statusB = b.prediction.isRejected ? "Rejected" : "Approved";
           return statusOrder[statusA] - statusOrder[statusB];
         } else if (sortBy === "creditScore") {
           return b.prediction.creditScore - a.prediction.creditScore;
         } else if (sortBy === "loanAmount") {
-          return parseInt(a.prediction.loanRequestAmount) - parseInt(b.prediction.loanRequestAmount);
+          return (
+            parseInt(a.prediction.loanRequestAmount) -
+            parseInt(b.prediction.loanRequestAmount)
+          );
         }
       });
       setSortedData(sorted);
@@ -153,7 +157,10 @@ export default function DashboardApplicantList({
           </tr>
         )}
         {displayData.map((applicant) => (
-          <tr key={applicant._id} onClick={() => handleSelectApplicant(applicant._id)}>
+          <tr
+            key={applicant._id}
+            onClick={() => handleSelectApplicant(applicant._id)}
+          >
             <td>
               <div className="Dashboard-applicant">
                 <UserIcon />
@@ -176,7 +183,11 @@ export default function DashboardApplicantList({
               })}
             </td>
             <td className="Dashboard-status-cell">
-              {statusComponents[applicant.prediction.isPending ? "Pending" : applicant.prediction.isRejected ? "Rejected" : "Approved"]}
+              {
+                statusComponents[
+                  applicant.prediction.isRejected ? "Rejected" : "Approved"
+                ]
+              }
             </td>
             <td className="Dashboard-credit-score-cell">
               {applicant.prediction.creditScore}
