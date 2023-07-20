@@ -1,6 +1,6 @@
 
 import BreadCrumbs from "../components/BreadCrumbs";
-import DashboardHeader from "../components/DashboardHeader/DashboardHeader";
+import DashboardHeader from "../components/DashboardHeader";
 import Navbar from "../components/Navbar/Navbar";
 import SideBar from "../components/Sidebar/SideBar";
 import LineChart from "../components/LineChart/LineChart";

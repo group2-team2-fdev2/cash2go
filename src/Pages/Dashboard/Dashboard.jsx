@@ -12,17 +12,15 @@ import DashboardOverview from "./components/DashboardOverview/DashboardOverview"
 import BreadCrumbs from "./components/BreadCrumbs";
 import DashboardApplicantList from "./DashboardApplicantList";
 // import Button from "./components/DashboardHeader/Button";
-import DashboardHeader from "./components/DashboardHeader/DashboardHeader";
+import DashboardHeader from "./components/DashboardHeader";
 
 // eslint-disable-next-line react/prop-types
 export default function Dashboard() {
   const [loanData, setLoanData] = useState([]);
   const [numNewApplications, setNumNewApplications] = useState(0);
   const [numApproved, setNumApproved] = useState(0);
-  const [numPending, setNumPending] = useState(0);
   const [numRejected, setNumRejected] = useState(0);
   const [newApprovedDiff, setNewApprovedDiff] = useState(0);
-  const [newPendingDiff, setNewPendingDiff] = useState(0);
   const [newRejectedDiff, setNewRejectedDiff] = useState(0);
   const [firstName, setFirstName] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
@@ -61,9 +59,6 @@ export default function Dashboard() {
       const approvedCount = loanData.filter(
         (loan) => loan.prediction.isApproved
       ).length;
-      const pendingCount = loanData.filter(
-        (loan) => loan.prediction.isPending
-      ).length;
       const rejectedCount = loanData.filter(
         (loan) => loan.prediction.isRejected
       ).length;
@@ -71,17 +66,15 @@ export default function Dashboard() {
       console.log("Loan Data before update:", loanData);
 
       setNumApproved(approvedCount);
-      setNumPending(pendingCount);
       setNumRejected(rejectedCount);
 
       // Calculate the differences from yesterday based on the previous values
       setNewApprovedDiff(approvedCount - numApproved);
-      setNewPendingDiff(pendingCount - numPending);
       setNewRejectedDiff(rejectedCount - numRejected);
     };
 
     calculateLoanCounts();
-  }, [loanData, numApproved, numPending, numRejected]);
+  }, [loanData, numApproved, numRejected]);
 
   useEffect(() => {
     const calculateNewApplications = () => {
@@ -112,7 +105,6 @@ export default function Dashboard() {
 
   return (
     <div>
-
       <Navbar
         email={email}
         handleSearchInputChange={handleSearchInputChange}
@@ -149,10 +141,8 @@ export default function Dashboard() {
 
         <DashboardOverview
           numApproved={numApproved}
-          numPending={numPending}
           numRejected={numRejected}
           newApprovedDiff={newApprovedDiff}
-          newPendingDiff={newPendingDiff}
           newRejectedDiff={newRejectedDiff}
         />
         <DashboardApplicantList
@@ -161,9 +151,7 @@ export default function Dashboard() {
           setNumNewApplications={setNumNewApplications}
           sectionTitle="Recent Applications"
           sortOptionText="Sort Option Text"
-
           searchQuery={searchQuery}
-
         />
       </div>
     </div>

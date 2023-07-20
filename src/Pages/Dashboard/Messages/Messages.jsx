@@ -1,7 +1,7 @@
 import BreadCrumbs from "../components/BreadCrumbs";
 import Navbar from "../components/Navbar/Navbar";
 import SideBar from "../components/Sidebar/SideBar";
-import DashboardHeader from "../components/DashboardHeader/DashboardHeader";
+import DashboardHeader from "../components/DashboardHeader";
 import "../Messages/Messages.css";
 import { Routes, Route, NavLink, Navigate } from "react-router-dom";
 import New from "./New";

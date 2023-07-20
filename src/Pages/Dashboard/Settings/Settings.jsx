@@ -4,7 +4,7 @@ import { NavLink, Routes, Route, Navigate } from "react-router-dom";
 import Navbar from "../components/Navbar/Navbar";
 import SideBar from "../components/Sidebar/SideBar";
 import BreadCrumbs from "../components/BreadCrumbs";
-import DashboardHeader from "../components/DashboardHeader/DashboardHeader";
+import DashboardHeader from "../components/DashboardHeader";
 import ModelSettings from "./ModelSettings";
 import NotificationSettings from "./NotificationSettings";
 import SecurityAndPrivacySettings from "./SecurityAndPrivacySettings";

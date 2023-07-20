@@ -3,6 +3,7 @@ import { FiThumbsUp } from "react-icons/fi";
 import { BiCheckCircle, BiTrendingUp } from "react-icons/bi";
 import { HiOutlineBarsArrowDown } from "react-icons/hi2";
 import { BsInfoCircle } from "react-icons/bs";
+import { GiCancel } from "react-icons/gi";
 // library
 import PropTypes from "prop-types";
 
@@ -22,7 +23,7 @@ export default function ApplicationsSummary({
     <div className="applicationsOverview-Contentwrapper">
       <div className="applicationsOverview-heading">
         <div className="applicationsOverview-title">{title}</div>
-        <ApplicationsOverviewIcon title={title} />
+        {/* <ApplicationsOverviewIcon title={title} /> */}
       </div>
       <div className="applicationsOverview-score">{score}</div>
       <div className="applicationsOverview-footer">
@@ -87,7 +88,7 @@ export function ApplicationsOverviewStatusIcon({ status }) {
     );
   }  else if (status == "Rejected") {
     iconComponent = (
-      <BsInfoCircle className="applicationsOverview-statusIcon" />
+      <GiCancel className="applicationsOverview-statusIcon" />
     );
   }
 

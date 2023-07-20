@@ -16,15 +16,17 @@ export default function DashboardOverview({
   return (
     <>
       <div className="dashboard-overview-container">
-        <div className="dashboard-overview">
+        <div className="dashboard-overview-approved">
           <ApprovedLoanDashboard1
             numApproved={numApproved}
             newApprovedDiff={newApprovedDiff}
           />
-          <PendingLoanDashboard1
+        </div>
+        {/* <PendingLoanDashboard1
             numPending={numPending}
             newPendingDiff={newPendingDiff}
-          />
+          /> */}
+        <div className="dashboard-overview-rejected">
           <RejectedLoanDashboard1
             numRejected={numRejected}
             newRejectedDiff={newRejectedDiff}

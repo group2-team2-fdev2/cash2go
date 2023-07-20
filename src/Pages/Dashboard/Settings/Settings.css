@@ -12,9 +12,9 @@
 }
 
 .Settings-Navigation_flex-item {
-  padding-bottom: 15px;
-  border-bottom: 1px solid #5f6d7e;
-  cursor: pointer;
+   padding-bottom: 15px;
+   border-bottom: 1px solid #5f6d7e;
+   cursor: pointer;
 }
 
 .Settings-Navigation_link {
